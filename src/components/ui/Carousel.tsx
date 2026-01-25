@@ -117,22 +117,20 @@ export default function Carousel() {
                             className={`absolute w-full lg:w-3/4 h-full transition-all duration-600 ease-[cubic-bezier(0.25,0.8,0.25,1)] [transform-style:preserve-3d] ${className}`}
                             style={transformStyle}
                         >
-                            <SpotlightCard className="glass-panel w-full h-full rounded-3xl p-2 cursor-pointer">
-                                <div className="w-full h-full bg-neutral-50 rounded-2xl overflow-hidden relative group">
+                            <SpotlightCard className="glass-panel w-full h-full rounded-3xl overflow-hidden p-0 cursor-pointer border-0">
+                                <div className="w-full h-full relative group">
                                     {item.content}
-                                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
-                                        <div
-                                            className="transform group-hover:scale-[1.02] transition-transform duration-500 bg-center bg-white w-[80%] h-[70%] bg-cover border-neutral-100 border rounded-xl shadow-2xl relative overflow-hidden"
-                                            style={{ backgroundImage: `url(${item.image})` }}
-                                        >
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                                                <h3 className="text-white font-medium text-xl tracking-tight">{item.title}</h3>
-                                                <p className="text-white/80 text-sm mt-1 line-clamp-2">
-                                                    {item.id === 0 && "Financial Consultancy & Strategic Planning for SMEs."}
-                                                    {item.id === 1 && "Academic Review Systems & Mentorship Programs."}
-                                                    {item.id === 2 && "Leading student bodies and regional organizations."}
-                                                </p>
-                                            </div>
+                                    <div
+                                        className="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700"
+                                        style={{ backgroundImage: `url(${item.image})` }}
+                                    >
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
+                                            <h3 className="text-white font-medium text-2xl tracking-tight">{item.title}</h3>
+                                            <p className="text-white/80 text-base mt-2 line-clamp-2 max-w-lg">
+                                                {item.id === 0 && "Financial Consultancy & Strategic Planning for SMEs."}
+                                                {item.id === 1 && "Academic Review Systems & Mentorship Programs."}
+                                                {item.id === 2 && "Leading student bodies and regional organizations."}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
