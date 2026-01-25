@@ -4,7 +4,7 @@ import GlassButton from "../ui/GlassButton";
 export default function Contact() {
     return (
         <section id="contact" className="animate-fade-up w-full pt-12 pb-20" style={{ animationDelay: "1s" }}>
-            <div className="bg-zinc-900 rounded-3xl p-12 text-center text-white relative overflow-hidden bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/51dd450a-0485-4587-89d8-c6078fb01266_1600w.jpg)] bg-cover bg-center saturate-0">
+            <div className="bg-zinc-900 rounded-3xl p-12 text-center text-white relative overflow-hidden bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1c053fe9-7127-4df7-ae87-36ae206fe067_1600w.jpg)] bg-cover bg-center saturate-0">
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/70 z-0"></div>
 
