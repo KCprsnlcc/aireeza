@@ -21,12 +21,10 @@ export default function Hero() {
 
             <div className="lg:col-span-4 flex flex-col animate-clip-in bg-stone-50 border-stone-200 border rounded-3xl p-2 space-y-8 gap-x-12 gap-y-12 justify-between h-fit" style={{ animationDelay: "0.5s" }}>
                 <div className="aspect-[16/9] overflow-hidden w-full border-stone-200 border rounded-2xl relative">
-                    <iframe
-                        src="https://player.vimeo.com/video/1147300181?autoplay=1&muted=1&loop=1&controls=0&transparent=0&title=0&byline=0&portrait=0"
-                        className="absolute inset-0 h-full w-full border-0 rounded-2xl"
-                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        title="Start agency template"
+                    <img
+                        src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1c053fe9-7127-4df7-ae87-36ae206fe067_1600w.jpg"
+                        alt="Aireeza Leonsul Tandih - Financial Consultancy"
+                        className="absolute inset-0 h-full w-full object-cover rounded-2xl"
                     />
                 </div>
             </div>
