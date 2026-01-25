@@ -1,10 +1,9 @@
 import { Icon } from "@iconify/react";
-import GlassButton from "../ui/GlassButton";
 
 export default function Contact() {
     return (
         <section id="contact" className="animate-fade-up w-full pt-12 pb-20" style={{ animationDelay: "1s" }}>
-            <div className="bg-zinc-900 rounded-3xl p-12 text-center text-white relative overflow-hidden bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1c053fe9-7127-4df7-ae87-36ae206fe067_1600w.jpg)] bg-cover bg-center saturate-0">
+            <div className="bg-zinc-900 rounded-3xl p-12 text-center text-white relative overflow-hidden bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/a5387a0b-52c6-40c2-b3be-ef86329b19cc_1600w.webp)] bg-cover bg-center saturate-0">
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/70 z-0"></div>
 
@@ -23,20 +22,16 @@ export default function Contact() {
 
                     <div className="flex flex-wrap justify-center gap-4 mt-8">
                         <a href="https://beamstart.com" target="_blank" rel="noopener noreferrer">
-                            <GlassButton className="!bg-white/10 hover:!bg-white/20 !text-white">
-                                <span className="flex items-center gap-2">
-                                    <Icon icon="simple-icons:beamstart" />
-                                    Beamstart Profile
-                                </span>
-                            </GlassButton>
+                            <button className="group flex items-center gap-3 bg-white hover:bg-zinc-100 transition-all text-zinc-900 text-sm font-medium rounded-full px-6 py-3 w-fit shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                                <Icon icon="simple-icons:beamstart" />
+                                <span>Beamstart Profile</span>
+                            </button>
                         </a>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                            <GlassButton className="!bg-white/10 hover:!bg-white/20 !text-white">
-                                <span className="flex items-center gap-2">
-                                    <Icon icon="foundation:social-linkedin" />
-                                    LinkedIn
-                                </span>
-                            </GlassButton>
+                            <button className="group flex items-center gap-3 bg-white hover:bg-zinc-100 transition-all text-zinc-900 text-sm font-medium rounded-full px-6 py-3 w-fit shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                                <Icon icon="foundation:social-linkedin" />
+                                <span>LinkedIn</span>
+                            </button>
                         </a>
                     </div>
                 </div>
