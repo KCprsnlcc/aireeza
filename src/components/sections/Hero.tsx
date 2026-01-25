@@ -100,7 +100,7 @@ export default function Hero() {
             <div className="lg:col-span-4 flex flex-col animate-clip-in bg-stone-50 border-stone-200 border rounded-3xl pt-2 pr-2 pb-2 pl-2 space-y-8 gap-x-12 gap-y-12 justify-between" style={{ animationDelay: "0.5s", height: "fit-content" }}>
                 <div className="overflow-hidden w-full border-stone-200 border rounded-2xl relative" style={{ paddingTop: '176.75%', position: 'relative' }}>
                     <img
-                        src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/51dd450a-0485-4587-89d8-c6078fb01266_1600w.jpg"
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
                         alt="Aireeza Leonsul Tandih - Financial Consultancy"
                         className="absolute inset-0 h-full w-full object-cover rounded-2xl"
                     />
