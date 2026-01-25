@@ -5,6 +5,10 @@ import Services from "../components/sections/Services";
 import Leadership from "../components/sections/Leadership";
 import Contact from "../components/sections/Contact";
 import Metrics from "../components/sections/Metrics";
+import CaseStudy from "../components/sections/CaseStudy";
+import Testimonials from "../components/sections/Testimonials";
+import FAQ from "../components/sections/FAQ";
+import Footer from "../components/layout/Footer";
 
 export default function Home() {
   return (
@@ -14,8 +18,12 @@ export default function Home() {
       <Experience />
       <Metrics />
       <Services />
+      <CaseStudy />
+      <Testimonials />
       <Leadership />
+      <FAQ />
       <Contact />
+      <Footer />
     </>
   );
 }
