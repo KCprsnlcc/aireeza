@@ -1,5 +1,4 @@
 import Hero from "../components/sections/Hero";
-import Credentials from "../components/sections/Credentials";
 import Experience from "../components/sections/Experience";
 import Services from "../components/sections/Services";
 import Leadership from "../components/sections/Leadership";
@@ -15,7 +14,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Credentials />
       <Experience />
       <Metrics />
       <Services />
