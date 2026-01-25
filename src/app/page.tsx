@@ -7,6 +7,7 @@ import Contact from "../components/sections/Contact";
 import Metrics from "../components/sections/Metrics";
 import CaseStudy from "../components/sections/CaseStudy";
 import Testimonials from "../components/sections/Testimonials";
+import Pricing from "../components/sections/Pricing";
 import FAQ from "../components/sections/FAQ";
 import Footer from "../components/layout/Footer";
 
@@ -21,6 +22,7 @@ export default function Home() {
       <CaseStudy />
       <Testimonials />
       <Leadership />
+      <Pricing />
       <FAQ />
       <Contact />
       <Footer />

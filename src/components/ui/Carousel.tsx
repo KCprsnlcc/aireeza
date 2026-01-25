@@ -122,10 +122,17 @@ export default function Carousel() {
                                     {item.content}
                                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
                                         <div
-                                            className="transform group-hover:scale-[1.02] transition-transform duration-500 bg-center bg-white w-[80%] h-[70%] bg-cover border-neutral-100 border rounded-xl shadow-2xl"
+                                            className="transform group-hover:scale-[1.02] transition-transform duration-500 bg-center bg-white w-[80%] h-[70%] bg-cover border-neutral-100 border rounded-xl shadow-2xl relative overflow-hidden"
                                             style={{ backgroundImage: `url(${item.image})` }}
                                         >
-                                            {/* Content inside the 'screen' if needed */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                                                <h3 className="text-white font-medium text-xl tracking-tight">{item.title}</h3>
+                                                <p className="text-white/80 text-sm mt-1 line-clamp-2">
+                                                    {item.id === 0 && "Financial Consultancy & Strategic Planning for SMEs."}
+                                                    {item.id === 1 && "Academic Review Systems & Mentorship Programs."}
+                                                    {item.id === 2 && "Leading student bodies and regional organizations."}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
