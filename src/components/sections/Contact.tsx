@@ -4,15 +4,13 @@ import GlassButton from "../ui/GlassButton";
 export default function Contact() {
     return (
         <section id="contact" className="animate-fade-up w-full pt-12 pb-20" style={{ animationDelay: "1s" }}>
-            <div className="bg-neutral-900 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-                {/* Background decoration */}
-                <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-                    <div className="absolute top-[-50%] left-[-20%] w-[140%] h-[200%] bg-gradient-to-r from-blue-900 via-purple-900 to-neutral-900 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
-                </div>
+            <div className="bg-zinc-900 rounded-3xl p-12 text-center text-white relative overflow-hidden bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/51dd450a-0485-4587-89d8-c6078fb01266_1600w.jpg)] bg-cover bg-center saturate-0">
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/70 z-0"></div>
 
                 <div className="relative z-10 max-w-3xl mx-auto space-y-8">
                     <h2 className="text-4xl md:text-5xl font-medium tracking-tight">Ready to elevate your financial intelligence?</h2>
-                    <p className="text-neutral-400 text-lg">
+                    <p className="text-neutral-300 text-lg">
                         Whether you are an investor looking for a viable venture, a business owner needing a financial health check, or a student aiming for the board exams.
                     </p>
 

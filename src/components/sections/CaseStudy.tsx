@@ -14,7 +14,7 @@ export default function CaseStudy() {
                 <div className="grid grid-cols-1 min-h-[500px] h-full relative gap-y-3 lg:grid-cols-1 lg:min-h-[600px]">
 
                     {/* Left: Text Content - Background image can be replaced with a car wash or generic business image */}
-                    <div className="flex flex-col md:p-12 lg:p-16 bg-center bg-[url(https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1600&auto=format&fit=crop)] bg-cover pt-8 pr-8 pb-8 pl-8 saturate-50 justify-center relative">
+                    <div className="flex flex-col md:p-12 lg:p-16 bg-center bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/a5387a0b-52c6-40c2-b3be-ef86329b19cc_1600w.webp)] bg-cover pt-8 pr-8 pb-8 pl-8 saturate-50 justify-center relative">
                         <div className="absolute inset-0 bg-black/60 z-0"></div> {/* Overlay for readability */}
 
                         <div className="relative z-10">
