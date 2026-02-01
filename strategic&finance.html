@@ -60,13 +60,63 @@
         .custom-checkbox:checked+div svg {
             opacity: 1;
         }
+
+        /* Scroll Effects */
+        .hero-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 0;
+            height: 100vh;
+            overflow: hidden;
+            /* Ensure 3js canvas doesn't overflow */
+        }
+
+        .reveal-node {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.65, 0.3, 0.9), transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 0.9);
+            will-change: opacity, transform;
+        }
+
+        .reveal-node.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delays */
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+
+        .delay-300 {
+            transition-delay: 300ms;
+        }
+
+        /* Image Parallax Container */
+        .parallax-wrapper {
+            overflow: hidden;
+            background: #f5f5f5;
+            /* loading placeholder */
+        }
+
+        .parallax-img {
+            transform: scale(1.1);
+            /* Start slightly zoomed for parallax movement room */
+            will-change: transform;
+            transition: transform 0.1s linear;
+            /* Smooth update override by JS */
+        }
     </style>
 </head>
 
 <body class="bg-white text-black antialiased selection:bg-[#3dbfd5] selection:text-white">
 
-    <!-- Hero Section (Cyan Background) -->
-    <div class="relative bg-[#3dbfd5] text-white">
+    <!-- Hero Section (Cyan Background) - Sticky for Cover Effect -->
+    <div class="hero-sticky bg-[#3dbfd5] text-white">
         <div id="canvas-container"></div>
 
         <header class="relative w-full h-screen flex flex-col justify-between p-6 sm:p-12 z-10">
@@ -163,8 +213,8 @@
                         <div
                             class="relative overflow-hidden bg-neutral-100 rounded-2xl aspect-[4/5] border border-neutral-100 flex items-center justify-center p-8 group">
                             <!-- Background Image with Fade -->
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
-                                class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+                                class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-multiply transition-transform duration-700 parallax-img"
                                 alt="Architecture">
 
                             <div class="space-y-4 w-full relative z-10">
@@ -375,8 +425,8 @@
                     <div class="group cursor-pointer">
                         <div
                             class="relative overflow-hidden rounded-xl bg-neutral-100 border border-neutral-200 mb-6 aspect-[4/3]">
-                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale"
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
+                                class="w-full h-full object-cover group-hover:grayscale-0 grayscale parallax-img"
                                 alt="Office Environment">
                             <div
                                 class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-black font-geist-mono border border-neutral-200">
@@ -399,8 +449,8 @@
                     <div class="group cursor-pointer">
                         <div
                             class="relative overflow-hidden rounded-xl bg-neutral-100 border border-neutral-200 mb-6 aspect-[4/3]">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale"
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                                class="w-full h-full object-cover group-hover:grayscale-0 grayscale parallax-img"
                                 alt="Data Visualization">
                             <div
                                 class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-black font-geist-mono border border-neutral-200">
@@ -423,8 +473,8 @@
                     <div class="group cursor-pointer">
                         <div
                             class="relative overflow-hidden rounded-xl bg-neutral-100 border border-neutral-200 mb-6 aspect-[4/3]">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0 grayscale"
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+                                class="w-full h-full object-cover group-hover:grayscale-0 grayscale parallax-img"
                                 alt="Corporate Building">
                             <div
                                 class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-black font-geist-mono border border-neutral-200">
@@ -1026,22 +1076,78 @@
                 updateSparks();
                 renderer.render(scene, camera);
 
-                // 2. DOM Parallax (Smooth Lerp)
+                // 2. DOM Parallax (Hero Elements)
                 parallaxElements.forEach(el => {
                     const speed = parseFloat(el.getAttribute('data-speed'));
-                    const targetX = -domMouseX * speed * 15; // Multiply by range
+                    const targetX = -domMouseX * speed * 15;
                     const targetY = -domMouseY * speed * 15;
 
                     const current = currentPositions.get(el);
-                    // Lerp factor 0.05 for smoothness
                     current.x += (targetX - current.x) * 0.05;
                     current.y += (targetY - current.y) * 0.05;
 
                     el.style.transform = `translate3d(${current.x}px, ${current.y}px, 0)`;
                 });
+
+                // 3. Scroll Parallax for Images
+                updateScrollParallax();
             };
 
             animate();
+
+            // --- Scroll Reveal & Parallax Logic ---
+
+            // 1. Scroll Reveal Observer
+            const setupReveal = () => {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                            revealObserver.unobserve(entry.target); // Only animate once
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                // Auto-target useful elements
+                const targetSelectors = 'section h2, section h3, section p, .group, form, section ul';
+                document.querySelectorAll(targetSelectors).forEach((el, index) => {
+                    el.classList.add('reveal-node');
+                    // Add slight random delay for natural feel if siblings
+                    // This is a simple heuristic; can be removed if too chaotic
+                    // el.style.transitionDelay = `${(index % 3) * 100}ms`; 
+                    revealObserver.observe(el);
+                });
+            };
+
+            // 2. Scroll Parallax Logic (Images)
+            const parallaxImages = document.querySelectorAll('.parallax-img');
+
+            function updateScrollParallax() {
+                if (parallaxImages.length === 0) return;
+
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+
+                parallaxImages.forEach(img => {
+                    const rect = img.parentElement.getBoundingClientRect();
+                    // Check if parent is in view
+                    if (rect.top < windowHeight && rect.bottom > 0) {
+                        // Calculate progress (-1 to 1 range across viewport)
+                        const center = rect.top + rect.height / 2;
+                        const screenCenter = windowHeight / 2;
+                        const dist = (center - screenCenter) / windowHeight;
+
+                        // Move image based on distance from center
+                        // Scale is already 1.1, so we can move +/- 5-10% comfortably
+                        const shift = dist * 20; // 20px shift
+
+                        img.style.transform = `scale(1.1) translateY(${shift}px)`;
+                    }
+                });
+            }
+
+            // Initialize effects
+            setupReveal();
 
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
