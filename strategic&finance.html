@@ -71,7 +71,8 @@
 
         <header class="relative w-full h-screen flex flex-col justify-between p-6 sm:p-12 z-10">
             <!-- Top Nav -->
-            <div class="flex justify-between items-start w-full max-w-[1400px] mx-auto pointer-events-auto">
+            <div class="flex justify-between items-start w-full max-w-[1400px] mx-auto pointer-events-auto"
+                data-speed="1">
                 <div class="text-lg font-semibold tracking-tight">Strategy &amp; Finance</div>
                 <nav class="hidden sm:flex gap-8 text-xs font-medium text-white/80 uppercase tracking-wide">
                     <a href="#services" class="hover:text-white transition-colors">Services</a>
@@ -86,7 +87,7 @@
             <div
                 class="flex flex-col md:flex-row justify-between items-end gap-12 w-full max-w-[1400px] mx-auto mb-4 pointer-events-auto">
                 <!-- Left Info -->
-                <div class="max-w-xs space-y-8">
+                <div class="max-w-xs space-y-8" data-speed="3">
                     <p class="text-sm leading-relaxed text-white/90 font-medium">
                         Strategic finance and business performance advisory for founders and leadership teams who need
                         clarity — not just reports.
@@ -99,7 +100,7 @@
                 </div>
 
                 <!-- Right Title -->
-                <div class="text-right">
+                <div class="text-right" data-speed="6">
                     <h1 class="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[0.9]">
                         <span class="block">Turn financial</span>
                         <span class="block">complexity into</span>
@@ -997,13 +998,47 @@
                 mouseY = (e.clientY - windowHalfY) * 0.0005;
             });
 
-            // Animation Loop
+            // Parallax Logic for DOM Elements
+            const parallaxElements = document.querySelectorAll('[data-speed]');
+
+            // Mouse position for DOM parallax (normalized -1 to 1)
+            let domMouseX = 0;
+            let domMouseY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                domMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                domMouseY = (e.clientY / window.innerHeight) * 2 - 1;
+            });
+
+            // Current interpolated positions for smooth follow
+            const currentPositions = new Map();
+            parallaxElements.forEach(el => {
+                currentPositions.set(el, { x: 0, y: 0 });
+            });
+
+            // Combined Animation Loop
             const animate = () => {
                 requestAnimationFrame(animate);
+
+                // 1. Three.js Rotation
                 torusKnot.rotation.y += 0.05 * (mouseX * 0.5 - torusKnot.rotation.y) + 0.002;
                 torusKnot.rotation.x += 0.05 * (mouseY * 0.5 - torusKnot.rotation.x) + 0.001;
                 updateSparks();
                 renderer.render(scene, camera);
+
+                // 2. DOM Parallax (Smooth Lerp)
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.getAttribute('data-speed'));
+                    const targetX = -domMouseX * speed * 15; // Multiply by range
+                    const targetY = -domMouseY * speed * 15;
+
+                    const current = currentPositions.get(el);
+                    // Lerp factor 0.05 for smoothness
+                    current.x += (targetX - current.x) * 0.05;
+                    current.y += (targetY - current.y) * 0.05;
+
+                    el.style.transform = `translate3d(${current.x}px, ${current.y}px, 0)`;
+                });
             };
 
             animate();
