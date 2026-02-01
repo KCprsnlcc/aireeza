@@ -1,0 +1,619 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Finance Advisory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Removing default browser outlines for cleaner look */
+        input:focus,
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900 antialiased selection:bg-cyan-200 selection:text-cyan-900">
+
+    <!-- NAVIGATION & HERO WRAPPER -->
+    <div class="relative bg-cyan-400 overflow-hidden">
+
+        <!-- Navigation -->
+        <nav class="relative z-20 flex justify-between items-center px-6 py-6 md:px-12 md:py-8 text-white">
+            <div class="flex items-center gap-2">
+                <div class="h-0.5 w-6 bg-white"></div>
+                <span class="text-sm font-medium tracking-widest uppercase">Finance Advisory</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex gap-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-slate-900"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                </div>
+                <button
+                    class="bg-white text-cyan-500 rounded-full p-2 hover:bg-slate-100 transition flex items-center justify-center">
+                    <iconify-icon icon="solar:hamburger-menu-linear" width="20" stroke-width="1.5"></iconify-icon>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Vertical Sidebar Indicator (01/05) -->
+        <div class="absolute left-6 top-1/3 z-20 hidden md:flex flex-col items-center gap-8 text-white">
+            <iconify-icon icon="solar:alt-arrow-up-linear" width="20" stroke-width="1.5"></iconify-icon>
+            <div class="rotate-90 text-xs font-medium tracking-widest whitespace-nowrap origin-center">01 / 06</div>
+            <div class="w-3 h-3 border border-white rounded-full bg-slate-900"></div>
+            <div class="flex flex-col gap-2">
+                <div class="w-1 h-1 bg-white/50 rounded-full"></div>
+                <div class="w-1 h-1 bg-white/50 rounded-full"></div>
+                <div class="w-1 h-1 bg-white/50 rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 container mx-auto px-6 md:px-24 pt-12 pb-32 md:pb-48">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 relative z-20">
+                    <h1 class="text-white text-5xl md:text-7xl font-semibold tracking-tighter leading-none mb-6">
+                        Turn financial <br> complexity into <br> clear decisions.
+                    </h1>
+
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8 text-white">
+                        <iconify-icon icon="solar:arrow-right-linear" width="32" class="hidden md:block"></iconify-icon>
+                        <p class="text-lg md:text-xl font-medium tracking-tight max-w-lg leading-snug">
+                            Strategic finance and business performance advisory for founders and leadership teams who
+                            need clarity — not just reports.
+                        </p>
+                    </div>
+
+                    <div class="w-24 h-1 bg-white mb-6"></div>
+
+                    <div class="flex items-center gap-2 text-white/90 cursor-pointer group">
+                        <span class="text-sm font-medium uppercase tracking-wide group-hover:underline">Book a Strategy
+                            Call</span>
+                        <iconify-icon icon="solar:arrow-right-linear" width="16"
+                            class="transition-transform group-hover:translate-x-1"></iconify-icon>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative z-10">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"
+                            alt="Strategic Planning"
+                            class="w-full max-w-md mx-auto md:max-w-lg grayscale contrast-125 object-cover h-[500px] md:h-[600px] object-center drop-shadow-2xl mix-blend-hard-light opacity-90">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 01: PROBLEM (Overlapping Card) -->
+    <section class="relative z-30 -mt-24 md:-mt-32 px-6 pb-24">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col lg:flex-row items-end">
+
+                <!-- Left Text -->
+                <div class="lg:w-1/2 bg-white pt-12 pr-12 pb-12 pl-0 md:pl-12 lg:pr-24 shadow-sm">
+                    <div class="flex items-start gap-4 mb-6">
+                        <span
+                            class="text-xs font-semibold tracking-widest border-l-2 border-black pl-3 h-full block pt-1">01</span>
+                        <iconify-icon icon="solar:arrow-down-linear" width="16" class="mt-1"></iconify-icon>
+                    </div>
+
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-6 uppercase">
+                        The Problem
+                    </h2>
+                    <p class="text-lg text-slate-500 leading-relaxed mb-6">
+                        Most growing businesses don’t fail because of effort — they fail because decisions are made
+                        without clear financial insight.
+                    </p>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-600 font-medium">
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div> Profits look good, but cash feels
+                            tight
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div> Reports exist, but decisions feel
+                            uncertain
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div> Growth adds complexity instead of
+                            clarity
+                        </li>
+                    </ul>
+
+                    <button
+                        class="bg-cyan-400 hover:bg-cyan-500 text-white text-xs font-semibold tracking-widest uppercase px-8 py-4 transition-colors">
+                        Explore Solutions
+                    </button>
+                </div>
+
+                <!-- Right Card (Overlapping) -->
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-white p-6 shadow-2xl relative">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-semibold tracking-widest uppercase text-slate-400">INSIGHT</span>
+                        </div>
+                        <h3 class="text-xl font-semibold tracking-tight uppercase mb-6 text-center">Better Judgment</h3>
+
+                        <div
+                            class="relative bg-slate-100 h-80 md:h-96 w-full overflow-hidden mb-6 flex items-center justify-center">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"
+                                alt="Financial Judgment"
+                                class="w-full h-full object-cover grayscale contrast-110 opacity-80">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <h4
+                                    class="text-white text-2xl font-bold uppercase tracking-widest text-center px-4 drop-shadow-lg">
+                                    You don't need <br>more data
+                                </h4>
+                            </div>
+                        </div>
+
+                        <!-- Card Controls -->
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-4">
+                                <div class="flex gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-black"></div>
+                                    <div class="w-2 h-2 rounded-full bg-cyan-400 border border-cyan-400"></div>
+                                    <div class="w-2 h-2 rounded-full border border-slate-300"></div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <button class="text-slate-400 hover:text-slate-900"><iconify-icon
+                                        icon="solar:arrow-left-linear" width="20"></iconify-icon></button>
+                                <button class="text-slate-900"><iconify-icon icon="solar:arrow-right-linear"
+                                        width="20"></iconify-icon></button>
+                            </div>
+                        </div>
+
+                        <!-- Decorative black bar -->
+                        <div class="absolute -bottom-2 right-12 w-32 h-2 bg-black"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: CONFIDENTIALITY / QUOTE (Replaces Video Section) -->
+    <section class="relative bg-slate-900 py-24 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
+                class="w-full h-full object-cover grayscale" alt="Architecture">
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 md:px-12 h-96 flex flex-col justify-between">
+            <div class="flex justify-end border-r border-white/20 pr-4 h-16">
+                <div class="flex flex-col items-center gap-2 text-white">
+                    <span class="text-xs font-semibold">02</span>
+                    <iconify-icon icon="solar:arrow-down-linear" width="16"></iconify-icon>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center flex-grow flex-col text-center px-4">
+                <div
+                    class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-8 backdrop-blur-sm border border-white/20">
+                    <iconify-icon icon="solar:shield-check-linear" width="32" class="text-white"></iconify-icon>
+                </div>
+                <h3 class="text-white text-xl md:text-2xl font-light tracking-wide leading-relaxed max-w-2xl italic">
+                    "I do not publish client testimonials. Much of this work involves confidential financial decisions,
+                    and discretion is essential."
+                </h3>
+            </div>
+
+            <!-- Bottom Indicators -->
+            <div class="flex items-center gap-4 text-white w-full max-w-3xl mx-auto">
+                <iconify-icon icon="solar:lock-keyhole-linear" width="20"></iconify-icon>
+                <div class="flex-grow h-0.5 bg-white/30 relative">
+                    <div class="absolute left-0 top-0 h-full w-full bg-white/50"></div>
+                </div>
+                <span class="text-xs font-mono tracking-widest uppercase">Strictly Confidential</span>
+            </div>
+        </div>
+
+        <!-- Bottom progress indicator custom -->
+        <div class="absolute bottom-12 right-1/4 flex gap-2">
+            <div class="w-1.5 h-1.5 rounded-full bg-slate-500"></div>
+            <div class="w-12 h-1.5 rounded-full bg-cyan-400"></div>
+        </div>
+    </section>
+
+    <!-- SECTION 03: HOW I WORK (Process) -->
+    <section class="bg-cyan-400 py-24 relative overflow-hidden">
+        <!-- Angled background shape -->
+        <div
+            class="absolute top-0 right-0 w-1/3 h-full bg-cyan-500 transform -skew-x-12 origin-top-right hidden lg:block">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex justify-end mb-8 text-slate-900 pr-4">
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-xs font-semibold">03</span>
+                    <iconify-icon icon="solar:arrow-down-linear" width="16"></iconify-icon>
+                </div>
+            </div>
+
+            <div class="mb-12 max-w-2xl">
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-4">HOW I WORK</h2>
+                <p class="text-slate-800">My approach is deliberate, structured, and designed for leaders who value
+                    clarity over activity.</p>
+            </div>
+
+            <!-- White Card Container -->
+            <div class="bg-white p-8 md:p-16 shadow-2xl max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+
+                    <!-- Step 1: Diagnose -->
+                    <div class="flex flex-col group h-full">
+                        <div class="flex justify-between items-start mb-8">
+                            <iconify-icon icon="solar:magnifer-linear" width="40" class="text-slate-800"></iconify-icon>
+                            <iconify-icon icon="solar:arrow-down-linear" width="32"
+                                class="text-slate-800 md:hidden"></iconify-icon>
+                        </div>
+                        <h3
+                            class="text-2xl font-semibold tracking-tight mb-4 group-hover:text-cyan-600 transition uppercase">
+                            Diagnose<br>&amp; Clarity</h3>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Before recommendation, I understand the mechanics. Finding where profit leaks and where
+                            decisions stall.
+                        </p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-2 h-2 rounded-full border border-slate-400 flex items-center justify-center">
+                                    <div class="w-1 h-1 bg-slate-800 rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-slate-900 font-bold uppercase tracking-widest">Identify Drivers
+                                </p>
+                            </div>
+                            <div class="w-12 h-0.5 bg-slate-300"></div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow Desktop -->
+                    <div class="hidden md:block absolute top-1/2 left-[28%] -translate-y-1/2">
+                        <iconify-icon icon="solar:arrow-right-linear" width="48" class="text-slate-200"
+                            stroke-width="0.5"></iconify-icon>
+                    </div>
+
+                    <!-- Step 2: Design -->
+                    <div class="flex flex-col group h-full">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="border-2 border-dashed border-slate-800 p-1">
+                                <iconify-icon icon="solar:ruler-pen-linear" width="32"
+                                    class="text-slate-800"></iconify-icon>
+                            </div>
+                        </div>
+                        <h3
+                            class="text-2xl font-semibold tracking-tight mb-4 group-hover:text-cyan-600 transition uppercase">
+                            Design<br>Structure</h3>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Building clear metrics and frameworks. A system that makes tradeoffs visible and decisions
+                            easier.
+                        </p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-2 h-2 rounded-full border border-slate-400 flex items-center justify-center">
+                                    <div class="w-1 h-1 bg-slate-800 rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-slate-900 font-bold uppercase tracking-widest">Align Priorities
+                                </p>
+                            </div>
+                            <div class="w-12 h-0.5 bg-slate-300"></div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow Desktop -->
+                    <div class="hidden md:block absolute top-1/2 right-[28%] -translate-y-1/2">
+                        <iconify-icon icon="solar:arrow-right-linear" width="48" class="text-slate-200"
+                            stroke-width="0.5"></iconify-icon>
+                    </div>
+
+                    <!-- Step 3: Advise -->
+                    <div class="flex flex-col group h-full">
+                        <div class="flex justify-between items-start mb-8">
+                            <iconify-icon icon="solar:user-speak-linear" width="40"
+                                class="text-slate-800"></iconify-icon>
+                        </div>
+                        <h3
+                            class="text-2xl font-semibold tracking-tight mb-4 group-hover:text-cyan-600 transition uppercase">
+                            Advise<br>&amp; Partner</h3>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Ongoing thought partnership. Providing perspective as conditions change and decisions
+                            evolve.
+                        </p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-2 h-2 rounded-full border border-slate-400 flex items-center justify-center">
+                                    <div class="w-1 h-1 bg-slate-800 rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-slate-900 font-bold uppercase tracking-widest">Execute Confidence
+                                </p>
+                            </div>
+                            <div class="w-12 h-0.5 bg-slate-300"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Decorative Bar -->
+                <div class="w-1/2 h-2 bg-slate-900 mt-12 mx-auto md:ml-auto md:mr-0"></div>
+            </div>
+            <div class="flex justify-center mt-12">
+                <div class="w-12 h-1 bg-slate-800"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: WHAT I DO / SERVICES -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex items-start gap-4 mb-16">
+                <div class="flex flex-col items-center gap-2 pt-1">
+                    <span class="text-xs font-semibold">04</span>
+                    <iconify-icon icon="solar:arrow-down-linear" width="16"></iconify-icon>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight uppercase mb-4">What I Do</h2>
+                    <div class="w-12 h-1 bg-slate-900"></div>
+                </div>
+            </div>
+
+            <!-- List Item 1 -->
+            <div class="group border-b border-slate-200 py-10">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                    <div class="md:col-span-3">
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-1">Performance</p>
+                        <p class="text-xs text-slate-500">Margin &amp; Cost Analysis</p>
+                    </div>
+                    <div class="md:col-span-6">
+                        <h4 class="text-xl font-semibold uppercase mb-3 group-hover:text-cyan-500 transition">Business
+                            Performance &amp; Profitability</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            I help you clearly see what is working, what is leaking value, and where growth actually
+                            comes from. Stop relying on gut feel and start acting on facts.
+                        </p>
+                    </div>
+                    <div class="md:col-span-3 text-right">
+                        <div
+                            class="inline-flex items-center gap-4 border-b border-transparent group-hover:border-slate-900 pb-1 cursor-pointer transition-all">
+                            <span class="text-xs font-bold uppercase tracking-widest">Focus &amp; Fix</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List Item 2 -->
+            <div class="group border-b border-slate-200 py-10">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                    <div class="md:col-span-3">
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-1">Growth &amp; Risk</p>
+                        <p class="text-xs text-slate-500">Forecasting &amp; Scenarios</p>
+                    </div>
+                    <div class="md:col-span-6">
+                        <h4 class="text-xl font-semibold uppercase mb-3 group-hover:text-cyan-500 transition">Strategic
+                            Finance &amp; FP&amp;A</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Make better decisions about growth, cash, and risk. I turn data into forward-looking insight
+                            so you are actively steering, not just reporting.
+                        </p>
+                    </div>
+                    <div class="md:col-span-3 text-right">
+                        <div
+                            class="inline-flex items-center gap-4 border-b border-transparent group-hover:border-slate-900 pb-1 cursor-pointer transition-all">
+                            <span class="text-xs font-bold uppercase tracking-widest">Steer Growth</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List Item 3 -->
+            <div class="group border-b border-slate-200 py-10">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                    <div class="md:col-span-3">
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-1">Oversight</p>
+                        <p class="text-xs text-slate-500">Governance &amp; Controls</p>
+                    </div>
+                    <div class="md:col-span-6">
+                        <h4 class="text-xl font-semibold uppercase mb-3 group-hover:text-cyan-500 transition">Advisory
+                            &amp; Oversight</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Make better decisions with confidence. I act as a long-term thought partner to help navigate
+                            high-stakes tradeoffs and scale responsibly.
+                        </p>
+                    </div>
+                    <div class="md:col-span-3 text-right">
+                        <div
+                            class="inline-flex items-center gap-4 border-b border-transparent group-hover:border-slate-900 pb-1 cursor-pointer transition-all">
+                            <span class="text-xs font-bold uppercase tracking-widest">Scale Safely</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All CTA -->
+            <div class="flex justify-end items-center gap-8 mt-12">
+                <iconify-icon icon="solar:arrow-right-linear" width="32" class="text-slate-400"></iconify-icon>
+                <button
+                    class="bg-cyan-400 hover:bg-cyan-500 text-white font-semibold uppercase tracking-widest text-xs py-4 px-12 transition-colors">
+                    Start a Conversation
+                </button>
+            </div>
+
+            <div class="flex justify-end gap-2 mt-16">
+                <div class="w-1.5 h-1.5 rounded-full bg-slate-900"></div>
+                <div class="w-12 h-1.5 rounded-full bg-cyan-400"></div>
+                <div class="w-4 h-1.5 rounded-full bg-slate-200"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05: INTAKE / NEXT DECISION -->
+    <section class="relative py-24 bg-slate-100">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"
+                class="w-full h-full object-cover grayscale opacity-10" alt="Office">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-center">
+
+            <!-- Indicator -->
+            <div class="absolute right-6 top-0 hidden md:flex flex-col items-center gap-2">
+                <span class="text-xs font-semibold">05</span>
+                <iconify-icon icon="solar:arrow-down-linear" width="16"></iconify-icon>
+            </div>
+
+            <!-- Form Box -->
+            <div class="bg-white p-12 shadow-2xl w-full max-w-xl">
+                <h2 class="text-3xl font-semibold tracking-tight uppercase mb-8">
+                    Let's <span class="font-light text-slate-500">Talk</span>
+                </h2>
+                <p class="text-sm text-slate-500 mb-8">This conversation is designed to assess context, urgency, and
+                    fit. Not a sales call.</p>
+
+                <div class="space-y-8">
+                    <div class="group">
+                        <label class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-2 block">Your
+                            Role</label>
+                        <div
+                            class="flex justify-between items-center border-b border-slate-300 py-2 group-hover:border-cyan-400 transition-colors">
+                            <input type="text" placeholder="e.g. Founder, CEO, Board Member"
+                                class="w-full text-slate-600 font-medium bg-transparent">
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <label class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-2 block">Business
+                            Scale</label>
+                        <div
+                            class="flex justify-between items-center border-b border-slate-300 py-2 group-hover:border-cyan-400 transition-colors">
+                            <input type="text" placeholder="e.g. Scaling, Multi-entity, $10M+"
+                                class="w-full text-slate-600 font-medium bg-transparent">
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <label class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-2 block">Primary
+                            Challenge</label>
+                        <div
+                            class="flex justify-between items-center border-b border-slate-300 py-2 group-hover:border-cyan-400 transition-colors">
+                            <input type="text" placeholder="e.g. Cash flow, Profitability, Exit"
+                                class="w-full text-slate-600 font-medium bg-transparent">
+                            <iconify-icon icon="solar:pen-linear" width="16" class="text-slate-400"></iconify-icon>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full bg-cyan-400 hover:bg-cyan-500 text-white font-semibold uppercase tracking-widest text-xs py-4 transition-colors mt-4">
+                        Discuss Strategic Question
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dark Side Box -->
+            <div
+                class="bg-slate-900 p-12 w-full max-w-xs text-white hidden md:block self-stretch flex flex-col justify-center">
+                <h4 class="text-xl font-medium mb-4">Fit Criteria</h4>
+                <ul class="text-sm space-y-4 text-slate-400 mb-8">
+                    <li>Founders moving from intuition to structure</li>
+                    <li>Financial decisions with strategic consequences</li>
+                    <li>Willingness to act on insight</li>
+                </ul>
+                <div class="flex items-center gap-4 cursor-pointer hover:text-cyan-400 transition mt-auto">
+                    <span class="text-xs font-bold uppercase tracking-widest">Who I Work With</span>
+                    <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto mt-12 flex justify-center">
+            <div class="w-12 h-1 bg-slate-800"></div>
+        </div>
+    </section>
+
+    <!-- SECTION 06: FOOTER -->
+    <footer class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex items-start gap-4 mb-12">
+                <div class="flex flex-col items-center gap-2 pt-1">
+                    <span class="text-xs font-semibold">06</span>
+                    <iconify-icon icon="solar:arrow-down-linear" width="16"></iconify-icon>
+                </div>
+                <div class="w-full">
+                    <div class="border-t border-slate-300 w-16 mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight uppercase text-slate-900 mb-2">
+                        Next <span class="font-light text-slate-400">Step</span>
+                    </h2>
+                    <p class="text-lg text-slate-500 font-light">This work requires openness, accountability, and a
+                        willingness to engage with the numbers honestly.</p>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-4">About</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed max-w-sm">
+                        I work at the intersection of finance, performance, and decision-making. Helping founders move
+                        from instinct to clarity as their business grows more complex.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-4">Credentials</h4>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>Certified Management Accountant (CMA)</li>
+                        <li>Associate Member (ASA), CPA Australia</li>
+                        <li>Postgraduate Certificate in Business &amp; Consulting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex justify-end items-center gap-6 mb-24">
+                <iconify-icon icon="solar:arrow-right-linear" width="32" class="text-slate-400"></iconify-icon>
+                <button
+                    class="bg-cyan-400 hover:bg-cyan-500 text-white font-semibold uppercase tracking-widest text-xs py-4 px-12 transition-colors shadow-lg shadow-cyan-200">
+                    Explore Working Relationship
+                </button>
+            </div>
+
+            <div class="flex justify-end gap-2 mb-12">
+                <div class="w-1.5 h-1.5 rounded-full bg-slate-900"></div>
+                <div class="w-12 h-1.5 rounded-full bg-cyan-400"></div>
+            </div>
+
+            <div class="border-t border-slate-200 pt-8 text-center md:text-right">
+                <p class="text-[10px] font-bold tracking-widest uppercase text-slate-900 mb-4">© 2024 Strategic Finance
+                    Advisory. All rights reserved.</p>
+                <div
+                    class="flex justify-center md:justify-end gap-6 text-[10px] font-bold tracking-widest uppercase text-slate-400">
+                    <a href="#" class="hover:text-slate-900 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-900 transition">Terms</a>
+                    <a href="#" class="hover:text-slate-900 transition">Contact</a>
+                </div>
+                <div class="flex justify-center mt-8">
+                    <div class="w-12 h-px bg-slate-300"></div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
