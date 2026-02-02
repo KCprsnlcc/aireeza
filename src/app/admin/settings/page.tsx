@@ -15,11 +15,17 @@ export default function SettingsPage() {
   const { theme } = useTheme()
   const supabase = createClient()
   const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchUser() {
-      const { data: { user: userData } } = await supabase.auth.getUser()
-      setUser(userData)
+      setLoading(true)
+      try {
+        const { data: { user: userData } } = await supabase.auth.getUser()
+        setUser(userData)
+      } finally {
+        setLoading(false)
+      }
     }
     fetchUser()
   }, [])
@@ -39,43 +45,74 @@ export default function SettingsPage() {
           }`}>Manage your admin account</p>
         </div>
 
-        <div className={`border rounded-lg slide-in-left ${
-          theme === 'dark'
-            ? 'bg-neutral-900/50 border-neutral-800'
-            : 'bg-white border-neutral-200'
-        }`}>
-          <div className={`px-6 py-4 border-b ${
-            theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+        {loading ? (
+          <div className={`border rounded-lg slide-in-left ${
+            theme === 'dark'
+              ? 'bg-neutral-900/50 border-neutral-800'
+              : 'bg-white border-neutral-200'
           }`}>
-            <h2 className={`text-sm font-medium ${
-              theme === 'dark' ? 'text-white' : 'text-neutral-900'
-            }`}>Account Information</h2>
-          </div>
-          <div className="p-6 space-y-4">
-            <div className="flex items-center gap-4">
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
-              }`}>
-                <Icon icon="ph:user" className={`w-6 h-6 ${
-                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                }`} />
-              </div>
-              <div>
-                <p className={`text-sm font-medium ${
-                  theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                }`}>{user?.email}</p>
-                <p className={`text-xs ${
-                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
-                }`}>
-                  Member since {user?.created_at ? new Date(user.created_at).toLocaleDateString('en-US', {
-                    month: 'long',
-                    year: 'numeric',
-                  }) : 'Unknown'}
-                </p>
+            <div className={`px-6 py-4 border-b ${
+              theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+            }`}>
+              <div className={`h-5 w-32 rounded animate-pulse ${
+                theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-200'
+              }`}></div>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-full animate-pulse ${
+                  theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
+                }`}></div>
+                <div className="flex-1 space-y-2">
+                  <div className={`h-4 w-48 rounded animate-pulse ${
+                    theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-200'
+                  }`}></div>
+                  <div className={`h-3 w-32 rounded animate-pulse ${
+                    theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-200'
+                  }`}></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className={`border rounded-lg slide-in-left ${
+            theme === 'dark'
+              ? 'bg-neutral-900/50 border-neutral-800'
+              : 'bg-white border-neutral-200'
+          }`}>
+            <div className={`px-6 py-4 border-b ${
+              theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+            }`}>
+              <h2 className={`text-sm font-medium ${
+                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+              }`}>Account Information</h2>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                  theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
+                }`}>
+                  <Icon icon="ph:user" className={`w-6 h-6 ${
+                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                  }`} />
+                </div>
+                <div>
+                  <p className={`text-sm font-medium ${
+                    theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                  }`}>{user?.email}</p>
+                  <p className={`text-xs ${
+                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+                  }`}>
+                    Member since {user?.created_at ? new Date(user.created_at).toLocaleDateString('en-US', {
+                      month: 'long',
+                      year: 'numeric',
+                    }) : 'Unknown'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className={`border rounded-lg mt-6 slide-in-right ${
           theme === 'dark'

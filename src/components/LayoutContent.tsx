@@ -1,12 +1,16 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import Navbar from "./layout/Navbar";
 import ScrollAnimationProvider from "./ScrollAnimationProvider";
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
+    const isAdminRoute = pathname?.startsWith('/admin');
+
     return (
         <ScrollAnimationProvider>
-            <Navbar />
+            {!isAdminRoute && <Navbar />}
             <main>
                 {children}
             </main>

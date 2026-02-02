@@ -26,18 +26,24 @@ export default function InquiriesPage() {
   const supabase = createClient()
   const [inquiries, setInquiries] = useState<Inquiry[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchInquiries() {
-      const { data, error: fetchError } = await supabase
-        .from('inquiries')
-        .select('*')
-        .order('created_at', { ascending: false })
+      setLoading(true)
+      try {
+        const { data, error: fetchError } = await supabase
+          .from('inquiries')
+          .select('*')
+          .order('created_at', { ascending: false })
 
-      if (fetchError) {
-        setError(fetchError.message)
-      } else {
-        setInquiries(data || [])
+        if (fetchError) {
+          setError(fetchError.message)
+        } else {
+          setInquiries(data || [])
+        }
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -59,7 +65,20 @@ export default function InquiriesPage() {
           }`}>Manage all client inquiries from the contact form</p>
         </div>
 
-        {error ? (
+        {loading ? (
+          <div className={`border rounded-lg overflow-hidden ${
+            theme === 'dark' ? 'border-neutral-800 bg-neutral-900/50' : 'border-neutral-200 bg-white'
+          }`}>
+            <div className={`h-12 border-b ${
+              theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+            }`}></div>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div key={i} className={`h-16 border-b animate-pulse ${
+                theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+              }`}></div>
+            ))}
+          </div>
+        ) : error ? (
           <div className={`border rounded-lg p-4 fade-up ${
             theme === 'dark'
               ? 'bg-red-900/30 border-red-800'
