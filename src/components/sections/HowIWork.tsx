@@ -37,7 +37,7 @@ export default function HowIWork() {
             scaleX: 1,
             transition: {
                 duration: 0.8,
-                ease: "easeInOut"
+                ease: [0.4, 0, 0.6, 1]
             }
         }
     };
