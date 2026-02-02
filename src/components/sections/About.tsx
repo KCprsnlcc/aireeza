@@ -19,7 +19,9 @@ export default function About() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                     {/* Text Content */}
                     <div className="fade-up">
-                        <h2 className="text-4xl md:text-6xl font-semibold uppercase tracking-tighter leading-none mb-8">
+                        <h2 className={`text-4xl md:text-6xl font-semibold uppercase tracking-tighter leading-none mb-8 ${
+                            theme === 'dark' ? 'text-white' : 'text-black'
+                        }`}>
                             Instinct To<br />Clarity
                         </h2>
                         <p className={`text-lg leading-relaxed mb-8 ${

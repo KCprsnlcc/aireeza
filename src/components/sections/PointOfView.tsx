@@ -8,7 +8,7 @@ export default function PointOfView() {
 
     return (
         <section id="point-of-view" className={`py-24 border-b ${
-            theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+            theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             <div className="max-w-[1600px] mx-auto px-6">
                 <div className="flex justify-between items-center mb-16 fade-up">

@@ -66,7 +66,7 @@ export default function LetsTalk() {
 
     return (
         <section id="contact" className={`py-24 border-b relative overflow-hidden ${
-            theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+            theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             <div className="max-w-[1000px] mx-auto px-6 relative z-10">
                 <div className="text-center mb-16 fade-up">

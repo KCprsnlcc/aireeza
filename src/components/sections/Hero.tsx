@@ -10,7 +10,7 @@ export default function Hero() {
         <>
             {/* Hero Section */}
             <header className={`relative pt-32 pb-10 border-b ${
-                theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+                theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
             }`}>
                 <div className="max-w-[1600px] mx-auto px-6">
                     {/* Giant Title */}
@@ -66,7 +66,7 @@ export default function Hero() {
 
             {/* Section 01: The Problem */}
             <section className={`py-24 border-b ${
-                theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+                theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
             }`}>
                 <div className="max-w-[1600px] mx-auto px-6">
                     <div className="flex justify-between items-end mb-16 fade-up">
@@ -75,7 +75,9 @@ export default function Hero() {
                         <span className="text-xs text-neutral-500">FINANCIAL INSIGHT</span>
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-center max-w-5xl mx-auto mb-12 leading-tight fade-up">
+                    <h2 className={`text-3xl md:text-5xl font-semibold tracking-tight text-center max-w-5xl mx-auto mb-12 leading-tight fade-up ${
+                        theme === 'dark' ? 'text-white' : 'text-black'
+                    }`}>
                         Most growing businesses don't fail because of effort — they fail because decisions are made without clear financial insight.
                     </h2>
 

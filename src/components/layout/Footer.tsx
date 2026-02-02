@@ -11,7 +11,9 @@ export default function Footer() {
     };
 
     return (
-        <footer className="pt-24 pb-12 relative overflow-hidden">
+        <footer className={`pt-24 pb-12 relative overflow-hidden ${
+            theme === 'dark' ? 'bg-black' : 'bg-white'
+        }`}>
             <div className="max-w-[1600px] mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-12 mb-24 fade-up">
                     <div className="text-left">

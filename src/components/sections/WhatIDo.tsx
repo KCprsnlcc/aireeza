@@ -8,7 +8,7 @@ export default function WhatIDo() {
 
     return (
         <section className={`py-24 border-b ${
-            theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+            theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             <div className="max-w-[1600px] mx-auto px-6">
                 <div className="flex justify-between items-start mb-16 fade-up">
