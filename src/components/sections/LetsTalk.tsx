@@ -69,7 +69,7 @@ export default function LetsTalk() {
             theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             <div className="max-w-[1000px] mx-auto px-6 relative z-10">
-                <div className="text-center mb-16 fade-up">
+                <div className="text-center mb-16 zoom-in">
                     <span className="text-xs text-neutral-500 mb-4 block">06 / LET'S TALK</span>
                     <h2 className={`text-5xl md:text-7xl font-semibold uppercase tracking-tighter mb-6 ${
                         theme === 'dark' ? 'text-white' : 'text-black'
@@ -84,7 +84,7 @@ export default function LetsTalk() {
                 </div>
 
                 {/* Intake Form */}
-                <div className={`p-8 lg:p-12 fade-up ${
+                <div className={`p-8 lg:p-12 slide-in-left ${
                     theme === 'dark' 
                         ? 'bg-neutral-900/50 border border-neutral-800' 
                         : 'bg-neutral-100 border border-neutral-200'
@@ -119,7 +119,7 @@ export default function LetsTalk() {
                     ) : (
                     <form onSubmit={handleSubmit} className="space-y-12">
                         {/* Role */}
-                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                        <div className={`pb-8 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
                             <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Your Role in the Business</h3>
                             <p className="text-xs text-neutral-500 mb-4">Which best describes your position:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -145,7 +145,7 @@ export default function LetsTalk() {
                         </div>
 
                         {/* Business Scale */}
-                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                        <div className={`pb-8 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
                             <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Business Scale</h3>
                             <p className="text-xs text-neutral-500 mb-4">Which range best reflects your current operation:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -171,7 +171,7 @@ export default function LetsTalk() {
                         </div>
 
                         {/* Primary Challenge */}
-                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                        <div className={`pb-8 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
                             <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Primary Challenge</h3>
                             <div className="space-y-4">
                                 {[
@@ -195,7 +195,7 @@ export default function LetsTalk() {
                         </div>
 
                         {/* The Decision */}
-                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                        <div className={`pb-8 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
                             <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>The Decision You Are Facing</h3>
                             <p className="text-xs text-neutral-500 mb-4">What decision are you currently trying to make or prepare for?</p>
                             <textarea
@@ -208,7 +208,7 @@ export default function LetsTalk() {
                         </div>
 
                         {/* What Prompted This */}
-                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                        <div className={`pb-8 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
                             <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>What Prompted This Now</h3>
                             <p className="text-xs text-neutral-500 mb-4">Why does this decision matter at this point:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -234,7 +234,7 @@ export default function LetsTalk() {
                         </div>
 
                         {/* Timing and Urgency */}
-                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                        <div className={`pb-8 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
                             <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Timing and Urgency</h3>
                             <p className="text-xs text-neutral-500 mb-4">When do you need clarity to move forward:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -260,7 +260,7 @@ export default function LetsTalk() {
                         </div>
 
                         {/* How You Work With Advisors */}
-                        <div>
+                        <div className="stagger-item">
                             <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>How You Typically Work With Advisors</h3>
                             <p className="text-xs text-neutral-500 mb-4">Which best reflects your expectations:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -318,7 +318,7 @@ export default function LetsTalk() {
                 </div>
 
                 {/* Footer Note */}
-                <div className="text-center mt-8 fade-up">
+                <div className="text-center mt-8 zoom-in">
                     <p className="text-sm text-neutral-500">
                         This conversation is intended for leaders seeking clarity on high-impact decisions.
                     </p>

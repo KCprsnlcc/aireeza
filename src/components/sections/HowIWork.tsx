@@ -16,7 +16,7 @@ export default function HowIWork() {
                     <span className="text-xs text-neutral-500">DELIBERATE & STRUCTURED</span>
                 </div>
 
-                <h2 className={`text-4xl md:text-6xl font-semibold tracking-tight text-center max-w-5xl mx-auto mb-6 leading-tight fade-up ${
+                <h2 className={`text-4xl md:text-6xl font-semibold tracking-tight text-center max-w-5xl mx-auto mb-6 leading-tight zoom-in ${
                     theme === 'dark' ? 'text-white' : 'text-black'
                 }`}>
                     CLARITY OVER ACTIVITY.
@@ -29,7 +29,7 @@ export default function HowIWork() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                     {/* Step 1 */}
-                    <div className="group cursor-default fade-up">
+                    <div className="group cursor-default zoom-in">
                         <div className="h-16 flex items-center justify-center gap-2 mb-6">
                             <div className={`w-px h-12 transition-colors duration-500 ${
                                 theme === 'dark' ? 'bg-neutral-800 group-hover:bg-[#ff3333]' : 'bg-neutral-300 group-hover:bg-[#ff3333]'
@@ -51,7 +51,7 @@ export default function HowIWork() {
                     </div>
 
                     {/* Step 2 */}
-                    <div className="group cursor-default fade-up" style={{ transitionDelay: '100ms' }}>
+                    <div className="group cursor-default zoom-in" style={{ transitionDelay: '200ms' }}>
                         <div className="h-16 flex items-center justify-center gap-2 mb-6">
                             <div className={`w-px h-12 transition-colors duration-500 ${
                                 theme === 'dark' ? 'bg-neutral-800 group-hover:bg-[#ff3333]' : 'bg-neutral-300 group-hover:bg-[#ff3333]'
@@ -73,7 +73,7 @@ export default function HowIWork() {
                     </div>
 
                     {/* Step 3 */}
-                    <div className="group cursor-default fade-up" style={{ transitionDelay: '200ms' }}>
+                    <div className="group cursor-default zoom-in" style={{ transitionDelay: '400ms' }}>
                         <div className="h-16 flex items-center justify-center gap-2 mb-6">
                             <div className={`w-px h-12 transition-colors duration-500 ${
                                 theme === 'dark' ? 'bg-neutral-800 group-hover:bg-[#ff3333]' : 'bg-neutral-300 group-hover:bg-[#ff3333]'

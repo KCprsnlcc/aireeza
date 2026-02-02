@@ -17,20 +17,20 @@ export default function PointOfView() {
                     <span className="text-xs text-neutral-500">INSIGHTS</span>
                 </div>
 
-                <div className="text-center fade-up">
+                <div className="text-center zoom-in">
                     <Icon icon="solar:document-text-linear" className="w-12 h-12 text-neutral-500 mx-auto mb-8" />
                     
-                    <h2 className="text-4xl md:text-6xl font-semibold uppercase tracking-tighter mb-6">
+                    <h2 className="text-4xl md:text-6xl font-semibold uppercase tracking-tighter mb-6 fade-up">
                         Point of View
                     </h2>
                     
-                    <p className={`text-lg max-w-2xl mx-auto mb-12 ${
+                    <p className={`text-lg max-w-2xl mx-auto mb-12 fade-up ${
                         theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                     }`}>
                         Thoughts on strategic finance, decision-making, and business performance.
                     </p>
 
-                    <div className={`inline-block border p-8 ${
+                    <div className={`inline-block border p-8 zoom-in ${
                         theme === 'dark' 
                             ? 'border-neutral-800 bg-neutral-900/30' 
                             : 'border-neutral-200 bg-neutral-50'

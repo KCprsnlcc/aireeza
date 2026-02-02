@@ -18,7 +18,7 @@ export default function About() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                     {/* Text Content */}
-                    <div className="fade-up">
+                    <div className="slide-in-left">
                         <h2 className={`text-4xl md:text-6xl font-semibold uppercase tracking-tighter leading-none mb-8 ${
                             theme === 'dark' ? 'text-white' : 'text-black'
                         }`}>
@@ -56,9 +56,9 @@ export default function About() {
                     </div>
 
                     {/* Credentials */}
-                    <div className="space-y-12 fade-up" style={{ transitionDelay: '200ms' }}>
+                    <div className="space-y-12 slide-in-right">
                         {/* Image */}
-                        <div className="aspect-[4/3] w-full overflow-hidden duotone-red mb-8">
+                        <div className="aspect-[4/3] w-full overflow-hidden duotone-red mb-8 zoom-in">
                             <img 
                                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop" 
                                 className="w-full h-full object-cover"
@@ -66,36 +66,36 @@ export default function About() {
                             />
                         </div>
                         
-                        <div>
+                        <div className="fade-up">
                             <h3 className={`text-lg font-semibold uppercase tracking-widest mb-6 border-b pb-2 ${
                                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                             }`}>Education</h3>
                             <ul className={`space-y-4 text-sm ${
                                 theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                             }`}>
-                                <li className="flex justify-between">
+                                <li className="flex justify-between stagger-item">
                                     <span>Bachelor's in Management Accounting</span>
                                 </li>
-                                <li className="flex justify-between">
+                                <li className="flex justify-between stagger-item">
                                     <span>Bachelor's in Accounting Technology</span>
                                 </li>
-                                <li className="flex justify-between">
+                                <li className="flex justify-between stagger-item">
                                     <span>Postgrad Cert. Business Consulting</span>
                                 </li>
                             </ul>
                         </div>
                         
-                        <div>
+                        <div className="fade-up">
                             <h3 className={`text-lg font-semibold uppercase tracking-widest mb-6 border-b pb-2 ${
                                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                             }`}>Associations</h3>
                             <ul className={`space-y-4 text-sm ${
                                 theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                             }`}>
-                                <li>Certified Management Accountant (CMA)</li>
-                                <li>Associate Member (ASA), CPA Australia</li>
-                                <li>Member, BMCAP</li>
-                                <li>Member, PSTD</li>
+                                <li className="stagger-item">Certified Management Accountant (CMA)</li>
+                                <li className="stagger-item">Associate Member (ASA), CPA Australia</li>
+                                <li className="stagger-item">Member, BMCAP</li>
+                                <li className="stagger-item">Member, PSTD</li>
                             </ul>
                         </div>
                     </div>

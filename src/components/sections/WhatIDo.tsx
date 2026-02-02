@@ -11,7 +11,7 @@ export default function WhatIDo() {
             theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             <div className="max-w-[1600px] mx-auto px-6">
-                <div className="flex justify-between items-start mb-16 fade-up">
+                <div className="flex justify-between items-start mb-16 slide-in-left">
                     <div className="w-full md:w-1/2">
                         <div className="flex items-center gap-4 mb-4">
                             <span className="text-xs text-neutral-500">02</span>
@@ -35,7 +35,7 @@ export default function WhatIDo() {
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Service 1 */}
-                    <div className={`group border p-8 transition-colors fade-up ${
+                    <div className={`group border p-8 transition-colors zoom-in ${
                         theme === 'dark' 
                             ? 'border-neutral-800 hover:bg-neutral-900/30' 
                             : 'border-neutral-200 hover:bg-neutral-50'
@@ -63,11 +63,11 @@ export default function WhatIDo() {
                     </div>
 
                     {/* Service 2 */}
-                    <div className={`group border p-8 transition-colors fade-up ${
+                    <div className={`group border p-8 transition-colors zoom-in ${
                         theme === 'dark' 
                             ? 'border-neutral-800 hover:bg-neutral-900/30' 
                             : 'border-neutral-200 hover:bg-neutral-50'
-                    }`} style={{ transitionDelay: '100ms' }}>
+                    }`} style={{ transitionDelay: '200ms' }}>
                         <div className={`h-12 w-12 border rounded-full flex items-center justify-center mb-8 transition-all ${
                             theme === 'dark'
                                 ? 'border-neutral-700 text-neutral-400 group-hover:text-white group-hover:border-white'
@@ -91,11 +91,11 @@ export default function WhatIDo() {
                     </div>
 
                     {/* Service 3 */}
-                    <div className={`group border p-8 transition-colors fade-up ${
+                    <div className={`group border p-8 transition-colors zoom-in ${
                         theme === 'dark' 
                             ? 'border-neutral-800 hover:bg-neutral-900/30' 
                             : 'border-neutral-200 hover:bg-neutral-50'
-                    }`} style={{ transitionDelay: '200ms' }}>
+                    }`} style={{ transitionDelay: '400ms' }}>
                         <div className={`h-12 w-12 border rounded-full flex items-center justify-center mb-8 transition-all ${
                             theme === 'dark'
                                 ? 'border-neutral-700 text-neutral-400 group-hover:text-white group-hover:border-white'

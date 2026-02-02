@@ -18,10 +18,10 @@ export default function WhoIWorkWith() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <div className="fade-up">
+                    <div className="slide-in-left">
                         <h2 className="text-5xl font-semibold uppercase tracking-tighter mb-12">Who I Work With</h2>
                         <ul className="space-y-6">
-                            <li className={`flex items-center gap-4 border-b pb-4 ${
+                            <li className={`flex items-center gap-4 border-b pb-4 stagger-item ${
                                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                             }`}>
                                 <Icon icon="solar:check-circle-linear" className="text-xl" />
@@ -29,7 +29,7 @@ export default function WhoIWorkWith() {
                                     Founders moving from intuition to structure.
                                 </span>
                             </li>
-                            <li className={`flex items-center gap-4 border-b pb-4 ${
+                            <li className={`flex items-center gap-4 border-b pb-4 stagger-item ${
                                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                             }`}>
                                 <Icon icon="solar:check-circle-linear" className="text-xl" />
@@ -37,7 +37,7 @@ export default function WhoIWorkWith() {
                                     Executives navigating scale or complexity.
                                 </span>
                             </li>
-                            <li className={`flex items-center gap-4 border-b pb-4 ${
+                            <li className={`flex items-center gap-4 border-b pb-4 stagger-item ${
                                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                             }`}>
                                 <Icon icon="solar:check-circle-linear" className="text-xl" />
@@ -48,7 +48,7 @@ export default function WhoIWorkWith() {
                         </ul>
                     </div>
 
-                    <div className="fade-up" style={{ transitionDelay: '100ms' }}>
+                    <div className="slide-in-right">
                         <h2 className="text-5xl font-semibold uppercase tracking-tighter mb-12 text-neutral-500">Not A Fit For</h2>
                         <ul className="space-y-6">
                             <li className={`flex items-center gap-4 border-b pb-4 ${
@@ -57,13 +57,13 @@ export default function WhoIWorkWith() {
                                 <Icon icon="solar:close-circle-linear" className="text-xl text-neutral-600" />
                                 <span className="text-neutral-500">Bookkeeping or transactional accounting.</span>
                             </li>
-                            <li className={`flex items-center gap-4 border-b pb-4 ${
+                            <li className={`flex items-center gap-4 border-b pb-4 stagger-item ${
                                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                             }`}>
                                 <Icon icon="solar:close-circle-linear" className="text-xl text-neutral-600" />
                                 <span className="text-neutral-500">Short term fixes without long term discipline.</span>
                             </li>
-                            <li className={`flex items-center gap-4 border-b pb-4 ${
+                            <li className={`flex items-center gap-4 border-b pb-4 stagger-item ${
                                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                             }`}>
                                 <Icon icon="solar:close-circle-linear" className="text-xl text-neutral-600" />
@@ -73,7 +73,7 @@ export default function WhoIWorkWith() {
                     </div>
                 </div>
                 
-                <div className="mt-16 text-center fade-up">
+                <div className="mt-16 text-center zoom-in">
                     <p className="text-xl font-light">This work requires openness, accountability, and honesty.</p>
                     <div className="mt-8">
                         <a 
