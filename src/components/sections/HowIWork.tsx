@@ -1,7 +1,7 @@
 'use client';
 
 import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
+import { motion, Easing } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 
@@ -26,7 +26,7 @@ export default function HowIWork() {
             y: 0,
             transition: {
                 duration: 0.7,
-                ease: [0.25, 0.8, 0.25, 1]
+                ease: [0.25, 0.8, 0.25, 1] as unknown as Easing[]
             }
         }
     };
@@ -37,7 +37,7 @@ export default function HowIWork() {
             scaleX: 1,
             transition: {
                 duration: 0.8,
-                ease: [0.4, 0, 0.6, 1]
+                ease: [0.4, 0, 0.6, 1] as unknown as Easing[]
             }
         }
     };
