@@ -1,5 +1,6 @@
 'use client';
 
+import PageLoader from "../components/sections/PageLoader";
 import Hero from "../components/sections/Hero";
 import WhatIDo from "../components/sections/WhatIDo";
 import HowIWork from "../components/sections/HowIWork";
@@ -12,6 +13,7 @@ import Footer from "../components/layout/Footer";
 export default function Home() {
   return (
     <>
+      <PageLoader />
       <Hero />
       <WhatIDo />
       <HowIWork />
