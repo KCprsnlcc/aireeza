@@ -1,24 +1,44 @@
+'use client';
+
 import { Icon } from "@iconify/react";
 import GlassButton from "../ui/GlassButton";
 import SpotlightCard from "../ui/SpotlightCard";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 export default function Hero() {
+    const ref = useRef(null);
     return (
         <section id="home" className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-10 gap-x-12 gap-y-12">
             <div className="animate-clip-in lg:col-span-7 pb-4 space-y-8" style={{ animationDelay: "0.4s" }}>
-                <h1 className="leading-[0.95] lg:text-7xl xl:text-7xl text-5xl font-medium text-neutral-900 tracking-tight">
-                    Finance is not just about recording history; it is about creating the future.
-                </h1>
-                <p className="leading-snug lg:text-base text-xl font-normal text-neutral-500 max-w-[60ch]">
-                    Aireeza Leonsul Tandih combines the analytical rigor of a Certified Management Accountant with the strategic foresight of an entrepreneur to bridge the gap between academic theory and practical business application.
-                </p>
-                <div className="flex gap-4">
+                <motion.h1 
+                    className="leading-[0.95] lg:text-7xl xl:text-7xl text-5xl font-medium text-neutral-900 tracking-tight"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                    Turn financial complexity into clear, profitable decisions.
+                </motion.h1>
+                <motion.p 
+                    className="leading-snug lg:text-base text-xl font-normal text-neutral-500 max-w-[60ch]"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                    Strategic finance and business performance advisory for founders and leadership teams who need clarity — not just reports.
+                </motion.p>
+                <motion.div 
+                    className="flex gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                >
                     <a href="#contact">
                         <GlassButton>
-                            Work with Aireeza
+                            Book a Strategy Call
                         </GlassButton>
                     </a>
-                </div>
+                </motion.div>
 
                 {/* Credentials Marquee (Moved inside Left Column) */}
                 <div className="animate-fade-up w-full my-6 space-y-2" style={{ animationDelay: "0.6s" }}>
@@ -106,6 +126,76 @@ export default function Hero() {
                     />
                 </div>
             </div>
+
+            {/* Problem Section */}
+            <motion.div 
+                className="lg:col-span-12 mt-16 space-y-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+            >
+                <div className="bg-stone-50 border-stone-200 border rounded-3xl p-8 lg:p-12">
+                    <h2 className="text-2xl lg:text-3xl font-medium text-neutral-900 tracking-tight mb-8">
+                        Most growing businesses don't fail because of effort — they fail because decisions are made without clear financial insight.
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div>
+                            <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wider mb-6">Common issues I help solve:</h3>
+                            <ul className="space-y-4">
+                                <motion.li 
+                                    className="flex items-start gap-3"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: 1.0 }}
+                                >
+                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
+                                    <span className="text-neutral-700">Profits look good, but cash feels tight</span>
+                                </motion.li>
+                                <motion.li 
+                                    className="flex items-start gap-3"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: 1.1 }}
+                                >
+                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
+                                    <span className="text-neutral-700">Reports exist, but decisions still feel uncertain</span>
+                                </motion.li>
+                                <motion.li 
+                                    className="flex items-start gap-3"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: 1.2 }}
+                                >
+                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
+                                    <span className="text-neutral-700">Growth adds complexity instead of clarity</span>
+                                </motion.li>
+                                <motion.li 
+                                    className="flex items-start gap-3"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: 1.3 }}
+                                >
+                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
+                                    <span className="text-neutral-700">Leadership is reacting instead of steering</span>
+                                </motion.li>
+                            </ul>
+                        </div>
+                        
+                        <motion.div 
+                            className="flex items-center justify-center bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 1.4 }}
+                        >
+                            <div className="text-center">
+                                <p className="text-lg text-neutral-500 mb-3">You don't need more data.</p>
+                                <p className="text-2xl lg:text-3xl font-medium text-neutral-900">You need better financial judgment.</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </motion.div>
         </section>
     );
 }
