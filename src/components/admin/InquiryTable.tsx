@@ -3,6 +3,7 @@
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import StatusBadge from './StatusBadge'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export interface Inquiry {
   id: string
@@ -24,36 +25,66 @@ interface InquiryTableProps {
 }
 
 export default function InquiryTable({ inquiries }: InquiryTableProps) {
+  const { theme } = useTheme()
+  
   if (inquiries.length === 0) {
     return (
-      <div className="bg-white border border-neutral-200 rounded-lg p-12 text-center">
-        <div className="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <div className={`border rounded-lg p-12 text-center fade-up ${
+        theme === 'dark'
+          ? 'bg-neutral-900/50 border-neutral-800'
+          : 'bg-white border-neutral-200'
+      }`}>
+        <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${
+          theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
+        }`}>
           <Icon icon="ph:envelope-simple" className="w-6 h-6 text-neutral-400" />
         </div>
-        <h3 className="text-sm font-medium text-neutral-900 mb-1">No inquiries yet</h3>
-        <p className="text-sm text-neutral-500">Inquiries from the contact form will appear here.</p>
+        <h3 className={`text-sm font-medium mb-1 ${
+          theme === 'dark' ? 'text-white' : 'text-neutral-900'
+        }`}>No inquiries yet</h3>
+        <p className={`text-sm ${
+          theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+        }`}>Inquiries from the contact form will appear here.</p>
       </div>
     )
   }
 
   return (
-    <div className="bg-white border border-neutral-200 rounded-lg overflow-hidden">
+    <div className={`border rounded-lg overflow-hidden fade-up ${
+      theme === 'dark'
+        ? 'bg-neutral-900/50 border-neutral-800'
+        : 'bg-white border-neutral-200'
+    }`}>
       <table className="w-full">
         <thead>
-          <tr className="border-b border-neutral-200 bg-neutral-50">
-            <th className="text-left text-xs font-medium text-neutral-500 uppercase tracking-wider px-6 py-3">
+          <tr className={`border-b ${
+            theme === 'dark'
+              ? 'border-neutral-800 bg-neutral-900'
+              : 'border-neutral-200 bg-neutral-50'
+          }`}>
+            <th className={`text-left text-xs font-medium uppercase tracking-wider px-6 py-3 ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+            }`}>
               Role
             </th>
-            <th className="text-left text-xs font-medium text-neutral-500 uppercase tracking-wider px-6 py-3">
+            <th className={`text-left text-xs font-medium uppercase tracking-wider px-6 py-3 ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+            }`}>
               Scale
             </th>
-            <th className="text-left text-xs font-medium text-neutral-500 uppercase tracking-wider px-6 py-3">
+            <th className={`text-left text-xs font-medium uppercase tracking-wider px-6 py-3 ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+            }`}>
               Timing
             </th>
-            <th className="text-left text-xs font-medium text-neutral-500 uppercase tracking-wider px-6 py-3">
+            <th className={`text-left text-xs font-medium uppercase tracking-wider px-6 py-3 ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+            }`}>
               Status
             </th>
-            <th className="text-left text-xs font-medium text-neutral-500 uppercase tracking-wider px-6 py-3">
+            <th className={`text-left text-xs font-medium uppercase tracking-wider px-6 py-3 ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+            }`}>
               Date
             </th>
             <th className="text-right text-xs font-medium text-neutral-500 uppercase tracking-wider px-6 py-3">
@@ -61,21 +92,33 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-neutral-200">
+        <tbody className={`divide-y ${
+          theme === 'dark' ? 'divide-neutral-800' : 'divide-neutral-200'
+        }`}>
           {inquiries.map((inquiry) => (
-            <tr key={inquiry.id} className="hover:bg-neutral-50 transition-colors">
+            <tr key={inquiry.id} className={`transition-all duration-300 ${
+              theme === 'dark'
+                ? 'hover:bg-neutral-900/70'
+                : 'hover:bg-neutral-50'
+            }`}>
               <td className="px-6 py-4">
-                <p className="text-sm text-neutral-900 font-medium truncate max-w-[200px]">
+                <p className={`text-sm font-medium truncate max-w-[200px] ${
+                  theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                }`}>
                   {inquiry.role}
                 </p>
               </td>
               <td className="px-6 py-4">
-                <p className="text-sm text-neutral-600 truncate max-w-[180px]">
+                <p className={`text-sm truncate max-w-[180px] ${
+                  theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                }`}>
                   {inquiry.scale}
                 </p>
               </td>
               <td className="px-6 py-4">
-                <p className="text-sm text-neutral-600">
+                <p className={`text-sm ${
+                  theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                }`}>
                   {inquiry.timing || '—'}
                 </p>
               </td>
@@ -83,7 +126,9 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
                 <StatusBadge status={inquiry.status} />
               </td>
               <td className="px-6 py-4">
-                <p className="text-sm text-neutral-500">
+                <p className={`text-sm ${
+                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+                }`}>
                   {new Date(inquiry.created_at).toLocaleDateString('en-US', {
                     month: 'short',
                     day: 'numeric',
@@ -94,7 +139,11 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
               <td className="px-6 py-4 text-right">
                 <Link
                   href={`/admin/inquiries/${inquiry.id}`}
-                  className="inline-flex items-center gap-1 text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
+                  className={`inline-flex items-center gap-1 text-sm transition-colors ${
+                    theme === 'dark'
+                      ? 'text-neutral-400 hover:text-white'
+                      : 'text-neutral-600 hover:text-neutral-900'
+                  }`}
                 >
                   View
                   <Icon icon="ph:arrow-right" className="w-4 h-4" />

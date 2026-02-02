@@ -4,8 +4,10 @@ import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { Icon } from '@iconify/react'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export default function AdminLogin() {
+  const { theme } = useTheme()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -56,39 +58,67 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-6">
-      <div className="w-full max-w-md">
-        <div className="bg-white border border-neutral-200 rounded-lg p-8">
+    <div className={`min-h-screen flex items-center justify-center p-6 transition-colors ${
+      theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
+    }`}>
+      <div className="w-full max-w-md zoom-in">
+        <div className={`border rounded-lg p-8 transition-colors ${
+          theme === 'dark'
+            ? 'bg-neutral-900/50 border-neutral-800'
+            : 'bg-white border-neutral-200'
+        }`}>
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-semibold text-neutral-900 mb-2">Admin Access</h1>
-            <p className="text-sm text-neutral-500">Sign in to manage inquiries</p>
+            <h1 className={`text-2xl font-semibold mb-2 ${
+              theme === 'dark' ? 'text-white' : 'text-neutral-900'
+            }`}>Admin Access</h1>
+            <p className={`text-sm ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+            }`}>Sign in to manage inquiries</p>
           </div>
 
           {magicLinkSent ? (
             <div className="text-center py-8">
-              <div className="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Icon icon="ph:envelope" className="w-6 h-6 text-neutral-600" />
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
+              }`}>
+                <Icon icon="ph:envelope" className={`w-6 h-6 ${
+                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                }`} />
               </div>
-              <h2 className="text-lg font-medium text-neutral-900 mb-2">Check your email</h2>
-              <p className="text-sm text-neutral-500">
+              <h2 className={`text-lg font-medium mb-2 ${
+                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+              }`}>Check your email</h2>
+              <p className={`text-sm ${
+                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+              }`}>
                 We sent a magic link to <strong>{email}</strong>
               </p>
               <button
                 onClick={() => setMagicLinkSent(false)}
-                className="mt-6 text-sm text-neutral-600 hover:text-neutral-900 underline"
+                className={`mt-6 text-sm underline transition-colors ${
+                  theme === 'dark'
+                    ? 'text-neutral-400 hover:text-white'
+                    : 'text-neutral-600 hover:text-neutral-900'
+                }`}
               >
                 Try a different email
               </button>
             </div>
           ) : (
             <>
-              <div className="flex border-b border-neutral-200 mb-6">
+              <div className={`flex border-b mb-6 ${
+                theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+              }`}>
                 <button
                   onClick={() => setMode('login')}
                   className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${
                     mode === 'login'
-                      ? 'border-neutral-900 text-neutral-900'
-                      : 'border-transparent text-neutral-400 hover:text-neutral-600'
+                      ? theme === 'dark'
+                        ? 'border-white text-white'
+                        : 'border-neutral-900 text-neutral-900'
+                      : theme === 'dark'
+                        ? 'border-transparent text-neutral-500 hover:text-neutral-300'
+                        : 'border-transparent text-neutral-400 hover:text-neutral-600'
                   }`}
                 >
                   Password
@@ -97,8 +127,12 @@ export default function AdminLogin() {
                   onClick={() => setMode('magic')}
                   className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${
                     mode === 'magic'
-                      ? 'border-neutral-900 text-neutral-900'
-                      : 'border-transparent text-neutral-400 hover:text-neutral-600'
+                      ? theme === 'dark'
+                        ? 'border-white text-white'
+                        : 'border-neutral-900 text-neutral-900'
+                      : theme === 'dark'
+                        ? 'border-transparent text-neutral-500 hover:text-neutral-300'
+                        : 'border-transparent text-neutral-400 hover:text-neutral-600'
                   }`}
                 >
                   Magic Link
@@ -107,7 +141,9 @@ export default function AdminLogin() {
 
               <form onSubmit={mode === 'login' ? handleLogin : handleMagicLink} className="space-y-4">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1.5">
+                  <label htmlFor="email" className={`block text-sm font-medium mb-1.5 ${
+                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                  }`}>
                     Email
                   </label>
                   <input
@@ -116,14 +152,20 @@ export default function AdminLogin() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-3 py-2 border border-neutral-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent"
+                    className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 transition-colors ${
+                      theme === 'dark'
+                        ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:ring-white focus:border-white'
+                        : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:ring-neutral-900 focus:border-transparent'
+                    }`}
                     placeholder="admin@example.com"
                   />
                 </div>
 
                 {mode === 'login' && (
                   <div>
-                    <label htmlFor="password" className="block text-sm font-medium text-neutral-700 mb-1.5">
+                    <label htmlFor="password" className={`block text-sm font-medium mb-1.5 ${
+                      theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                    }`}>
                       Password
                     </label>
                     <input
@@ -132,22 +174,36 @@ export default function AdminLogin() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      className="w-full px-3 py-2 border border-neutral-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent"
+                      className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 transition-colors ${
+                        theme === 'dark'
+                          ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:ring-white focus:border-white'
+                          : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:ring-neutral-900 focus:border-transparent'
+                      }`}
                       placeholder="••••••••"
                     />
                   </div>
                 )}
 
                 {error && (
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-md">
-                    <p className="text-sm text-red-600">{error}</p>
+                  <div className={`p-3 border rounded-md ${
+                    theme === 'dark'
+                      ? 'bg-red-900/30 border-red-800'
+                      : 'bg-red-50 border-red-200'
+                  }`}>
+                    <p className={`text-sm ${
+                      theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                    }`}>{error}</p>
                   </div>
                 )}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-neutral-900 text-white py-2.5 rounded-md text-sm font-medium hover:bg-neutral-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className={`w-full py-2.5 rounded-md text-sm font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
+                    theme === 'dark'
+                      ? 'bg-white text-black hover:bg-neutral-200'
+                      : 'bg-neutral-900 text-white hover:bg-neutral-800'
+                  }`}
                 >
                   {loading ? (
                     <>
@@ -163,7 +219,9 @@ export default function AdminLogin() {
           )}
         </div>
 
-        <p className="text-center text-xs text-neutral-400 mt-6">
+        <p className={`text-center text-xs mt-6 ${
+          theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'
+        }`}>
           Protected admin area for authorized users only
         </p>
       </div>
