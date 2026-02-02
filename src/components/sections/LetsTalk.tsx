@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export default function LetsTalk() {
     const [formData, setFormData] = useState({
@@ -14,6 +15,11 @@ export default function LetsTalk() {
         timing: '',
         advisors: ''
     });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const supabase = createClient();
 
     const handleCheckbox = (value: string) => {
         setFormData(prev => ({
@@ -22,6 +28,39 @@ export default function LetsTalk() {
                 ? prev.challenges.filter(c => c !== value)
                 : [...prev.challenges, value]
         }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSubmitting(true);
+        setError(null);
+
+        if (!formData.role || !formData.scale) {
+            setError('Please fill in all required fields.');
+            setSubmitting(false);
+            return;
+        }
+
+        const { error: submitError } = await supabase
+            .from('inquiries')
+            .insert([{
+                role: formData.role,
+                scale: formData.scale,
+                challenges: formData.challenges,
+                decision: formData.decision || null,
+                prompt: formData.prompt || null,
+                timing: formData.timing || null,
+                advisors: formData.advisors || null,
+            }]);
+
+        setSubmitting(false);
+
+        if (submitError) {
+            setError('Something went wrong. Please try again.');
+            console.error('Supabase error:', submitError);
+        } else {
+            setSubmitted(true);
+        }
     };
 
     return (
@@ -54,7 +93,35 @@ export default function LetsTalk() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <form className="space-y-12">
+                    {submitted ? (
+                        <div className="text-center py-16">
+                            <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Icon icon="ph:check-circle" className="w-8 h-8 text-emerald-400" />
+                            </div>
+                            <h3 className="text-2xl font-semibold mb-3">Inquiry Received</h3>
+                            <p className="text-neutral-400 max-w-md mx-auto mb-6">
+                                Thank you for reaching out. I will review your submission and respond within 48 hours if there is a potential fit.
+                            </p>
+                            <button
+                                onClick={() => {
+                                    setSubmitted(false);
+                                    setFormData({
+                                        role: '',
+                                        scale: '',
+                                        challenges: [],
+                                        decision: '',
+                                        prompt: '',
+                                        timing: '',
+                                        advisors: ''
+                                    });
+                                }}
+                                className="text-sm text-neutral-400 hover:text-white underline transition-colors"
+                            >
+                                Submit another inquiry
+                            </button>
+                        </div>
+                    ) : (
+                    <form onSubmit={handleSubmit} className="space-y-12">
                         {/* Role */}
                         <div className="pb-8 border-b border-neutral-700">
                             <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">Your Role in the Business</h3>
@@ -224,18 +291,34 @@ export default function LetsTalk() {
 
                         {/* Submit Button */}
                         <div className="pt-8 text-center">
+                            {error && (
+                                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
+                                    <p className="text-sm text-red-400">{error}</p>
+                                </div>
+                            )}
                             <button
                                 type="submit"
-                                className="inline-flex items-center gap-2 bg-white text-neutral-900 px-8 py-4 rounded-full hover:bg-neutral-100 transition-colors font-semibold text-sm"
+                                disabled={submitting}
+                                className="inline-flex items-center gap-2 bg-white text-neutral-900 px-8 py-4 rounded-full hover:bg-neutral-100 transition-colors font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Discuss a Strategic Question
-                                <Icon icon="ph:arrow-right" className="w-5 h-5" />
+                                {submitting ? (
+                                    <>
+                                        <Icon icon="ph:spinner" className="w-5 h-5 animate-spin" />
+                                        Submitting...
+                                    </>
+                                ) : (
+                                    <>
+                                        Discuss a Strategic Question
+                                        <Icon icon="ph:arrow-right" className="w-5 h-5" />
+                                    </>
+                                )}
                             </button>
                             <p className="text-xs text-neutral-500 mt-4">
                                 This is a short, focused conversation to determine fit and next steps.
                             </p>
                         </div>
                     </form>
+                    )}
                 </motion.div>
 
                 {/* Footer Note */}
