@@ -42,7 +42,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
-            {children}
+            <div key={mounted ? theme : 'initial'} className="min-h-screen theme-transition">
+                {children}
+            </div>
         </ThemeContext.Provider>
     );
 }
@@ -50,7 +52,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 export function useTheme() {
     const context = useContext(ThemeContext);
     if (context === undefined) {
-        throw new Error('useTheme must be used within a ThemeProvider');
+        // Return default theme as fallback instead of throwing error
+        return {
+            theme: 'dark' as Theme,
+            toggleTheme: () => {},
+            setTheme: () => {}
+        };
     }
     return context;
 }
