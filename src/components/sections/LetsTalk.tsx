@@ -1,11 +1,12 @@
 'use client';
 
 import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function LetsTalk() {
+    const { theme } = useTheme();
     const [formData, setFormData] = useState({
         role: '',
         scale: '',
@@ -64,35 +65,30 @@ export default function LetsTalk() {
     };
 
     return (
-        <section id="contact" className="w-full py-24 bg-neutral-900 text-white">
-            <div className="max-w-4xl mx-auto px-6">
-                {/* Header */}
-                <motion.div 
-                    className="text-center mb-16"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <h2 className="text-4xl lg:text-6xl font-semibold tracking-tight mb-6">
-                        Let's Talk
+        <section id="contact" className={`py-24 border-b relative overflow-hidden ${
+            theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+        }`}>
+            <div className="max-w-[1000px] mx-auto px-6 relative z-10">
+                <div className="text-center mb-16 fade-up">
+                    <span className="text-xs text-neutral-500 mb-4 block">06 / LET'S TALK</span>
+                    <h2 className={`text-5xl md:text-7xl font-semibold uppercase tracking-tighter mb-6 ${
+                        theme === 'dark' ? 'text-white' : 'text-black'
+                    }`}>
+                        Clarity Before<br />Acting
                     </h2>
-                    <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-4">
-                        If you are navigating a meaningful financial decision and want clarity before acting, this is the right place to start.
+                    <p className={`max-w-lg mx-auto ${
+                        theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                    }`}>
+                        If you are navigating a meaningful financial decision, this conversation is designed to assess context and fit.
                     </p>
-                    <p className="text-sm text-neutral-400">
-                        This conversation is designed to assess context, decision urgency, and mutual fit. It is not a sales call and not a substitute for execution support.
-                    </p>
-                </motion.div>
+                </div>
 
                 {/* Intake Form */}
-                <motion.div 
-                    className="bg-neutral-800 border border-neutral-700 rounded-3xl p-8 lg:p-12"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
+                <div className={`p-8 lg:p-12 fade-up ${
+                    theme === 'dark' 
+                        ? 'bg-neutral-900/50 border border-neutral-800' 
+                        : 'bg-neutral-100 border border-neutral-200'
+                }`}>
                     {submitted ? (
                         <div className="text-center py-16">
                             <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -123,8 +119,8 @@ export default function LetsTalk() {
                     ) : (
                     <form onSubmit={handleSubmit} className="space-y-12">
                         {/* Role */}
-                        <div className="pb-8 border-b border-neutral-700">
-                            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">Your Role in the Business</h3>
+                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                            <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Your Role in the Business</h3>
                             <p className="text-xs text-neutral-500 mb-4">Which best describes your position:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
@@ -142,15 +138,15 @@ export default function LetsTalk() {
                                             onChange={(e) => setFormData({...formData, role: e.target.value})}
                                             className="w-4 h-4 text-white border-neutral-600 bg-transparent focus:ring-white"
                                         />
-                                        <span className="text-sm text-neutral-300 group-hover:text-white transition-colors">{option}</span>
+                                        <span className={`text-sm transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
                                     </label>
                                 ))}
                             </div>
                         </div>
 
                         {/* Business Scale */}
-                        <div className="pb-8 border-b border-neutral-700">
-                            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">Business Scale</h3>
+                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                            <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Business Scale</h3>
                             <p className="text-xs text-neutral-500 mb-4">Which range best reflects your current operation:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
@@ -168,15 +164,15 @@ export default function LetsTalk() {
                                             onChange={(e) => setFormData({...formData, scale: e.target.value})}
                                             className="w-4 h-4 text-white border-neutral-600 bg-transparent focus:ring-white"
                                         />
-                                        <span className="text-sm text-neutral-300 group-hover:text-white transition-colors">{option}</span>
+                                        <span className={`text-sm transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
                                     </label>
                                 ))}
                             </div>
                         </div>
 
                         {/* Primary Challenge */}
-                        <div className="pb-8 border-b border-neutral-700">
-                            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">Primary Challenge</h3>
+                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                            <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Primary Challenge</h3>
                             <div className="space-y-4">
                                 {[
                                     'Profitability and performance clarity',
@@ -192,28 +188,28 @@ export default function LetsTalk() {
                                             onChange={() => handleCheckbox(option)}
                                             className="w-4 h-4 text-white border-neutral-600 bg-transparent focus:ring-white rounded"
                                         />
-                                        <span className="text-sm text-neutral-300 group-hover:text-white transition-colors">{option}</span>
+                                        <span className={`text-sm transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
                                     </label>
                                 ))}
                             </div>
                         </div>
 
                         {/* The Decision */}
-                        <div className="pb-8 border-b border-neutral-700">
-                            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">The Decision You Are Facing</h3>
+                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                            <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>The Decision You Are Facing</h3>
                             <p className="text-xs text-neutral-500 mb-4">What decision are you currently trying to make or prepare for?</p>
                             <textarea
                                 value={formData.decision}
                                 onChange={(e) => setFormData({...formData, decision: e.target.value})}
                                 placeholder="Describe the decision you're facing..."
-                                className="w-full bg-neutral-900 border border-neutral-600 rounded-xl p-4 text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors resize-none"
+                                className={`w-full border p-4 focus:outline-none transition-colors resize-none ${theme === 'dark' ? 'bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white' : 'bg-white border-neutral-300 text-black placeholder:text-neutral-400 focus:border-black'}`}
                                 rows={4}
                             />
                         </div>
 
                         {/* What Prompted This */}
-                        <div className="pb-8 border-b border-neutral-700">
-                            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">What Prompted This Now</h3>
+                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                            <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>What Prompted This Now</h3>
                             <p className="text-xs text-neutral-500 mb-4">Why does this decision matter at this point:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
@@ -231,15 +227,15 @@ export default function LetsTalk() {
                                             onChange={(e) => setFormData({...formData, prompt: e.target.value})}
                                             className="w-4 h-4 text-white border-neutral-600 bg-transparent focus:ring-white"
                                         />
-                                        <span className="text-sm text-neutral-300 group-hover:text-white transition-colors">{option}</span>
+                                        <span className={`text-sm transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
                                     </label>
                                 ))}
                             </div>
                         </div>
 
                         {/* Timing and Urgency */}
-                        <div className="pb-8 border-b border-neutral-700">
-                            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">Timing and Urgency</h3>
+                        <div className={`pb-8 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                            <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>Timing and Urgency</h3>
                             <p className="text-xs text-neutral-500 mb-4">When do you need clarity to move forward:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
@@ -257,7 +253,7 @@ export default function LetsTalk() {
                                             onChange={(e) => setFormData({...formData, timing: e.target.value})}
                                             className="w-4 h-4 text-white border-neutral-600 bg-transparent focus:ring-white"
                                         />
-                                        <span className="text-sm text-neutral-300 group-hover:text-white transition-colors">{option}</span>
+                                        <span className={`text-sm transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
                                     </label>
                                 ))}
                             </div>
@@ -265,7 +261,7 @@ export default function LetsTalk() {
 
                         {/* How You Work With Advisors */}
                         <div>
-                            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-neutral-300">How You Typically Work With Advisors</h3>
+                            <h3 className={`text-sm font-semibold uppercase tracking-widest mb-6 ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'}`}>How You Typically Work With Advisors</h3>
                             <p className="text-xs text-neutral-500 mb-4">Which best reflects your expectations:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {[
@@ -283,7 +279,7 @@ export default function LetsTalk() {
                                             onChange={(e) => setFormData({...formData, advisors: e.target.value})}
                                             className="w-4 h-4 text-white border-neutral-600 bg-transparent focus:ring-white"
                                         />
-                                        <span className="text-sm text-neutral-300 group-hover:text-white transition-colors">{option}</span>
+                                        <span className={`text-sm transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
                                     </label>
                                 ))}
                             </div>
@@ -299,7 +295,7 @@ export default function LetsTalk() {
                             <button
                                 type="submit"
                                 disabled={submitting}
-                                className="inline-flex items-center gap-2 bg-white text-neutral-900 px-8 py-4 rounded-full hover:bg-neutral-100 transition-colors font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                                className={`inline-flex items-center gap-2 px-8 py-4 rounded-full transition-colors font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed ${theme === 'dark' ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'}`}
                             >
                                 {submitting ? (
                                     <>
@@ -319,20 +315,14 @@ export default function LetsTalk() {
                         </div>
                     </form>
                     )}
-                </motion.div>
+                </div>
 
                 {/* Footer Note */}
-                <motion.div 
-                    className="text-center mt-8"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                >
+                <div className="text-center mt-8 fade-up">
                     <p className="text-sm text-neutral-500">
                         This conversation is intended for leaders seeking clarity on high-impact decisions.
                     </p>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

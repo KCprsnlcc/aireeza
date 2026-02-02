@@ -1,3 +1,5 @@
+'use client';
+
 import Hero from "../components/sections/Hero";
 import WhatIDo from "../components/sections/WhatIDo";
 import HowIWork from "../components/sections/HowIWork";

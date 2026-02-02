@@ -1,201 +1,135 @@
 'use client';
 
 import { Icon } from "@iconify/react";
-import GlassButton from "../ui/GlassButton";
-import SpotlightCard from "../ui/SpotlightCard";
-import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Hero() {
-    const ref = useRef(null);
+    const { theme } = useTheme();
+
     return (
-        <section id="home" className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-10 gap-x-12 gap-y-12">
-            <div className="animate-clip-in lg:col-span-7 pb-4 space-y-8" style={{ animationDelay: "0.4s" }}>
-                <motion.h1 
-                    className="leading-[0.95] lg:text-7xl xl:text-7xl text-5xl font-medium text-neutral-900 tracking-tight"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                    Turn financial complexity into clear, profitable decisions.
-                </motion.h1>
-                <motion.p 
-                    className="leading-snug lg:text-base text-xl font-normal text-neutral-500 max-w-[60ch]"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                    Strategic finance and business performance advisory for founders and leadership teams who need clarity — not just reports.
-                </motion.p>
-                <motion.div 
-                    className="flex gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                    <a href="#contact">
-                        <GlassButton>
-                            Book a Strategy Call
-                        </GlassButton>
-                    </a>
-                </motion.div>
+        <>
+            {/* Hero Section */}
+            <header className={`relative pt-32 pb-10 border-b ${
+                theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+            }`}>
+                <div className="max-w-[1600px] mx-auto px-6">
+                    {/* Giant Title */}
+                    <div className="text-center mb-12 relative z-10">
+                        <h1 className="text-[13vw] leading-[0.8] font-semibold tracking-tighter hero-title">
+                            AIREEZA
+                        </h1>
+                        <p className={`text-[2vw] font-light tracking-[0.5em] mt-4 hero-subtitle ${
+                            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                        }`}>
+                            L. TANDIH
+                        </p>
+                    </div>
 
-                {/* Credentials Marquee (Moved inside Left Column) */}
-                <div className="animate-fade-up w-full my-6 space-y-2" style={{ animationDelay: "0.6s" }}>
-                    <p className="text-base text-neutral-500">Credentials & Designations</p>
-
-                    <div className="overflow-hidden mask-image-gradient w-full relative gap-x-4 gap-y-4">
-                        {/* Gradient masks for fade effect */}
-                        <div className="z-10 bg-gradient-to-r from-neutral-100 to-transparent w-32 h-full absolute top-0 left-0"></div>
-                        <div className="bg-gradient-to-l from-neutral-100 to-transparent w-32 h-full z-10 absolute top-0 right-0"></div>
-
-                        <div className="flex w-max animate-marquee hover:pause-animation">
-                            {/* Batch 1 */}
-                            <div className="flex pr-4 pl-4 items-center gap-x-2 lg:gap-4">
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:certificate" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">CMA</span>
-                                        <span className="text-xs text-neutral-500">Certified Management Accountant</span>
-                                    </div>
-                                </SpotlightCard>
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:calculator" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">CAT</span>
-                                        <span className="text-xs text-neutral-500">Certified Accounting Technician</span>
-                                    </div>
-                                </SpotlightCard>
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:graduation-cap" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">AdZU</span>
-                                        <span className="text-xs text-neutral-500">Ateneo de Zamboanga University</span>
-                                    </div>
-                                </SpotlightCard>
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:chalkboard-teacher" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">Mentor</span>
-                                        <span className="text-xs text-neutral-500">Academic Instructor</span>
-                                    </div>
-                                </SpotlightCard>
-                            </div>
-                            {/* Batch 2 (Duplicate) */}
-                            <div className="flex pr-4 pl-4 items-center gap-x-2 lg:gap-4">
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:certificate" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">CMA</span>
-                                        <span className="text-xs text-neutral-500">Certified Management Accountant</span>
-                                    </div>
-                                </SpotlightCard>
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:calculator" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">CAT</span>
-                                        <span className="text-xs text-neutral-500">Certified Accounting Technician</span>
-                                    </div>
-                                </SpotlightCard>
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:graduation-cap" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">AdZU</span>
-                                        <span className="text-xs text-neutral-500">Ateneo de Zamboanga University</span>
-                                    </div>
-                                </SpotlightCard>
-                                <SpotlightCard className="glass-panel flex hover:grayscale-0 transition-all duration-500 bg-neutral-50 w-64 h-32 rounded-2xl grayscale items-center justify-center p-6 gap-4 cursor-default">
-                                    <Icon icon="ph:chalkboard-teacher" className="w-12 h-12 text-neutral-900 opacity-80" />
-                                    <div className="flex flex-col">
-                                        <span className="font-bold text-neutral-900 text-lg">Mentor</span>
-                                        <span className="text-xs text-neutral-500">Academic Instructor</span>
-                                    </div>
-                                </SpotlightCard>
-                            </div>
+                    {/* Meta Info Grid */}
+                    <div className={`grid grid-cols-1 md:grid-cols-3 border-y py-8 mb-12 ${
+                        theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+                    }`}>
+                        <div className={`flex flex-col items-center justify-center text-center gap-2 border-r meta-item meta-item-1 ${
+                            theme === 'dark' ? 'border-neutral-800/50' : 'border-neutral-200/50'
+                        }`}>
+                            <Icon icon="solar:graph-new-up-linear" className="text-neutral-500 text-xl" />
+                            <span className={`text-xs font-normal uppercase tracking-widest ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                            }`}>Financial<br />Insight</span>
+                        </div>
+                        <div className={`flex flex-col items-center justify-center text-center gap-2 border-r meta-item meta-item-2 ${
+                            theme === 'dark' ? 'border-neutral-800/50' : 'border-neutral-200/50'
+                        }`}>
+                            <Icon icon="solar:shield-check-linear" className="text-neutral-500 text-xl" />
+                            <span className={`text-xs font-normal uppercase tracking-widest ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                            }`}>Risk<br />Management</span>
+                        </div>
+                        <div className="flex flex-col items-center justify-center text-center gap-2 meta-item meta-item-3">
+                            <Icon icon="solar:users-group-rounded-linear" className="text-neutral-500 text-xl" />
+                            <span className={`text-xs font-normal uppercase tracking-widest ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                            }`}>Strategic<br />Advisory</span>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div className="lg:col-span-4 flex flex-col animate-clip-in bg-stone-50 border-stone-200 border rounded-3xl pt-2 pr-2 pb-2 pl-2 space-y-8 gap-x-12 gap-y-12 justify-between" style={{ animationDelay: "0.5s", height: "fit-content" }}>
-                <div className="overflow-hidden w-full border-stone-200 border rounded-2xl relative" style={{ paddingTop: '176.75%', position: 'relative' }}>
-                    <img
-                        src="/Za-T.png"
-                        alt="Aireeza Leonsul Tandih - Financial Consultancy"
-                        className="absolute inset-0 h-full w-full object-cover rounded-2xl"
-                    />
+                    {/* Red Hero Image (Duotone) */}
+                    <div className="w-full aspect-[16/9] md:aspect-[21/9] duotone-red overflow-hidden relative hero-image">
+                        <img 
+                            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop" 
+                            className="w-full h-full object-cover transition-transform duration-[2s] hover:scale-105" 
+                            alt="Office Architecture"
+                        />
+                    </div>
                 </div>
-            </div>
+            </header>
 
-            {/* Problem Section */}
-            <motion.div 
-                className="lg:col-span-12 mt-16 space-y-8"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-            >
-                <div className="bg-stone-50 border-stone-200 border rounded-3xl p-8 lg:p-12">
-                    <h2 className="text-2xl lg:text-3xl font-medium text-neutral-900 tracking-tight mb-8">
+            {/* Section 01: The Problem */}
+            <section className={`py-24 border-b ${
+                theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+            }`}>
+                <div className="max-w-[1600px] mx-auto px-6">
+                    <div className="flex justify-between items-end mb-16 fade-up">
+                        <span className="text-xs text-neutral-500">01</span>
+                        <span className="text-xs text-neutral-500">/ THE PROBLEM</span>
+                        <span className="text-xs text-neutral-500">FINANCIAL INSIGHT</span>
+                    </div>
+
+                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-center max-w-5xl mx-auto mb-12 leading-tight fade-up">
                         Most growing businesses don't fail because of effort — they fail because decisions are made without clear financial insight.
                     </h2>
-                    
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div>
-                            <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wider mb-6">Common issues I help solve:</h3>
-                            <ul className="space-y-4">
-                                <motion.li 
-                                    className="flex items-start gap-3"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.6, delay: 1.0 }}
-                                >
-                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
-                                    <span className="text-neutral-700">Profits look good, but cash feels tight</span>
-                                </motion.li>
-                                <motion.li 
-                                    className="flex items-start gap-3"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.6, delay: 1.1 }}
-                                >
-                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
-                                    <span className="text-neutral-700">Reports exist, but decisions still feel uncertain</span>
-                                </motion.li>
-                                <motion.li 
-                                    className="flex items-start gap-3"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.6, delay: 1.2 }}
-                                >
-                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
-                                    <span className="text-neutral-700">Growth adds complexity instead of clarity</span>
-                                </motion.li>
-                                <motion.li 
-                                    className="flex items-start gap-3"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.6, delay: 1.3 }}
-                                >
-                                    <Icon icon="ph:warning" className="w-5 h-5 text-neutral-400 mt-0.5 shrink-0" />
-                                    <span className="text-neutral-700">Leadership is reacting instead of steering</span>
-                                </motion.li>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto items-center">
+                        <div className="fade-up">
+                            <h3 className={`text-xl font-normal mb-8 uppercase tracking-widest ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                            }`}>Common Issues</h3>
+                            <ul className="space-y-6">
+                                <li className="flex items-start gap-4 group">
+                                    <Icon icon="solar:danger-circle-linear" className={`text-xl mt-1 transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-500 group-hover:text-white' : 'text-neutral-500 group-hover:text-black'
+                                    }`} />
+                                    <span className={`text-lg transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-300 group-hover:text-white' : 'text-neutral-700 group-hover:text-black'
+                                    }`}>Profits look good, but cash feels tight.</span>
+                                </li>
+                                <li className="flex items-start gap-4 group">
+                                    <Icon icon="solar:file-remove-linear" className={`text-xl mt-1 transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-500 group-hover:text-white' : 'text-neutral-500 group-hover:text-black'
+                                    }`} />
+                                    <span className={`text-lg transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-300 group-hover:text-white' : 'text-neutral-700 group-hover:text-black'
+                                    }`}>Reports exist, but decisions still feel uncertain.</span>
+                                </li>
+                                <li className="flex items-start gap-4 group">
+                                    <Icon icon="solar:sort-from-top-to-bottom-linear" className={`text-xl mt-1 transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-500 group-hover:text-white' : 'text-neutral-500 group-hover:text-black'
+                                    }`} />
+                                    <span className={`text-lg transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-300 group-hover:text-white' : 'text-neutral-700 group-hover:text-black'
+                                    }`}>Growth adds complexity instead of clarity.</span>
+                                </li>
+                                <li className="flex items-start gap-4 group">
+                                    <Icon icon="solar:wheel-angle-linear" className={`text-xl mt-1 transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-500 group-hover:text-white' : 'text-neutral-500 group-hover:text-black'
+                                    }`} />
+                                    <span className={`text-lg transition-colors ${
+                                        theme === 'dark' ? 'text-neutral-300 group-hover:text-white' : 'text-neutral-700 group-hover:text-black'
+                                    }`}>Leadership is reacting instead of steering.</span>
+                                </li>
                             </ul>
                         </div>
-                        
-                        <motion.div 
-                            className="flex items-center justify-center bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8, delay: 1.4 }}
-                        >
-                            <div className="text-center">
-                                <p className="text-lg text-neutral-500 mb-3">You don't need more data.</p>
-                                <p className="text-2xl lg:text-3xl font-medium text-neutral-900">You need better financial judgment.</p>
-                            </div>
-                        </motion.div>
+                        <div className={`border p-12 text-center fade-up ${
+                            theme === 'dark' ? 'border-neutral-800 bg-neutral-900/20' : 'border-neutral-200 bg-neutral-50'
+                        }`}>
+                            <p className="text-2xl font-light leading-relaxed">
+                                "You don't need more data.<br />
+                                <span className="font-semibold">You need better financial judgment."</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </motion.div>
-        </section>
+            </section>
+        </>
     );
 }

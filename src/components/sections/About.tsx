@@ -1,162 +1,103 @@
 'use client';
 
-import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function About() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const { theme } = useTheme();
 
     return (
-        <section id="about" className="w-full py-24 border-b border-neutral-200">
-            <div className="max-w-7xl mx-auto px-6">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <motion.h2 
-                        className="text-4xl lg:text-6xl font-semibold tracking-tight text-neutral-900 mb-6"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        About Me
-                    </motion.h2>
+        <section id="about" className={`py-24 border-b ${
+            theme === 'dark' ? 'border-neutral-900 bg-neutral-950/30' : 'border-neutral-200 bg-neutral-50'
+        }`}>
+            <div className="max-w-[1600px] mx-auto px-6">
+                <div className="flex justify-between items-center mb-16 fade-up">
+                    <span className="text-xs text-neutral-500">05</span>
+                    <span className="text-xs text-neutral-500">/ ABOUT ME</span>
+                    <span className="text-xs text-neutral-500">BACKGROUND</span>
                 </div>
 
-                <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-                    {/* Left Column: Bio */}
-                    <motion.div 
-                        className="space-y-6"
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <p className="text-lg text-neutral-700 leading-relaxed">
-                            I work at the intersection of finance, performance, and decision-making. My role is to help founders move from instinct to clarity as their business grows more complex.
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                    {/* Text Content */}
+                    <div className="fade-up">
+                        <h2 className="text-4xl md:text-6xl font-semibold uppercase tracking-tighter leading-none mb-8">
+                            Instinct To<br />Clarity
+                        </h2>
+                        <p className={`text-lg leading-relaxed mb-8 ${
+                            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                        }`}>
+                            I work at the intersection of finance, performance, and decision-making. My background is in strategic finance and business performance, working alongside founders as businesses scale beyond intuition.
                         </p>
-                        <p className="text-base text-neutral-600 leading-relaxed">
-                            My background is in strategic finance and business performance, working alongside founders as businesses scale beyond intuition. I have built financial structures in fast-moving environments, supported growth decisions under pressure, and helped leaders make sense of tradeoffs as complexity increases.
+                        <p className={`text-base leading-relaxed mb-12 ${
+                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'
+                        }`}>
+                            My certifications exist to support disciplined analysis, but what matters most is judgment. Knowing which numbers deserve attention and when simplicity leads to better decisions than precision.
                         </p>
-                        <p className="text-base text-neutral-600 leading-relaxed">
-                            My certifications exist to support disciplined analysis and structured thinking. They provide the technical grounding needed to evaluate scenarios, test assumptions, and challenge conclusions, but they are not the work itself.
-                        </p>
-                        <p className="text-base text-neutral-700 leading-relaxed font-medium">
-                            What matters most is judgment. Knowing which numbers deserve attention, which questions need answering, and when simplicity leads to better decisions than precision.
-                        </p>
-                        <p className="text-base text-neutral-600 leading-relaxed">
-                            My role is to help founders see clearly and act with confidence as the business evolves. It is to help you see clearly and make confident decisions as the business evolves.
-                        </p>
-                    </motion.div>
+                        
+                        <div className={`p-6 border italic text-sm mb-12 ${
+                            theme === 'dark' 
+                                ? 'border-neutral-800 bg-neutral-900/50 text-neutral-400' 
+                                : 'border-neutral-200 bg-neutral-100 text-neutral-600'
+                        }`}>
+                            "I do not publish client testimonials. Much of this work involves confidential financial decisions, and discretion is essential."
+                        </div>
 
-                    {/* Right Column: Image */}
-                    <motion.div 
-                        className="relative"
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="aspect-[4/5] bg-stone-50 border border-stone-200 rounded-3xl overflow-hidden">
-                            <img
-                                src="/Za-T.png"
-                                alt="Aireeza Leonsul Tandih"
+                        <a 
+                            href="#" 
+                            className={`text-sm font-semibold uppercase underline underline-offset-4 transition-colors ${
+                                theme === 'dark' 
+                                    ? 'decoration-neutral-700 hover:text-neutral-300' 
+                                    : 'decoration-neutral-300 hover:text-neutral-600'
+                            }`}
+                        >
+                            Read my Point of View
+                        </a>
+                    </div>
+
+                    {/* Credentials */}
+                    <div className="space-y-12 fade-up" style={{ transitionDelay: '200ms' }}>
+                        {/* Image */}
+                        <div className="aspect-[4/3] w-full overflow-hidden duotone-red mb-8">
+                            <img 
+                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop" 
                                 className="w-full h-full object-cover"
+                                alt="Professional portrait"
                             />
                         </div>
-                    </motion.div>
-                </div>
-
-                {/* Education & Credentials */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                    {/* Education */}
-                    <motion.div 
-                        className="bg-stone-50 border border-stone-200 rounded-3xl p-8"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <Icon icon="ph:graduation-cap" className="w-8 h-8 text-neutral-700" />
-                            <h3 className="text-2xl font-semibold text-neutral-900">Education</h3>
-                        </div>
-                        <ul className="space-y-4">
-                            <li className="pb-4 border-b border-neutral-200">
-                                <p className="text-neutral-800 font-medium">Bachelor's Degree in Management Accounting</p>
-                            </li>
-                            <li className="pb-4 border-b border-neutral-200">
-                                <p className="text-neutral-800 font-medium">Bachelor's Degree in Accounting Technology</p>
-                            </li>
-                            <li>
-                                <p className="text-neutral-800 font-medium">Postgraduate Certificate in Business & Management Consulting</p>
-                            </li>
-                        </ul>
-                    </motion.div>
-
-                    {/* Professional Associations */}
-                    <motion.div 
-                        className="bg-stone-50 border border-stone-200 rounded-3xl p-8"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <Icon icon="ph:certificate" className="w-8 h-8 text-neutral-700" />
-                            <h3 className="text-2xl font-semibold text-neutral-900">Professional Associations</h3>
-                        </div>
-                        <ul className="space-y-4">
-                            <li className="pb-4 border-b border-neutral-200">
-                                <p className="text-neutral-800 font-medium">Certified Management Accountant (CMA)</p>
-                                <p className="text-xs text-neutral-500 mt-1">Institute of Management Accountants</p>
-                            </li>
-                            <li className="pb-4 border-b border-neutral-200">
-                                <p className="text-neutral-800 font-medium">Associate Member (ASA)</p>
-                                <p className="text-xs text-neutral-500 mt-1">CPA Australia</p>
-                            </li>
-                            <li className="pb-4 border-b border-neutral-200">
-                                <p className="text-neutral-800 font-medium">Member</p>
-                                <p className="text-xs text-neutral-500 mt-1">Business and Management Consultants Association of the Philippines (BMCAP)</p>
-                            </li>
-                            <li>
-                                <p className="text-neutral-800 font-medium">Member</p>
-                                <p className="text-xs text-neutral-500 mt-1">Philippine Society for Talent Development (PSTD)</p>
-                            </li>
-                        </ul>
-                    </motion.div>
-                </div>
-
-                {/* Disclaimer Box */}
-                <motion.div 
-                    className="bg-neutral-900 text-white rounded-3xl p-8 lg:p-12 mb-12"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                    <div className="flex items-start gap-4">
-                        <Icon icon="ph:info" className="w-6 h-6 text-neutral-400 mt-1 shrink-0" />
+                        
                         <div>
-                            <p className="text-lg lg:text-xl italic leading-relaxed">
-                                "I do not publish client testimonials. Much of this work involves confidential financial decisions, and discretion is essential."
-                            </p>
+                            <h3 className={`text-lg font-semibold uppercase tracking-widest mb-6 border-b pb-2 ${
+                                theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+                            }`}>Education</h3>
+                            <ul className={`space-y-4 text-sm ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                            }`}>
+                                <li className="flex justify-between">
+                                    <span>Bachelor's in Management Accounting</span>
+                                </li>
+                                <li className="flex justify-between">
+                                    <span>Bachelor's in Accounting Technology</span>
+                                </li>
+                                <li className="flex justify-between">
+                                    <span>Postgrad Cert. Business Consulting</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 className={`text-lg font-semibold uppercase tracking-widest mb-6 border-b pb-2 ${
+                                theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
+                            }`}>Associations</h3>
+                            <ul className={`space-y-4 text-sm ${
+                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                            }`}>
+                                <li>Certified Management Accountant (CMA)</li>
+                                <li>Associate Member (ASA), CPA Australia</li>
+                                <li>Member, BMCAP</li>
+                                <li>Member, PSTD</li>
+                            </ul>
                         </div>
                     </div>
-                </motion.div>
-
-                {/* CTA */}
-                <motion.div 
-                    className="text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                >
-                    <a 
-                        href="#point-of-view"
-                        className="inline-flex items-center gap-2 text-neutral-700 hover:text-neutral-900 transition-colors font-medium"
-                    >
-                        Discuss a Strategic Question
-                        <Icon icon="ph:arrow-right" className="w-5 h-5" />
-                    </a>
-                    <p className="text-sm text-neutral-500 mt-3">Link to: Point of View Page</p>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

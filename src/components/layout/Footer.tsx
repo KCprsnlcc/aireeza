@@ -1,69 +1,70 @@
-import Link from "next/link";
+'use client';
+
 import { Icon } from "@iconify/react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Footer() {
+    const { theme } = useTheme();
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <footer className="pt-0 pb-0">
-            <div className="container lg:pl-0 lg:pr-0 mx-auto pr-0 pl-0">
-                <div className="lg:px-10 lg:py-12 bg-white border-neutral-200 border rounded-3xl pt-10 pr-6 pb-10 pl-6 shadow-[0_24px_60px_-32px_rgba(15,23,42,0.35)]">
-                    <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-                        {/* Brand */}
-                        <div className="lg:w-1/3 space-y-5">
-                            <div className="flex items-center gap-3">
-                                <div className="w-9 h-9 rounded-xl bg-neutral-900 flex items-center justify-center text-white">
-                                    <Icon icon="ph:plant-fill" width="20" height="20" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-sm font-semibold text-neutral-900 tracking-tight">aireeza.tandih</span>
-                                    <span className="text-[11px] uppercase text-neutral-400 tracking-[0.16em]">Financial Intelligence</span>
-                                </div>
-                            </div>
-                            <p className="text-sm text-neutral-500 max-w-sm">
-                                Empowering startups, SMEs, and students with financial clarity and strategic mentorship.
-                            </p>
-                            <div className="flex items-center gap-3 text-neutral-500">
-                                <a href="#" className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center hover:border-neutral-400 hover:text-neutral-900 transition-colors">
-                                    <Icon icon="simple-icons:x" />
-                                </a>
-                                <a href="#" className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center hover:border-neutral-400 hover:text-neutral-900 transition-colors">
-                                    <Icon icon="simple-icons:linkedin" />
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Links */}
-                        <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
-                            <div className="space-y-3">
-                                <h3 className="uppercase text-xs font-medium text-neutral-400 tracking-[0.16em]">Services</h3>
-                                <ul className="space-y-2 text-neutral-600">
-                                    <li><Link href="#services" className="hover:text-neutral-900 transition-colors">Financial Strategy</Link></li>
-                                    <li><Link href="#services" className="hover:text-neutral-900 transition-colors">Business Operations</Link></li>
-                                    <li><Link href="#services" className="hover:text-neutral-900 transition-colors">Academic Training</Link></li>
-                                </ul>
-                            </div>
-
-                            <div className="space-y-3">
-                                <h3 className="uppercase text-xs font-medium text-neutral-400 tracking-[0.16em]">Company</h3>
-                                <ul className="space-y-2 text-neutral-600">
-                                    <li><Link href="#about" className="hover:text-neutral-900 transition-colors">About</Link></li>
-                                    <li><Link href="#experience" className="hover:text-neutral-900 transition-colors">Experience</Link></li>
-                                    <li><Link href="#contact" className="hover:text-neutral-900 transition-colors">Contact</Link></li>
-                                </ul>
-                            </div>
-
-                            <div className="space-y-3">
-                                <h3 className="uppercase text-xs font-medium text-neutral-400 tracking-[0.16em]">Legal</h3>
-                                <ul className="space-y-2 text-neutral-600">
-                                    <li><Link href="#" className="hover:text-neutral-900 transition-colors">Privacy Policy</Link></li>
-                                    <li><Link href="#" className="hover:text-neutral-900 transition-colors">Terms of Service</Link></li>
-                                </ul>
-                            </div>
+        <footer className="pt-24 pb-12 relative overflow-hidden">
+            <div className="max-w-[1600px] mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-12 mb-24 fade-up">
+                    <div className="text-left">
+                        <p className={`text-xs uppercase mb-1 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-700'}`}>
+                            Strategic Finance
+                        </p>
+                        <p className={`text-xs uppercase ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-700'}`}>
+                            FP&A Advisory
+                        </p>
+                    </div>
+                    <div className="flex justify-center">
+                        <div className="w-64 h-80 duotone-red overflow-hidden">
+                            <img 
+                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop" 
+                                className="w-full h-full object-cover"
+                                alt="Office Architecture"
+                            />
                         </div>
                     </div>
+                    <div className="text-right">
+                        <p className={`text-xs uppercase mb-1 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-700'}`}>
+                            Global Reach
+                        </p>
+                        <p className={`text-xs uppercase ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-700'}`}>
+                            Remote First
+                        </p>
+                    </div>
+                </div>
 
-                    <div className="mt-12 pt-8 border-t border-neutral-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
-                        <p>© {new Date().getFullYear()} ALT Solutions. All rights reserved.</p>
-                        <p>Based in Zamboanga City, Philippines.</p>
+                <div className={`border-t pt-12 flex justify-between items-end fade-up ${
+                    theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
+                }`}>
+                    <div className="text-left">
+                        <span className={`text-[10px] ${theme === 'dark' ? 'text-neutral-600' : 'text-neutral-700'}`}>
+                            ©2024 AIREEZA
+                        </span>
+                    </div>
+                    <h1 className={`text-[15vw] leading-[0.7] font-semibold tracking-tighter text-center select-none pointer-events-none opacity-50 ${
+                        theme === 'dark' ? 'text-neutral-800' : 'text-neutral-200'
+                    }`}>
+                        AIREEZA
+                    </h1>
+                    <div className="text-right">
+                        <button 
+                            onClick={scrollToTop}
+                            className={`text-[10px] flex items-center gap-1 transition-colors ${
+                                theme === 'dark' 
+                                    ? 'text-neutral-600 hover:text-white' 
+                                    : 'text-neutral-700 hover:text-black'
+                            }`}
+                        >
+                            BACK TO TOP <Icon icon="solar:arrow-up-linear" />
+                        </button>
                     </div>
                 </div>
             </div>
