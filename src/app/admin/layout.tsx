@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import ScrollAnimationProvider from '@/components/ScrollAnimationProvider'
-import AdminLoader from '@/components/admin/AdminLoader'
 import '../globals.css'
 
 export const metadata: Metadata = {
@@ -17,7 +16,6 @@ export default function AdminLayout({
   return (
     <ThemeProvider>
       <ScrollAnimationProvider>
-        <AdminLoader />
         {children}
       </ScrollAnimationProvider>
     </ThemeProvider>
