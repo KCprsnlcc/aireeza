@@ -22,14 +22,6 @@ export default function StatsCard({ title, value, icon, trend }: StatsCardProps)
         ? 'bg-neutral-900/50 border-neutral-800 hover:bg-neutral-900/70'
         : 'bg-white border-neutral-200 hover:shadow-neutral-200'
     }`}>
-      {/* Vogue-style background decoration */}
-      <div className={`absolute top-0 right-0 w-24 h-24 opacity-5 transition-all duration-700 group-hover:opacity-10 ${
-        theme === 'dark' ? 'text-white' : 'text-black'
-      }`}>
-        <div className="text-6xl font-black tracking-tighter">
-          {value}
-        </div>
-      </div>
       
       <div className="flex items-start justify-between relative z-10">
         <div className="flex-1">

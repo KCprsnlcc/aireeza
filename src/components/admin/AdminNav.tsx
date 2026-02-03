@@ -33,12 +33,6 @@ export default function AdminNav() {
     <nav className={`border-b transition-all duration-700 relative overflow-hidden ${
       theme === 'dark' ? 'bg-black border-neutral-900' : 'bg-white border-neutral-200'
     }`}>
-      {/* Vogue-style background decoration */}
-      <div className="absolute top-0 right-0 w-48 h-full opacity-5">
-        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-          ADMIN
-        </div>
-      </div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex items-center justify-between h-20 py-4">

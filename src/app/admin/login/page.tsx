@@ -66,21 +66,6 @@ export default function AdminLogin() {
     <div className={`min-h-screen flex items-center justify-center p-6 transition-colors relative overflow-hidden ${
       theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
     }`}>
-      {/* Vogue-style background decorations */}
-      <div className={`absolute top-0 left-0 w-48 h-full opacity-5 ${
-        theme === 'dark' ? 'text-white' : 'text-black'
-      }`}>
-        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-          LOGIN
-        </div>
-      </div>
-      <div className={`absolute bottom-0 right-0 w-64 h-full opacity-5 ${
-        theme === 'dark' ? 'text-white' : 'text-black'
-      }`}>
-        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-          ACCESS
-        </div>
-      </div>
       
       <div className="w-full max-w-md relative z-10">
         <div className={`border rounded-2xl p-12 relative overflow-hidden transition-all duration-700 ${
@@ -88,14 +73,6 @@ export default function AdminLogin() {
             ? 'bg-neutral-900/50 border-neutral-800'
             : 'bg-white border-neutral-200'
         }`}>
-          {/* Vogue-style background decoration */}
-          <div className={`absolute top-0 right-0 w-32 h-full opacity-5 ${
-            theme === 'dark' ? 'text-white' : 'text-black'
-          }`}>
-            <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
-              ADMIN
-            </div>
-          </div>
           
           <div className="text-center mb-12 relative z-10">
             <div 
@@ -226,13 +203,6 @@ export default function AdminLogin() {
                       ? 'bg-red-900/30 border-red-800'
                       : 'bg-red-50 border-red-200'
                   }`}>
-                    <div className={`absolute top-0 right-0 w-24 h-full opacity-5 ${
-                      theme === 'dark' ? 'text-red-400' : 'text-red-600'
-                    }`}>
-                      <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
-                        ERROR
-                      </div>
-                    </div>
                     <p className={`text-sm font-light leading-relaxed tracking-wide relative z-10 ${
                       theme === 'dark' ? 'text-red-400' : 'text-red-600'
                     }`}>{error}</p>

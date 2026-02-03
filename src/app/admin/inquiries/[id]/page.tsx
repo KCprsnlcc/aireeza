@@ -60,14 +60,6 @@ export default function InquiryDetailPage() {
       <div className={`min-h-screen transition-colors relative overflow-hidden ${
         theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
       }`}>
-        {/* Vogue-style background decoration */}
-        <div className={`absolute top-0 right-0 w-48 h-full opacity-5 ${
-          theme === 'dark' ? 'text-white' : 'text-black'
-        }`}>
-          <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-            LOADING
-          </div>
-        </div>
         
         <AdminNav />
         <main className="max-w-5xl mx-auto px-6 py-12 relative z-10">
@@ -84,14 +76,6 @@ export default function InquiryDetailPage() {
       <div className={`min-h-screen transition-colors relative overflow-hidden ${
         theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
       }`}>
-        {/* Vogue-style background decoration */}
-        <div className={`absolute top-0 right-0 w-48 h-full opacity-5 ${
-          theme === 'dark' ? 'text-white' : 'text-black'
-        }`}>
-          <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-            NOT FOUND
-          </div>
-        </div>
         
         <AdminNav />
         <main className="max-w-5xl mx-auto px-6 py-12 relative z-10">
@@ -119,14 +103,6 @@ export default function InquiryDetailPage() {
     <div className={`min-h-screen transition-colors relative overflow-hidden ${
       theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
     }`}>
-      {/* Vogue-style background decoration */}
-      <div className={`absolute top-0 right-0 w-48 h-full opacity-5 ${
-        theme === 'dark' ? 'text-white' : 'text-black'
-      }`}>
-        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-          DETAILS
-        </div>
-      </div>
       
       <AdminNav />
       <main className="max-w-5xl mx-auto px-6 py-12 relative z-10">
@@ -149,14 +125,6 @@ export default function InquiryDetailPage() {
             ? 'bg-neutral-900/50 border-neutral-800'
             : 'bg-white border-neutral-200'
         }`}>
-          {/* Vogue-style background decoration */}
-          <div className={`absolute top-0 right-0 w-32 h-full opacity-5 ${
-            theme === 'dark' ? 'text-white' : 'text-black'
-          }`}>
-            <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
-              CLIENT
-            </div>
-          </div>
           
           <div className={`px-8 py-6 border-b flex items-center justify-between relative z-10 ${
             theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
@@ -296,14 +264,6 @@ export default function InquiryDetailPage() {
               ? 'border-neutral-800 bg-neutral-900'
               : 'border-neutral-200 bg-neutral-50'
           }`}>
-            {/* Vogue-style background decoration */}
-            <div className={`absolute top-0 right-0 w-24 h-full opacity-5 ${
-              theme === 'dark' ? 'text-white' : 'text-black'
-            }`}>
-              <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
-                ACTIONS
-              </div>
-            </div>
             
             <div className="relative z-10">
               <InquiryActions inquiry={inquiry} />

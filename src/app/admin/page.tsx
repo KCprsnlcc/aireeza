@@ -91,14 +91,6 @@ export default function AdminDashboard() {
     <div className={`min-h-screen transition-colors relative overflow-hidden ${
       theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
     }`}>
-      {/* Vogue-style background decoration */}
-      <div className={`absolute top-0 right-0 w-48 h-full opacity-5 ${
-        theme === 'dark' ? 'text-white' : 'text-black'
-      }`}>
-        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-          DASHBOARD
-        </div>
-      </div>
       
       <AdminNav />
       <main className="max-w-7xl mx-auto px-6 py-12 relative z-10">
@@ -221,13 +213,6 @@ export default function AdminDashboard() {
                   ? 'bg-red-900/30 border-red-800'
                   : 'bg-red-50 border-red-200'
               }`}>
-                <div className={`absolute top-0 right-0 w-24 h-full opacity-5 ${
-                  theme === 'dark' ? 'text-red-400' : 'text-red-600'
-                }`}>
-                  <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
-                    ERROR
-                  </div>
-                </div>
                 <p className={`text-sm font-light leading-relaxed tracking-wide ${
                   theme === 'dark' ? 'text-red-400' : 'text-red-600'
                 }`}>Error loading inquiries: {error}</p>

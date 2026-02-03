@@ -34,14 +34,6 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
           ? 'bg-neutral-900/50 border-neutral-800'
           : 'bg-white border-neutral-200'
       }`}>
-        {/* Vogue-style background decoration */}
-        <div className={`absolute top-0 right-0 w-32 h-full opacity-5 ${
-          theme === 'dark' ? 'text-white' : 'text-black'
-        }`}>
-          <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
-            EMPTY
-          </div>
-        </div>
         
         <div className="relative z-10">
           <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-8 transition-all duration-500 ${
@@ -68,14 +60,6 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
         ? 'bg-neutral-900/50 border-neutral-800'
         : 'bg-white border-neutral-200'
     }`}>
-      {/* Vogue-style background decoration */}
-      <div className={`absolute top-0 right-0 w-32 h-full opacity-5 ${
-        theme === 'dark' ? 'text-white' : 'text-black'
-      }`}>
-        <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
-          INQUIRIES
-        </div>
-      </div>
       
       <table className="w-full relative z-10">
         <thead>
