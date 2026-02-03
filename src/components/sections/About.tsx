@@ -60,8 +60,8 @@ export default function About() {
                         {/* Image */}
                         <div className="aspect-[4/3] w-full overflow-hidden duotone-red mb-8 zoom-in">
                             <img 
-                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop" 
-                                className="w-full h-full object-cover"
+                                src="/red-about.png" 
+                                className="w-full h-full object-cover object-top"
                                 alt="Professional portrait"
                             />
                         </div>
