@@ -92,7 +92,7 @@ export default function LetsTalk() {
                     {submitted ? (
                         <div className="text-center py-16">
                             <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <Icon icon="ph:check-circle" className="w-8 h-8 text-emerald-400" />
+                                <Icon icon="solar:check-circle-linear" className="w-8 h-8 text-emerald-400" />
                             </div>
                             <h3 className="text-2xl font-semibold mb-3">Inquiry Received</h3>
                             <p className="text-neutral-400 max-w-md mx-auto mb-6">
@@ -299,13 +299,13 @@ export default function LetsTalk() {
                             >
                                 {submitting ? (
                                     <>
-                                        <Icon icon="ph:spinner" className="w-5 h-5 animate-spin" />
+                                        <Icon icon="solar:spinner-linear" className="w-5 h-5 animate-spin" />
                                         Submitting...
                                     </>
                                 ) : (
                                     <>
                                         Discuss a Strategic Question
-                                        <Icon icon="ph:arrow-right" className="w-5 h-5" />
+                                        <Icon icon="solar:paper-plane-linear" className="w-4 h-4" />
                                     </>
                                 )}
                             </button>

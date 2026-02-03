@@ -7,9 +7,9 @@ import { createClient } from '@/lib/supabase/client'
 import { useTheme } from '@/contexts/ThemeContext'
 
 const navItems = [
-  { href: '/admin', label: 'Dashboard', icon: 'ph:house' },
-  { href: '/admin/inquiries', label: 'Inquiries', icon: 'ph:envelope-simple' },
-  { href: '/admin/settings', label: 'Settings', icon: 'ph:gear' },
+  { href: '/admin', label: 'Dashboard', icon: 'solar:home-angle-linear' },
+  { href: '/admin/inquiries', label: 'Inquiries', icon: 'solar:letter-linear' },
+  { href: '/admin/settings', label: 'Settings', icon: 'solar:settings-linear' },
 ]
 
 export default function AdminNav() {
@@ -72,7 +72,7 @@ export default function AdminNav() {
               aria-label="Toggle theme"
             >
               <Icon 
-                icon={theme === 'dark' ? 'ph:sun' : 'ph:moon'} 
+                icon={theme === 'dark' ? 'solar:sun-linear' : 'solar:moon-linear'} 
                 className="w-5 h-5" 
               />
             </button>
@@ -84,7 +84,7 @@ export default function AdminNav() {
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
               }`}
             >
-              <Icon icon="ph:sign-out" className="w-4 h-4" />
+              <Icon icon="solar:logout-3-linear" className="w-4 h-4" />
               Sign out
             </button>
           </div>

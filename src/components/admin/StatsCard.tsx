@@ -33,7 +33,7 @@ export default function StatsCard({ title, value, icon, trend }: StatsCardProps)
           {trend && (
             <p className={`text-xs mt-2 flex items-center gap-1 ${trend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
               <Icon 
-                icon={trend.isPositive ? 'ph:arrow-up' : 'ph:arrow-down'} 
+                icon={trend.isPositive ? 'solar:arrow-up-linear' : 'solar:arrow-down-linear'} 
                 className="w-3 h-3" 
               />
               {Math.abs(trend.value)}% from last week

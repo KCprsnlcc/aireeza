@@ -37,7 +37,7 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
         <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${
           theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
         }`}>
-          <Icon icon="ph:envelope-simple" className="w-6 h-6 text-neutral-400" />
+          <Icon icon="solar:letter-linear" className="w-6 h-6 text-neutral-400" />
         </div>
         <h3 className={`text-sm font-medium mb-1 ${
           theme === 'dark' ? 'text-white' : 'text-neutral-900'
@@ -146,7 +146,7 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
                   }`}
                 >
                   View
-                  <Icon icon="ph:arrow-right" className="w-4 h-4" />
+                  <Icon icon="solar:arrow-right-linear" className="w-4 h-4" />
                 </Link>
               </td>
             </tr>

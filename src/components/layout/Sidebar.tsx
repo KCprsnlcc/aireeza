@@ -37,7 +37,7 @@ export default function Sidebar() {
             <div className="hidden lg:block space-y-2 animate-clip-in" style={{ animationDelay: "0.3s" }}>
                 <div className="flex items-center gap-2 mb-4">
                     <div className="w-8 h-8 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-600">
-                        <Icon icon="ph:user" width="16" height="16" />
+                                <Icon icon="solar:user-circle-linear" width="16" height="16" />
                     </div>
                     {/* <img src="https://ui-avatars.com/api/?name=Aireeza+Tandih&background=random&color=fff" alt="User" class="w-8 h-8 rounded-full opacity-80"> */}
                     <div className="text-sm leading-tight">
