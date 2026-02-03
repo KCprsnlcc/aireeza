@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Navbar from "./layout/Navbar";
 import ScrollAnimationProvider from "./ScrollAnimationProvider";
+import HoverSidebar from "./layout/HoverSidebar";
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -16,6 +17,7 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
                 </main>
             ) : (
                 <ScrollAnimationProvider>
+                    <HoverSidebar />
                     <Navbar />
                     <main>
                         {children}

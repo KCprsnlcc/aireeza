@@ -33,7 +33,7 @@ html.light {
 body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, margin-left 0.2s ease-out;
 }
 
 html.dark body {
@@ -402,5 +402,26 @@ input:focus {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hover Sidebar Styles */
+#hover-sidebar {
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+html.dark #hover-sidebar {
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide hover sidebar on mobile */
+@media (max-width: 1024px) {
+  #hover-sidebar {
+    display: none;
   }
 }

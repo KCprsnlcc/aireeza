@@ -29,24 +29,21 @@ export default function Hero() {
                     <div className={`grid grid-cols-1 md:grid-cols-3 border-y py-8 mb-12 ${
                         theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
                     }`}>
-                        <div className={`flex flex-col items-center justify-center text-center gap-2 border-r ${
+                        <div className={`flex flex-col items-center justify-center text-center gap-4 border-r ${
                             theme === 'dark' ? 'border-neutral-800/50' : 'border-neutral-200/50'
                         }`}>
-                            <Icon icon="solar:graph-new-up-linear" className="text-neutral-500 text-xl" />
                             <span className={`text-xs font-normal uppercase tracking-widest ${
                                 theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                             }`}>Financial<br />Insight</span>
                         </div>
-                        <div className={`flex flex-col items-center justify-center text-center gap-2 border-r ${
+                        <div className={`flex flex-col items-center justify-center text-center gap-4 border-r ${
                             theme === 'dark' ? 'border-neutral-800/50' : 'border-neutral-200/50'
                         }`}>
-                            <Icon icon="solar:shield-check-linear" className="text-neutral-500 text-xl" />
                             <span className={`text-xs font-normal uppercase tracking-widest ${
                                 theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                             }`}>Risk<br />Management</span>
                         </div>
-                        <div className="flex flex-col items-center justify-center text-center gap-2">
-                            <Icon icon="solar:users-group-rounded-linear" className="text-neutral-500 text-xl" />
+                        <div className="flex flex-col items-center justify-center text-center gap-4">
                             <span className={`text-xs font-normal uppercase tracking-widest ${
                                 theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                             }`}>Strategic<br />Advisory</span>
