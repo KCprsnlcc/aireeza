@@ -59,7 +59,7 @@ export default function About() {
                                 ? 'border-neutral-700 bg-neutral-900/30' 
                                 : 'border-neutral-300 bg-neutral-50'
                         }`}>
-                            <div className={`absolute -left-2 top-0 text-6xl font-black opacity-10 ${
+                            <div className={`absolute left-3 top-0 text-6xl font-black opacity-10 ${
                                 theme === 'dark' ? 'text-white' : 'text-black'
                             }`}>"</div>
                             <p className={`text-sm font-light leading-relaxed italic tracking-wide ${

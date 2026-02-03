@@ -186,7 +186,7 @@ export default function Hero() {
                             }`}>Common Issues</h3>
                             <ul className="space-y-8">
                                 <li className="flex items-start gap-6 group">
-                                    <div className={`mt-2 transition-all duration-500 ${
+                                    <div className={`transition-all duration-500 ${
                                         theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text-[#ff3333]'
                                     }`}>
                                         <Icon icon="solar:danger-circle-linear" className="text-2xl" />
@@ -196,7 +196,7 @@ export default function Hero() {
                                     }`}>Profits look good, but cash feels tight.</span>
                                 </li>
                                 <li className="flex items-start gap-6 group">
-                                    <div className={`mt-2 transition-all duration-500 ${
+                                    <div className={`transition-all duration-500 ${
                                         theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text-[#ff3333]'
                                     }`}>
                                         <Icon icon="solar:file-remove-linear" className="text-2xl" />
@@ -206,8 +206,8 @@ export default function Hero() {
                                     }`}>Reports exist, but decisions still feel uncertain.</span>
                                 </li>
                                 <li className="flex items-start gap-6 group">
-                                    <div className={`mt-2 transition-all duration-500 ${
-                                        theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text:text-[#ff3333]'
+                                    <div className={`transition-all duration-500 ${
+                                        theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text:[#ff3333]'
                                     }`}>
                                         <Icon icon="solar:sort-from-top-to-bottom-linear" className="text-2xl" />
                                     </div>
@@ -216,7 +216,7 @@ export default function Hero() {
                                     }`}>Growth adds complexity instead of clarity.</span>
                                 </li>
                                 <li className="flex items-start gap-6 group">
-                                    <div className={`mt-2 transition-all duration-500 ${
+                                    <div className={`transition-all duration-500 ${
                                         theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text:[#ff3333]'
                                     }`}>
                                         <Icon icon="solar:wheel-angle-linear" className="text-2xl" />
@@ -233,7 +233,7 @@ export default function Hero() {
                                 ? 'border-neutral-700 bg-neutral-900/20' 
                                 : 'border-neutral-300 bg-neutral-50'
                         }`}>
-                            <div className={`absolute -left-2 top-8 text-6xl font-black opacity-10 ${
+                            <div className={`absolute left-10 top-8 text-6xl font-black opacity-20 ${
                                 theme === 'dark' ? 'text-white' : 'text-black'
                             }`}>"</div>
                             <div className="text-center">
