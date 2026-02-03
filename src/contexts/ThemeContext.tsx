@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
-            <div key={mounted ? theme : 'initial'} className="min-h-screen theme-transition">
+            <div key={mounted ? theme : 'initial'} className="min-h-screen">
                 {children}
             </div>
         </ThemeContext.Provider>
