@@ -19,10 +19,6 @@ export default function AdminNav() {
   const supabase = createClient()
   const { theme, toggleTheme } = useTheme()
 
-  // Apply scrub text to admin title
-  const adminTitle = "AIREEZA ADMIN"
-  const { containerRef, spansHtml } = useScrubText(adminTitle, theme)
-
   const handleSignOut = async () => {
     await supabase.auth.signOut()
     router.push('/admin/login')
@@ -38,14 +34,17 @@ export default function AdminNav() {
         <div className="flex items-center justify-between h-20 py-4">
           <div className="flex items-center gap-12">
             {/* Vogue-style admin title */}
-            <Link href="/admin" className="group">
-              <div 
-                ref={containerRef}
-                className={`scrub-text text-2xl font-black tracking-tighter leading-[0.8] transition-all duration-500 ${
-                  theme === 'dark' ? 'text-white' : 'text-black'
-                }`}
-                dangerouslySetInnerHTML={{ __html: spansHtml }}
+            <Link href="/admin" className="group flex items-center gap-3">
+              <img 
+                src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
+                alt="AIREEZA"
+                className="h-6 w-auto"
               />
+              <span className={`text-2xl font-black tracking-tighter leading-[0.8] transition-all duration-500 ${
+                theme === 'dark' ? 'text-white' : 'text-black'
+              }`}>
+                ADMIN
+              </span>
             </Link>
             
             {/* Vogue-style navigation */}

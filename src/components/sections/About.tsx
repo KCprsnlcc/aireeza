@@ -96,9 +96,14 @@ export default function About() {
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="h-full w-full relative">
                                     {/* Top left fashion magazine style */}
-                                    <div className="absolute top-6 left-6 hidden lg:block">
-                                        <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
-                                            AIREEZA
+                                    <div className="absolute top-6 left-6 hidden lg:block z-50">
+                                        <div className="relative">
+                                            <img 
+                                                src="/logo/aireeza-logo-w.svg"
+                                                alt="AIREEZA"
+                                                className="h-5 w-auto relative z-10"
+                                                style={{ mixBlendMode: 'normal' }}
+                                            />
                                         </div>
                                         <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
                                             L. TANDIH

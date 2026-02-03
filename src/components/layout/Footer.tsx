@@ -3,15 +3,10 @@
 import { Icon } from "@iconify/react";
 import { useTheme } from "@/contexts/ThemeContext";
 import ThemeToggle from "../ui/ThemeToggle";
-import { useScrubText } from "@/hooks/useScrubText";
 
 export default function Footer() {
     const { theme } = useTheme();
     
-    // Apply scrub text to brand name
-    const brandText = "AIREEZA";
-    const { containerRef, spansHtml } = useScrubText(brandText, theme);
-
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -58,9 +53,14 @@ export default function Footer() {
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="h-full w-full relative">
                                     {/* Top left fashion magazine style */}
-                                    <div className="absolute top-4 left-4">
-                                        <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
-                                            AIREEZA
+                                    <div className="absolute top-4 left-4 z-50">
+                                        <div className="relative">
+                                            <img 
+                                                src="/logo/aireeza-logo-w.svg"
+                                                alt="AIREEZA"
+                                                className="h-4 w-auto relative z-10"
+                                                style={{ mixBlendMode: 'normal' }}
+                                            />
                                         </div>
                                         <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
                                             L. TANDIH
@@ -113,19 +113,26 @@ export default function Footer() {
                 <div className={`border-t pt-16 flex justify-between items-end fade-up relative overflow-hidden ${theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200'
                     }`}>
                     <div className="text-left">
-                        <span className={`text-[10px] font-light tracking-wide ${theme === 'dark' ? 'text-neutral-600' : 'text-neutral-700'}`}>
-                            ©2024 AIREEZA
-                        </span>
+                        <div className="flex items-center gap-2">
+                            <img 
+                                src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
+                                alt="AIREEZA"
+                                className="h-3 w-auto"
+                            />
+                            <span className={`text-[10px] font-light tracking-wide ${theme === 'dark' ? 'text-neutral-600' : 'text-neutral-700'}`}>
+                                ©2024
+                            </span>
+                        </div>
                     </div>
                     
-                    {/* Vogue-style brand name with scrub text */}
+                    {/* Vogue-style brand name with logo */}
                     <div className="text-center">
-                        <div 
-                            ref={containerRef}
-                            className={`scrub-text text-[15vw] leading-[0.7] font-black tracking-tighter select-none pointer-events-none opacity-50 transition-all duration-700 hover:opacity-70 ${
-                                theme === 'dark' ? 'text-neutral-800' : 'text-neutral-200'
+                        <img 
+                            src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
+                            alt="AIREEZA"
+                            className={`h-[15vw] w-auto select-none pointer-events-none transition-all duration-700 hover:opacity-70 ${
+                                theme === 'dark' ? 'opacity-30' : 'opacity-20'
                             }`}
-                            dangerouslySetInnerHTML={{ __html: spansHtml }}
                         />
                     </div>
                     

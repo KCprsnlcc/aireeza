@@ -72,20 +72,22 @@ export default function HoverSidebar() {
                 }`}>
                     {/* Vogue-style background decoration */}
                     <div className="absolute top-0 right-0 w-32 h-full opacity-5">
-                        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
-                            AIREEZA
-                        </div>
+                        <img 
+                            src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
+                            alt="AIREEZA"
+                            className="h-full w-auto opacity-5"
+                        />
                     </div>
                     
                     <div className="p-12 h-full flex flex-col relative z-10">
                         {/* Vogue-style Header */}
                         <div className="mb-16">
                             <div className="space-y-1">
-                                <h1 className={`text-3xl font-black tracking-tighter leading-[0.8] ${
-                                    theme === 'dark' ? 'text-white' : 'text-black'
-                                }`}>
-                                    AIREEZA
-                                </h1>
+                                <img 
+                                    src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
+                                    alt="AIREEZA"
+                                    className="h-8 w-auto"
+                                />
                                 <p className={`text-xs font-light tracking-[0.4em] uppercase ${
                                     theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
                                 }`}>

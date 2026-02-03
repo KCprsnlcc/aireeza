@@ -20,9 +20,13 @@ export default function Hero() {
                 <div className="max-w-[1600px] mx-auto px-6">
                     {/* Giant Title */}
                     <div className="text-center mb-12 relative z-10">
-                        <h1 className="text-[13vw] leading-[0.8] font-semibold tracking-tighter">
-                            AIREEZA
-                        </h1>
+                        <div className="flex justify-center items-center">
+                            <img 
+                                src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
+                                alt="AIREEZA"
+                                className="h-[13vw] w-auto"
+                            />
+                        </div>
                         <p className={`text-[2vw] font-light tracking-[0.5em] mt-4 ${
                             theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                         }`}>
@@ -67,9 +71,14 @@ export default function Hero() {
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="h-full w-full relative">
                                 {/* Top left fashion magazine style */}
-                                <div className="absolute top-8 left-8 hidden lg:block">
-                                    <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
-                                        AIREEZA
+                                <div className="absolute top-8 left-8 hidden lg:block z-50">
+                                    <div className="relative">
+                                        <img 
+                                            src="/logo/aireeza-logo-w.svg"
+                                            alt="AIREEZA"
+                                            className="h-6 w-auto relative z-10"
+                                            style={{ mixBlendMode: 'normal' }}
+                                        />
                                     </div>
                                     <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
                                         L. TANDIH
@@ -121,8 +130,13 @@ export default function Hero() {
                                 {/* Mobile fashion layout */}
                                 <div className="lg:hidden flex flex-col justify-between h-full p-8">
                                     <div className="text-center">
-                                        <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
-                                            AIREEZA
+                                        <div className="relative z-50">
+                                            <img 
+                                                src="/logo/aireeza-logo-w.svg"
+                                                alt="AIREEZA"
+                                                className="h-5 w-auto mx-auto relative z-10"
+                                                style={{ mixBlendMode: 'normal' }}
+                                            />
                                         </div>
                                     </div>
                                     <div className="text-center">
