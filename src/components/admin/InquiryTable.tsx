@@ -7,14 +7,17 @@ import { useTheme } from '@/contexts/ThemeContext'
 
 export interface Inquiry {
   id: string
-  role: string
-  scale: string
+  full_name: string | null
+  email: string | null
+  phone: string | null
+  role: string | null
+  scale: string | null
   challenges: string[]
   decision: string | null
   prompt: string | null
   timing: string | null
   advisors: string | null
-  status: 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
+  status: 'incomplete' | 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
   notes: string | null
   created_at: string
   updated_at: string
@@ -71,6 +74,11 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
             <th className={`text-left text-xs font-black uppercase tracking-[0.3em] px-8 py-6 leading-relaxed ${
               theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
             }`}>
+              Contact
+            </th>
+            <th className={`text-left text-xs font-black uppercase tracking-[0.3em] px-8 py-6 leading-relaxed ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+            }`}>
               Role
             </th>
             <th className={`text-left text-xs font-black uppercase tracking-[0.3em] px-8 py-6 leading-relaxed ${
@@ -108,17 +116,49 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
                 : 'hover:bg-neutral-50'
             }`}>
               <td className="px-8 py-6">
+                <div className="space-y-1">
+                  {inquiry.full_name && (
+                    <p className={`text-sm font-light leading-relaxed tracking-wide truncate max-w-[200px] transition-colors duration-500 ${
+                      theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                    }`}>
+                      {inquiry.full_name}
+                    </p>
+                  )}
+                  {inquiry.email && (
+                    <p className={`text-xs font-light leading-relaxed tracking-wide truncate max-w-[200px] transition-colors duration-500 ${
+                      theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                    }`}>
+                      {inquiry.email}
+                    </p>
+                  )}
+                  {inquiry.phone && (
+                    <p className={`text-xs font-light leading-relaxed tracking-wide transition-colors duration-500 ${
+                      theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                    }`}>
+                      {inquiry.phone}
+                    </p>
+                  )}
+                  {!inquiry.full_name && !inquiry.email && !inquiry.phone && (
+                    <p className={`text-xs font-light leading-relaxed tracking-wide transition-colors duration-500 ${
+                      theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'
+                    }`}>
+                      No contact info
+                    </p>
+                  )}
+                </div>
+              </td>
+              <td className="px-8 py-6">
                 <p className={`text-sm font-light leading-relaxed tracking-wide truncate max-w-[240px] transition-colors duration-500 ${
                   theme === 'dark' ? 'text-white' : 'text-neutral-900'
                 }`}>
-                  {inquiry.role}
+                  {inquiry.role || '—'}
                 </p>
               </td>
               <td className="px-8 py-6">
                 <p className={`text-xs font-light leading-relaxed tracking-wide truncate max-w-[200px] transition-colors duration-500 ${
                   theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
                 }`}>
-                  {inquiry.scale}
+                  {inquiry.scale || '—'}
                 </p>
               </td>
               <td className="px-8 py-6">

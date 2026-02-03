@@ -2,9 +2,15 @@
 
 import { useTheme } from '@/contexts/ThemeContext'
 
-type Status = 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
+type Status = 'incomplete' | 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
 
 const statusStyles: Record<Status, { bgLight: string; textLight: string; bgDark: string; textDark: string }> = {
+  incomplete: { 
+    bgLight: 'bg-slate-50', 
+    textLight: 'text-slate-700',
+    bgDark: 'bg-slate-900/40',
+    textDark: 'text-slate-300'
+  },
   pending: { 
     bgLight: 'bg-amber-50', 
     textLight: 'text-amber-800',

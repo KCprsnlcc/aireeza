@@ -12,14 +12,17 @@ import { useScrubText } from '@/hooks/useScrubText'
 
 interface Inquiry {
   id: string
-  role: string
-  scale: string
+  full_name: string | null
+  email: string | null
+  phone: string | null
+  role: string | null
+  scale: string | null
   challenges: string[]
   decision: string | null
   prompt: string | null
   timing: string | null
   advisors: string | null
-  status: 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
+  status: 'incomplete' | 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
   notes: string | null
   created_at: string
   updated_at: string
@@ -30,6 +33,7 @@ export default function AdminDashboard() {
   const supabase = createClient()
   const [inquiries, setInquiries] = useState<Inquiry[]>([])
   const [totalCount, setTotalCount] = useState(0)
+  const [incompleteCount, setIncompleteCount] = useState(0)
   const [pendingCount, setPendingCount] = useState(0)
   const [scheduledCount, setScheduledCount] = useState(0)
   const [completedCount, setCompletedCount] = useState(0)
@@ -61,6 +65,12 @@ export default function AdminDashboard() {
           .from('inquiries')
           .select('*', { count: 'exact', head: true })
         setTotalCount(total || 0)
+
+        const { count: incomplete } = await supabase
+          .from('inquiries')
+          .select('*', { count: 'exact', head: true })
+          .eq('status', 'incomplete')
+        setIncompleteCount(incomplete || 0)
 
         const { count: pending } = await supabase
           .from('inquiries')
@@ -161,11 +171,16 @@ export default function AdminDashboard() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
               <StatsCard
                 title="Total Inquiries"
                 value={totalCount}
                 icon="ph:envelope-simple"
+              />
+              <StatsCard
+                title="Incomplete"
+                value={incompleteCount}
+                icon="ph:draft"
               />
               <StatsCard
                 title="Pending Review"
