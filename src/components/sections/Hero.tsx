@@ -55,13 +55,92 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* Red Hero Image (Duotone) */}
+                    {/* Red Hero Image (Duotone) with Overlay Text */}
                     <div className="w-full aspect-[16/9] md:aspect-[21/9] duotone-red overflow-hidden relative">
                         <img 
                             src="/red-hero.png" 
                             className="w-full h-full object-cover object-top transition-transform duration-[2s] hover:scale-105" 
                             alt="Office Architecture"
                         />
+                        
+                        {/* Vogue-style Text Overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="h-full w-full relative">
+                                {/* Top left fashion magazine style */}
+                                <div className="absolute top-8 left-8 hidden lg:block">
+                                    <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
+                                        AIREEZA
+                                    </div>
+                                    <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
+                                        L. TANDIH
+                                    </div>
+                                </div>
+                                
+                                {/* Main fashion statement - dramatic positioning */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 text-center">
+                                    <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tight leading-[0.8] text-white">
+                                        TURN<br />FINANCIAL<br />
+                                        <span className="block text-4xl md:text-5xl lg:text-7xl font-light tracking-wider text-white/90">
+                                            COMPLEXITY
+                                        </span>
+                                    </h2>
+                                </div>
+                                
+                                {/* Right side fashion caption */}
+                                <div className="absolute top-1/3 right-8 hidden lg:block">
+                                    <div className="text-xs font-normal uppercase tracking-widest text-white/70 writing-mode-vertical">
+                                        Strategic • Financial • Insight
+                                    </div>
+                                </div>
+                                
+                                {/* Bottom left dramatic text */}
+                                <div className="absolute bottom-12 left-8 hidden lg:block">
+                                    <div className="space-y-2">
+                                        <div className="text-2xl font-light tracking-widest text-white/30">
+                                            CLARITY
+                                        </div>
+                                        <div className="text-lg font-light tracking-wide text-white/50">
+                                            clear, profitable decisions
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                {/* Bottom right fashion details */}
+                                <div className="absolute bottom-12 right-8 hidden lg:block text-right">
+                                    <div className="text-xs font-normal uppercase tracking-widest text-white/60">
+                                        The Problem
+                                    </div>
+                                    <div className="text-xs font-light uppercase tracking-widest text-white/40 mt-1">
+                                        Financial Insight
+                                    </div>
+                                </div>
+                                
+                                {/* Mobile fashion layout */}
+                                <div className="lg:hidden flex flex-col justify-between h-full p-8">
+                                    <div className="text-center">
+                                        <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
+                                            AIREEZA
+                                        </div>
+                                    </div>
+                                    <div className="text-center">
+                                        <h2 className="text-4xl font-black tracking-tight leading-[0.8] text-white">
+                                            TURN<br/>FINANCIAL<br/>
+                                            <span className="block text-3xl font-light tracking-wider text-white/90">
+                                                COMPLEXITY
+                                            </span>
+                                        </h2>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="text-lg font-light tracking-widest text-white/30">
+                                            CLARITY
+                                        </div>
+                                        <div className="text-sm font-light tracking-wide text-white/50">
+                                            clear, profitable decisions
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>

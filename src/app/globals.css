@@ -451,3 +451,9 @@ html.light .scrub-text span {
 html.light .scrub-text span.active {
   color: rgb(0 0 0);
 }
+
+/* Vogue-style vertical text */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
