@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import { useTheme } from "@/contexts/ThemeContext";
+import ThemeToggle from "../ui/ThemeToggle";
 
 export default function Footer() {
     const { theme } = useTheme();
@@ -54,15 +55,18 @@ export default function Footer() {
                         AIREEZA
                     </h1>
                     <div className="text-right">
-                        <button
-                            onClick={scrollToTop}
-                            className={`text-[10px] flex items-center gap-1 transition-colors ${theme === 'dark'
-                                    ? 'text-neutral-600 hover:text-white'
-                                    : 'text-neutral-700 hover:text-black'
-                                }`}
-                        >
-                            BACK TO TOP <Icon icon="solar:arrow-up-linear" />
-                        </button>
+                        <div className="flex items-center gap-3">
+                            <ThemeToggle />
+                            <button
+                                onClick={scrollToTop}
+                                className={`text-[10px] flex items-center gap-1 transition-colors ${theme === 'dark'
+                                        ? 'text-neutral-600 hover:text-white'
+                                        : 'text-neutral-700 hover:text-black'
+                                    }`}
+                            >
+                                BACK TO TOP <Icon icon="solar:arrow-up-linear" />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

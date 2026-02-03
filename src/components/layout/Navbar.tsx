@@ -2,7 +2,6 @@
 
 import { Icon } from "@iconify/react";
 import { useState, useEffect } from "react";
-import ThemeToggle from "../ui/ThemeToggle";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Navbar() {
@@ -14,7 +13,7 @@ export default function Navbar() {
 
     if (!mounted) {
         return (
-            <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm bg-white/80 border-black/10 text-black">
+            <nav className="w-full px-6 py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm bg-white/80 border-black/10 text-black">
                 <div className="w-1/3">EST. 2024</div>
                 <div className="w-1/3 flex justify-center">
                     <Icon icon="solar:infinity-linear" width="24" height="24" />
@@ -39,7 +38,7 @@ function NavbarContent() {
     const { theme } = useTheme();
 
     return (
-        <nav className={`fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm ${
+        <nav className={`w-full px-6 py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm ${
             theme === 'dark' 
                 ? 'mix-blend-difference border-white/10 text-white bg-transparent' 
                 : 'bg-white/80 border-black/10 text-black'
@@ -49,7 +48,6 @@ function NavbarContent() {
                 <Icon icon="solar:infinity-linear" width="24" height="24" />
             </div>
             <div className="w-1/3 flex justify-end items-center gap-4">
-                <ThemeToggle />
                 <a 
                     href="#contact" 
                     className={`border rounded-full px-6 py-2 transition-all duration-300 ${
