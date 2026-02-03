@@ -9,14 +9,17 @@ import { useScrubText } from '@/hooks/useScrubText'
 
 interface Inquiry {
   id: string
-  role: string
-  scale: string
+  full_name: string | null
+  email: string | null
+  phone: string | null
+  role: string | null
+  scale: string | null
   challenges: string[]
   decision: string | null
   prompt: string | null
   timing: string | null
   advisors: string | null
-  status: 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
+  status: 'incomplete' | 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
   notes: string | null
   created_at: string
   updated_at: string
