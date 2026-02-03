@@ -108,7 +108,7 @@ export default function HoverSidebar() {
                                 }`}
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
-                                    HERO
+                                    HOME
                                 </div>
                                 <div className={`mt-1 h-px w-full transition-all duration-500 ${
                                     theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
