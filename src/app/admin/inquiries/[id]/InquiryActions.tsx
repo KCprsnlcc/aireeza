@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import { useTheme } from '@/contexts/ThemeContext'
+import { useScrubText } from '@/hooks/useScrubText'
 
 type Status = 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
 
@@ -32,6 +33,10 @@ export default function InquiryActions({ inquiry }: InquiryActionsProps) {
   const [saved, setSaved] = useState(false)
   const router = useRouter()
   const supabase = createClient()
+  
+  // Apply scrub text to actions title
+  const actionsTitle = "UPDATE STATUS"
+  const { containerRef, spansHtml } = useScrubText(actionsTitle, theme)
 
   const handleSave = async () => {
     setSaving(true)
@@ -52,21 +57,24 @@ export default function InquiryActions({ inquiry }: InquiryActionsProps) {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row gap-4">
+    <div className="space-y-8">
+      {/* Vogue-style status update section */}
+      <div className="flex flex-col sm:flex-row gap-8">
         <div className="flex-1">
-          <label className={`block text-xs font-medium uppercase tracking-wider mb-2 ${
-            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
-          }`}>
-            Update Status
-          </label>
+          <div 
+            ref={containerRef}
+            className={`scrub-text text-xs font-black uppercase tracking-[0.3em] mb-4 pb-3 border-b ${
+              theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
+            }`}
+            dangerouslySetInnerHTML={{ __html: spansHtml }}
+          />
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value as Status)}
-            className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 transition-colors ${
+            className={`w-full px-6 py-4 border-2 rounded-xl text-sm font-light tracking-wide focus:outline-none focus:ring-0 transition-all duration-500 ${
               theme === 'dark'
-                ? 'bg-neutral-900 border-neutral-700 text-white focus:ring-white focus:border-white'
-                : 'bg-white border-neutral-300 text-neutral-900 focus:ring-neutral-900 focus:border-transparent'
+                ? 'bg-neutral-900 border-neutral-700 text-white focus:border-white'
+                : 'bg-white border-neutral-300 text-neutral-900 focus:border-black'
             }`}
           >
             {statusOptions.map((option) => (
@@ -78,54 +86,58 @@ export default function InquiryActions({ inquiry }: InquiryActionsProps) {
         </div>
       </div>
 
+      {/* Vogue-style notes section */}
       <div>
-        <label className={`block text-xs font-medium uppercase tracking-wider mb-2 ${
-          theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-4 pb-3 border-b ${
+          theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
         }`}>
           Internal Notes
-        </label>
+        </h3>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          rows={3}
+          rows={4}
           placeholder="Add notes about this inquiry..."
-          className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 resize-none transition-colors ${
+          className={`w-full px-6 py-4 border-2 rounded-xl text-sm font-light tracking-wide focus:outline-none focus:ring-0 resize-none transition-all duration-500 ${
             theme === 'dark'
-              ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:ring-white focus:border-white'
-              : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:ring-neutral-900 focus:border-transparent'
+              ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white'
+              : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-black'
           }`}
         />
       </div>
 
-      <div className="flex items-center gap-3">
+      {/* Vogue-style actions section */}
+      <div className="flex items-center gap-6">
         <button
           onClick={handleSave}
           disabled={saving}
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+          className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed group ${
             theme === 'dark'
               ? 'bg-white text-black hover:bg-neutral-200'
-              : 'bg-neutral-900 text-white hover:bg-neutral-800'
+              : 'bg-black text-white hover:bg-neutral-800'
           }`}
         >
           {saving ? (
             <>
               <Icon icon="ph:spinner" className="w-4 h-4 animate-spin" />
-              Saving...
+              <span>Saving...</span>
             </>
           ) : (
             <>
-              <Icon icon="ph:floppy-disk" className="w-4 h-4" />
-              Save Changes
+              <Icon icon="ph:floppy-disk" className="w-4 h-4 transition-transform duration-500 group-hover:scale-110" />
+              <span>Save Changes</span>
             </>
           )}
         </button>
+        
         {saved && (
-          <span className={`flex items-center gap-1 text-sm ${
-            theme === 'dark' ? 'text-green-400' : 'text-green-600'
+          <div className={`flex items-center gap-2 text-xs font-light uppercase tracking-wide transition-all duration-500 ${
+            theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
           }`}>
+            <div className="w-2 h-2 rounded-full bg-current animate-pulse"></div>
             <Icon icon="ph:check" className="w-4 h-4" />
-            Saved
-          </span>
+            <span>Saved</span>
+          </div>
         )}
       </div>
     </div>

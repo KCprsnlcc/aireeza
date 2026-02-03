@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import { useTheme } from '@/contexts/ThemeContext'
+import { useScrubText } from '@/hooks/useScrubText'
 
 export default function AdminLogin() {
   const { theme } = useTheme()
@@ -16,6 +17,10 @@ export default function AdminLogin() {
   const [magicLinkSent, setMagicLinkSent] = useState(false)
   const router = useRouter()
   const supabase = createClient()
+  
+  // Apply scrub text to login headline
+  const loginTitle = "ADMIN ACCESS"
+  const { containerRef, spansHtml } = useScrubText(loginTitle, theme)
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -58,47 +63,76 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className={`min-h-screen flex items-center justify-center p-6 transition-colors ${
+    <div className={`min-h-screen flex items-center justify-center p-6 transition-colors relative overflow-hidden ${
       theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
     }`}>
-      <div className="w-full max-w-md">
-        <div className={`border rounded-lg p-8 transition-colors ${
+      {/* Vogue-style background decorations */}
+      <div className={`absolute top-0 left-0 w-48 h-full opacity-5 ${
+        theme === 'dark' ? 'text-white' : 'text-black'
+      }`}>
+        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
+          LOGIN
+        </div>
+      </div>
+      <div className={`absolute bottom-0 right-0 w-64 h-full opacity-5 ${
+        theme === 'dark' ? 'text-white' : 'text-black'
+      }`}>
+        <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
+          ACCESS
+        </div>
+      </div>
+      
+      <div className="w-full max-w-md relative z-10">
+        <div className={`border rounded-2xl p-12 relative overflow-hidden transition-all duration-700 ${
           theme === 'dark'
             ? 'bg-neutral-900/50 border-neutral-800'
             : 'bg-white border-neutral-200'
         }`}>
-          <div className="text-center mb-8">
-            <h1 className={`text-2xl font-semibold mb-2 ${
-              theme === 'dark' ? 'text-white' : 'text-neutral-900'
-            }`}>Admin Access</h1>
-            <p className={`text-sm ${
-              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+          {/* Vogue-style background decoration */}
+          <div className={`absolute top-0 right-0 w-32 h-full opacity-5 ${
+            theme === 'dark' ? 'text-white' : 'text-black'
+          }`}>
+            <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
+              ADMIN
+            </div>
+          </div>
+          
+          <div className="text-center mb-12 relative z-10">
+            <div 
+              ref={containerRef}
+              className={`scrub-text text-3xl font-black tracking-tighter leading-[0.8] mb-6 ${
+                theme === 'dark' ? 'text-white' : 'text-black'
+              }`}
+              dangerouslySetInnerHTML={{ __html: spansHtml }}
+            />
+            <p className={`text-lg font-light leading-relaxed tracking-wide ${
+              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
             }`}>Sign in to manage inquiries</p>
           </div>
 
           {magicLinkSent ? (
-            <div className="text-center py-8">
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${
+            <div className="text-center py-12 relative z-10">
+              <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 transition-all duration-500 ${
                 theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
               }`}>
-                <Icon icon="ph:envelope" className={`w-6 h-6 ${
+                <Icon icon="ph:envelope" className={`w-10 h-10 ${
                   theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                 }`} />
               </div>
-              <h2 className={`text-lg font-medium mb-2 ${
-                theme === 'dark' ? 'text-white' : 'text-neutral-900'
+              <h2 className={`text-2xl font-black tracking-tighter mb-4 ${
+                theme === 'dark' ? 'text-white' : 'text-black'
               }`}>Check your email</h2>
-              <p className={`text-sm ${
-                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+              <p className={`text-lg font-light leading-relaxed tracking-wide ${
+                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
               }`}>
                 We sent a magic link to <strong>{email}</strong>
               </p>
               <button
                 onClick={() => setMagicLinkSent(false)}
-                className={`mt-6 text-sm underline transition-colors ${
+                className={`mt-8 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 hover:scale-105 ${
                   theme === 'dark'
                     ? 'text-neutral-400 hover:text-white'
-                    : 'text-neutral-600 hover:text-neutral-900'
+                    : 'text-neutral-600 hover:text-black'
                 }`}
               >
                 Try a different email
@@ -106,16 +140,17 @@ export default function AdminLogin() {
             </div>
           ) : (
             <>
-              <div className={`flex border-b mb-6 ${
+              {/* Vogue-style mode selector */}
+              <div className={`flex border-b mb-8 relative z-10 ${
                 theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
               }`}>
                 <button
                   onClick={() => setMode('login')}
-                  className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${
+                  className={`flex-1 pb-4 text-xs font-black uppercase tracking-[0.3em] border-b-2 transition-all duration-500 ${
                     mode === 'login'
                       ? theme === 'dark'
                         ? 'border-white text-white'
-                        : 'border-neutral-900 text-neutral-900'
+                        : 'border-black text-black'
                       : theme === 'dark'
                         ? 'border-transparent text-neutral-500 hover:text-neutral-300'
                         : 'border-transparent text-neutral-400 hover:text-neutral-600'
@@ -125,11 +160,11 @@ export default function AdminLogin() {
                 </button>
                 <button
                   onClick={() => setMode('magic')}
-                  className={`flex-1 pb-3 text-sm font-medium border-b-2 transition-colors ${
+                  className={`flex-1 pb-4 text-xs font-black uppercase tracking-[0.3em] border-b-2 transition-all duration-500 ${
                     mode === 'magic'
                       ? theme === 'dark'
                         ? 'border-white text-white'
-                        : 'border-neutral-900 text-neutral-900'
+                        : 'border-black text-black'
                       : theme === 'dark'
                         ? 'border-transparent text-neutral-500 hover:text-neutral-300'
                         : 'border-transparent text-neutral-400 hover:text-neutral-600'
@@ -139,10 +174,11 @@ export default function AdminLogin() {
                 </button>
               </div>
 
-              <form onSubmit={mode === 'login' ? handleLogin : handleMagicLink} className="space-y-4">
+              {/* Vogue-style form */}
+              <form onSubmit={mode === 'login' ? handleLogin : handleMagicLink} className="space-y-8 relative z-10">
                 <div>
-                  <label htmlFor="email" className={`block text-sm font-medium mb-1.5 ${
-                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                  <label htmlFor="email" className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 pb-3 border-b ${
+                    theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
                   }`}>
                     Email
                   </label>
@@ -152,10 +188,10 @@ export default function AdminLogin() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 transition-colors ${
+                    className={`w-full px-6 py-4 border-2 rounded-xl text-sm font-light tracking-wide focus:outline-none focus:ring-0 transition-all duration-500 ${
                       theme === 'dark'
-                        ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:ring-white focus:border-white'
-                        : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:ring-neutral-900 focus:border-transparent'
+                        ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white'
+                        : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-black'
                     }`}
                     placeholder="admin@example.com"
                   />
@@ -163,8 +199,8 @@ export default function AdminLogin() {
 
                 {mode === 'login' && (
                   <div>
-                    <label htmlFor="password" className={`block text-sm font-medium mb-1.5 ${
-                      theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                    <label htmlFor="password" className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 pb-3 border-b ${
+                      theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
                     }`}>
                       Password
                     </label>
@@ -174,10 +210,10 @@ export default function AdminLogin() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      className={`w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 transition-colors ${
+                      className={`w-full px-6 py-4 border-2 rounded-xl text-sm font-light tracking-wide focus:outline-none focus:ring-0 transition-all duration-500 ${
                         theme === 'dark'
-                          ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:ring-white focus:border-white'
-                          : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:ring-neutral-900 focus:border-transparent'
+                          ? 'bg-neutral-900 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white'
+                          : 'bg-white border-neutral-300 text-neutral-900 placeholder:text-neutral-400 focus:border-black'
                       }`}
                       placeholder="••••••••"
                     />
@@ -185,12 +221,19 @@ export default function AdminLogin() {
                 )}
 
                 {error && (
-                  <div className={`p-3 border rounded-md ${
+                  <div className={`border rounded-xl p-6 relative overflow-hidden ${
                     theme === 'dark'
                       ? 'bg-red-900/30 border-red-800'
                       : 'bg-red-50 border-red-200'
                   }`}>
-                    <p className={`text-sm ${
+                    <div className={`absolute top-0 right-0 w-24 h-full opacity-5 ${
+                      theme === 'dark' ? 'text-red-400' : 'text-red-600'
+                    }`}>
+                      <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
+                        ERROR
+                      </div>
+                    </div>
+                    <p className={`text-sm font-light leading-relaxed tracking-wide relative z-10 ${
                       theme === 'dark' ? 'text-red-400' : 'text-red-600'
                     }`}>{error}</p>
                   </div>
@@ -199,19 +242,22 @@ export default function AdminLogin() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`w-full py-2.5 rounded-md text-sm font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
+                  className={`w-full py-4 rounded-xl text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group ${
                     theme === 'dark'
                       ? 'bg-white text-black hover:bg-neutral-200'
-                      : 'bg-neutral-900 text-white hover:bg-neutral-800'
+                      : 'bg-black text-white hover:bg-neutral-800'
                   }`}
                 >
                   {loading ? (
                     <>
                       <Icon icon="ph:spinner" className="w-4 h-4 animate-spin" />
-                      {mode === 'login' ? 'Signing in...' : 'Sending...'}
+                      <span>{mode === 'login' ? 'Signing in...' : 'Sending...'}</span>
                     </>
                   ) : (
-                    mode === 'login' ? 'Sign in' : 'Send Magic Link'
+                    <>
+                      <span>{mode === 'login' ? 'Sign in' : 'Send Magic Link'}</span>
+                      <Icon icon="ph:arrow-right" className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+                    </>
                   )}
                 </button>
               </form>
@@ -219,7 +265,7 @@ export default function AdminLogin() {
           )}
         </div>
 
-        <p className={`text-center text-xs mt-6 ${
+        <p className={`text-center text-xs font-light tracking-wide mt-8 relative z-10 ${
           theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'
         }`}>
           Protected admin area for authorized users only
