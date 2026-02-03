@@ -102,6 +102,9 @@ export default function Hero() {
                                         <div className="text-lg font-light tracking-wide text-white/50">
                                             clear, profitable decisions
                                         </div>
+                                        <div className="max-w-xs text-xs font-light leading-relaxed text-white/40 mt-4">
+                                            Strategic finance and business performance advisory for founders and leadership teams who need clarity — not just reports.
+                                        </div>
                                     </div>
                                 </div>
                                 
@@ -136,6 +139,9 @@ export default function Hero() {
                                         </div>
                                         <div className="text-sm font-light tracking-wide text-white/50">
                                             clear, profitable decisions
+                                        </div>
+                                        <div className="max-w-[200px] mx-auto text-xs font-light leading-relaxed text-white/40 mt-4">
+                                            Strategic finance and business performance advisory for founders and leadership teams who need clarity — not just reports.
                                         </div>
                                     </div>
                                 </div>
