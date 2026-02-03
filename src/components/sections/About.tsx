@@ -84,13 +84,55 @@ export default function About() {
 
                     {/* Vogue-style credentials */}
                     <div className="space-y-20 slide-in-right">
-                        {/* Dramatic image */}
-                        <div className="aspect-[4/3] w-full overflow-hidden duotone-red zoom-in">
+                        {/* Dramatic Vogue-style image with overlay text */}
+                        <div className="aspect-[4/3] w-full duotone-red overflow-hidden relative zoom-in">
                             <img 
                                 src="/red-about.png" 
                                 className="w-full h-full object-cover object-top transition-transform duration-[2s] hover:scale-105"
                                 alt="Professional portrait"
                             />
+                            
+                            {/* Vogue-style Text Overlay */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="h-full w-full relative">
+                                    {/* Top left fashion magazine style */}
+                                    <div className="absolute top-6 left-6 hidden lg:block">
+                                        <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
+                                            AIREEZA
+                                        </div>
+                                        <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
+                                            L. TANDIH
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Main fashion statement - dramatic positioning */}
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 text-center">
+                                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[0.8] text-white">
+                                            STRATEGIC<br />FINANCE<br />
+                                            <span className="block text-3xl md:text-4xl lg:text-5xl font-light tracking-wider text-white/90">
+                                                EXCELLENCE
+                                            </span>
+                                        </h2>
+                                    </div>
+                                    
+                                    {/* Right side fashion caption */}
+                                    <div className="absolute top-1/3 right-6 hidden lg:block">
+                                        <div className="text-xs font-normal uppercase tracking-widest text-white/70 writing-mode-vertical">
+                                            Analysis • Performance • Decisions
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Bottom left fashion detail */}
+                                    <div className="absolute bottom-6 left-6 hidden lg:block">
+                                        <div className="text-xs font-light tracking-wide text-white/50">
+                                            Professional Expertise
+                                        </div>
+                                        <div className="max-w-[180px] text-xs font-light leading-relaxed text-white/40 mt-2">
+                                            Certified expertise in strategic finance and business performance advisory.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         {/* Education */}
