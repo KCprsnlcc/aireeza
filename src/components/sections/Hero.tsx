@@ -56,8 +56,8 @@ export default function Hero() {
                     {/* Red Hero Image (Duotone) */}
                     <div className="w-full aspect-[16/9] md:aspect-[21/9] duotone-red overflow-hidden relative hero-image">
                         <img 
-                            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop" 
-                            className="w-full h-full object-cover transition-transform duration-[2s] hover:scale-105" 
+                            src="/red-hero.png" 
+                            className="w-full h-full object-cover object-top transition-transform duration-[2s] hover:scale-105" 
                             alt="Office Architecture"
                         />
                     </div>
