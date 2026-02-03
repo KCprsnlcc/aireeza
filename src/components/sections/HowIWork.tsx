@@ -6,7 +6,7 @@ export default function HowIWork() {
     const { theme } = useTheme();
 
     return (
-        <section className={`py-32 border-b relative overflow-hidden ${
+        <section id="how-i-work" className={`py-32 border-b relative overflow-hidden ${
             theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             {/* Vogue-style background decoration */}
@@ -47,7 +47,7 @@ export default function HowIWork() {
                     I do not start with templates. I start by understanding how your business actually works.
                 </p>
 
-                {/* Vogue-style process steps */}
+                {/* Vogue-style process steps */}``
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
                     {/* Step 1 */}
                     <div className="group cursor-default zoom-in relative">

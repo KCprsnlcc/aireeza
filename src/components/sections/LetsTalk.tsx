@@ -65,7 +65,7 @@ export default function LetsTalk() {
     };
 
     return (
-        <section id="contact" className={`py-32 border-b relative overflow-hidden ${
+        <section id="lets-talk" className={`py-32 border-b relative overflow-hidden ${
             theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             {/* Vogue-style background decoration */}

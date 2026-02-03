@@ -7,7 +7,7 @@ export default function WhoIWorkWith() {
     const { theme } = useTheme();
 
     return (
-        <section className={`py-24 border-b ${
+        <section id="who-i-work-with" className={`py-24 border-b ${
             theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             <div className="max-w-[1600px] mx-auto px-6">

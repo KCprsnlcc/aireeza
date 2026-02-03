@@ -7,7 +7,7 @@ export default function WhatIDo() {
     const { theme } = useTheme();
 
     return (
-        <section className={`py-32 border-b relative overflow-hidden ${
+        <section id="what-i-do" className={`py-32 border-b relative overflow-hidden ${
             theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
         }`}>
             {/* Vogue-style background decoration */}

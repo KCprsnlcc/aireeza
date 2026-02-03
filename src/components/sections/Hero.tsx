@@ -14,7 +14,7 @@ export default function Hero() {
     return (
         <>
             {/* Hero Section */}
-            <header className={`relative pt-32 pb-10 border-b ${
+            <header id="hero" className={`relative pt-32 pb-10 border-b ${
                 theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
             }`}>
                 <div className="max-w-[1600px] mx-auto px-6">
