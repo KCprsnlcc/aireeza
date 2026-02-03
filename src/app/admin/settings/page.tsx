@@ -36,7 +36,7 @@ export default function SettingsPage() {
     }`}>
       <AdminNav />
       <main className="max-w-2xl mx-auto px-6 py-8">
-        <div className="mb-8 fade-up">
+        <div className="mb-8">
           <h1 className={`text-2xl font-semibold mb-1 ${
             theme === 'dark' ? 'text-white' : 'text-neutral-900'
           }`}>Settings</h1>
@@ -46,7 +46,7 @@ export default function SettingsPage() {
         </div>
 
         {loading ? (
-          <div className={`border rounded-lg slide-in-left ${
+          <div className={`border rounded-lg ${
             theme === 'dark'
               ? 'bg-neutral-900/50 border-neutral-800'
               : 'bg-white border-neutral-200'
@@ -75,7 +75,7 @@ export default function SettingsPage() {
             </div>
           </div>
         ) : (
-          <div className={`border rounded-lg slide-in-left ${
+          <div className={`border rounded-lg ${
             theme === 'dark'
               ? 'bg-neutral-900/50 border-neutral-800'
               : 'bg-white border-neutral-200'
@@ -114,7 +114,7 @@ export default function SettingsPage() {
           </div>
         )}
 
-        <div className={`border rounded-lg mt-6 slide-in-right ${
+        <div className={`border rounded-lg mt-6 ${
           theme === 'dark'
             ? 'bg-neutral-900/50 border-neutral-800'
             : 'bg-white border-neutral-200'

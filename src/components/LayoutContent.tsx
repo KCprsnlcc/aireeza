@@ -9,11 +9,19 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
     const isAdminRoute = pathname?.startsWith('/admin');
 
     return (
-        <ScrollAnimationProvider>
-            {!isAdminRoute && <Navbar />}
-            <main>
-                {children}
-            </main>
-        </ScrollAnimationProvider>
+        <>
+            {isAdminRoute ? (
+                <main>
+                    {children}
+                </main>
+            ) : (
+                <ScrollAnimationProvider>
+                    <Navbar />
+                    <main>
+                        {children}
+                    </main>
+                </ScrollAnimationProvider>
+            )}
+        </>
     );
 }

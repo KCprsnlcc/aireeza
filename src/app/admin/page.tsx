@@ -88,7 +88,7 @@ export default function AdminDashboard() {
     }`}>
       <AdminNav />
       <main className="max-w-7xl mx-auto px-6 py-8">
-        <div className="mb-8 fade-up">
+        <div className="mb-8">
           <h1 className={`text-2xl font-semibold mb-1 ${
             theme === 'dark' ? 'text-white' : 'text-neutral-900'
           }`}>Dashboard</h1>
@@ -161,7 +161,7 @@ export default function AdminDashboard() {
               />
             </div>
 
-            <div className="flex items-center justify-between mb-4 fade-up">
+            <div className="flex items-center justify-between mb-4">
               <h2 className={`text-lg font-medium ${
                 theme === 'dark' ? 'text-white' : 'text-neutral-900'
               }`}>Recent Inquiries</h2>
@@ -179,7 +179,7 @@ export default function AdminDashboard() {
             </div>
 
             {error ? (
-              <div className={`border rounded-lg p-4 fade-up ${
+              <div className={`border rounded-lg p-4 ${
                 theme === 'dark'
                   ? 'bg-red-900/30 border-red-800'
                   : 'bg-red-50 border-red-200'

@@ -56,7 +56,7 @@ export default function InquiriesPage() {
     }`}>
       <AdminNav />
       <main className="max-w-7xl mx-auto px-6 py-8">
-        <div className="mb-8 fade-up">
+        <div className="mb-8">
           <h1 className={`text-2xl font-semibold mb-1 ${
             theme === 'dark' ? 'text-white' : 'text-neutral-900'
           }`}>Inquiries</h1>
@@ -79,7 +79,7 @@ export default function InquiriesPage() {
             ))}
           </div>
         ) : error ? (
-          <div className={`border rounded-lg p-4 fade-up ${
+          <div className={`border rounded-lg p-4 ${
             theme === 'dark'
               ? 'bg-red-900/30 border-red-800'
               : 'bg-red-50 border-red-200'

@@ -61,7 +61,7 @@ export default function AdminLogin() {
     <div className={`min-h-screen flex items-center justify-center p-6 transition-colors ${
       theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
     }`}>
-      <div className="w-full max-w-md zoom-in">
+      <div className="w-full max-w-md">
         <div className={`border rounded-lg p-8 transition-colors ${
           theme === 'dark'
             ? 'bg-neutral-900/50 border-neutral-800'

@@ -17,7 +17,7 @@ export default function StatsCard({ title, value, icon, trend }: StatsCardProps)
   const { theme } = useTheme()
   
   return (
-    <div className={`border rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 zoom-in ${
+    <div className={`border rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
       theme === 'dark'
         ? 'bg-neutral-900/50 border-neutral-800 hover:bg-neutral-900'
         : 'bg-white border-neutral-200 hover:shadow-neutral-200'

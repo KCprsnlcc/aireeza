@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import LayoutContent from "../components/LayoutContent";
+import HtmlWrapper from "../components/HtmlWrapper";
 
 export const metadata: Metadata = {
   title: "AIREEZA - Financial Strategy & Performance",
@@ -14,12 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <HtmlWrapper>
       <body className="antialiased min-h-screen overflow-x-hidden">
         <ThemeProvider>
           <LayoutContent>{children}</LayoutContent>
         </ThemeProvider>
       </body>
-    </html>
+    </HtmlWrapper>
   );
 }

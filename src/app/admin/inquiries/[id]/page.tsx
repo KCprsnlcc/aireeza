@@ -90,7 +90,7 @@ export default function InquiryDetailPage() {
       <main className="max-w-4xl mx-auto px-6 py-8">
         <Link
           href="/admin/inquiries"
-          className={`inline-flex items-center gap-1 text-sm mb-6 transition-colors fade-up ${
+          className={`inline-flex items-center gap-1 text-sm mb-6 transition-colors ${
             theme === 'dark'
               ? 'text-neutral-400 hover:text-white'
               : 'text-neutral-600 hover:text-neutral-900'
@@ -100,7 +100,7 @@ export default function InquiryDetailPage() {
           Back to inquiries
         </Link>
 
-        <div className={`border rounded-lg slide-in-left ${
+        <div className={`border rounded-lg ${
           theme === 'dark'
             ? 'bg-neutral-900/50 border-neutral-800'
             : 'bg-white border-neutral-200'

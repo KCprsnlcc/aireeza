@@ -29,7 +29,7 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
   
   if (inquiries.length === 0) {
     return (
-      <div className={`border rounded-lg p-12 text-center fade-up ${
+      <div className={`border rounded-lg p-12 text-center ${
         theme === 'dark'
           ? 'bg-neutral-900/50 border-neutral-800'
           : 'bg-white border-neutral-200'
@@ -50,7 +50,7 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
   }
 
   return (
-    <div className={`border rounded-lg overflow-hidden fade-up ${
+    <div className={`border rounded-lg overflow-hidden ${
       theme === 'dark'
         ? 'bg-neutral-900/50 border-neutral-800'
         : 'bg-white border-neutral-200'
