@@ -1,9 +1,10 @@
 'use client';
 
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useTheme } from "@/contexts/ThemeContext";
+import { initScrollAnimations } from "@/hooks/useScrollAnimation";
 
 export default function LetsTalk() {
     const { theme } = useTheme();
@@ -29,6 +30,16 @@ export default function LetsTalk() {
     const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
 
     const supabase = createClient();
+
+    // Reinitialize scroll animations when stage changes to stage2
+    useEffect(() => {
+        if (stage === 'stage2') {
+            // Small delay to ensure DOM is updated with stage2 elements
+            setTimeout(() => {
+                initScrollAnimations();
+            }, 100);
+        }
+    }, [stage]);
 
     // Validation functions
     const validateEmail = (email: string) => {
