@@ -47,12 +47,54 @@ export default function Footer() {
                     </div>
                     
                     <div className="flex justify-center">
-                        <div className="w-64 h-80 duotone-red overflow-hidden rounded-2xl transition-all duration-700 hover:scale-105">
+                        <div className="w-64 h-80 duotone-red overflow-hidden rounded-2xl transition-all duration-700 hover:scale-105 relative">
                             <img
                                 src="/red-footer.png"
                                 className="w-full h-full object-cover"
                                 alt="Office Architecture"
                             />
+                            
+                            {/* Vogue-style Text Overlay */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="h-full w-full relative">
+                                    {/* Top left fashion magazine style */}
+                                    <div className="absolute top-4 left-4">
+                                        <div className="text-xs font-black uppercase tracking-[0.3em] text-white/80">
+                                            AIREEZA
+                                        </div>
+                                        <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
+                                            L. TANDIH
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Main fashion statement - dramatic positioning */}
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 text-center">
+                                        <h2 className="text-2xl md:text-3xl font-black tracking-tight leading-[0.8] text-white">
+                                            GLOBAL<br />REACH<br />
+                                            <span className="block text-xl md:text-2xl font-light tracking-wider text-white/90">
+                                                EXCELLENCE
+                                            </span>
+                                        </h2>
+                                    </div>
+                                    
+                                    {/* Right side fashion caption */}
+                                    <div className="absolute top-1/3 right-4">
+                                        <div className="text-xs font-normal uppercase tracking-widest text-white/70 writing-mode-vertical">
+                                            Strategic • Finance • Global
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Bottom left fashion detail */}
+                                    <div className="absolute bottom-4 left-4">
+                                        <div className="text-xs font-light tracking-wide text-white/50">
+                                            Worldwide Service
+                                        </div>
+                                        <div className="max-w-[140px] text-xs font-light leading-relaxed text-white/40 mt-1">
+                                            Remote-first strategic finance advisory serving clients globally.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
