@@ -425,3 +425,29 @@ html {
     display: none;
   }
 }
+
+/* Typography Scrub Effect */
+.scrub-text span {
+  opacity: 0.3;
+  transition: opacity 0.2s linear;
+}
+
+.scrub-text span.active {
+  opacity: 1;
+}
+
+html.dark .scrub-text span {
+  color: rgb(163 163 163);
+}
+
+html.dark .scrub-text span.active {
+  color: rgb(255 255 255);
+}
+
+html.light .scrub-text span {
+  color: rgb(107 114 128);
+}
+
+html.light .scrub-text span.active {
+  color: rgb(0 0 0);
+}

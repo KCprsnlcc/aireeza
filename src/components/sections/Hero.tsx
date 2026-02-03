@@ -2,9 +2,14 @@
 
 import { Icon } from "@iconify/react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useScrubText } from "@/hooks/useScrubText";
 
 export default function Hero() {
     const { theme } = useTheme();
+    
+    // Apply scrub text effect to main quote only
+    const mainQuote = "Most growing businesses don't fail because of effort — they fail because decisions are made without clear financial insight.";
+    const { containerRef, spansHtml } = useScrubText(mainQuote, theme);
 
     return (
         <>
@@ -72,11 +77,11 @@ export default function Hero() {
                         <span className="text-xs text-neutral-500">FINANCIAL INSIGHT</span>
                     </div>
 
-                    <h2 className={`text-3xl md:text-5xl font-semibold tracking-tight text-center max-w-5xl mx-auto mb-12 leading-tight ${
-                        theme === 'dark' ? 'text-white' : 'text-black'
-                    }`}>
-                        Most growing businesses don't fail because of effort — they fail because decisions are made without clear financial insight.
-                    </h2>
+                    <div 
+                        ref={containerRef}
+                        className={`scrub-text text-3xl md:text-5xl font-semibold tracking-tight text-center max-w-5xl mx-auto mb-12 leading-tight`}
+                        dangerouslySetInnerHTML={{ __html: spansHtml }}
+                    />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto items-center">
                         <div>
