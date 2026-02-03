@@ -62,7 +62,7 @@ export function initScrollAnimations() {
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.fade-up, .slide-in-left, .slide-in-right, .zoom-in, .stagger-item');
+    const animatedElements = document.querySelectorAll('.fade-up, .slide-in-left, .slide-in-right, .zoom-in, .stagger-item, .vogue-reveal-horizontal, .vogue-reveal-diagonal, .vogue-reveal-vertical, .vogue-reveal-center');
     animatedElements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();

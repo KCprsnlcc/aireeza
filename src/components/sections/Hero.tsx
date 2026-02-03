@@ -56,7 +56,7 @@ export default function Hero() {
                     </div>
 
                     {/* Red Hero Image (Duotone) with Overlay Text */}
-                    <div className="w-full aspect-[16/9] md:aspect-[21/9] duotone-red overflow-hidden relative">
+                    <div className="w-full aspect-[16/9] md:aspect-[21/9] duotone-red overflow-hidden relative vogue-reveal-horizontal">
                         <img 
                             src="/red-hero.png" 
                             className="w-full h-full object-cover object-top transition-transform duration-[2s] hover:scale-105" 
