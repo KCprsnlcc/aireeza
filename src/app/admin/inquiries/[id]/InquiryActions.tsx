@@ -7,17 +7,21 @@ import { Icon } from '@iconify/react'
 import { useTheme } from '@/contexts/ThemeContext'
 import { useScrubText } from '@/hooks/useScrubText'
 
-type Status = 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
+type Status = 'incomplete' | 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
 
 interface InquiryActionsProps {
   inquiry: {
     id: string
+    full_name: string | null
+    email: string | null
+    phone: string | null
     status: Status
     notes: string | null
   }
 }
 
 const statusOptions: { value: Status; label: string }[] = [
+  { value: 'incomplete', label: 'Incomplete' },
   { value: 'pending', label: 'Pending' },
   { value: 'reviewed', label: 'Reviewed' },
   { value: 'scheduled', label: 'Scheduled' },

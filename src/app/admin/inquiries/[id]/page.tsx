@@ -13,14 +13,17 @@ import { useScrubText } from '@/hooks/useScrubText'
 
 interface Inquiry {
   id: string
-  role: string
-  scale: string
+  full_name: string | null
+  email: string | null
+  phone: string | null
+  role: string | null
+  scale: string | null
   challenges: string[]
   decision: string | null
   prompt: string | null
   timing: string | null
   advisors: string | null
-  status: 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
+  status: 'incomplete' | 'pending' | 'reviewed' | 'scheduled' | 'completed' | 'archived'
   notes: string | null
   created_at: string
   updated_at: string
@@ -153,6 +156,53 @@ export default function InquiryDetailPage() {
 
           {/* Vogue-style content sections */}
           <div className="p-8 space-y-12">
+            {/* Contact Information Section */}
+            {(inquiry.full_name || inquiry.email || inquiry.phone) && (
+              <div>
+                <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-3 border-b ${
+                  theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
+                }`}>
+                  Contact Information
+                </h3>
+                <div className="space-y-3">
+                  {inquiry.full_name && (
+                    <div className="flex items-center gap-3">
+                      <Icon icon="ph:user" className={`w-4 h-4 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`} />
+                      <p className={`text-sm font-light leading-relaxed tracking-wide ${
+                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                      }`}>{inquiry.full_name}</p>
+                    </div>
+                  )}
+                  {inquiry.email && (
+                    <div className="flex items-center gap-3">
+                      <Icon icon="ph:envelope" className={`w-4 h-4 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`} />
+                      <a 
+                        href={`mailto:${inquiry.email}`}
+                        className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${
+                          theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-700 hover:text-black'
+                        }`}
+                      >
+                        {inquiry.email}
+                      </a>
+                    </div>
+                  )}
+                  {inquiry.phone && (
+                    <div className="flex items-center gap-3">
+                      <Icon icon="ph:phone" className={`w-4 h-4 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`} />
+                      <a 
+                        href={`tel:${inquiry.phone}`}
+                        className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${
+                          theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-700 hover:text-black'
+                        }`}
+                      >
+                        {inquiry.phone}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
                 <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-4 pb-3 border-b ${
