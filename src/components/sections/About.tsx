@@ -85,7 +85,7 @@ export default function About() {
                     {/* Vogue-style credentials */}
                     <div className="space-y-20 slide-in-right">
                         {/* Dramatic Vogue-style image with overlay text */}
-                        <div className="aspect-[4/3] w-full duotone-red overflow-hidden relative zoom-in">
+                        <div className="aspect-[4/3] w-full duotone-red overflow-hidden relative vogue-reveal-diagonal">
                             <img 
                                 src="/red-about.png" 
                                 className="w-full h-full object-cover object-top transition-transform duration-[2s] hover:scale-105"

@@ -454,6 +454,172 @@ html.light .scrub-text span.active {
 
 /* Vogue-style vertical text */
 .writing-mode-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+writing-mode: vertical-rl;
+text-orientation: mixed;
+}
+
+/* Vogue-style sharp transitions */
+@keyframes vogueRevealHorizontal {
+0% { 
+clip-path: inset(0 100% 0 0); 
+transform: scale(1.08) rotate(0.3deg); 
+opacity: 0;
+filter: blur(3px);
+}
+20% {
+opacity: 0.1;
+filter: blur(2.5px);
+}
+40% {
+opacity: 0.4;
+filter: blur(1.5px);
+}
+60% {
+opacity: 0.7;
+filter: blur(0.8px);
+}
+80% {
+opacity: 0.9;
+filter: blur(0.3px);
+}
+100% { 
+clip-path: inset(0 0 0 0); 
+transform: scale(1) rotate(0deg); 
+opacity: 1;
+filter: blur(0px);
+}
+}
+
+@keyframes vogueRevealDiagonal {
+0% { 
+clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); 
+transform: scale(1.12) rotate(1.5deg); 
+opacity: 0;
+filter: blur(4px) brightness(0.7);
+}
+15% {
+opacity: 0.1;
+filter: blur(3.5px) brightness(0.75);
+}
+30% {
+opacity: 0.3;
+filter: blur(2.5px) brightness(0.85);
+}
+45% {
+opacity: 0.5;
+filter: blur(1.8px) brightness(0.95);
+}
+60% {
+opacity: 0.7;
+filter: blur(1px) brightness(1.05);
+}
+75% {
+opacity: 0.85;
+filter: blur(0.5px) brightness(1.08);
+}
+90% {
+opacity: 0.95;
+filter: blur(0.2px) brightness(1.05);
+}
+100% { 
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+transform: scale(1) rotate(0deg); 
+opacity: 1;
+filter: blur(0px) brightness(1);
+}
+}
+
+@keyframes vogueRevealVertical {
+0% { 
+clip-path: inset(100% 0 0 0); 
+transform: scale(1.1) rotate(-0.3deg); 
+opacity: 0;
+filter: blur(3px) contrast(1.3);
+}
+25% {
+opacity: 0.2;
+filter: blur(2.2px) contrast(1.2);
+}
+50% {
+opacity: 0.5;
+filter: blur(1.2px) contrast(1.1);
+}
+75% {
+opacity: 0.8;
+filter: blur(0.5px) contrast(1.05);
+}
+100% { 
+clip-path: inset(0 0 0 0); 
+transform: scale(1) rotate(0deg); 
+opacity: 1;
+filter: blur(0px) contrast(1);
+}
+}
+
+@keyframes vogueRevealCenter {
+0% { 
+clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%); 
+transform: scale(0.65) rotate(2.5deg); 
+opacity: 0;
+filter: blur(5px) grayscale(30%);
+}
+20% {
+opacity: 0.15;
+filter: blur(4px) grayscale(25%);
+}
+40% {
+opacity: 0.35;
+filter: blur(2.5px) grayscale(15%);
+}
+60% {
+opacity: 0.6;
+filter: blur(1.2px) grayscale(5%);
+}
+80% {
+opacity: 0.85;
+filter: blur(0.4px) grayscale(1%);
+}
+100% { 
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+transform: scale(1) rotate(0deg); 
+opacity: 1;
+filter: blur(0px) grayscale(0%);
+}
+}
+
+/* Vogue transition classes */
+.vogue-reveal-horizontal {
+opacity: 0;
+transition: opacity 0.1s ease-out;
+}
+
+.vogue-reveal-horizontal.visible {
+  animation: vogueRevealHorizontal 4.5s cubic-bezier(0.25, 1.5, 0.35, 1) forwards;
+}
+
+.vogue-reveal-diagonal {
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.vogue-reveal-diagonal.visible {
+  animation: vogueRevealDiagonal 5.2s cubic-bezier(0.25, 1.5, 0.35, 1) forwards;
+}
+
+.vogue-reveal-vertical {
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.vogue-reveal-vertical.visible {
+  animation: vogueRevealVertical 4.8s cubic-bezier(0.25, 1.5, 0.35, 1) forwards;
+}
+
+.vogue-reveal-center {
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.vogue-reveal-center.visible {
+  animation: vogueRevealCenter 5.8s cubic-bezier(0.25, 1.5, 0.35, 1) forwards;
 }
