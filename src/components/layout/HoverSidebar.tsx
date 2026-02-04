@@ -70,29 +70,15 @@ export default function HoverSidebar() {
                         ? 'bg-black/95 backdrop-blur-xl border-r border-neutral-800' 
                         : 'bg-white/95 backdrop-blur-xl border-r border-neutral-200'
                 }`}>
-                    {/* Vogue-style background decoration */}
-                    <div className="absolute top-0 right-0 w-32 h-full opacity-5">
-                        <img 
-                            src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
-                            alt="AIREEZA"
-                            className="h-full w-auto opacity-5"
-                        />
-                    </div>
-                    
                     <div className="p-12 h-full flex flex-col relative z-10">
                         {/* Vogue-style Header */}
                         <div className="mb-16">
                             <div className="space-y-1">
-                                <img 
-                                    src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
-                                    alt="AIREEZA"
-                                    className="h-8 w-auto"
-                                />
-                                <p className={`text-xs font-light tracking-[0.4em] uppercase ${
-                                    theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
-                                }`}>
-                                    L. TANDIH
-                                </p>
+                                <span className={`font-majesty font-normal ${
+                            theme === 'dark' ? 'text-white' : 'text-black'
+                        }`} style={{ fontSize: '2rem', lineHeight: '1' }}>
+                            Airee<span style={{ color: '#ff3333' }}>za</span>
+                        </span>
                             </div>
                             <div className={`mt-8 text-xs font-normal uppercase tracking-widest opacity-60 ${
                                 theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'

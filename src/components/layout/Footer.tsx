@@ -55,15 +55,9 @@ export default function Footer() {
                                     {/* Top left fashion magazine style */}
                                     <div className="absolute top-4 left-4 z-50">
                                         <div className="relative">
-                                            <img 
-                                                src="/logo/aireeza-logo-w.svg"
-                                                alt="AIREEZA"
-                                                className="h-4 w-auto relative z-10"
-                                                style={{ mixBlendMode: 'normal' }}
-                                            />
-                                        </div>
-                                        <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
-                                            L. TANDIH
+                                            <span className="font-majesty font-normal text-white" style={{ fontSize: '1rem', lineHeight: '1' }}>
+                                                Aireeza
+                                            </span>
                                         </div>
                                     </div>
                                     
@@ -114,26 +108,24 @@ export default function Footer() {
                     }`}>
                     <div className="text-left">
                         <div className="flex items-center gap-2">
-                            <img 
-                                src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
-                                alt="AIREEZA"
-                                className="h-3 w-auto"
-                            />
+                            <span className={`font-majesty font-normal ${
+                                theme === 'dark' ? 'text-white' : 'text-black'
+                              }`} style={{ fontSize: '1.5rem', lineHeight: '1' }}>
+                                Airee<span style={{ color: '#ff3333' }}>za</span>
+                            </span>
                             <span className={`text-[10px] font-light tracking-wide ${theme === 'dark' ? 'text-neutral-600' : 'text-neutral-700'}`}>
-                                ©2024
+                                &copy;2024
                             </span>
                         </div>
                     </div>
                     
                     {/* Vogue-style brand name with logo */}
                     <div className="text-center">
-                        <img 
-                            src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
-                            alt="AIREEZA"
-                            className={`h-[15vw] w-auto select-none pointer-events-none transition-all duration-700 hover:opacity-70 ${
-                                theme === 'dark' ? 'opacity-30' : 'opacity-20'
-                            }`}
-                        />
+                        <span className={`font-majesty font-normal select-none pointer-events-none transition-all duration-700 hover:opacity-70 ${
+                            theme === 'dark' ? 'opacity-30 text-white' : 'opacity-20 text-black'
+                        }`} style={{ fontSize: '15vw', lineHeight: '1' }}>
+                            Airee<span style={{ color: '#ff3333' }}>za</span>
+                        </span>
                     </div>
                     
                     <div className="text-right">

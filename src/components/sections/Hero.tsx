@@ -21,16 +21,15 @@ export default function Hero() {
                     {/* Giant Title */}
                     <div className="text-center mb-12 relative z-10">
                         <div className="flex justify-center items-center">
-                            <img 
-                                src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
-                                alt="AIREEZA"
-                                className="h-[13vw] w-auto"
-                            />
+                            <span className={`font-majesty font-normal ${
+                                theme === 'dark' ? 'text-white' : 'text-black'
+                            }`} style={{ fontSize: '13vw', lineHeight: '1' }}>
+                                Airee<span style={{ color: '#ff3333' }}>za</span>
+                            </span>
                         </div>
                         <p className={`text-[2vw] font-light tracking-[0.5em] mt-4 ${
                             theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
                         }`}>
-                            L. TANDIH
                         </p>
                     </div>
 
@@ -73,15 +72,9 @@ export default function Hero() {
                                 {/* Top left fashion magazine style */}
                                 <div className="absolute top-8 left-8 hidden lg:block z-50">
                                     <div className="relative">
-                                        <img 
-                                            src="/logo/aireeza-logo-w.svg"
-                                            alt="AIREEZA"
-                                            className="h-6 w-auto relative z-10"
-                                            style={{ mixBlendMode: 'normal' }}
-                                        />
-                                    </div>
-                                    <div className="text-xs font-light uppercase tracking-[0.2em] text-white/60 mt-1">
-                                        L. TANDIH
+                                        <span className="font-majesty font-normal text-white" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
+                                            Aireeza
+                                        </span>
                                     </div>
                                 </div>
                                 
@@ -131,12 +124,9 @@ export default function Hero() {
                                 <div className="lg:hidden flex flex-col justify-between h-full p-8">
                                     <div className="text-center">
                                         <div className="relative z-50">
-                                            <img 
-                                                src="/logo/aireeza-logo-w.svg"
-                                                alt="AIREEZA"
-                                                className="h-5 w-auto mx-auto relative z-10"
-                                                style={{ mixBlendMode: 'normal' }}
-                                            />
+                                            <span className="font-majesty font-normal text-white" style={{ fontSize: '1.25rem', lineHeight: '1' }}>
+                                                Aireeza
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="text-center">

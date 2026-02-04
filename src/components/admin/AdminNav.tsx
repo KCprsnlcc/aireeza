@@ -35,11 +35,11 @@ export default function AdminNav() {
           <div className="flex items-center gap-12">
             {/* Vogue-style admin title */}
             <Link href="/admin" className="group flex items-center gap-3">
-              <img 
-                src={theme === 'dark' ? '/logo/aireeza-logo-w.svg' : '/logo/aireeza-logo-b.svg'}
-                alt="AIREEZA"
-                className="h-6 w-auto"
-              />
+              <span className={`font-majesty font-normal ${
+                theme === 'dark' ? 'text-white' : 'text-black'
+              }`} style={{ fontSize: '1.5rem', lineHeight: '1' }}>
+                Airee<span style={{ color: '#ff3333' }}>za</span>
+              </span>
               <span className={`text-2xl font-black tracking-tighter leading-[0.8] transition-all duration-500 ${
                 theme === 'dark' ? 'text-white' : 'text-black'
               }`}>
