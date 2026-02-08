@@ -736,3 +736,13 @@ html.dark .hero-pulse-border {
 html.light .hero-pulse-border {
   animation: heroPulseBorderLight 3s ease-in-out infinite;
 }
+
+/* Cursor Reveal Mask Styles */
+.cursor-reveal-blobs {
+  mix-blend-mode: screen;
+}
+
+.cursor-reveal-blobs span {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}

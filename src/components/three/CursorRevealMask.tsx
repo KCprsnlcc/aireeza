@@ -73,16 +73,16 @@ class Dot {
   draw(idle: boolean, offsetX: number, offsetY: number) {
     if (!idle || this.index <= SINE_DOTS) {
       gsap.set(this.element, { x: this.x, y: this.y });
-      this.maskCircle.setAttribute('cx', String(this.x + DOT_WIDTH / 2 - offsetX));
-      this.maskCircle.setAttribute('cy', String(this.y + DOT_WIDTH / 2 - offsetY));
+      this.maskCircle.setAttribute('cx', String(this.x + DOT_WIDTH / 2));
+      this.maskCircle.setAttribute('cy', String(this.y + DOT_WIDTH / 2));
     } else {
       this.angleX += this.anglespeed;
       this.angleY += this.anglespeed;
       this.y = this.lockY + Math.sin(this.angleY) * this.range;
       this.x = this.lockX + Math.sin(this.angleX) * this.range;
       gsap.set(this.element, { x: this.x, y: this.y });
-      this.maskCircle.setAttribute('cx', String(this.x + DOT_WIDTH / 2 - offsetX));
-      this.maskCircle.setAttribute('cy', String(this.y + DOT_WIDTH / 2 - offsetY));
+      this.maskCircle.setAttribute('cx', String(this.x + DOT_WIDTH / 2));
+      this.maskCircle.setAttribute('cy', String(this.y + DOT_WIDTH / 2));
     }
   }
 
@@ -123,7 +123,7 @@ export default function CursorRevealMask({
       dots.push(new Dot(i, cursor, maskGroup));
     }
 
-    // Update SVG viewBox to match container
+    // Update SVG viewBox to match container and ensure full coverage
     const updateViewBox = () => {
       const w = container.clientWidth;
       const h = container.clientHeight;
@@ -157,14 +157,13 @@ export default function CursorRevealMask({
     };
 
     const positionCursor = (dots: Dot[]) => {
-      const rect = container.getBoundingClientRect();
       let x = mousePosition.x;
       let y = mousePosition.y;
       dots.forEach((dot, index) => {
         const nextDot = dots[index + 1] || dots[0];
         dot.x = x;
         dot.y = y;
-        dot.draw(idle, rect.left, rect.top);
+        dot.draw(idle, 0, 0); // Use viewport coordinates directly
         if (!idle || index <= SINE_DOTS) {
           const dx = (nextDot.x - dot.x) * 0.35;
           const dy = (nextDot.y - dot.y) * 0.35;
@@ -203,11 +202,12 @@ export default function CursorRevealMask({
 
   return (
     <div ref={containerRef} className={`w-full h-full relative ${className}`}>
-      {/* SVG with goo filter + mask definition */}
+      {/* SVG with goo filter + mask definition - positioned to cover full viewport */}
       <svg
         ref={svgRef}
         xmlns="http://www.w3.org/2000/svg"
-        style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
+        className="absolute inset-0 w-full h-full"
+        style={{ pointerEvents: 'none' }}
       >
         <defs>
           <filter id="goo-hero">
