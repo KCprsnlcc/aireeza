@@ -47,7 +47,7 @@ export default function Hero() {
                 >
 
                     {/* Middle - Split Layout: Left | Aireeza (center) | Right */}
-                    <div className="flex-1 flex items-center justify-between px-6 md:px-12 lg:px-20">
+                    <div className="flex-1 flex items-center justify-between px-6 md:px-8 lg:px-12">
 
                         {/* Left Column - Aireeza Title + Professional Expertise Block (desktop) */}
                         <div className={`hidden md:flex flex-col gap-8 max-w-[220px] lg:max-w-[280px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
@@ -126,8 +126,30 @@ export default function Hero() {
                             </div>
                         </div>
 
-                        {/* Right Column - Vertical Fashion Caption (desktop) */}
-                        <div className={`hidden md:flex hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                        {/* Right Column - Premium Content (desktop) */}
+                        <div className={`hidden md:flex flex-col gap-8 hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                            {/* Content Blocks with margin */}
+                            <div className="flex flex-col gap-8 mr-8 lg:mr-16">
+                                {/* Profit & Performance Block */}
+                                <div className="flex flex-col items-end">
+                                    <p className={`text-sm md:text-base lg:text-lg font-light tracking-wide ${textPrimary} leading-[1.8] text-right`}>
+                                        PROFIT & PERFORMANCE<br/>
+                                        <span className={`text-xs md:text-sm lg:text-base font-light tracking-wider ${textSecondary}`}>
+                                            Strategic Finance + Business Architecture
+                                        </span>
+                                    </p>
+                                </div>
+                                
+                                {/* Aireeza Tandih Context */}
+                                <div className="flex flex-col items-end">
+                                    <p className={`text-xs md:text-sm font-light tracking-wider ${textSecondary} leading-[1.6] text-right`}>
+                                        Aireeza Tandih transforms financial  <br /> complexity into strategic clarity,
+                                        guiding  <br />  businesses toward sustainable growth  <br />  and optimal performance.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            {/* Vertical Fashion Caption - Unaffected */}
                             <div className={`text-xs font-normal uppercase tracking-widest ${textCaption} writing-mode-vertical`}>
                                 Analysis • Performance • Decisions
                             </div>
@@ -139,7 +161,7 @@ export default function Hero() {
                                     </div>
 
                 {/* Hero Footer - Bottom Bar */}
-                <div className={`absolute bottom-0 left-0 right-0 pb-8 md:pb-12 px-6 md:px-12 lg:px-20 hero-stagger-5 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                <div className={`absolute bottom-0 left-0 right-0 pb-8 md:pb-12 px-6 md:px-8 lg:px-12 hero-stagger-5 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
                     <div className={`flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 pt-6 border-t ${borderColor}`}>
                         {/* Mobile - Scroll indicator only */}
                         <div className="flex md:hidden items-center gap-4">
