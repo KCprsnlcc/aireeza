@@ -2,6 +2,7 @@
 
 import PageLoader from "../components/sections/PageLoader";
 import Hero from "../components/sections/Hero";
+import Problem from "../components/sections/Problem";
 import WhatIDo from "../components/sections/WhatIDo";
 import HowIWork from "../components/sections/HowIWork";
 import WhoIWorkWith from "../components/sections/WhoIWorkWith";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <PageLoader />
       <Hero />
+      <Problem />
       <WhatIDo />
       <HowIWork />
       <WhoIWorkWith />
