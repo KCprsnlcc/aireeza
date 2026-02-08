@@ -13,7 +13,7 @@ const vertexShader = `
   }
 `;
 
-// Fragment shader - solid cursor trail mask reveal with liquidy effect
+// Fragment shader - studio background compositing with cursor trail reveal
 const fragmentShader = `
   varying vec2 vUv;
   uniform sampler2D uTexture1;
@@ -21,6 +21,70 @@ const fragmentShader = `
   uniform sampler2D uMask;
   uniform float uTime;
   uniform vec2 uResolution;
+  uniform vec3 uBgColor1;
+  uniform vec3 uBgColor2;
+  
+  // Studio backdrop: bright white for initial, dramatic red for hover
+  vec3 studioBackdrop(vec2 uv, vec3 baseColor) {
+    // Check if this is the red background (hover state)
+    bool isRed = baseColor.r > 0.5 && baseColor.g < 0.3 && baseColor.b < 0.3;
+    
+    if (isRed) {
+      // Original dramatic lighting for red hover
+      vec2 lightPos = vec2(0.5, 0.62);
+      float lightDist = distance(uv, lightPos);
+      
+      float keyLight = 1.0 - lightDist * 0.35;
+      keyLight = clamp(keyLight, 0.0, 1.0);
+      
+      float floorGrad = smoothstep(0.0, 0.45, uv.y);
+      float floorDarken = mix(0.88, 1.0, floorGrad);
+      
+      vec2 vigUv = uv - 0.5;
+      float vignette = 1.0 - dot(vigUv, vigUv) * 0.6;
+      vignette = clamp(vignette, 0.0, 1.0);
+      vignette = mix(0.92, 1.0, vignette);
+      
+      vec3 bg = baseColor * keyLight * floorDarken * vignette;
+      
+      vec2 fillPos = vec2(0.75, 0.3);
+      float fillDist = distance(uv, fillPos);
+      float fillLight = (1.0 - smoothstep(0.0, 0.9, fillDist)) * 0.06;
+      bg += fillLight;
+      
+      return clamp(bg, 0.0, 1.0);
+    } else {
+      // Bright, clean lighting for white initial
+      vec2 lightPos = vec2(0.5, 0.65);
+      float lightDist = distance(uv, lightPos);
+      
+      float keyLight = 1.0 - lightDist * 0.25;
+      keyLight = clamp(keyLight, 0.0, 1.0);
+      keyLight = smoothstep(0.0, 1.0, keyLight);
+      
+      float floorGrad = smoothstep(0.0, 0.25, uv.y);
+      float floorDarken = mix(0.96, 1.0, floorGrad);
+      
+      vec2 vigUv = uv - 0.5;
+      float vignette = 1.0 - dot(vigUv, vigUv) * 0.3;
+      vignette = clamp(vignette, 0.0, 1.0);
+      vignette = mix(0.97, 1.0, vignette);
+      
+      vec3 bg = baseColor * keyLight * floorDarken * vignette;
+      
+      float ambient = 0.08;
+      bg += vec3(ambient);
+      
+      vec2 fillPos = vec2(0.75, 0.3);
+      float fillDist = distance(uv, fillPos);
+      float fillLight = (1.0 - smoothstep(0.0, 0.9, fillDist)) * 0.04;
+      bg += fillLight;
+      
+      bg = max(bg, vec3(0.92));
+      
+      return clamp(bg, 0.0, 1.0);
+    }
+  }
   
   void main() {
     vec2 uv = vUv;
@@ -28,22 +92,25 @@ const fragmentShader = `
     // Read trail mask value
     float mask = texture2D(uMask, uv).r;
     
-    // Sample base image (always clean)
-    vec4 tex1 = texture2D(uTexture1, uv);
+    // Generate studio backgrounds
+    vec3 studio1 = studioBackdrop(uv, uBgColor1);
+    vec3 studio2 = studioBackdrop(uv, uBgColor2);
     
-    // Sample reveal image directly (no chromatic aberration)
+    // Sample textures (transparent PNGs)
+    vec4 tex1 = texture2D(uTexture1, uv);
     vec4 tex2 = texture2D(uTexture2, uv);
+    
+    // Alpha-composite each image over its studio background
+    vec3 comp1 = mix(studio1, tex1.rgb, tex1.a);
+    vec3 comp2 = mix(studio2, tex2.rgb, tex2.a);
     
     // Smooth but solid mask - tight range for clean edges without pixelation
     float solidMask = smoothstep(0.08, 0.12, mask);
     
-    // Blend images based on trail mask
-    vec4 color = mix(tex1, tex2, solidMask);
+    // Blend composited results based on trail mask
+    vec3 finalColor = mix(comp1, comp2, solidMask);
     
-    // Always fully opaque
-    color.a = 1.0;
-    
-    gl_FragColor = color;
+    gl_FragColor = vec4(finalColor, 1.0);
   }
 `;
 
@@ -57,10 +124,22 @@ const STAMP_INTENSITY = 1.0;
 interface ImageOverlayProps {
   image1: string;
   image2: string;
+  bgColor1?: string;
+  bgColor2?: string;
   className?: string;
 }
 
-export default function ImageOverlay({ image1, image2, className = '' }: ImageOverlayProps) {
+// Convert hex color string to THREE.Color-compatible RGB values
+function hexToVec3(hex: string): [number, number, number] {
+  const c = hex.replace('#', '');
+  return [
+    parseInt(c.substring(0, 2), 16) / 255,
+    parseInt(c.substring(2, 4), 16) / 255,
+    parseInt(c.substring(4, 6), 16) / 255,
+  ];
+}
+
+export default function ImageOverlay({ image1, image2, bgColor1 = '#000000', bgColor2 = '#000000', className = '' }: ImageOverlayProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const cameraRef = useRef<THREE.OrthographicCamera | null>(null);
@@ -180,7 +259,11 @@ export default function ImageOverlay({ image1, image2, className = '' }: ImageOv
       tex.generateMipmaps = false;
     });
 
-    // Shader material with trail mask
+    // Parse background colors
+    const bg1 = hexToVec3(bgColor1);
+    const bg2 = hexToVec3(bgColor2);
+
+    // Shader material with trail mask + studio backgrounds
     const material = new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
@@ -190,6 +273,8 @@ export default function ImageOverlay({ image1, image2, className = '' }: ImageOv
         uMask: { value: maskTexture },
         uTime: { value: 0 },
         uResolution: { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
+        uBgColor1: { value: new THREE.Vector3(bg1[0], bg1[1], bg1[2]) },
+        uBgColor2: { value: new THREE.Vector3(bg2[0], bg2[1], bg2[2]) },
       },
       transparent: false,
     });
@@ -322,7 +407,7 @@ export default function ImageOverlay({ image1, image2, className = '' }: ImageOv
         container.removeChild(renderer.domElement);
       }
     };
-  }, [image1, image2, handleResize]);
+  }, [image1, image2, bgColor1, bgColor2, handleResize]);
 
   return (
     <div 
