@@ -136,39 +136,38 @@ export default function Hero() {
                         
                     </div>
 
-                    {/* Bottom Bar - Meta Info */}
-                    <div 
-                        className={`pb-8 md:pb-12 px-6 md:px-12 lg:px-20 hero-stagger-5 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}
-                    >
-                        <div className={`flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 pt-6 border-t ${borderColor}`}>
-                            {/* Mobile - Scroll indicator only */}
-                            <div className="flex md:hidden items-center gap-4">
-                                <div className="hero-scroll-line-container">
-                                    <div className={`w-px h-12 overflow-hidden ${lineBg}`}>
-                                        <div className={`w-full hero-scroll-line ${scrollLineBg}`} />
                                     </div>
+
+                {/* Hero Footer - Bottom Bar */}
+                <div className={`absolute bottom-0 left-0 right-0 pb-8 md:pb-12 px-6 md:px-12 lg:px-20 hero-stagger-5 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                    <div className={`flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 pt-6 border-t ${borderColor}`}>
+                        {/* Mobile - Scroll indicator only */}
+                        <div className="flex md:hidden items-center gap-4">
+                            <div className="hero-scroll-line-container">
+                                <div className={`w-px h-12 overflow-hidden ${lineBg}`}>
+                                    <div className={`w-full hero-scroll-line ${scrollLineBg}`} />
                                 </div>
-                                <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
-                                    Scroll to explore
-                                </span>
                             </div>
-
-                            {/* Desktop - Left label */}
-                            <div className={`hidden md:block text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
-                                Strategic & Financial Consulting
-                            </div>
-
-                            {/* Right - Arrow down */}
-                            <a 
-                                href="#the-problem"
-                                className={`flex items-center gap-2 group cursor-pointer pointer-events-auto ${hoverText} transition-colors duration-300`}
-                            >
-                                <span className={`text-xs font-black uppercase tracking-[0.3em] ${discoverText}`}>
-                                    Discover
-                                </span>
-                                <Icon icon="solar:arrow-down-linear" className="text-lg group-hover:translate-y-1 transition-transform duration-300" />
-                            </a>
+                            <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                                Scroll to explore
+                            </span>
                         </div>
+
+                        {/* Desktop - Left label */}
+                        <div className={`hidden md:block text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                            Strategic & Financial Consulting
+                        </div>
+
+                        {/* Right - Arrow down */}
+                        <a 
+                            href="#the-problem"
+                            className={`flex items-center gap-2 group cursor-pointer pointer-events-auto ${hoverText} transition-colors duration-300`}
+                        >
+                            <span className={`text-xs font-black uppercase tracking-[0.3em] ${discoverText}`}>
+                                Discover
+                            </span>
+                            <Icon icon="solar:arrow-down-linear" className="text-lg group-hover:translate-y-1 transition-transform duration-300" />
+                        </a>
                     </div>
                 </div>
 
@@ -185,7 +184,7 @@ export default function Hero() {
             <header 
                 id="hero" 
                 ref={heroRef}
-                className="relative min-h-screen overflow-hidden bg-white pt-20 lg:pt-24 cursor-none"
+                className="relative min-h-[110vh] overflow-hidden bg-white pt-20 lg:pt-24 cursor-none"
             >
                 {/* Three.js Dual Image Overlay - Full Background */}
                 <div 
@@ -201,13 +200,13 @@ export default function Hero() {
                 </div>
 
                 {/* Base text layer - black text on white background */}
-                <div className="absolute inset-0 z-10 pt-20 lg:pt-24">
+                <div className="absolute inset-0 z-10">
                     {renderHeroContent('base')}
                 </div>
 
                 {/* Reveal text layer - white text, masked to sync with red background */}
                 <div 
-                    className="absolute inset-0 z-20 pt-20 lg:pt-24"
+                    className="absolute inset-0 z-20"
                     style={{
                         mask: 'url(#cursor-reveal-mask)',
                         WebkitMask: 'url(#cursor-reveal-mask)',
