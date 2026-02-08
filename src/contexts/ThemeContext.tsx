@@ -13,7 +13,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setThemeState] = useState<Theme>('dark');
+    const [theme, setThemeState] = useState<Theme>('light');
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -54,7 +54,7 @@ export function useTheme() {
     if (context === undefined) {
         // Return default theme as fallback instead of throwing error
         return {
-            theme: 'dark' as Theme,
+            theme: 'light' as Theme,
             toggleTheme: () => {},
             setTheme: () => {}
         };
