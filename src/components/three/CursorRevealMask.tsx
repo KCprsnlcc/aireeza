@@ -145,14 +145,16 @@ export default function CursorRevealMask({
     };
 
     const onMouseMove = (e: MouseEvent) => {
-      mousePosition.x = e.clientX - DOT_WIDTH / 2;
-      mousePosition.y = e.clientY - DOT_WIDTH / 2;
+      const rect = container.getBoundingClientRect();
+      mousePosition.x = e.clientX - rect.left - DOT_WIDTH / 2;
+      mousePosition.y = e.clientY - rect.top - DOT_WIDTH / 2;
       resetIdleTimer();
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      mousePosition.x = e.touches[0].clientX - DOT_WIDTH / 2;
-      mousePosition.y = e.touches[0].clientY - DOT_WIDTH / 2;
+      const rect = container.getBoundingClientRect();
+      mousePosition.x = e.touches[0].clientX - rect.left - DOT_WIDTH / 2;
+      mousePosition.y = e.touches[0].clientY - rect.top - DOT_WIDTH / 2;
       resetIdleTimer();
     };
 
@@ -163,7 +165,7 @@ export default function CursorRevealMask({
         const nextDot = dots[index + 1] || dots[0];
         dot.x = x;
         dot.y = y;
-        dot.draw(idle, 0, 0); // Use viewport coordinates directly
+        dot.draw(idle, 0, 0); // Use container-relative coordinates
         if (!idle || index <= SINE_DOTS) {
           const dx = (nextDot.x - dot.x) * 0.35;
           const dy = (nextDot.y - dot.y) * 0.35;
