@@ -637,3 +637,102 @@ transition: opacity 0.1s ease-out;
 .vogue-reveal-center.visible {
   animation: vogueRevealCenter 5.8s cubic-bezier(0.25, 1.5, 0.35, 1) forwards;
 }
+
+/* ===== Hero Section - landonorris.com Inspired ===== */
+
+/* Three.js overlay container */
+.hero-overlay-container {
+  will-change: transform;
+}
+
+.hero-overlay-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Staggered entrance animations */
+@keyframes heroFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.hero-animate-in {
+  animation: heroFadeSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-stagger-1 { animation-delay: 0.1s; }
+.hero-stagger-2 { animation-delay: 0.3s; }
+.hero-stagger-3 { animation-delay: 0.55s; }
+.hero-stagger-4 { animation-delay: 0.8s; }
+.hero-stagger-5 { animation-delay: 1.0s; }
+.hero-stagger-6 { animation-delay: 1.2s; }
+
+/* Scroll indicator line */
+@keyframes heroScrollLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.hero-scroll-line {
+  height: 50%;
+  animation: heroScrollLine 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Hover icon gentle animation */
+@keyframes heroHoverIcon {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+.hero-hover-icon {
+  animation: heroHoverIcon 2.5s ease-in-out infinite;
+}
+
+/* Pulse border for hint pill */
+@keyframes heroPulseBorder {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(255, 51, 51, 0.25);
+  }
+}
+
+html.dark .hero-pulse-border {
+  animation: heroPulseBorder 3s ease-in-out infinite;
+}
+
+@keyframes heroPulseBorderLight {
+  0%, 100% {
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    border-color: rgba(255, 51, 51, 0.25);
+  }
+}
+
+html.light .hero-pulse-border {
+  animation: heroPulseBorderLight 3s ease-in-out infinite;
+}
