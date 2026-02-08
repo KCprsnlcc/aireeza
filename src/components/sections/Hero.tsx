@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Icon } from "@iconify/react";
 
-const ImageOverlay = dynamic(() => import('@/components/three/ImageOverlay'), { ssr: false });
+const CursorRevealMask = dynamic(() => import('@/components/three/CursorRevealMask'), { ssr: false });
 
 export default function Hero() {
     const heroRef = useRef<HTMLElement>(null);
@@ -36,12 +36,11 @@ export default function Hero() {
                     ref={overlayContainerRef}
                     className="absolute inset-0 z-0 hero-overlay-container"
                 >
-                    <ImageOverlay 
+                    <CursorRevealMask 
                         image1="/initial-bg-concept.png" 
                         image2="/hovered-bg-concept.png"
                         bgColor1="#ffffff"
                         bgColor2="#ff3333"
-                        className="hero-threejs-canvas"
                     />
                 </div>
 
