@@ -148,12 +148,26 @@ export default function CursorRevealMask({
       mousePosition.x = e.clientX - DOT_WIDTH / 2;
       mousePosition.y = e.clientY - DOT_WIDTH / 2;
       resetIdleTimer();
+      
+      // Move visual cursor
+      const visualCursor = document.getElementById('visual-cursor');
+      if (visualCursor) {
+        visualCursor.style.left = `${e.clientX}px`;
+        visualCursor.style.top = `${e.clientY}px`;
+      }
     };
 
     const onTouchMove = (e: TouchEvent) => {
       mousePosition.x = e.touches[0].clientX - DOT_WIDTH / 2;
       mousePosition.y = e.touches[0].clientY - DOT_WIDTH / 2;
       resetIdleTimer();
+      
+      // Move visual cursor
+      const visualCursor = document.getElementById('visual-cursor');
+      if (visualCursor && e.touches[0]) {
+        visualCursor.style.left = `${e.touches[0].clientX}px`;
+        visualCursor.style.top = `${e.touches[0].clientY}px`;
+      }
     };
 
     const positionCursor = (dots: Dot[]) => {
@@ -280,6 +294,17 @@ export default function CursorRevealMask({
           zIndex: 1000,
           filter: 'url(#goo-hero)',
           opacity: 0,
+        }}
+      />
+
+      {/* Visual cursor - visible to user */}
+      <div
+        id="visual-cursor"
+        className="pointer-events-none fixed z-[1001] w-6 h-6 rounded-full bg-white mix-blend-difference"
+        style={{
+          boxShadow: '0 0 20px rgba(255, 255, 255, 0.8)',
+          transform: 'translate(-50%, -50%)',
+          transition: 'none',
         }}
       />
     </div>

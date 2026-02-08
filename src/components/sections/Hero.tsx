@@ -29,7 +29,7 @@ export default function Hero() {
             <header 
                 id="hero" 
                 ref={heroRef}
-                className="relative min-h-screen overflow-hidden bg-white pt-20 lg:pt-24"
+                className="relative min-h-screen overflow-hidden bg-white pt-20 lg:pt-24 cursor-none"
             >
                 {/* Three.js Dual Image Overlay - Full Background */}
                 <div 
