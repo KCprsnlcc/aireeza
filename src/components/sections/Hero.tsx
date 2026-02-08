@@ -53,8 +53,28 @@ export default function Hero() {
                     {/* Middle - Split Layout: Left | Aireeza (center) | Right */}
                     <div className="flex-1 flex items-center relative">
 
-                        {/* Left Column - Professional Expertise Block (desktop) */}
-                        <div className={`hidden md:flex absolute left-6 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-20 flex-col gap-10 max-w-[220px] lg:max-w-[280px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                        {/* Left Column - Aireeza Title + Professional Expertise Block (desktop) */}
+                        <div className={`hidden md:flex absolute left-6 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-20 flex-col gap-8 max-w-[220px] lg:max-w-[280px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                            {/* Aireeza Title */}
+                            <div 
+                                ref={titleRef}
+                                className="hero-stagger-2"
+                            >
+                                <h1 className="relative">
+                                    <span 
+                                        className="font-majesty font-normal block text-black/90" 
+                                        style={{ 
+                                            fontSize: 'clamp(2rem, 6vw, 4.5rem)', 
+                                            lineHeight: '0.85',
+                                            letterSpacing: '-0.02em'
+                                        }}
+                                    >
+                                        Airee<span className="text-[#ff3333]">za</span>
+                                    </span>
+                                </h1>
+                            </div>
+                            
+                            {/* Professional Expertise */}
                             <div>
                                 <p className="text-sm md:text-base lg:text-lg font-light tracking-wide text-black/90 leading-[1.8]">
                                     PROFESSIONAL EXPERTISE<br/>
@@ -77,13 +97,13 @@ export default function Hero() {
                             </div>
                         </div>
 
-                        {/* Center - Dramatic Fashion Magazine Headline */}
+                        {/* Center - Mobile-only subtitle */}
                         <div 
                             ref={titleRef}
-                            className="w-full flex flex-col items-center justify-center text-center relative"
+                            className="w-full flex flex-col items-center justify-center text-center relative md:hidden"
                         >
-                            {/* Main Fashion Statement - Dramatic Positioning */}
-                            <div className={`hero-stagger-2 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} translate-y-55`}>
+                            {/* Mobile Aireeza Title */}
+                            <div className={`hero-stagger-2 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
                                 <h1 className="relative">
                                     <span 
                                         className="font-majesty font-normal block text-black/90" 
@@ -99,7 +119,7 @@ export default function Hero() {
                             </div>
 
                             {/* Mobile-only subtitle */}
-                            <div className={`mt-8 md:hidden hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                            <div className={`mt-8 hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
                                 <div className="flex items-center gap-6">
                                     <span className="w-16 h-px bg-black/20" />
                                     <p className="text-lg font-black tracking-tight uppercase text-black/70 leading-[1.2]">
