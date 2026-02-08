@@ -47,10 +47,10 @@ export default function Hero() {
                 >
 
                     {/* Middle - Split Layout: Left | Aireeza (center) | Right */}
-                    <div className="flex-1 flex items-center relative">
+                    <div className="flex-1 flex items-center justify-between px-6 md:px-12 lg:px-20">
 
                         {/* Left Column - Aireeza Title + Professional Expertise Block (desktop) */}
-                        <div className={`hidden md:flex absolute left-6 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-20 flex-col gap-8 max-w-[220px] lg:max-w-[280px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                        <div className={`hidden md:flex flex-col gap-8 max-w-[220px] lg:max-w-[280px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
                             {/* Aireeza Title */}
                             <div 
                                 ref={!isReveal ? titleRef : undefined}
@@ -127,7 +127,7 @@ export default function Hero() {
                         </div>
 
                         {/* Right Column - Vertical Fashion Caption (desktop) */}
-                        <div className={`hidden md:flex absolute right-6 md:right-12 lg:right-20 top-1/3 z-20 hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                        <div className={`hidden md:flex hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
                             <div className={`text-xs font-normal uppercase tracking-widest ${textCaption} writing-mode-vertical`}>
                                 Analysis • Performance • Decisions
                             </div>
