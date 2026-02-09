@@ -7,6 +7,7 @@ export default function PageLoader() {
     const { theme } = useTheme();
     const [isLoading, setIsLoading] = useState(true);
     const [loadingProgress, setLoadingProgress] = useState(0);
+    const [isMajestyLoaded, setIsMajestyLoaded] = useState(false);
     const svgRef = useRef<SVGPathElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -29,9 +30,14 @@ export default function PageLoader() {
                 }
             };
 
-            // Check if fonts are loaded
+            // Check if Majesty font is loaded
             if (document.fonts && document.fonts.ready) {
-                document.fonts.ready.then(updateProgress);
+                document.fonts.ready.then(() => {
+                    // Check specifically for Majesty font
+                    const majestyLoaded = document.fonts.check('1em Majesty');
+                    setIsMajestyLoaded(majestyLoaded);
+                    updateProgress();
+                });
             } else {
                 setTimeout(updateProgress, 100);
             }
@@ -164,31 +170,33 @@ export default function PageLoader() {
                 />
             </svg>
             
-            {/* Text inside the curve */}
-            <div className="branding-text absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <div className="flex items-baseline mb-6">
-                    <span 
-                        className="text-6xl font-majesty font-light tracking-tight"
-                        style={{ color: theme === 'dark' ? '#000000' : '#ffffff' }}
-                    >
-                        Airee
-                    </span>
-                    <span 
-                        className="text-6xl font-majesty font-light tracking-tight ml-1"
-                        style={{ color: '#ff3333' }}
-                    >
-                        za
-                    </span>
+            {/* Text and progress bar - only show if Majesty font is loaded */}
+            {isMajestyLoaded && (
+                <div className="branding-text absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                    <div className="flex items-baseline mb-6">
+                        <span 
+                            className="text-6xl font-majesty font-light tracking-tight"
+                            style={{ color: theme === 'dark' ? '#000000' : '#ffffff' }}
+                        >
+                            Airee
+                        </span>
+                        <span 
+                            className="text-6xl font-majesty font-light tracking-tight ml-1"
+                            style={{ color: '#ff3333' }}
+                        >
+                            za
+                        </span>
+                    </div>
+                    
+                    {/* Real loading progress indicator */}
+                    <div className="progress-container w-32 h-0.5 bg-gray-400 rounded-full overflow-hidden">
+                        <div 
+                            className="progress-bar-fill h-full bg-red-500 transition-all duration-300 ease-out"
+                            style={{ width: `${loadingProgress}%` }}
+                        />
+                    </div>
                 </div>
-                
-                {/* Real loading progress indicator */}
-                <div className="progress-container w-32 h-0.5 bg-gray-400 rounded-full overflow-hidden">
-                    <div 
-                        className="progress-bar-fill h-full bg-red-500 transition-all duration-300 ease-out"
-                        style={{ width: `${loadingProgress}%` }}
-                    />
-                </div>
-            </div>
+            )}
         </div>
     );
 }
