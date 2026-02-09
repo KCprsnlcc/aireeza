@@ -1,120 +1,114 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Icon } from "@iconify/react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useScrubText } from "@/hooks/useScrubText";
 
 export default function Problem() {
     const { theme } = useTheme();
+    const [isLoaded, setIsLoaded] = useState(false);
     
-    // Apply scrub text effect to main quote only
     const mainQuote = "Most growing businesses don't fail because of effort — they fail because decisions are made without clear financial insight.";
     const { containerRef, spansHtml } = useScrubText(mainQuote, theme);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoaded(true), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
+    const textPrimary = theme === 'dark' ? 'text-white' : 'text-black/90';
+    const textSecondary = theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700';
+    const textMuted = theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500';
+    const borderColor = theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200';
+    const borderSubtle = theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200';
+    const bgBase = theme === 'dark' ? 'bg-black' : 'bg-white';
+    const bgQuote = theme === 'dark' ? 'bg-neutral-900/20' : 'bg-neutral-50';
+    const borderQuote = theme === 'dark' ? 'border-neutral-700' : 'border-neutral-300';
+    const iconBase = theme === 'dark' ? 'text-neutral-600' : 'text-neutral-400';
+    const cornerBorder = theme === 'dark' ? 'border-white/10' : 'border-black/8';
 
     return (
         <section 
             id="the-problem"
-            className={`py-16 border-b relative overflow-hidden ${
-                theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
-            }`}
+            className={`relative min-h-screen flex flex-col justify-center py-24 md:py-32 border-b overflow-hidden ${borderColor} ${bgBase}`}
         >
-            {/* Vogue-style background decoration */}
-            <div className="absolute top-0 left-0 w-32 h-full opacity-5">
+            {/* Decorative corner elements */}
+            <div className={`absolute top-8 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
+            <div className={`absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
+
+            {/* Vertical background text */}
+            <div className="absolute top-0 left-0 w-32 h-full opacity-5 pointer-events-none">
                 <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
                     PROBLEM
                 </div>
             </div>
             
-            <div className="w-full px-6 relative z-10">
-                {/* Vogue-style header */}
-                <div className="flex justify-between items-end mb-12">
-                    <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">01</span>
-                    <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">/ THE PROBLEM</span>
-                    <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">FINANCIAL INSIGHT</span>
+            <div className="w-full px-6 md:px-8 lg:px-12 relative z-10">
+                {/* Editorial header */}
+                <div className={`flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-0 mb-16 md:mb-20 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-2' : ''}`}>
+                    <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>01</span>
+                    <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>/ THE PROBLEM</span>
+                    <span className={`hidden md:block text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>FINANCIAL INSIGHT</span>
                 </div>
 
-                {/* Dramatic Vogue-style scrub text */}
-                <div 
-                    ref={containerRef}
-                    className={`scrub-text text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-center max-w-5xl mx-auto mb-16 leading-[0.8]`}
-                    dangerouslySetInnerHTML={{ __html: spansHtml }}
-                />
+                {/* Hero statement with scrub effect */}
+                <div className={`opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-3' : ''}`}>
+                    <div 
+                        ref={containerRef}
+                        className="scrub-text text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-center max-w-6xl mx-auto mb-20 md:mb-32 leading-[1.1]"
+                        dangerouslySetInnerHTML={{ __html: spansHtml }}
+                    />
+                </div>
 
-                {/* Vogue-style content grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-start">
-                    {/* Vogue-style issues list */}
-                    <div>
-                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-2 border-b ${
-                            theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                        }`}>Common Issues</h3>
-                        <ul className="space-y-6">
-                            <li className="flex items-start gap-4 group">
-                                <div className={`transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text-[#ff3333]'
-                                }`}>
-                                    <Icon icon="solar:danger-circle-linear" className="text-xl" />
-                                </div>
-                                <span className={`text-base font-light leading-relaxed tracking-wide ${
-                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                }`}>Profits look good, but cash feels tight.</span>
-                            </li>
-                            <li className="flex items-start gap-4 group">
-                                <div className={`transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text-[#ff3333]'
-                                }`}>
-                                    <Icon icon="solar:file-remove-linear" className="text-xl" />
-                                </div>
-                                <span className={`text-base font-light leading-relaxed tracking-wide ${
-                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                }`}>Reports exist, but decisions still feel uncertain.</span>
-                            </li>
-                            <li className="flex items-start gap-4 group">
-                                <div className={`transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text-[#ff3333]'
-                                }`}>
-                                    <Icon icon="solar:sort-from-top-to-bottom-linear" className="text-xl" />
-                                </div>
-                                <span className={`text-base font-light leading-relaxed tracking-wide ${
-                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                }`}>Growth adds complexity instead of clarity.</span>
-                            </li>
-                            <li className="flex items-start gap-4 group">
-                                <div className={`transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 group-hover:text-[#ff3333]' : 'text-neutral-400 group-hover:text-[#ff3333]'
-                                }`}>
-                                    <Icon icon="solar:wheel-angle-linear" className="text-xl" />
-                                </div>
-                                <span className={`text-base font-light leading-relaxed tracking-wide ${
-                                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                                }`}>Leadership is reacting instead of steering.</span>
-                            </li>
+                {/* Content grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 max-w-7xl mx-auto">
+                    {/* Issues column */}
+                    <div className={`opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-4' : ''}`}>
+                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-10 pb-3 border-b ${borderSubtle} ${textPrimary}`}>
+                            Common Issues
+                        </h3>
+                        <ul className="space-y-0">
+                            {[
+                                { icon: "solar:danger-circle-linear", text: "Profits look good, but cash feels tight." },
+                                { icon: "solar:file-remove-linear", text: "Reports exist, but decisions still feel uncertain." },
+                                { icon: "solar:sort-from-top-to-bottom-linear", text: "Growth adds complexity instead of clarity." },
+                                { icon: "solar:wheel-angle-linear", text: "Leadership is reacting instead of steering." }
+                            ].map((item, index) => (
+                                <li key={index} className="flex items-start gap-5 group">
+                                    <div className={`transition-all duration-500 ${iconBase} group-hover:text-[#ff3333] mt-1`}>
+                                        <Icon icon={item.icon} className="text-xl" />
+                                    </div>
+                                    <span className={`text-base md:text-lg font-light leading-relaxed tracking-wide ${textSecondary}`}>
+                                        {item.text}
+                                    </span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
-                    {/* Vogue-style quote block */}
-                    <div className={`relative p-12 border-l-4 ${
-                        theme === 'dark' 
-                            ? 'border-neutral-700 bg-neutral-900/20' 
-                            : 'border-neutral-300 bg-neutral-50'
-                    }`}>
-                        <div className={`absolute left-8 top-6 text-5xl font-black opacity-20 ${
-                            theme === 'dark' ? 'text-white' : 'text-black'
-                        }`}>"</div>
-                        <div className="text-center">
-                            <p className={`text-xl md:text-2xl font-light leading-relaxed tracking-wide mb-4 ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                            }`}>
-                                You don't need more data.
-                            </p>
-                            <p className={`text-xl md:text-2xl font-black leading-relaxed tracking-tight ${
-                                theme === 'dark' ? 'text-white' : 'text-black'
-                            }`}>
-                                You need better financial judgment.
-                            </p>
+
+                    {/* Quote column */}
+                    <div className={`opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-5' : ''} mt-6`}>
+                        <div className={`relative p-8 md:p-10 border-l-4 ${borderQuote} ${bgQuote}`}>
+                            <div className={`absolute left-6 top-4 text-4xl md:text-5xl font-black opacity-20 ${textPrimary}`}>
+                                "
+                            </div>
+                            <div className="relative text-center pt-6">
+                                <p className={`text-xl md:text-2xl font-light leading-tight tracking-wide ${textSecondary}`}>
+                                    You don't need more data.
+                                </p>
+                                <p className={`text-xl md:text-2xl font-black leading-tight tracking-tight ${textPrimary}`}>
+                                    You need better financial judgment.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Bottom decorative elements */}
+            <div className={`absolute bottom-8 left-6 md:left-12 w-16 h-16 border-l border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-6' : ''}`} />
+            <div className={`absolute bottom-8 right-6 md:right-12 w-16 h-16 border-r border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-6' : ''}`} />
         </section>
     );
 }
