@@ -19,7 +19,7 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
                 <LenisProvider>
                     <ScrollAnimationProvider>
                         <Navbar />
-                        <main>
+                        <main className="relative">
                             {children}
                         </main>
                     </ScrollAnimationProvider>
