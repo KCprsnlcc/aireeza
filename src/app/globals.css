@@ -418,21 +418,7 @@ input:focus {
   }
 }
 
-/* Hover Sidebar Styles */
-#hover-sidebar {
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
-}
 
-html.dark #hover-sidebar {
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Hide hover sidebar on mobile */
-@media (max-width: 1024px) {
-  #hover-sidebar {
-    display: none;
-  }
-}
 
 /* Vanilla scroll styles */
 [data-vanilla-scroll="true"] {

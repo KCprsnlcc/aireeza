@@ -39,7 +39,6 @@ export function useVanillaScroll() {
       element.classList.contains('overflow-y-auto') ||
       element.classList.contains('overflow-x-auto') ||
       element.classList.contains('overflow-scroll') ||
-      element.id === 'hover-sidebar' ||
       element.closest('[data-vanilla-scroll]') ||
       element.closest('.vanilla-scroll')
     ) {
