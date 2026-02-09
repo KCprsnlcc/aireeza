@@ -11,6 +11,48 @@ export default function PageLoader() {
     const svgRef = useRef<SVGPathElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
+    // Animate text and progress bar appearance when font loads
+    useEffect(() => {
+        if (isMajestyLoaded) {
+            const animateAppearance = async () => {
+                const { gsap } = await import('gsap');
+                
+                // Animate text appearance
+                gsap.fromTo('.branding-text', 
+                    {
+                        scale: 0.85,
+                        opacity: 0,
+                        y: 8,
+                    },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: "power3.out",
+                    }
+                );
+
+                // Animate progress bar appearance with slight delay
+                gsap.fromTo('.progress-container',
+                    {
+                        opacity: 0,
+                        scale: 0.95,
+                    },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.4,
+                        delay: 0.2,
+                        ease: "power2.out",
+                    }
+                );
+            };
+
+            animateAppearance();
+        }
+    }, [isMajestyLoaded]);
+
     useEffect(() => {
         const detectPageLoad = async () => {
             let loadedResources = 0;
