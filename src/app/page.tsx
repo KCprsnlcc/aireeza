@@ -1,6 +1,6 @@
 'use client';
 
-import PageLoader from "../components/sections/PageLoader";
+import PageLoader from "../components/ui/PageLoader";
 import Hero from "../components/sections/Hero";
 import Problem from "../components/sections/Problem";
 import WhatIDo from "../components/sections/WhatIDo";
