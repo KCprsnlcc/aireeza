@@ -428,16 +428,29 @@ html.dark #hover-sidebar {
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Hide hover sidebar on mobile */
 @media (max-width: 1024px) {
   #hover-sidebar {
     display: none;
   }
+}
+
+/* Vanilla scroll styles */
+[data-vanilla-scroll="true"] {
+  scroll-behavior: auto !important;
+}
+
+.vanilla-scroll {
+  scroll-behavior: auto !important;
+}
+
+/* Lenis scroll styles */
+[data-lenis-scroll="true"] {
+  scroll-behavior: smooth !important;
+}
+
+.lenis-scroll {
+  scroll-behavior: smooth !important;
 }
 
 /* Typography Scrub Effect */

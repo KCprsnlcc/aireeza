@@ -79,7 +79,10 @@ export default function InquiryTable({ inquiries }: InquiryTableProps) {
     }`}>
       
       {/* Horizontal scroll container */}
-      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-600 scrollbar-track-transparent">
+      <div 
+        className="overflow-x-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-600 scrollbar-track-transparent vanilla-scroll"
+        data-vanilla-scroll="true"
+      >
         <table className="w-full relative z-10 min-w-[800px]">
           <thead>
           <tr className={`border-b transition-all duration-700 ${

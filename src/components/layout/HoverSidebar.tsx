@@ -5,9 +5,11 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useTheme } from "@/contexts/ThemeContext";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { useVanillaScroll } from "@/hooks/useVanillaScroll";
 
 export default function HoverSidebar() {
     const { theme } = useTheme();
+    const { scrollToElement } = useVanillaScroll();
     const [isVisible, setIsVisible] = useState(false);
     const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
@@ -50,10 +52,7 @@ export default function HoverSidebar() {
     }, [timeoutId]);
 
     const scrollToSection = (sectionId: string) => {
-        const element = document.querySelector(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        scrollToElement(sectionId, 'smooth');
     };
 
     return (
@@ -65,11 +64,14 @@ export default function HoverSidebar() {
                     isVisible ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >
-                <div className={`h-full relative overflow-y-auto overflow-x-hidden ${
-                    theme === 'dark' 
-                        ? 'bg-black/95 backdrop-blur-xl border-r border-neutral-800' 
-                        : 'bg-white/95 backdrop-blur-xl border-r border-neutral-200'
-                }`}>
+                <div 
+                    className={`h-full relative overflow-y-auto overflow-x-hidden vanilla-scroll ${
+                        theme === 'dark' 
+                            ? 'bg-black/95 backdrop-blur-xl border-r border-neutral-800' 
+                            : 'bg-white/95 backdrop-blur-xl border-r border-neutral-200'
+                    }`}
+                    data-vanilla-scroll="true"
+                >
                     <div className="p-12 h-full flex flex-col relative z-10">
                         {/* Vogue-style Header */}
                         <div className="mb-16">

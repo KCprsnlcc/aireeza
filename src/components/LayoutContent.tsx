@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Navbar from "./layout/Navbar";
 import ScrollAnimationProvider from "./ScrollAnimationProvider";
+import LenisProvider from "./LenisProvider";
 import HoverSidebar from "./layout/HoverSidebar";
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
@@ -16,13 +17,15 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
                     {children}
                 </main>
             ) : (
-                <ScrollAnimationProvider>
-                    <HoverSidebar />
-                    <Navbar />
-                    <main>
-                        {children}
-                    </main>
-                </ScrollAnimationProvider>
+                <LenisProvider>
+                    <ScrollAnimationProvider>
+                        <HoverSidebar />
+                        <Navbar />
+                        <main>
+                            {children}
+                        </main>
+                    </ScrollAnimationProvider>
+                </LenisProvider>
             )}
         </>
     );
