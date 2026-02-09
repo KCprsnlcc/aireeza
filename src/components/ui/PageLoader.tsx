@@ -91,39 +91,43 @@ export default function PageLoader() {
             // Progress bar finishes (100%)
             tl.to('.progress-bar-fill', {
                 width: '100%',
-                duration: 0.3,
-                ease: "power2.out",
+                duration: 0.4,
+                ease: "power3.out",
             })
             // Small pause to show completion
-            .to({}, { duration: 0.2 })
-            // Entire progress bar container disappears cleanly
+            .to({}, { duration: 0.3 })
+            // Progress bar disappears cleanly
             .to('.progress-container', {
                 opacity: 0,
-                duration: 0.2,
-                ease: "power2.out",
+                scale: 0.95,
+                duration: 0.25,
+                ease: "power2.inOut",
             })
-            // Then text disappears
+            // Text elegantly morphs into curve transition
             .to('.branding-text', {
+                scale: 0.85,
                 opacity: 0,
-                y: -15,
-                duration: 0.6,
-                ease: "power2.out",
+                y: -8,
+                duration: 0.5,
+                ease: "power3.inOut",
             })
-            // After text disappears, do curve transition
+            // Curve animation flows seamlessly
             .to(svgRef.current, {
-                duration: 0.6,
+                duration: 1.0,
                 attr: { d: curve },
-                ease: "power2.easeIn",
-            })
+                ease: "power4.inOut",
+            }, "-=0.3") // More overlap for smoother flow
             .to(svgRef.current, {
-                duration: 0.6,
+                duration: 0.7,
                 attr: { d: flat },
-                ease: "power2.easeOut",
+                ease: "power4.out",
             })
+            // Elegant final fade
             .to(containerRef.current, {
                 opacity: 0,
-                duration: 0.3,
-                ease: "power2.out",
+                scale: 0.98,
+                duration: 0.4,
+                ease: "power3.inOut",
             });
         };
 
