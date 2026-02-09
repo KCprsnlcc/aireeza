@@ -33,7 +33,7 @@ export default function Navbar() {
                 const progress = Math.min((scrollY / heroHeight) * 100, 100);
                 setScrollProgress(progress);
                 
-                // Show sticky navbar only after progress bar is complete
+                // Show sticky navbar only after the entire hero section has scrolled past
                 const shouldBeSticky = scrollY >= heroHeight;
                 
                 setIsSticky(shouldBeSticky);
@@ -90,15 +90,15 @@ export default function Navbar() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
                         className="fixed left-0 top-0 bottom-0 z-50 w-1"
                     >
-                        <div className="relative w-full h-full bg-black/5">
+                        <div className="relative w-full h-full bg-black/5 dark:bg-white/5">
                             <div 
                                 className="absolute top-0 left-0 right-0 bg-[#ff3333] will-change-transform"
                                 style={{ 
                                     height: `${scrollProgress}%`,
-                                    transition: 'height 0.05s linear'
+                                    transition: 'height 0.1s cubic-bezier(0.33, 1, 0.68, 1)'
                                 }}
                             />
                         </div>
@@ -106,14 +106,12 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
 
-            {/* Static Navbar on Hero */}
-            {!isSticky && (
-                <nav className="relative w-full z-40">
-                    <NavbarContent />
-                </nav>
-            )}
+            {/* Static Navbar on Hero - Always visible */}
+            <nav className="relative w-full z-40">
+                <NavbarContent />
+            </nav>
 
-            {/* Sticky Navbar with Animation */}
+            {/* Sticky Navbar with Animation - Only after hero section */}
             <AnimatePresence mode="wait">
                 {isSticky && (
                     <motion.nav 
