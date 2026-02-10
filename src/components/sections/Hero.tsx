@@ -24,20 +24,21 @@ export default function Hero() {
 
     // Render hero content with dynamic text colors
     // variant: 'base' = black text on white bg | 'reveal' = white text on red bg
+    // Mobile: always white text
     const renderHeroContent = (variant: 'base' | 'reveal') => {
         const isReveal = variant === 'reveal';
-        const textPrimary = isReveal ? 'text-white' : 'text-black/90';
-        const textSecondary = isReveal ? 'text-white/70' : 'text-black/60';
-        const textMuted = isReveal ? 'text-white/50' : 'text-black/40';
-        const textCaption = isReveal ? 'text-white/60' : 'text-black/50';
-        const textSubtitle = isReveal ? 'text-white/80' : 'text-black/70';
-        const lineBg = isReveal ? 'bg-white/30' : 'bg-black/20';
-        const scrollLineBg = isReveal ? 'bg-white/60' : 'bg-black/50';
-        const borderColor = isReveal ? 'border-white/15' : 'border-black/10';
-        const cornerBorder = isReveal ? 'border-white/10' : 'border-black/8';
+        const textPrimary = isReveal ? 'text-white' : 'text-white md:text-black/90';
+        const textSecondary = isReveal ? 'text-white/70' : 'text-white/80 md:text-black/60';
+        const textMuted = isReveal ? 'text-white/50' : 'text-white/60 md:text-black/40';
+        const textCaption = isReveal ? 'text-white/60' : 'text-white/70 md:text-black/50';
+        const textSubtitle = isReveal ? 'text-white/80' : 'text-white/90 md:text-black/70';
+        const lineBg = isReveal ? 'bg-white/30' : 'bg-white/20 md:bg-black/20';
+        const scrollLineBg = isReveal ? 'bg-white/60' : 'bg-white/70 md:bg-black/50';
+        const borderColor = isReveal ? 'border-white/15' : 'border-white/10 md:border-black/10';
+        const cornerBorder = isReveal ? 'border-white/10' : 'border-white/8 md:border-black/8';
         const zaColor = isReveal ? 'text-white' : 'text-[#ff3333]';
-        const hoverText = isReveal ? 'text-white/50 hover:text-white/80' : 'text-black/40 hover:text-black/70';
-        const discoverText = isReveal ? 'text-white/50' : 'text-black/40';
+        const hoverText = isReveal ? 'text-white/50 hover:text-white/80' : 'text-white/60 hover:text-white/90 md:text-black/40 md:hover:text-black/70';
+        const discoverText = isReveal ? 'text-white/50' : 'text-white/60 md:text-black/40';
 
         return (
             <>
@@ -93,19 +94,19 @@ export default function Hero() {
                             </div>
                         </div>
 
-                        {/* Center - Mobile-only subtitle */}
+                        {/* Center - Mobile-only layout */}
                         <div 
                             ref={!isReveal ? titleRef : undefined}
-                            className="w-full flex flex-col items-center justify-center text-center relative md:hidden"
+                            className="w-full flex flex-col items-center justify-center text-center relative md:hidden px-4"
                         >
-                            {/* Mobile Aireeza Title */}
+                            {/* Mobile Aireeza Title - Optimized sizing */}
                             <div className={`hero-stagger-2 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
                                 <h1 className="relative">
                                     <span 
                                         className={`font-majesty font-normal block ${textPrimary}`}
                                         style={{ 
-                                            fontSize: 'clamp(3.5rem, 14vw, 12rem)', 
-                                            lineHeight: '0.85',
+                                            fontSize: 'clamp(3rem, 16vw, 5rem)', 
+                                            lineHeight: '0.9',
                                             letterSpacing: '-0.02em'
                                         }}
                                     >
@@ -114,14 +115,38 @@ export default function Hero() {
                                 </h1>
                             </div>
 
-                            {/* Mobile-only subtitle */}
-                            <div className={`mt-8 hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
-                                <div className="flex items-center gap-6">
-                                    <span className={`w-16 h-px ${lineBg}`} />
-                                    <p className={`text-lg font-black tracking-tight uppercase ${textSubtitle} leading-[1.2]`}>
-                                        Turn Financial Complexity Into Clarity
+                            {/* Mobile tagline - Improved readability */}
+                            <div className={`mt-6 hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} max-w-[90vw]`}>
+                                <div className="flex items-center gap-3 justify-center">
+                                    <span className={`w-8 h-px ${lineBg}`} />
+                                    <p className={`text-[0.7rem] sm:text-xs font-black tracking-[0.15em] uppercase ${textSubtitle} leading-[1.3]`}>
+                                        Turn Financial Complexity<br className="sm:hidden" /> Into Clarity
                                     </p>
-                                    <span className={`w-16 h-px ${lineBg}`} />
+                                    <span className={`w-8 h-px ${lineBg}`} />
+                                </div>
+                            </div>
+
+                            {/* Mobile expertise cards - Stacked */}
+                            <div className={`mt-10 hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} w-full max-w-[340px] space-y-6`}>
+                                {/* Professional Expertise Card */}
+                                <div className="text-center">
+                                    <p className={`text-[0.65rem] font-black tracking-[0.2em] uppercase ${textPrimary} mb-2`}>
+                                        Professional Expertise
+                                    </p>
+                                    <p className={`text-[0.7rem] font-light tracking-wide ${textSecondary} leading-[1.6]`}>
+                                        Certified expertise in strategic finance<br/>
+                                        and business performance advisory
+                                    </p>
+                                </div>
+
+                                {/* Profit & Performance Card */}
+                                <div className="text-center">
+                                    <p className={`text-[0.65rem] font-black tracking-[0.2em] uppercase ${textPrimary} mb-2`}>
+                                        Profit & Performance
+                                    </p>
+                                    <p className={`text-[0.7rem] font-light tracking-wide ${textSecondary} leading-[1.6]`}>
+                                        Strategic Finance + Business Architecture
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -161,16 +186,16 @@ export default function Hero() {
                                     </div>
 
                 {/* Hero Footer - Bottom Bar */}
-                <div className={`absolute bottom-0 left-0 right-0 pb-8 md:pb-12 px-6 md:px-8 lg:px-12 hero-stagger-5 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
-                    <div className={`flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 pt-6 border-t ${borderColor}`}>
-                        {/* Mobile - Scroll indicator only */}
-                        <div className="flex md:hidden items-center gap-4">
+                <div className={`absolute bottom-0 left-0 right-0 pb-6 md:pb-12 px-4 md:px-8 lg:px-12 hero-stagger-5 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                    <div className={`flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 pt-4 md:pt-6 border-t ${borderColor}`}>
+                        {/* Mobile - Scroll indicator with improved spacing */}
+                        <div className="flex md:hidden items-center gap-3">
                             <div className="hero-scroll-line-container">
-                                <div className={`w-px h-12 overflow-hidden ${lineBg}`}>
+                                <div className={`w-px h-10 overflow-hidden ${lineBg}`}>
                                     <div className={`w-full hero-scroll-line ${scrollLineBg}`} />
                                 </div>
                             </div>
-                            <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                            <span className={`text-[0.6rem] font-black uppercase tracking-[0.25em] ${textMuted}`}>
                                 Scroll to explore
                             </span>
                         </div>
@@ -180,22 +205,22 @@ export default function Hero() {
                             Strategic & Financial Consulting
                         </div>
 
-                        {/* Right - Arrow down */}
+                        {/* Discover CTA - Touch-optimized */}
                         <a 
                             href="#the-problem"
-                            className={`flex items-center gap-2 group cursor-pointer pointer-events-auto ${hoverText} transition-colors duration-300`}
+                            className={`flex items-center gap-2 group cursor-pointer pointer-events-auto ${hoverText} transition-colors duration-300 py-2 px-1 -mx-1 touch-manipulation`}
                         >
-                            <span className={`text-xs font-black uppercase tracking-[0.3em] ${discoverText}`}>
+                            <span className={`text-[0.65rem] md:text-xs font-black uppercase tracking-[0.25em] md:tracking-[0.3em] ${discoverText}`}>
                                 Discover
                             </span>
-                            <Icon icon="solar:arrow-down-linear" className="text-lg group-hover:translate-y-1 transition-transform duration-300" />
+                            <Icon icon="solar:arrow-down-linear" className="text-base md:text-lg group-hover:translate-y-1 transition-transform duration-300" />
                         </a>
                     </div>
                 </div>
 
-                {/* Decorative corner elements */}
-                <div className={`absolute top-28 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none hero-stagger-6 ${cornerBorder}`} />
-                <div className={`absolute top-28 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none hero-stagger-6 ${cornerBorder}`} />
+                {/* Decorative corner elements - Adjusted for mobile */}
+                <div className={`absolute top-20 md:top-28 left-4 md:left-12 w-12 md:w-16 h-12 md:h-16 border-l border-t pointer-events-none hero-stagger-6 ${cornerBorder}`} />
+                <div className={`absolute top-20 md:top-28 right-4 md:right-12 w-12 md:w-16 h-12 md:h-16 border-r border-t pointer-events-none hero-stagger-6 ${cornerBorder}`} />
             </>
         );
     };
@@ -206,7 +231,7 @@ export default function Hero() {
             <header 
                 id="hero" 
                 ref={heroRef}
-                className="relative min-h-[110vh] overflow-hidden bg-white cursor-none"
+                className="relative min-h-screen md:min-h-[110vh] overflow-hidden bg-black md:bg-white cursor-none touch-pan-y"
             >
                 {/* Three.js Dual Image Overlay - Full Background */}
                 <div 
