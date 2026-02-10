@@ -37,7 +37,7 @@ export default function Footer() {
                     <div className="flex justify-center">
                         <div className="w-64 h-80 duotone-red overflow-hidden rounded-2xl transition-all duration-700 hover:scale-105 relative">
                             <img
-                                src="/red-footer.png"
+                                src="/red-footer.webp"
                                 className="w-full h-full object-cover"
                                 alt="Office Architecture"
                             />

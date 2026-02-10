@@ -72,7 +72,7 @@ export default function About() {
                         {/* Dramatic Vogue-style image with overlay text */}
                         <div className="aspect-[4/3] w-full duotone-red overflow-hidden relative vogue-reveal-diagonal">
                             <img 
-                                src="/red-about.png" 
+                                src="/red-about.webp" 
                                 className="w-full h-full object-cover object-top transition-transform duration-[2s] hover:scale-105"
                                 alt="Professional portrait"
                             />

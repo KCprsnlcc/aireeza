@@ -239,8 +239,8 @@ export default function Hero() {
                     className="absolute inset-0 z-0 hero-overlay-container"
                 >
                     <CursorRevealMask 
-                        image1="/initial-bg-concept.png" 
-                        image2="/hovered-bg-concept.png"
+                        image1="/initial-bg-concept.webp" 
+                        image2="/hovered-bg-concept.webp"
                         bgColor1="#ffffff"
                         bgColor2="#ff3333"
                     />
