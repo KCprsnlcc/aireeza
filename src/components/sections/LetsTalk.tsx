@@ -8,6 +8,7 @@ import { initScrollAnimations } from "@/hooks/useScrollAnimation";
 
 export default function LetsTalk() {
     const { theme } = useTheme();
+    const [isLoaded, setIsLoaded] = useState(false);
     const [stage, setStage] = useState<'stage1' | 'stage2'>('stage1');
     const [inquiryId, setInquiryId] = useState<string | null>(null);
     const [formData, setFormData] = useState({
@@ -31,15 +32,37 @@ export default function LetsTalk() {
 
     const supabase = createClient();
 
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoaded(true), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     // Reinitialize scroll animations when stage changes to stage2
     useEffect(() => {
         if (stage === 'stage2') {
-            // Small delay to ensure DOM is updated with stage2 elements
             setTimeout(() => {
                 initScrollAnimations();
             }, 100);
         }
     }, [stage]);
+
+    const textPrimary = theme === 'dark' ? 'text-white' : 'text-black/90';
+    const textSecondary = theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700';
+    const textTertiary = theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600';
+    const textMuted = theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500';
+    const borderColor = theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200';
+    const borderSubtle = theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200';
+    const bgBase = theme === 'dark' ? 'bg-black' : 'bg-white';
+    const bgForm = theme === 'dark' ? 'bg-neutral-900/20' : 'bg-neutral-50';
+    const bgInput = theme === 'dark' ? 'bg-neutral-950' : 'bg-white';
+    const borderInput = theme === 'dark' ? 'border-neutral-700' : 'border-neutral-300';
+    const focusBorder = theme === 'dark' ? 'focus:border-white' : 'focus:border-black';
+    const placeholder = theme === 'dark' ? 'placeholder:text-neutral-600' : 'placeholder:text-neutral-400';
+    const lineColor = theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-300';
+    const cornerBorder = theme === 'dark' ? 'border-white/10' : 'border-black/8';
+    const buttonBg = theme === 'dark' ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800';
+    const hoverBg = theme === 'dark' ? 'hover:bg-neutral-900/20' : 'hover:bg-neutral-100/50';
+    const hoverText = theme === 'dark' ? 'group-hover:text-white' : 'group-hover:text-black';
 
     // Validation functions
     const validateEmail = (email: string) => {
@@ -181,81 +204,61 @@ export default function LetsTalk() {
     };
 
     return (
-        <section id="lets-talk" className={`py-32 border-b relative overflow-hidden ${
-            theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
-        }`}>
-            {/* Vogue-style background decoration */}
-            <div className="absolute top-0 left-0 w-48 h-full opacity-5">
+        <section id="lets-talk" className={`relative min-h-screen flex flex-col justify-center py-24 md:py-32 border-b overflow-hidden ${borderColor} ${bgBase}`}>
+            {/* Decorative corner elements */}
+            <div className={`absolute top-8 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
+            <div className={`absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
+
+            {/* Vertical background text */}
+            <div className="absolute top-0 left-0 w-48 h-full opacity-5 pointer-events-none">
                 <div className="text-8xl font-black tracking-tighter writing-mode-vertical">
                     CONTACT
                 </div>
             </div>
             
-            <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-                {/* Vogue-style header */}
-                <div className="text-center mb-32 zoom-in">
+            <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12 relative z-10 w-full">
+                {/* Header */}
+                <div className={`text-center mb-20 md:mb-24 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-2' : ''}`}>
                     <div className="flex items-center justify-center gap-8 mb-8">
-                        <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">06</span>
-                        <div className={`h-px w-24 ${
-                            theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-300'
-                        }`}></div>
-                        <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">/ LET'S TALK</span>
+                        <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>06</span>
+                        <div className={`h-px w-24 ${lineColor}`}></div>
+                        <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>/ LET'S TALK</span>
                     </div>
                     
-                    <h2 className={`text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.7] mb-16 ${
-                        theme === 'dark' ? 'text-white' : 'text-black'
-                    }`}>
+                    <h2 className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-[0.9] mb-12 md:mb-16 ${textPrimary}`}>
                         CLARITY
-                        <span className={`block text-6xl md:text-7xl lg:text-8xl font-light tracking-wider mt-4 ${
-                            theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                        }`}>
+                        <span className={`block text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-center mt-3 ${textSecondary}`}>
                             BEFORE
                         </span>
-                        <span className="block text-6xl md:text-7xl lg:text-8xl font-light tracking-wider">
+                        <span className={`block text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-center ${textSecondary}`}>
                             ACTING
                         </span>
                     </h2>
                     
-                    <p className={`text-lg font-thin leading-relaxed tracking-wide max-w-3xl mx-auto ${
-                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                    }`}>
+                    <p className={`text-base md:text-lg font-light leading-relaxed tracking-wide w-full ${textSecondary}`}>
                         If you are navigating a meaningful financial decision, this conversation is designed to assess context and fit.
                     </p>
                 </div>
 
-                {/* Vogue-style intake form */}
-                <div className={`relative p-16 lg:p-24 slide-in-left border-l-4 ${
-                    theme === 'dark' 
-                        ? 'bg-neutral-900/20 border-neutral-800' 
-                        : 'bg-neutral-50 border-neutral-300'
-                }`}>
-                    <div className={`absolute left-6 top-8 text-6xl font-black opacity-10 ${
-                        theme === 'dark' ? 'text-white' : 'text-black'
-                    }`}>"</div>
+                {/* Form container */}
+                <div className={`relative p-12 md:p-16 lg:p-20 border-l-4 ${borderSubtle} ${bgForm} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-3' : ''}`}>
+                    <div className={`absolute left-6 top-8 text-6xl font-black opacity-10 ${textPrimary}`}>"</div>
                     {submitted ? (
-                        <div className="text-center py-24">
-                            <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-12 transition-all duration-700 ${
+                        <div className="text-center py-16 md:py-20">
+                            <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-10 transition-all duration-700 ${
                                 theme === 'dark' ? 'bg-emerald-500/20' : 'bg-emerald-500/10'
                             }`}>
                                 <Icon icon="solar:check-circle-linear" className={`w-10 h-10 transition-colors duration-700 ${
                                     theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
                                 }`} />
                             </div>
-                            <h3 className={`text-3xl font-black tracking-tight mb-6 ${
-                                theme === 'dark' ? 'text-white' : 'text-black'
-                            }`}>Inquiry Received</h3>
-                            <p className={`text-lg font-light leading-relaxed max-w-2xl mx-auto mb-12 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <h3 className={`text-2xl md:text-3xl font-black tracking-tight mb-6 ${textPrimary}`}>Inquiry Received</h3>
+                            <p className={`text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10 ${textTertiary}`}>
                                 Thank you for reaching out. I will review your submission and respond within 48 hours if there is a potential fit.
                             </p>
                             <button
                                 onClick={resetForm}
-                                className={`inline-flex items-center gap-3 group transition-all duration-500 ${
-                                    theme === 'dark' 
-                                        ? 'text-neutral-400 hover:text-white' 
-                                        : 'text-neutral-600 hover:text-black'
-                                }`}
+                                className={`inline-flex items-center gap-3 group transition-all duration-500 ${textTertiary} hover:${textPrimary.replace('text-', 'text-')}`}
                             >
                                 <span className="text-xs font-black uppercase tracking-[0.3em]">Submit another inquiry</span>
                                 <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>
@@ -267,20 +270,20 @@ export default function LetsTalk() {
                                 <>
                                     {/* Stage 1: Contact Information */}
                                     <div className="space-y-16">
-                                        <div className={`pb-12 border-b ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                                            <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>Contact Information</h3>
-                                            <p className={`text-xs font-light tracking-wide mb-8 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>Please provide your contact details to begin the conversation:</p>
+                                        <div className={`pb-12 border-b ${borderSubtle}`}>
+                                            <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${borderSubtle} ${textPrimary}`}>Contact Information</h3>
+                                            <p className={`text-xs font-light tracking-wide mb-8 ${textMuted}`}>Please provide your contact details to begin the conversation:</p>
                                             
                                             <div className="space-y-8">
                                                 {/* Full Name */}
                                                 <div>
-                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Full Name *</label>
+                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${textPrimary}`}>Full Name *</label>
                                                     <input
                                                         type="text"
                                                         value={formData.fullName}
                                                         onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                                                         placeholder="Enter your full name"
-                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${theme === 'dark' ? 'bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white' : 'bg-white border-neutral-300 text-black placeholder:text-neutral-400 focus:border-black'} ${validationErrors.fullName ? 'border-red-500' : ''}`}
+                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder} ${validationErrors.fullName ? 'border-red-500' : ''}`}
                                                     />
                                                     {validationErrors.fullName && (
                                                         <p className="text-red-400 text-xs font-light mt-2">{validationErrors.fullName}</p>
@@ -289,13 +292,13 @@ export default function LetsTalk() {
 
                                                 {/* Email */}
                                                 <div>
-                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Email Address *</label>
+                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${textPrimary}`}>Email Address *</label>
                                                     <input
                                                         type="email"
                                                         value={formData.email}
                                                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                                                         placeholder="Enter your email address"
-                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${theme === 'dark' ? 'bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white' : 'bg-white border-neutral-300 text-black placeholder:text-neutral-400 focus:border-black'} ${validationErrors.email ? 'border-red-500' : ''}`}
+                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder} ${validationErrors.email ? 'border-red-500' : ''}`}
                                                     />
                                                     {validationErrors.email && (
                                                         <p className="text-red-400 text-xs font-light mt-2">{validationErrors.email}</p>
@@ -304,13 +307,13 @@ export default function LetsTalk() {
 
                                                 {/* Phone */}
                                                 <div>
-                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Phone Number *</label>
+                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${textPrimary}`}>Phone Number *</label>
                                                     <input
                                                         type="tel"
                                                         value={formData.phone}
                                                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                                                         placeholder="Enter your phone number (include country code)"
-                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${theme === 'dark' ? 'bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white' : 'bg-white border-neutral-300 text-black placeholder:text-neutral-400 focus:border-black'} ${validationErrors.phone ? 'border-red-500' : ''}`}
+                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder} ${validationErrors.phone ? 'border-red-500' : ''}`}
                                                     />
                                                     {validationErrors.phone && (
                                                         <p className="text-red-400 text-xs font-light mt-2">{validationErrors.phone}</p>
@@ -320,7 +323,7 @@ export default function LetsTalk() {
                                         </div>
 
                                         {/* Stage 1 Submit Button */}
-                                        <div className="pt-16 text-center">
+                                        <div className="pt-12 md:pt-16 text-center">
                                             {error && (
                                                 <div className="mb-8 p-6 bg-red-500/10 border border-red-500/30 rounded-xl">
                                                     <p className="text-sm font-light text-red-400">{error}</p>
@@ -329,11 +332,7 @@ export default function LetsTalk() {
                                             <button
                                                 type="submit"
                                                 disabled={submitting}
-                                                className={`inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group ${
-                                                    theme === 'dark' 
-                                                        ? 'bg-white text-black hover:bg-neutral-200 hover:scale-105' 
-                                                        : 'bg-black text-white hover:bg-neutral-800 hover:scale-105'
-                                                }`}>
+                                                className={`inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group hover:scale-105 ${buttonBg}`}>
                                                 {submitting ? (
                                                     <>
                                                         <Icon icon="solar:spinner-linear" className="w-5 h-5 animate-spin" />
@@ -346,9 +345,7 @@ export default function LetsTalk() {
                                                     </>
                                                 )}
                                             </button>
-                                            <p className={`text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto ${
-                                                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'
-                                            }`}>
+                                            <p className={`text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto ${textMuted}`}>
                                                 Continue to the next step to provide more context.
                                             </p>
                                         </div>
@@ -358,9 +355,9 @@ export default function LetsTalk() {
                             {stage === 'stage2' && (
                                 <>
                                     {/* Role */}
-                                    <div className={`pb-12 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>Your Role in the Business</h3>
-                                        <p className={`text-xs font-light tracking-wide mb-8 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>Which best describes your position:</p>
+                                    <div className={`pb-12 border-b stagger-item ${borderSubtle}`}>
+                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${borderSubtle} ${textPrimary}`}>Your Role in the Business</h3>
+                                        <p className={`text-xs font-light tracking-wide mb-8 ${textMuted}`}>Which best describes your position:</p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {[
                                                 'Founder or Co-founder',
@@ -368,7 +365,7 @@ export default function LetsTalk() {
                                                 'Board member or advisor',
                                                 'Senior leader with decision authority'
                                             ].map((option) => (
-                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-900/20">
+                                                <label key={option} className={`flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 ${hoverBg}`}>
                                                     <input
                                                         type="radio"
                                                         name="role"
@@ -377,7 +374,7 @@ export default function LetsTalk() {
                                                         onChange={(e) => setFormData({...formData, role: e.target.value})}
                                                         className="w-5 h-5 text-white border-neutral-600 bg-transparent focus:ring-white focus:ring-2"
                                                     />
-                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
+                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${textTertiary} ${hoverText}`}>{option}</span>
                                                 </label>
                                             ))}
                                         </div>
@@ -441,7 +438,7 @@ export default function LetsTalk() {
                                             value={formData.decision}
                                             onChange={(e) => setFormData({...formData, decision: e.target.value})}
                                             placeholder="Describe the decision you're facing..."
-                                            className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${theme === 'dark' ? 'bg-neutral-950 border-neutral-700 text-white placeholder:text-neutral-600 focus:border-white' : 'bg-white border-neutral-300 text-black placeholder:text-neutral-400 focus:border-black'}`}
+                                            className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder}`}
                                             rows={5}
                                         />
                                     </div>
@@ -525,7 +522,7 @@ export default function LetsTalk() {
                                     </div>
 
                                     {/* Stage 2 Submit Button */}
-                                    <div className="pt-16 text-center">
+                                    <div className="pt-12 md:pt-16 text-center">
                                         {error && (
                                             <div className="mb-8 p-6 bg-red-500/10 border border-red-500/30 rounded-xl">
                                                 <p className="text-sm font-light text-red-400">{error}</p>
@@ -534,11 +531,7 @@ export default function LetsTalk() {
                                         <button
                                             type="submit"
                                             disabled={submitting}
-                                            className={`inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group ${
-                                                theme === 'dark' 
-                                                    ? 'bg-white text-black hover:bg-neutral-200 hover:scale-105' 
-                                                    : 'bg-black text-white hover:bg-neutral-800 hover:scale-105'
-                                            }`}>
+                                            className={`inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group hover:scale-105 ${buttonBg}`}>
                                             {submitting ? (
                                                 <>
                                                     <Icon icon="solar:spinner-linear" className="w-5 h-5 animate-spin" />
@@ -551,9 +544,7 @@ export default function LetsTalk() {
                                                 </>
                                             )}
                                         </button>
-                                        <p className={`text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto ${
-                                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'
-                                        }`}>
+                                        <p className={`text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto ${textMuted}`}>
                                             This is a short, focused conversation to determine fit and next steps.
                                         </p>
                                     </div>
@@ -563,19 +554,19 @@ export default function LetsTalk() {
                     )}
                 </div>
 
-                {/* Vogue-style footer note */}
-                <div className="text-center mt-16 zoom-in">
-                    <div className={`inline-block p-8 border-t-2 border-b-2 ${
-                        theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
-                    }`}>
-                        <p className={`text-xs font-light leading-relaxed tracking-wide ${
-                            theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
-                        }`}>
+                {/* Footer note */}
+                <div className={`text-center mt-12 md:mt-16 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-4' : ''}`}>
+                    <div className={`inline-block p-8 border-t-2 border-b-2 ${borderSubtle}`}>
+                        <p className={`text-xs font-light leading-relaxed tracking-wide ${textTertiary}`}>
                             This conversation is intended for leaders seeking clarity on high-impact decisions.
                         </p>
                     </div>
                 </div>
             </div>
+
+            {/* Bottom decorative elements */}
+            <div className={`absolute bottom-8 left-6 md:left-12 w-16 h-16 border-l border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-5' : ''}`} />
+            <div className={`absolute bottom-8 right-6 md:right-12 w-16 h-16 border-r border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-5' : ''}`} />
         </section>
     );
 }
