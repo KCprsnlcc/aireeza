@@ -49,11 +49,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Min height for full viewport */
-.min-h-screen {
-  min-height: 100vh;
-}
-
 /* Hide overflow */
 .overflow-x-hidden {
   overflow-x: hidden;
