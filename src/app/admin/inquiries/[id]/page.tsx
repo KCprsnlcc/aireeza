@@ -2,11 +2,9 @@
 
 import { createClient } from '@/lib/supabase/client'
 import AdminNav from '@/components/admin/AdminNav'
-import StatusBadge from '@/components/admin/StatusBadge'
 import InquiryActions from './InquiryActions'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { useTheme } from '@/contexts/ThemeContext'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import { useScrubText } from '@/hooks/useScrubText'
@@ -30,72 +28,83 @@ interface Inquiry {
 }
 
 export default function InquiryDetailPage() {
-  const { theme } = useTheme()
   const params = useParams()
-  const id = params.id as string
   const supabase = createClient()
   const [inquiry, setInquiry] = useState<Inquiry | null>(null)
   const [loading, setLoading] = useState(true)
-  
+  const [error, setError] = useState<string | null>(null)
+
   // Apply scrub text to detail headline
   const detailTitle = "INQUIRY DETAILS"
-  const { containerRef, spansHtml } = useScrubText(detailTitle, theme)
+  const { containerRef, spansHtml } = useScrubText(detailTitle)
 
   useEffect(() => {
     async function fetchInquiry() {
-      const { data, error } = await supabase
-        .from('inquiries')
-        .select('*')
-        .eq('id', id)
-        .single()
+      if (!params.id) return
 
-      if (!error && data) {
-        setInquiry(data)
+      setLoading(true)
+      try {
+        const { data, error } = await supabase
+          .from('inquiries')
+          .select('*')
+          .eq('id', params.id)
+          .single()
+
+        if (error) {
+          setError(error.message)
+        } else {
+          setInquiry(data)
+        }
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     fetchInquiry()
-  }, [id])
+  }, [params.id])
 
   if (loading) {
     return (
-      <div className={`min-h-screen transition-colors relative overflow-hidden ${
-        theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
-      }`}>
-        
+      <div className="min-h-screen transition-colors relative overflow-hidden bg-neutral-50">
         <AdminNav />
-        <main className="max-w-5xl mx-auto px-6 py-12 relative z-10">
-          <div className="text-center py-24">
-            <Icon icon="ph:spinner" className="w-12 h-12 animate-spin mx-auto text-neutral-400" />
+        <main className="max-w-4xl mx-auto px-6 py-12 relative z-10">
+          <div className="space-y-12">
+            <div className="space-y-4">
+              <div className="h-8 w-48 rounded animate-pulse bg-neutral-200"></div>
+              <div className="h-4 w-32 rounded animate-pulse bg-neutral-200"></div>
+            </div>
+            <div className="border rounded-2xl overflow-hidden relative border-neutral-200 bg-white">
+              <div className="h-16 border-b border-neutral-200"></div>
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                <div key={i} className="h-20 border-b animate-pulse border-neutral-200"></div>
+              ))}
+            </div>
           </div>
         </main>
       </div>
     )
   }
 
-  if (!inquiry) {
+  if (error || !inquiry) {
     return (
-      <div className={`min-h-screen transition-colors relative overflow-hidden ${
-        theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
-      }`}>
-        
+      <div className="min-h-screen transition-colors relative overflow-hidden bg-neutral-50">
         <AdminNav />
-        <main className="max-w-5xl mx-auto px-6 py-12 relative z-10">
-          <div className="text-center py-24">
-            <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8 transition-all duration-500 ${
-              theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-100'
-            }`}>
-              <Icon icon="ph:question-mark" className={`w-10 h-10 ${
-                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
-              }`} />
+        <main className="max-w-4xl mx-auto px-6 py-12 relative z-10">
+          <div className="border rounded-2xl p-8 relative overflow-hidden bg-red-50 border-red-200">
+            <div className="flex items-center gap-4 mb-4">
+              <Icon icon="ph:warning-circle" className="w-5 h-5 text-red-600" />
+              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-red-600">Error Loading Inquiry</h3>
             </div>
-            <h2 className={`text-2xl font-black tracking-tighter mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-black'
-            }`}>Inquiry Not Found</h2>
-            <p className={`text-lg font-light leading-relaxed tracking-wide ${
-              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-            }`}>The requested inquiry could not be located</p>
+            <p className="text-sm font-light leading-relaxed tracking-wide text-red-600 mb-6">
+              {error || 'Inquiry not found'}
+            </p>
+            <Link
+              href="/admin/inquiries"
+              className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 group text-red-600 hover:text-red-700"
+            >
+              <Icon icon="ph:arrow-left" className="w-4 h-4" />
+              <span>Back to Inquiries</span>
+            </Link>
           </div>
         </main>
       </div>
@@ -103,150 +112,112 @@ export default function InquiryDetailPage() {
   }
 
   return (
-    <div className={`min-h-screen transition-colors relative overflow-hidden ${
-      theme === 'dark' ? 'bg-black' : 'bg-neutral-50'
-    }`}>
+    <div className="min-h-screen transition-colors relative overflow-hidden bg-neutral-50">
       
       <AdminNav />
-      <main className="max-w-5xl mx-auto px-6 py-12 relative z-10">
-        {/* Vogue-style back navigation */}
-        <Link
-          href="/admin/inquiries"
-          className={`inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] mb-8 transition-all duration-500 group ${
-            theme === 'dark'
-              ? 'text-neutral-400 hover:text-white'
-              : 'text-neutral-600 hover:text-black'
-          }`}
-        >
-          <Icon icon="ph:arrow-left" className="w-4 h-4 transition-transform duration-500 group-hover:-translate-x-1" />
-          <span>Back to inquiries</span>
-        </Link>
+      <main className="max-w-4xl mx-auto px-6 py-12 relative z-10">
+        {/* Vogue-style header */}
+        <div className="mb-16">
+          <div className="flex items-center gap-8 mb-8">
+            <Link
+              href="/admin/inquiries"
+              className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 group text-neutral-500 hover:text-black"
+            >
+              <Icon icon="ph:arrow-left" className="w-4 h-4 transition-transform duration-500 group-hover:-translate-x-1" />
+              <span>Back to Inquiries</span>
+            </Link>
+          </div>
+          
+          <div className="flex items-center gap-8 mb-8">
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">ADMIN</span>
+            <div className="h-px w-24 bg-neutral-300"></div>
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">INQUIRY</span>
+          </div>
+          
+          <div 
+            ref={containerRef}
+            className="scrub-text text-4xl md:text-6xl font-black tracking-tighter leading-[0.8] mb-8 text-black"
+            dangerouslySetInnerHTML={{ __html: spansHtml }}
+          />
+          
+          <p className="text-lg font-light leading-relaxed tracking-wide max-w-3xl text-neutral-700">
+            Detailed information about this client inquiry
+          </p>
+        </div>
 
         {/* Vogue-style inquiry details card */}
-        <div className={`border rounded-2xl relative overflow-hidden ${
-          theme === 'dark'
-            ? 'bg-neutral-900/50 border-neutral-800'
-            : 'bg-white border-neutral-200'
-        }`}>
+        <div className="border rounded-2xl relative overflow-hidden bg-white border-neutral-200 mb-8">
           
-          <div className={`px-8 py-6 border-b flex items-center justify-between relative z-10 ${
-            theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
-          }`}>
-            <div>
-              <div 
-                ref={containerRef}
-                className={`scrub-text text-2xl font-black tracking-tighter leading-[0.8] mb-2 ${
-                  theme === 'dark' ? 'text-white' : 'text-black'
-                }`}
-                dangerouslySetInnerHTML={{ __html: spansHtml }}
-              />
-              <p className={`text-sm font-light leading-relaxed tracking-wide ${
-                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-              }`}>
-                Submitted on {new Date(inquiry.created_at).toLocaleDateString('en-US', {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </p>
+          <div className="px-8 py-6 border-b relative z-10 border-neutral-200">
+            <div className="flex items-start justify-between">
+              <div>
+                <h2 className="text-2xl font-black tracking-tight mb-2 text-black">
+                  {inquiry.full_name || 'Anonymous'}
+                </h2>
+                <p className="text-sm font-light leading-relaxed tracking-wide text-neutral-600">
+                  Submitted {new Date(inquiry.created_at).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </p>
+              </div>
+              <InquiryActions inquiry={inquiry} onUpdate={() => window.location.reload()} />
             </div>
-            <StatusBadge status={inquiry.status} />
           </div>
 
-          {/* Vogue-style content sections */}
-          <div className="p-8 space-y-12">
-            {/* Contact Information Section */}
-            {(inquiry.full_name || inquiry.email || inquiry.phone) && (
+          <div className="p-8 space-y-8">
+            {/* Contact Information */}
+            <div>
+              <h3 className="text-sm font-black uppercase tracking-[0.3em] mb-4 text-black">Contact Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {inquiry.email && (
+                  <div className="flex items-center gap-3">
+                    <Icon icon="ph:envelope" className="w-5 h-5 text-neutral-600" />
+                    <span className="text-sm font-light tracking-wide text-neutral-900">{inquiry.email}</span>
+                  </div>
+                )}
+                {inquiry.phone && (
+                  <div className="flex items-center gap-3">
+                    <Icon icon="ph:phone" className="w-5 h-5 text-neutral-600" />
+                    <span className="text-sm font-light tracking-wide text-neutral-900">{inquiry.phone}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Professional Information */}
+            {(inquiry.role || inquiry.scale) && (
               <div>
-                <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-3 border-b ${
-                  theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                }`}>
-                  Contact Information
-                </h3>
-                <div className="space-y-3">
-                  {inquiry.full_name && (
-                    <div className="flex items-center gap-3">
-                      <Icon icon="ph:user" className={`w-4 h-4 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`} />
-                      <p className={`text-sm font-light leading-relaxed tracking-wide ${
-                        theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                      }`}>{inquiry.full_name}</p>
+                <h3 className="text-sm font-black uppercase tracking-[0.3em] mb-4 text-black">Professional Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {inquiry.role && (
+                    <div>
+                      <p className="text-xs font-light uppercase tracking-wide text-neutral-500 mb-2">Role</p>
+                      <p className="text-sm font-light tracking-wide text-neutral-900">{inquiry.role}</p>
                     </div>
                   )}
-                  {inquiry.email && (
-                    <div className="flex items-center gap-3">
-                      <Icon icon="ph:envelope" className={`w-4 h-4 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`} />
-                      <a 
-                        href={`mailto:${inquiry.email}`}
-                        className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${
-                          theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-700 hover:text-black'
-                        }`}
-                      >
-                        {inquiry.email}
-                      </a>
-                    </div>
-                  )}
-                  {inquiry.phone && (
-                    <div className="flex items-center gap-3">
-                      <Icon icon="ph:phone" className={`w-4 h-4 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'}`} />
-                      <a 
-                        href={`tel:${inquiry.phone}`}
-                        className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${
-                          theme === 'dark' ? 'text-neutral-300 hover:text-white' : 'text-neutral-700 hover:text-black'
-                        }`}
-                      >
-                        {inquiry.phone}
-                      </a>
+                  {inquiry.scale && (
+                    <div>
+                      <p className="text-xs font-light uppercase tracking-wide text-neutral-500 mb-2">Scale</p>
+                      <p className="text-sm font-light tracking-wide text-neutral-900">{inquiry.scale}</p>
                     </div>
                   )}
                 </div>
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-4 pb-3 border-b ${
-                  theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                }`}>
-                  Role in Business
-                </h3>
-                <p className={`text-sm font-light leading-relaxed tracking-wide ${
-                  theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                }`}>{inquiry.role}</p>
-              </div>
-              <div>
-                <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-4 pb-3 border-b ${
-                  theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                }`}>
-                  Business Scale
-                </h3>
-                <p className={`text-sm font-light leading-relaxed tracking-wide ${
-                  theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                }`}>{inquiry.scale}</p>
-              </div>
-            </div>
-
+            {/* Challenges */}
             {inquiry.challenges && inquiry.challenges.length > 0 && (
               <div>
-                <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-3 border-b ${
-                  theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                }`}>
-                  Primary Challenges
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {inquiry.challenges.map((challenge: string, index: number) => (
+                <h3 className="text-sm font-black uppercase tracking-[0.3em] mb-4 text-black">Challenges</h3>
+                <div className="flex flex-wrap gap-2">
+                  {inquiry.challenges.map((challenge, index) => (
                     <span
                       key={index}
-                      className={`inline-flex items-center px-4 py-2 rounded-full text-xs font-light tracking-wide transition-all duration-500 hover:scale-105 ${
-                        theme === 'dark'
-                          ? 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
-                          : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
-                      }`}
+                      className="inline-flex items-center px-3 py-1 text-xs font-light tracking-wide rounded-full bg-neutral-100 text-neutral-900"
                     >
-                      {/* Vogue-style decorative dot */}
-                      <span className={`w-1.5 h-1.5 rounded-full mr-2 ${
-                        theme === 'dark' ? 'bg-current opacity-60' : 'bg-current opacity-40'
-                      }`}></span>
                       {challenge}
                     </span>
                   ))}
@@ -254,70 +225,46 @@ export default function InquiryDetailPage() {
               </div>
             )}
 
-            {inquiry.decision && (
+            {/* Additional Information */}
+            {(inquiry.decision || inquiry.prompt || inquiry.timing || inquiry.advisors) && (
               <div>
-                <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-3 border-b ${
-                  theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                }`}>
-                  Decision They Are Facing
-                </h3>
-                <p className={`text-sm font-light leading-relaxed tracking-wide whitespace-pre-wrap ${
-                  theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900'
-                }`}>{inquiry.decision}</p>
+                <h3 className="text-sm font-black uppercase tracking-[0.3em] mb-4 text-black">Additional Information</h3>
+                <div className="space-y-4">
+                  {inquiry.decision && (
+                    <div>
+                      <p className="text-xs font-light uppercase tracking-wide text-neutral-500 mb-2">Decision Timeline</p>
+                      <p className="text-sm font-light tracking-wide text-neutral-900">{inquiry.decision}</p>
+                    </div>
+                  )}
+                  {inquiry.prompt && (
+                    <div>
+                      <p className="text-xs font-light uppercase tracking-wide text-neutral-500 mb-2">Prompt</p>
+                      <p className="text-sm font-light tracking-wide text-neutral-900">{inquiry.prompt}</p>
+                    </div>
+                  )}
+                  {inquiry.timing && (
+                    <div>
+                      <p className="text-xs font-light uppercase tracking-wide text-neutral-500 mb-2">Timing</p>
+                      <p className="text-sm font-light tracking-wide text-neutral-900">{inquiry.timing}</p>
+                    </div>
+                  )}
+                  {inquiry.advisors && (
+                    <div>
+                      <p className="text-xs font-light uppercase tracking-wide text-neutral-500 mb-2">Advisors</p>
+                      <p className="text-sm font-light tracking-wide text-neutral-900">{inquiry.advisors}</p>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {inquiry.prompt && (
-                <div>
-                  <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-3 border-b ${
-                    theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                  }`}>
-                    What Prompted This
-                  </h3>
-                  <p className={`text-sm font-light leading-relaxed tracking-wide ${
-                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900'
-                  }`}>{inquiry.prompt}</p>
-                </div>
-              )}
-              {inquiry.timing && (
-                <div>
-                  <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-3 border-b ${
-                    theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                  }`}>
-                    Timing & Urgency
-                  </h3>
-                  <p className={`text-sm font-light leading-relaxed tracking-wide ${
-                    theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900'
-                  }`}>{inquiry.timing}</p>
-                </div>
-              )}
-            </div>
-
-            {inquiry.advisors && (
+            {/* Notes */}
+            {inquiry.notes && (
               <div>
-                <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-3 border-b ${
-                  theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                }`}>
-                  How They Work With Advisors
-                </h3>
-                <p className={`text-sm font-light leading-relaxed tracking-wide ${
-                  theme === 'dark' ? 'text-neutral-300' : 'text-neutral-900'
-                }`}>{inquiry.advisors}</p>
+                <h3 className="text-sm font-black uppercase tracking-[0.3em] mb-4 text-black">Notes</h3>
+                <p className="text-sm font-light tracking-wide text-neutral-900 leading-relaxed">{inquiry.notes}</p>
               </div>
             )}
-          </div>
-
-          {/* Vogue-style actions section */}
-          <div className={`px-8 py-6 border-t relative overflow-hidden ${
-            theme === 'dark'
-              ? 'border-neutral-800 bg-neutral-900'
-              : 'border-neutral-200 bg-neutral-50'
-          }`}>
-            
-            <div className="relative z-10">
-              <InquiryActions inquiry={inquiry} />
-            </div>
           </div>
         </div>
       </main>
