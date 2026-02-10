@@ -3,12 +3,9 @@
 import { useState, useEffect } from 'react';
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { useTheme } from "@/contexts/ThemeContext";
-import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useVanillaScroll } from "@/hooks/useVanillaScroll";
 
 export default function HoverSidebar() {
-    const { theme } = useTheme();
     const { scrollToElement } = useVanillaScroll();
     const [isVisible, setIsVisible] = useState(false);
     const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
@@ -65,26 +62,18 @@ export default function HoverSidebar() {
                 }`}
             >
                 <div 
-                    className={`h-full relative overflow-y-auto overflow-x-hidden vanilla-scroll ${
-                        theme === 'dark' 
-                            ? 'bg-black/95 backdrop-blur-xl border-r border-neutral-800' 
-                            : 'bg-white/95 backdrop-blur-xl border-r border-neutral-200'
-                    }`}
+                    className="h-full relative overflow-y-auto overflow-x-hidden vanilla-scroll bg-white/95 backdrop-blur-xl border-r border-neutral-200"
                     data-vanilla-scroll="true"
                 >
                     <div className="p-12 h-full flex flex-col relative z-10">
                         {/* Vogue-style Header */}
                         <div className="mb-16">
                             <div className="space-y-1">
-                                <span className={`font-majesty font-normal ${
-                            theme === 'dark' ? 'text-white' : 'text-black'
-                        }`} style={{ fontSize: '2rem', lineHeight: '1' }}>
+                                <span className="font-majesty font-normal text-black" style={{ fontSize: '2rem', lineHeight: '1' }}>
                             Airee<span style={{ color: '#ff3333' }}>za</span>
                         </span>
                             </div>
-                            <div className={`mt-8 text-xs font-normal uppercase tracking-widest opacity-60 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
-                            }`}>
+                            <div className="mt-8 text-xs font-normal uppercase tracking-widest opacity-60 text-neutral-500">
                                 Strategic Finance Advisory
                             </div>
                         </div>
@@ -93,122 +82,86 @@ export default function HoverSidebar() {
                         <nav className="space-y-6 mb-8">
                             <button
                                 onClick={() => scrollToSection('#hero')}
-                                className={`group w-full text-left transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'
-                                }`}
+                                className="group w-full text-left transition-all duration-500 text-neutral-400 hover:text-black"
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
                                     HOME
                                 </div>
-                                <div className={`mt-1 h-px w-full transition-all duration-500 ${
-                                    theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
-                                }`} />
+                                <div className="mt-1 h-px w-full transition-all duration-500 bg-neutral-200 group-hover:bg-black" />
                             </button>
 
                             <button
                                 onClick={() => scrollToSection('#about')}
-                                className={`group w-full text-left transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'
-                                }`}
+                                className="group w-full text-left transition-all duration-500 text-neutral-400 hover:text-black"
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
                                     ABOUT
                                 </div>
-                                <div className={`mt-1 h-px w-full transition-all duration-500 ${
-                                    theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
-                                }`} />
+                                <div className="mt-1 h-px w-full transition-all duration-500 bg-neutral-200 group-hover:bg-black" />
                             </button>
 
                             <button
                                 onClick={() => scrollToSection('#what-i-do')}
-                                className={`group w-full text-left transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'
-                                }`}
+                                className="group w-full text-left transition-all duration-500 text-neutral-400 hover:text-black"
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
                                     WHAT I DO
                                 </div>
-                                <div className={`mt-1 h-px w-full transition-all duration-500 ${
-                                    theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
-                                }`} />
+                                <div className="mt-1 h-px w-full transition-all duration-500 bg-neutral-200 group-hover:bg-black" />
                             </button>
 
                             <button
                                 onClick={() => scrollToSection('#how-i-work')}
-                                className={`group w-full text-left transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'
-                                }`}
+                                className="group w-full text-left transition-all duration-500 text-neutral-400 hover:text-black"
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
                                     HOW I WORK
                                 </div>
-                                <div className={`mt-1 h-px w-full transition-all duration-500 ${
-                                    theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
-                                }`} />
+                                <div className="mt-1 h-px w-full transition-all duration-500 bg-neutral-200 group-hover:bg-black" />
                             </button>
 
                             <button
                                 onClick={() => scrollToSection('#point-of-view')}
-                                className={`group w-full text-left transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'
-                                }`}
+                                className="group w-full text-left transition-all duration-500 text-neutral-400 hover:text-black"
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
                                     POINT OF VIEW
                                 </div>
-                                <div className={`mt-1 h-px w-full transition-all duration-500 ${
-                                    theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
-                                }`} />
+                                <div className="mt-1 h-px w-full transition-all duration-500 bg-neutral-200 group-hover:bg-black" />
                             </button>
 
                             <button
                                 onClick={() => scrollToSection('#who-i-work-with')}
-                                className={`group w-full text-left transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'
-                                }`}
+                                className="group w-full text-left transition-all duration-500 text-neutral-400 hover:text-black"
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
                                     WHO I WORK WITH
                                 </div>
-                                <div className={`mt-1 h-px w-full transition-all duration-500 ${
-                                    theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
-                                }`} />
+                                <div className="mt-1 h-px w-full transition-all duration-500 bg-neutral-200 group-hover:bg-black" />
                             </button>
 
                             <button
                                 onClick={() => scrollToSection('#lets-talk')}
-                                className={`group w-full text-left transition-all duration-500 ${
-                                    theme === 'dark' ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'
-                                }`}
+                                className="group w-full text-left transition-all duration-500 text-neutral-400 hover:text-black"
                             >
                                 <div className="text-xs font-black uppercase tracking-[0.3em] leading-[1.2]">
                                     LET'S TALK
                                 </div>
-                                <div className={`mt-1 h-px w-full transition-all duration-500 ${
-                                    theme === 'dark' ? 'bg-neutral-800 group-hover:bg-white' : 'bg-neutral-200 group-hover:bg-black'
-                                }`} />
+                                <div className="mt-1 h-px w-full transition-all duration-500 bg-neutral-200 group-hover:bg-black" />
                             </button>
                         </nav>
 
                         {/* Vogue-style Professional Info */}
-                        <div className={`border-t pt-8 mb-8 ${
-                            theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
-                        }`}>
+                        <div className="border-t pt-8 mb-8 border-neutral-200">
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
-                                    <div className={`w-1 h-1 rounded-full ${
-                                        theme === 'dark' ? 'bg-green-400' : 'bg-green-600'
-                                    }`} />
-                                    <span className={`text-xs font-black uppercase tracking-[0.3em] ${
-                                        theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
-                                    }`}>
+                                    <div className="w-1 h-1 rounded-full bg-green-600" />
+                                    <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-600">
                                         Available
                                     </span>
                                 </div>
                                 
-                                <div className={`space-y-1 text-xs font-light leading-relaxed ${
-                                    theme === 'dark' ? 'text-neutral-600' : 'text-neutral-500'
-                                }`}>
+                                <div className="space-y-1 text-xs font-light leading-relaxed text-neutral-500">
                                     <div>Certified Management Accountant</div>
                                     <div>Strategic Finance & Performance</div>
                                     <div>Zamboanga City, Philippines</div>
@@ -217,32 +170,19 @@ export default function HoverSidebar() {
                         </div>
 
                         {/* Vogue-style Footer */}
-                        <div className={`border-t pt-8 mt-auto space-y-6 ${
-                            theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'
-                        }`}>
+                        <div className="border-t pt-8 mt-auto space-y-6 border-neutral-200">
                             {/* Tagline */}
                             <div className="text-center">
-                                <p className={`text-xs font-light leading-relaxed tracking-wide ${
-                                    theme === 'dark' ? 'text-neutral-500' : 'text-neutral-600'
-                                }`}>
+                                <p className="text-xs font-light leading-relaxed tracking-wide text-neutral-600">
                                     Founders moving from intuition to structure
                                 </p>
-                            </div>
-                            
-                            {/* Theme Toggle */}
-                            <div className="flex justify-center">
-                                <ThemeToggle />
                             </div>
                             
                             {/* Contact Actions */}
                             <div className="space-y-4">
                                 <a
                                     href="#lets-talk"
-                                    className={`block w-full text-center py-3 px-4 border transition-all duration-500 text-xs font-black uppercase tracking-[0.3em] ${
-                                        theme === 'dark'
-                                            ? 'border-white/20 hover:bg-white hover:text-black text-white/80 hover:border-white'
-                                            : 'border-black/20 hover:bg-black hover:text-white text-black/80 hover:border-black'
-                                    }`}
+                                    className="block w-full text-center py-3 px-4 border transition-all duration-500 text-xs font-black uppercase tracking-[0.3em] border-black/20 hover:bg-black hover:text-white text-black/80 hover:border-black"
                                 >
                                     Start Conversation
                                 </a>
@@ -250,11 +190,7 @@ export default function HoverSidebar() {
                                 <div className="flex justify-center gap-4">
                                     <a
                                         href="mailto:contact@example.com"
-                                        className={`p-2 rounded-full transition-all duration-500 text-xs font-light uppercase tracking-wider ${
-                                            theme === 'dark'
-                                                ? 'hover:bg-neutral-900 text-neutral-500 hover:text-white'
-                                                : 'hover:bg-neutral-100 text-neutral-400 hover:text-black'
-                                        }`}
+                                        className="p-2 rounded-full transition-all duration-500 text-xs font-light uppercase tracking-wider hover:bg-neutral-100 text-neutral-400 hover:text-black"
                                     >
                                         EMAIL
                                     </a>
@@ -262,11 +198,7 @@ export default function HoverSidebar() {
                                         href="https://linkedin.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`p-2 rounded-full transition-all duration-500 text-xs font-light uppercase tracking-wider ${
-                                            theme === 'dark'
-                                                ? 'hover:bg-neutral-900 text-neutral-500 hover:text-white'
-                                                : 'hover:bg-neutral-100 text-neutral-400 hover:text-black'
-                                        }`}
+                                        className="p-2 rounded-full transition-all duration-500 text-xs font-light uppercase tracking-wider hover:bg-neutral-100 text-neutral-400 hover:text-black"
                                     >
                                         LINKEDIN
                                     </a>

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { ThemeProvider } from '@/contexts/ThemeContext'
 import ScrollAnimationProvider from '@/components/ScrollAnimationProvider'
 import '../globals.css'
 
@@ -14,10 +13,8 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   return (
-    <ThemeProvider>
-      <ScrollAnimationProvider>
-        {children}
-      </ScrollAnimationProvider>
-    </ThemeProvider>
+    <ScrollAnimationProvider>
+      {children}
+    </ScrollAnimationProvider>
   )
 }

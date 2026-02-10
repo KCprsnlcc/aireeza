@@ -1,14 +1,8 @@
 'use client';
 
-import { useTheme } from "@/contexts/ThemeContext";
-
 export default function About() {
-    const { theme } = useTheme();
-
     return (
-        <section id="about" className={`py-16 border-b relative overflow-hidden ${
-            theme === 'dark' ? 'border-neutral-900 bg-black' : 'border-neutral-200 bg-white'
-        }`}>
+        <section id="about" className="py-16 border-b relative overflow-hidden border-neutral-200 bg-white">
             {/* Vogue-style background decoration */}
             <div className="absolute top-0 right-0 w-32 h-full opacity-5">
                 <div className="text-6xl font-black tracking-tighter writing-mode-vertical">
@@ -28,9 +22,7 @@ export default function About() {
                     {/* Vogue-style text content */}
                     <div className="slide-in-left">
                         <div className="relative">
-                        <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.7] mb-8 relative ${
-                            theme === 'dark' ? 'text-white' : 'text-black'
-                        }`}>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.7] mb-8 relative text-black">
                             INSTINCT
                             <span className="block text-3xl md:text-5xl lg:text-6xl font-light tracking-wider">
                                 CLARITY
@@ -39,60 +31,36 @@ export default function About() {
                     </div>
                         
                         <div className="space-y-6 mb-12">
-                            <p className={`text-lg font-thin leading-relaxed tracking-wide ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                            }`}>
+                            <p className="text-lg font-thin leading-relaxed tracking-wide text-neutral-700">
                                 I work at the intersection of finance, performance, and decision-making. My role is to help founders move from instinct to clarity as their business grows more complex.
                             </p>
-                            <p className={`text-base font-light leading-relaxed tracking-normal ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <p className="text-base font-light leading-relaxed tracking-normal text-neutral-600">
                                 My background is in strategic finance and business performance, working alongside founders as businesses scale beyond intuition. I have built financial structures in fast-moving environments, supported growth decisions under pressure, and helped leaders make sense of tradeoffs as complexity increases.
                             </p>
-                            <p className={`text-base font-light leading-relaxed tracking-normal ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <p className="text-base font-light leading-relaxed tracking-normal text-neutral-600">
                                 My certifications exist to support disciplined analysis and structured thinking. They provide the technical grounding needed to evaluate scenarios, test assumptions, and challenge conclusions, but they are not the work itself.
                             </p>
-                            <p className={`text-base font-light leading-relaxed tracking-normal ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <p className="text-base font-light leading-relaxed tracking-normal text-neutral-600">
                                 What matters most is judgment. Knowing which numbers deserve attention, which questions need answering, and when simplicity leads to better decisions than precision.
                             </p>
-                            <p className={`text-base font-light leading-relaxed tracking-normal ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <p className="text-base font-light leading-relaxed tracking-normal text-neutral-600">
                                 My role is to help founders see clearly and act with confidence as the business evolves.
                             </p>
-                            <p className={`text-base font-light leading-relaxed tracking-normal ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <p className="text-base font-light leading-relaxed tracking-normal text-neutral-600">
                                 It is to help you see clearly and make confident decisions as the business evolves.
                             </p>
                         </div>
                         {/* Vogue-style quote */}
-                        <div className={`p-8 border-l-4 mb-12 relative ${
-                            theme === 'dark' 
-                                ? 'border-neutral-700 bg-neutral-900/30' 
-                                : 'border-neutral-300 bg-neutral-50'
-                        }`}>
-                            <div className={`absolute left-2 top-0 text-5xl font-black opacity-10 ${
-                                theme === 'dark' ? 'text-white' : 'text-black'
-                            }`}>"</div>
-                            <p className={`text-sm font-light leading-relaxed italic tracking-wide ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                        <div className="p-8 border-l-4 mb-12 relative border-neutral-300 bg-neutral-50">
+                            <div className="absolute left-2 top-0 text-5xl font-black opacity-10 text-black">"</div>
+                            <p className="text-sm font-light leading-relaxed italic tracking-wide text-neutral-600">
                                 I do not publish client testimonials. Much of this work involves confidential financial decisions, and discretion is essential.
                             </p>
                         </div>
 
                         <a 
                             href="#point-of-view" 
-                            className={`inline-flex items-center gap-2 group transition-all duration-500 ${
-                                theme === 'dark' 
-                                    ? 'text-neutral-400 hover:text-white' 
-                                    : 'text-neutral-600 hover:text-black'
-                            }`}
+                            className="inline-flex items-center gap-2 group transition-all duration-500 text-neutral-600 hover:text-black"
                         >
                             <span className="text-xs font-black uppercase tracking-[0.3em]">Read my Point of View</span>
                             <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>
@@ -153,12 +121,8 @@ export default function About() {
                         
                         {/* Education */}
                         <div className="fade-up">
-                            <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-2 border-b ${
-                                theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                            }`}>Education</h3>
-                            <ul className={`space-y-3 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-6 pb-2 border-b border-neutral-200 text-black">Education</h3>
+                            <ul className="space-y-3 text-neutral-600">
                                 <li className="stagger-item">
                                     <div className="text-xs font-light tracking-wide">Bachelor's Degree in Management Accounting</div>
                                 </li>
@@ -173,12 +137,8 @@ export default function About() {
                         
                         {/* Associations */}
                         <div className="fade-up">
-                            <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-6 pb-2 border-b ${
-                                theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'
-                            }`}>Professional Associations</h3>
-                            <ul className={`space-y-2 ${
-                                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                            }`}>
+                            <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-6 pb-2 border-b border-neutral-200 text-black">Professional Associations</h3>
+                            <ul className="space-y-2 text-neutral-600">
                                 <li className="stagger-item">
                                     <div className="text-xs font-light tracking-wide">Certified Management Accountant (CMA), Institute of Management Accountants</div>
                                 </li>

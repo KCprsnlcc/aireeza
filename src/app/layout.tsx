@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "../contexts/ThemeContext";
 import LayoutContent from "../components/LayoutContent";
 import HtmlWrapper from "../components/HtmlWrapper";
 
@@ -17,9 +16,7 @@ export default function RootLayout({
   return (
     <HtmlWrapper>
       <body className="antialiased min-h-screen overflow-x-hidden">
-        <ThemeProvider>
-          <LayoutContent>{children}</LayoutContent>
-        </ThemeProvider>
+        <LayoutContent>{children}</LayoutContent>
       </body>
     </HtmlWrapper>
   );

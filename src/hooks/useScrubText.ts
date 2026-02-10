@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export const useScrubText = (text: string, theme: string) => {
+export const useScrubText = (text: string) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [spansHtml, setSpansHtml] = useState<string>('');
 
@@ -65,5 +65,5 @@ export const useScrubText = (text: string, theme: string) => {
         };
     }, [spansHtml]);
 
-    return { containerRef, spansHtml, theme };
+    return { containerRef, spansHtml };
 };

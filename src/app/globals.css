@@ -15,18 +15,9 @@
 }
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --accent: #ff3333;
-  --border: #262626;
-  --border-light: #404040;
-  --muted: #525252;
-  --muted-foreground: #a3a3a3;
-}
-
-html.light {
   --background: #ffffff;
   --foreground: #000000;
+  --accent: #ff3333;
   --border: #e5e5e5;
   --border-light: #d4d4d4;
   --muted: #a3a3a3;
@@ -47,14 +38,6 @@ body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease, margin-left 0.2s ease-out;
-}
-
-html.dark body {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-html.light body {
   background-color: #ffffff;
   color: #000000;
 }
@@ -223,20 +206,11 @@ html.light body {
   width: 6px;
 }
 
-html.dark ::-webkit-scrollbar-track {
-  background: #000;
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 3px;
-}
-
-html.light ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #fff;
 }
 
-html.light ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #d4d4d4;
   border-radius: 3px;
 }
@@ -388,12 +362,7 @@ html.light ::-webkit-scrollbar-thumb {
 .stagger-item:nth-child(6) { transition-delay: 0.6s; }
 
 /* Custom Form Inputs */
-html.dark .custom-radio:checked + div {
-  background-color: white;
-  border-color: white;
-}
-
-html.light .custom-radio:checked + div {
+.custom-radio:checked + div {
   background-color: black;
   border-color: black;
 }
@@ -442,25 +411,11 @@ input:focus {
 .scrub-text span {
   opacity: 0.3;
   transition: opacity 0.2s linear;
+  color: rgb(107 114 128);
 }
 
 .scrub-text span.active {
   opacity: 1;
-}
-
-html.dark .scrub-text span {
-  color: rgb(163 163 163);
-}
-
-html.dark .scrub-text span.active {
-  color: rgb(255 255 255);
-}
-
-html.light .scrub-text span {
-  color: rgb(107 114 128);
-}
-
-html.light .scrub-text span.active {
   color: rgb(0 0 0);
 }
 
@@ -711,19 +666,6 @@ transition: opacity 0.1s ease-out;
 /* Pulse border for hint pill */
 @keyframes heroPulseBorder {
   0%, 100% {
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    border-color: rgba(255, 51, 51, 0.25);
-  }
-}
-
-html.dark .hero-pulse-border {
-  animation: heroPulseBorder 3s ease-in-out infinite;
-}
-
-@keyframes heroPulseBorderLight {
-  0%, 100% {
     border-color: rgba(0, 0, 0, 0.1);
   }
   50% {
@@ -731,8 +673,8 @@ html.dark .hero-pulse-border {
   }
 }
 
-html.light .hero-pulse-border {
-  animation: heroPulseBorderLight 3s ease-in-out infinite;
+.hero-pulse-border {
+  animation: heroPulseBorder 3s ease-in-out infinite;
 }
 
 /* Cursor Reveal Mask Styles */

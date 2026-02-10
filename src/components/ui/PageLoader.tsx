@@ -1,10 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
 
 export default function PageLoader() {
-    const { theme } = useTheme();
     const [isLoading, setIsLoading] = useState(true);
     const [loadingProgress, setLoadingProgress] = useState(0);
     const [isMajestyLoaded, setIsMajestyLoaded] = useState(false);
@@ -166,7 +164,7 @@ export default function PageLoader() {
                 <path 
                     ref={svgRef}
                     d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"
-                    fill={theme === 'dark' ? '#ffffff' : '#000000'}
+                    fill="#000000"
                 />
             </svg>
             
@@ -176,7 +174,7 @@ export default function PageLoader() {
                     <div className="flex items-baseline mb-6">
                         <span 
                             className="text-6xl font-majesty font-light tracking-tight"
-                            style={{ color: theme === 'dark' ? '#000000' : '#ffffff' }}
+                            style={{ color: '#ffffff' }}
                         >
                             Airee
                         </span>

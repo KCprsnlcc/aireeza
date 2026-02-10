@@ -2,11 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Icon } from "@iconify/react";
-import { useTheme } from "@/contexts/ThemeContext";
-import ThemeToggle from "../ui/ThemeToggle";
 
 export default function Footer() {
-    const { theme } = useTheme();
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
@@ -18,30 +15,20 @@ export default function Footer() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const textPrimary = theme === 'dark' ? 'text-white' : 'text-black/90';
-    const textSecondary = theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700';
-    const textTertiary = theme === 'dark' ? 'text-neutral-600' : 'text-neutral-700';
-    const textMuted = theme === 'dark' ? 'text-neutral-500' : 'text-neutral-700';
-    const borderColor = theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200';
-    const bgBase = theme === 'dark' ? 'bg-black' : 'bg-white';
-    const cornerBorder = theme === 'dark' ? 'border-white/10' : 'border-black/8';
-    const logoOpacity = theme === 'dark' ? 'opacity-30' : 'opacity-20';
-    const hoverText = theme === 'dark' ? 'hover:text-white' : 'hover:text-black';
-
     return (
-        <footer className={`relative pt-24 md:pt-32 pb-12 md:pb-16 overflow-hidden transition-all duration-700 ${bgBase}`}>
+        <footer className="relative pt-24 md:pt-32 pb-12 md:pb-16 overflow-hidden transition-all duration-700 bg-white">
             {/* Decorative corner elements */}
-            <div className={`absolute top-8 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
-            <div className={`absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
+            <div className="absolute top-8 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none border-black/8 opacity-0 hero-animate-in hero-stagger-1" />
+            <div className="absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none border-black/8 opacity-0 hero-animate-in hero-stagger-1" />
             
             <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 relative z-10">
-                <div className={`grid grid-cols-1 md:grid-cols-3 items-end gap-12 md:gap-16 mb-20 md:mb-24 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-2' : ''}`}>
+                <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-12 md:gap-16 mb-20 md:mb-24 opacity-0 hero-animate-in hero-stagger-2">
                     <div className="text-left">
                         <div className="space-y-2">
-                            <p className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
                                 Strategic Finance
                             </p>
-                            <p className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
                                 FP&A Advisory
                             </p>
                         </div>
@@ -100,23 +87,23 @@ export default function Footer() {
                     
                     <div className="text-right">
                         <div className="space-y-2">
-                            <p className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
                                 Global Reach
                             </p>
-                            <p className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
                                 Remote First
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className={`border-t pt-12 md:pt-16 flex justify-between items-end relative overflow-hidden opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-3' : ''} ${borderColor}`}>
+                <div className="border-t pt-12 md:pt-16 flex justify-between items-end relative overflow-hidden opacity-0 hero-animate-in hero-stagger-3 border-neutral-200">
                     <div className="text-left">
                         <div className="flex items-center gap-2">
-                            <span className={`font-majesty font-normal ${textPrimary}`} style={{ fontSize: '1.5rem', lineHeight: '1' }}>
+                            <span className="font-majesty font-normal text-black/90" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
                                 Airee<span style={{ color: '#ff3333' }}>za</span>
                             </span>
-                            <span className={`text-[10px] font-light tracking-wide ${textTertiary}`}>
+                            <span className="text-[10px] font-light tracking-wide text-neutral-700">
                                 &copy;2024
                             </span>
                         </div>
@@ -124,17 +111,16 @@ export default function Footer() {
                     
                     {/* Brand name with logo */}
                     <div className="text-center">
-                        <span className={`font-majesty font-normal select-none pointer-events-none transition-all duration-700 hover:opacity-70 ${logoOpacity} ${textPrimary}`} style={{ fontSize: '15vw', lineHeight: '1' }}>
+                        <span className="font-majesty font-normal select-none pointer-events-none transition-all duration-700 hover:opacity-70 opacity-20 text-black/90" style={{ fontSize: '15vw', lineHeight: '1' }}>
                             Airee<span style={{ color: '#ff3333' }}>za</span>
                         </span>
                     </div>
                     
                     <div className="text-right">
                         <div className="flex items-center gap-4">
-                            <ThemeToggle />
                             <button
                                 onClick={scrollToTop}
-                                className={`group text-[10px] flex items-center gap-2 transition-all duration-500 ${textTertiary} ${hoverText}`}
+                                className="group text-[10px] flex items-center gap-2 transition-all duration-500 text-neutral-700 hover:text-black"
                             >
                                 <span className="font-light tracking-wide">BACK TO TOP</span>
                                 <Icon icon="solar:arrow-up-linear" className="transition-transform duration-500 group-hover:-translate-y-1" />
@@ -145,8 +131,8 @@ export default function Footer() {
             </div>
 
             {/* Bottom decorative elements */}
-            <div className={`absolute bottom-8 left-6 md:left-12 w-16 h-16 border-l border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-4' : ''}`} />
-            <div className={`absolute bottom-8 right-6 md:right-12 w-16 h-16 border-r border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-4' : ''}`} />
+            <div className="absolute bottom-8 left-6 md:left-12 w-16 h-16 border-l border-b pointer-events-none border-black/8 opacity-0 hero-animate-in hero-stagger-4" />
+            <div className="absolute bottom-8 right-6 md:right-12 w-16 h-16 border-r border-b pointer-events-none border-black/8 opacity-0 hero-animate-in hero-stagger-4" />
         </footer>
     );
 }

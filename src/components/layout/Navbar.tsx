@@ -2,7 +2,6 @@
 
 import { Icon } from "@iconify/react";
 import { useState, useEffect, useRef } from "react";
-import { useTheme } from "@/contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -118,7 +117,7 @@ export default function Navbar() {
                         transition={{ duration: 0.3, ease: "easeOut" }}
                         className="hidden md:block fixed left-0 top-0 bottom-0 z-50 w-1"
                     >
-                        <div className="relative w-full h-full bg-black/5 dark:bg-white/5">
+                        <div className="relative w-full h-full bg-black/5">
                             <div 
                                 className="absolute top-0 left-0 right-0 bg-[#ff3333] will-change-transform"
                                 style={{ 
@@ -181,14 +180,8 @@ interface NavbarContentProps {
 }
 
 function NavbarContent({ mobileMenuOpen, setMobileMenuOpen, isSticky }: NavbarContentProps) {
-    const { theme } = useTheme();
-
     return (
-        <div className={`w-full px-4 md:px-6 py-4 md:py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm ${
-            theme === 'dark' 
-                ? 'mix-blend-difference border-white/10 text-white bg-transparent' 
-                : 'bg-white/80 border-black/10 text-black'
-        }`}>
+        <div className="w-full px-4 md:px-6 py-4 md:py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm bg-white/80 border-black/10 text-black">
             {/* Left - EST. 2024 (hidden on mobile) */}
             <div className="hidden md:block md:w-1/3">EST. 2024</div>
             
@@ -204,11 +197,7 @@ function NavbarContent({ mobileMenuOpen, setMobileMenuOpen, isSticky }: NavbarCo
                 {/* Desktop CTA */}
                 <a 
                     href="#contact" 
-                    className={`hidden md:block border rounded-full px-6 py-2 transition-all duration-300 touch-manipulation ${
-                        theme === 'dark'
-                            ? 'border-white/30 hover:bg-white hover:text-black'
-                            : 'border-black/30 hover:bg-black hover:text-white'
-                    }`}
+                    className="hidden md:block border rounded-full px-6 py-2 transition-all duration-300 touch-manipulation border-black/30 hover:bg-black hover:text-white"
                 >
                     Start Conversation
                 </a>
@@ -216,11 +205,7 @@ function NavbarContent({ mobileMenuOpen, setMobileMenuOpen, isSticky }: NavbarCo
                 {/* Mobile CTA - Compact */}
                 <a 
                     href="#contact" 
-                    className={`md:hidden text-[0.65rem] font-black tracking-wider px-3 py-2 border rounded-full transition-all duration-300 touch-manipulation ${
-                        theme === 'dark'
-                            ? 'border-white/30 text-white'
-                            : 'border-black/30 text-black'
-                    }`}
+                    className="md:hidden text-[0.65rem] font-black tracking-wider px-3 py-2 border rounded-full transition-all duration-300 touch-manipulation border-black/30 text-black"
                 >
                     Contact
                 </a>
@@ -250,8 +235,6 @@ interface MobileMenuProps {
 }
 
 function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-    const { theme } = useTheme();
-
     const menuItems = [
         { label: 'Home', href: '#hero', icon: 'solar:home-2-linear' },
         { label: 'The Problem', href: '#the-problem', icon: 'solar:danger-circle-linear' },
@@ -284,20 +267,12 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             stiffness: 300,
                             damping: 30
                         }}
-                        className={`fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm z-50 md:hidden ${
-                            theme === 'dark' 
-                                ? 'bg-black border-white/10' 
-                                : 'bg-white border-black/10'
-                        } border-l shadow-2xl`}
+                        className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm z-50 md:hidden bg-white border-black/10 border-l shadow-2xl"
                     >
                         <div className="flex flex-col h-full">
                             {/* Menu Header */}
-                            <div className={`flex justify-between items-center px-6 py-6 border-b ${
-                                theme === 'dark' ? 'border-white/10' : 'border-black/10'
-                            }`}>
-                                <span className={`text-xs font-black uppercase tracking-wider ${
-                                    theme === 'dark' ? 'text-white/70' : 'text-black/70'
-                                }`}>
+                            <div className="flex justify-between items-center px-6 py-6 border-b border-black/10">
+                                <span className="text-xs font-black uppercase tracking-wider text-black/70">
                                     Menu
                                 </span>
                                 <button 
@@ -309,7 +284,7 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         icon="solar:close-circle-linear" 
                                         width="24" 
                                         height="24"
-                                        className={theme === 'dark' ? 'text-white' : 'text-black'}
+                                        className="text-black"
                                     />
                                 </button>
                             </div>
@@ -327,11 +302,7 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                             <a
                                                 href={item.href}
                                                 onClick={onClose}
-                                                className={`flex items-center gap-4 px-4 py-4 rounded-lg transition-all duration-300 touch-manipulation ${
-                                                    theme === 'dark'
-                                                        ? 'text-white hover:bg-white/5 active:bg-white/10'
-                                                        : 'text-black hover:bg-black/5 active:bg-black/10'
-                                                }`}
+                                                className="flex items-center gap-4 px-4 py-4 rounded-lg transition-all duration-300 touch-manipulation text-black hover:bg-black/5 active:bg-black/10"
                                             >
                                                 <Icon icon={item.icon} width="24" height="24" />
                                                 <span className="text-base font-light tracking-wide">
@@ -344,12 +315,8 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             </nav>
 
                             {/* Menu Footer */}
-                            <div className={`px-6 py-6 border-t ${
-                                theme === 'dark' ? 'border-white/10' : 'border-black/10'
-                            }`}>
-                                <div className={`text-[0.65rem] font-light tracking-wider ${
-                                    theme === 'dark' ? 'text-white/50' : 'text-black/50'
-                                }`}>
+                            <div className="px-6 py-6 border-t border-black/10">
+                                <div className="text-[0.65rem] font-light tracking-wider text-black/50">
                                     <p>EST. 2024</p>
                                     <p className="mt-1">Strategic & Financial Consulting</p>
                                 </div>

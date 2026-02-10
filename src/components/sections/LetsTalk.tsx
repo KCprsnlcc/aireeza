@@ -3,11 +3,9 @@
 import { Icon } from "@iconify/react";
 import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { useTheme } from "@/contexts/ThemeContext";
 import { initScrollAnimations } from "@/hooks/useScrollAnimation";
 
 export default function LetsTalk() {
-    const { theme } = useTheme();
     const [isLoaded, setIsLoaded] = useState(false);
     const [stage, setStage] = useState<'stage1' | 'stage2'>('stage1');
     const [inquiryId, setInquiryId] = useState<string | null>(null);
@@ -45,24 +43,6 @@ export default function LetsTalk() {
             }, 100);
         }
     }, [stage]);
-
-    const textPrimary = theme === 'dark' ? 'text-white' : 'text-black/90';
-    const textSecondary = theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700';
-    const textTertiary = theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600';
-    const textMuted = theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500';
-    const borderColor = theme === 'dark' ? 'border-neutral-900' : 'border-neutral-200';
-    const borderSubtle = theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200';
-    const bgBase = theme === 'dark' ? 'bg-black' : 'bg-white';
-    const bgForm = theme === 'dark' ? 'bg-neutral-900/20' : 'bg-neutral-50';
-    const bgInput = theme === 'dark' ? 'bg-neutral-950' : 'bg-white';
-    const borderInput = theme === 'dark' ? 'border-neutral-700' : 'border-neutral-300';
-    const focusBorder = theme === 'dark' ? 'focus:border-white' : 'focus:border-black';
-    const placeholder = theme === 'dark' ? 'placeholder:text-neutral-600' : 'placeholder:text-neutral-400';
-    const lineColor = theme === 'dark' ? 'bg-neutral-800' : 'bg-neutral-300';
-    const cornerBorder = theme === 'dark' ? 'border-white/10' : 'border-black/8';
-    const buttonBg = theme === 'dark' ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800';
-    const hoverBg = theme === 'dark' ? 'hover:bg-neutral-900/20' : 'hover:bg-neutral-100/50';
-    const hoverText = theme === 'dark' ? 'group-hover:text-white' : 'group-hover:text-black';
 
     // Validation functions
     const validateEmail = (email: string) => {
@@ -204,10 +184,10 @@ export default function LetsTalk() {
     };
 
     return (
-        <section id="lets-talk" className={`relative min-h-screen flex flex-col justify-center py-24 md:py-32 border-b overflow-hidden ${borderColor} ${bgBase}`}>
+        <section id="lets-talk" className="relative min-h-screen flex flex-col justify-center py-24 md:py-32 border-b overflow-hidden border-neutral-200 bg-white">
             {/* Decorative corner elements */}
-            <div className={`absolute top-8 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
-            <div className={`absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
+            <div className={`absolute top-8 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none border-black/8 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
+            <div className={`absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none border-black/8 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`} />
 
             {/* Vertical background text */}
             <div className="absolute top-0 left-0 w-48 h-full opacity-5 pointer-events-none">
@@ -220,45 +200,41 @@ export default function LetsTalk() {
                 {/* Header */}
                 <div className={`text-center mb-20 md:mb-24 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-2' : ''}`}>
                     <div className="flex items-center justify-center gap-8 mb-8">
-                        <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>06</span>
-                        <div className={`h-px w-24 ${lineColor}`}></div>
-                        <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>/ LET'S TALK</span>
+                        <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">06</span>
+                        <div className="h-px w-24 bg-neutral-300"></div>
+                        <span className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">/ LET'S TALK</span>
                     </div>
                     
-                    <h2 className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-[0.9] mb-12 md:mb-16 ${textPrimary}`}>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-[0.9] mb-12 md:mb-16 text-black/90">
                         CLARITY
-                        <span className={`block text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-center mt-3 ${textSecondary}`}>
+                        <span className="block text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-center mt-3 text-neutral-700">
                             BEFORE
                         </span>
-                        <span className={`block text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-center ${textSecondary}`}>
+                        <span className="block text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-[0.2em] text-center text-neutral-700">
                             ACTING
                         </span>
                     </h2>
                     
-                    <p className={`text-base md:text-lg font-light leading-relaxed tracking-wide w-full ${textSecondary}`}>
+                    <p className="text-base md:text-lg font-light leading-relaxed tracking-wide w-full text-neutral-700">
                         If you are navigating a meaningful financial decision, this conversation is designed to assess context and fit.
                     </p>
                 </div>
 
                 {/* Form container */}
-                <div className={`relative p-12 md:p-16 lg:p-20 border-l-4 ${borderSubtle} ${bgForm} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-3' : ''}`}>
-                    <div className={`absolute left-6 top-8 text-6xl font-black opacity-10 ${textPrimary}`}>"</div>
+                <div className={`relative p-12 md:p-16 lg:p-20 border-l-4 border-neutral-200 bg-neutral-50 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-3' : ''}`}>
+                    <div className="absolute left-6 top-8 text-6xl font-black opacity-10 text-black/90">"</div>
                     {submitted ? (
                         <div className="text-center py-16 md:py-20">
-                            <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-10 transition-all duration-700 ${
-                                theme === 'dark' ? 'bg-emerald-500/20' : 'bg-emerald-500/10'
-                            }`}>
-                                <Icon icon="solar:check-circle-linear" className={`w-10 h-10 transition-colors duration-700 ${
-                                    theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
-                                }`} />
+                            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-10 transition-all duration-700 bg-emerald-500/10">
+                                <Icon icon="solar:check-circle-linear" className="w-10 h-10 transition-colors duration-700 text-emerald-600" />
                             </div>
-                            <h3 className={`text-2xl md:text-3xl font-black tracking-tight mb-6 ${textPrimary}`}>Inquiry Received</h3>
-                            <p className={`text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10 ${textTertiary}`}>
+                            <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-6 text-black/90">Inquiry Received</h3>
+                            <p className="text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto mb-10 text-neutral-600">
                                 Thank you for reaching out. I will review your submission and respond within 48 hours if there is a potential fit.
                             </p>
                             <button
                                 onClick={resetForm}
-                                className={`inline-flex items-center gap-3 group transition-all duration-500 ${textTertiary} hover:${textPrimary.replace('text-', 'text-')}`}
+                                className="inline-flex items-center gap-3 group transition-all duration-500 text-neutral-600 hover:text-black/90"
                             >
                                 <span className="text-xs font-black uppercase tracking-[0.3em]">Submit another inquiry</span>
                                 <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>
@@ -270,20 +246,20 @@ export default function LetsTalk() {
                                 <>
                                     {/* Stage 1: Contact Information */}
                                     <div className="space-y-16">
-                                        <div className={`pb-12 border-b ${borderSubtle}`}>
-                                            <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${borderSubtle} ${textPrimary}`}>Contact Information</h3>
-                                            <p className={`text-xs font-light tracking-wide mb-8 ${textMuted}`}>Please provide your contact details to begin the conversation:</p>
+                                        <div className="pb-12 border-b stagger-item border-neutral-200">
+                                            <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black/90">Contact Information</h3>
+                                            <p className="text-xs font-light tracking-wide mb-8 text-neutral-500">Please provide your contact details to begin the conversation:</p>
                                             
                                             <div className="space-y-8">
                                                 {/* Full Name */}
                                                 <div>
-                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${textPrimary}`}>Full Name *</label>
+                                                    <label className="block text-xs font-black uppercase tracking-[0.3em] mb-4 text-black/90">Full Name *</label>
                                                     <input
                                                         type="text"
                                                         value={formData.fullName}
                                                         onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                                                         placeholder="Enter your full name"
-                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder} ${validationErrors.fullName ? 'border-red-500' : ''}`}
+                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide bg-white border-neutral-300 text-black/90 placeholder:text-neutral-400 focus:border-black ${validationErrors.fullName ? 'border-red-500' : ''}`}
                                                     />
                                                     {validationErrors.fullName && (
                                                         <p className="text-red-400 text-xs font-light mt-2">{validationErrors.fullName}</p>
@@ -292,13 +268,13 @@ export default function LetsTalk() {
 
                                                 {/* Email */}
                                                 <div>
-                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${textPrimary}`}>Email Address *</label>
+                                                    <label className="block text-xs font-black uppercase tracking-[0.3em] mb-4 text-black/90">Email Address *</label>
                                                     <input
                                                         type="email"
                                                         value={formData.email}
                                                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                                                         placeholder="Enter your email address"
-                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder} ${validationErrors.email ? 'border-red-500' : ''}`}
+                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide bg-white border-neutral-300 text-black/90 placeholder:text-neutral-400 focus:border-black ${validationErrors.email ? 'border-red-500' : ''}`}
                                                     />
                                                     {validationErrors.email && (
                                                         <p className="text-red-400 text-xs font-light mt-2">{validationErrors.email}</p>
@@ -307,13 +283,13 @@ export default function LetsTalk() {
 
                                                 {/* Phone */}
                                                 <div>
-                                                    <label className={`block text-xs font-black uppercase tracking-[0.3em] mb-4 ${textPrimary}`}>Phone Number *</label>
+                                                    <label className="block text-xs font-black uppercase tracking-[0.3em] mb-4 text-black/90">Phone Number *</label>
                                                     <input
                                                         type="tel"
                                                         value={formData.phone}
                                                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                                                         placeholder="Enter your phone number (include country code)"
-                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder} ${validationErrors.phone ? 'border-red-500' : ''}`}
+                                                        className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide bg-white border-neutral-300 text-black/90 placeholder:text-neutral-400 focus:border-black ${validationErrors.phone ? 'border-red-500' : ''}`}
                                                     />
                                                     {validationErrors.phone && (
                                                         <p className="text-red-400 text-xs font-light mt-2">{validationErrors.phone}</p>
@@ -332,7 +308,7 @@ export default function LetsTalk() {
                                             <button
                                                 type="submit"
                                                 disabled={submitting}
-                                                className={`inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group hover:scale-105 ${buttonBg}`}>
+                                                className="inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group hover:scale-105 bg-black text-white hover:bg-neutral-800">
                                                 {submitting ? (
                                                     <>
                                                         <Icon icon="solar:spinner-linear" className="w-5 h-5 animate-spin" />
@@ -345,7 +321,7 @@ export default function LetsTalk() {
                                                     </>
                                                 )}
                                             </button>
-                                            <p className={`text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto ${textMuted}`}>
+                                            <p className="text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto text-neutral-500">
                                                 Continue to the next step to provide more context.
                                             </p>
                                         </div>
@@ -355,9 +331,9 @@ export default function LetsTalk() {
                             {stage === 'stage2' && (
                                 <>
                                     {/* Role */}
-                                    <div className={`pb-12 border-b stagger-item ${borderSubtle}`}>
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${borderSubtle} ${textPrimary}`}>Your Role in the Business</h3>
-                                        <p className={`text-xs font-light tracking-wide mb-8 ${textMuted}`}>Which best describes your position:</p>
+                                    <div className="pb-12 border-b stagger-item border-neutral-200">
+                                        <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black/90">Your Role in the Business</h3>
+                                        <p className="text-xs font-light tracking-wide mb-8 text-neutral-500">Which best describes your position:</p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {[
                                                 'Founder or Co-founder',
@@ -365,7 +341,7 @@ export default function LetsTalk() {
                                                 'Board member or advisor',
                                                 'Senior leader with decision authority'
                                             ].map((option) => (
-                                                <label key={option} className={`flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 ${hoverBg}`}>
+                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-100/50">
                                                     <input
                                                         type="radio"
                                                         name="role"
@@ -374,16 +350,16 @@ export default function LetsTalk() {
                                                         onChange={(e) => setFormData({...formData, role: e.target.value})}
                                                         className="w-5 h-5 text-white border-neutral-600 bg-transparent focus:ring-white focus:ring-2"
                                                     />
-                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${textTertiary} ${hoverText}`}>{option}</span>
+                                                    <span className="text-sm font-light leading-relaxed tracking-wide transition-colors text-neutral-600 group-hover:text-black">{option}</span>
                                                 </label>
                                             ))}
                                         </div>
                                     </div>
 
                                     {/* Business Scale */}
-                                    <div className={`pb-12 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>Business Scale</h3>
-                                        <p className={`text-xs font-light tracking-wide mb-8 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>Which range best reflects your current operation:</p>
+                                    <div className="pb-12 border-b stagger-item border-neutral-200">
+                                        <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black">Business Scale</h3>
+                                        <p className="text-xs font-light tracking-wide mb-8 text-neutral-500">Which range best reflects your current operation:</p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {[
                                                 'Pre-revenue or early stage',
@@ -391,7 +367,7 @@ export default function LetsTalk() {
                                                 'Scaling or multi-entity business',
                                                 'Established organization with complex operations'
                                             ].map((option) => (
-                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-900/20">
+                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-100/50">
                                                     <input
                                                         type="radio"
                                                         name="scale"
@@ -400,15 +376,15 @@ export default function LetsTalk() {
                                                         onChange={(e) => setFormData({...formData, scale: e.target.value})}
                                                         className="w-5 h-5 text-white border-neutral-600 bg-transparent focus:ring-white focus:ring-2"
                                                     />
-                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
+                                                    <span className="text-sm font-light leading-relaxed tracking-wide transition-colors text-neutral-600 group-hover:text-black">{option}</span>
                                                 </label>
                                             ))}
                                         </div>
                                     </div>
 
                                     {/* Primary Challenge */}
-                                    <div className={`pb-12 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>Primary Challenge</h3>
+                                    <div className="pb-12 border-b stagger-item border-neutral-200">
+                                        <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black">Primary Challenge</h3>
                                         <div className="space-y-6">
                                             {[
                                                 'Profitability and performance clarity',
@@ -416,7 +392,7 @@ export default function LetsTalk() {
                                                 'Strategic planning or scenario evaluation',
                                                 'Governance, oversight, or readiness for change'
                                             ].map((option) => (
-                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-900/20">
+                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-100/50">
                                                     <input
                                                         type="checkbox"
                                                         value={option}
@@ -424,29 +400,29 @@ export default function LetsTalk() {
                                                         onChange={() => handleCheckbox(option)}
                                                         className="w-5 h-5 text-white border-neutral-600 bg-transparent focus:ring-white focus:ring-2 rounded"
                                                     />
-                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
+                                                    <span className="text-sm font-light leading-relaxed tracking-wide transition-colors text-neutral-600 group-hover:text-black">{option}</span>
                                                 </label>
                                             ))}
                                         </div>
                                     </div>
 
                                     {/* The Decision */}
-                                    <div className={`pb-12 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>The Decision You Are Facing</h3>
-                                        <p className={`text-xs font-light tracking-wide mb-8 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>What decision are you currently trying to make or prepare for?</p>
+                                    <div className="pb-12 border-b stagger-item border-neutral-200">
+                                        <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black">The Decision You Are Facing</h3>
+                                        <p className="text-xs font-light tracking-wide mb-8 text-neutral-500">What decision are you currently trying to make or prepare for?</p>
                                         <textarea
                                             value={formData.decision}
                                             onChange={(e) => setFormData({...formData, decision: e.target.value})}
                                             placeholder="Describe the decision you're facing..."
-                                            className={`w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide ${bgInput} ${borderInput} ${textPrimary} ${placeholder} ${focusBorder}`}
+                                            className="w-full border p-6 focus:outline-none transition-colors resize-none font-light leading-relaxed tracking-wide bg-white border-neutral-300 text-black/90 placeholder:text-neutral-400 focus:border-black"
                                             rows={5}
                                         />
                                     </div>
 
                                     {/* What Prompted This */}
-                                    <div className={`pb-12 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>What Prompted This Now</h3>
-                                        <p className={`text-xs font-light tracking-wide mb-8 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>Why does this decision matter at this point:</p>
+                                    <div className="pb-12 border-b stagger-item border-neutral-200">
+                                        <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black">What Prompted This Now</h3>
+                                        <p className="text-xs font-light tracking-wide mb-8 text-neutral-500">Why does this decision matter at this point:</p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {[
                                                 'Growth or expansion pressure',
@@ -454,7 +430,7 @@ export default function LetsTalk() {
                                                 'Increased complexity or risk',
                                                 'Upcoming board, investor, or strategic review'
                                             ].map((option) => (
-                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-900/20">
+                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-100/50">
                                                     <input
                                                         type="radio"
                                                         name="prompt"
@@ -463,16 +439,16 @@ export default function LetsTalk() {
                                                         onChange={(e) => setFormData({...formData, prompt: e.target.value})}
                                                         className="w-5 h-5 text-white border-neutral-600 bg-transparent focus:ring-white focus:ring-2"
                                                     />
-                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
+                                                    <span className="text-sm font-light leading-relaxed tracking-wide transition-colors text-neutral-600 group-hover:text-black">{option}</span>
                                                 </label>
                                             ))}
                                         </div>
                                     </div>
 
                                     {/* Timing and Urgency */}
-                                    <div className={`pb-12 border-b stagger-item ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>Timing and Urgency</h3>
-                                        <p className={`text-xs font-light tracking-wide mb-8 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>When do you need clarity to move forward:</p>
+                                    <div className="pb-12 border-b stagger-item border-neutral-200">
+                                        <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black">Timing and Urgency</h3>
+                                        <p className="text-xs font-light tracking-wide mb-8 text-neutral-500">When do you need clarity to move forward:</p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {[
                                                 'Immediate decision required',
@@ -480,7 +456,7 @@ export default function LetsTalk() {
                                                 'Planning for the next quarter or two',
                                                 'Exploratory, no fixed timeline'
                                             ].map((option) => (
-                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-900/20">
+                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-100/50">
                                                     <input
                                                         type="radio"
                                                         name="timing"
@@ -489,7 +465,7 @@ export default function LetsTalk() {
                                                         onChange={(e) => setFormData({...formData, timing: e.target.value})}
                                                         className="w-5 h-5 text-white border-neutral-600 bg-transparent focus:ring-white focus:ring-2"
                                                     />
-                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
+                                                    <span className="text-sm font-light leading-relaxed tracking-wide transition-colors text-neutral-600 group-hover:text-black">{option}</span>
                                                 </label>
                                             ))}
                                         </div>
@@ -497,8 +473,8 @@ export default function LetsTalk() {
 
                                     {/* How You Work With Advisors */}
                                     <div className="stagger-item">
-                                        <h3 className={`text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b ${theme === 'dark' ? 'border-neutral-800 text-white' : 'border-neutral-200 text-black'}`}>How You Typically Work With Advisors</h3>
-                                        <p className={`text-xs font-light tracking-wide mb-8 ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>Which best reflects your expectations:</p>
+                                        <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 pb-3 border-b border-neutral-200 text-black">How You Typically Work With Advisors</h3>
+                                        <p className="text-xs font-light tracking-wide mb-8 text-neutral-500">Which best reflects your expectations:</p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {[
                                                 'Strategic thought partnership and challenge',
@@ -506,7 +482,7 @@ export default function LetsTalk() {
                                                 'Ongoing advisory relationship',
                                                 'Not sure yet'
                                             ].map((option) => (
-                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-900/20">
+                                                <label key={option} className="flex items-center gap-4 cursor-pointer group p-4 rounded-lg transition-all duration-500 hover:bg-neutral-100/50">
                                                     <input
                                                         type="radio"
                                                         name="advisors"
@@ -515,7 +491,7 @@ export default function LetsTalk() {
                                                         onChange={(e) => setFormData({...formData, advisors: e.target.value})}
                                                         className="w-5 h-5 text-white border-neutral-600 bg-transparent focus:ring-white focus:ring-2"
                                                     />
-                                                    <span className={`text-sm font-light leading-relaxed tracking-wide transition-colors ${theme === 'dark' ? 'text-neutral-400 group-hover:text-white' : 'text-neutral-600 group-hover:text-black'}`}>{option}</span>
+                                                    <span className="text-sm font-light leading-relaxed tracking-wide transition-colors text-neutral-600 group-hover:text-black">{option}</span>
                                                 </label>
                                             ))}
                                         </div>
@@ -531,7 +507,7 @@ export default function LetsTalk() {
                                         <button
                                             type="submit"
                                             disabled={submitting}
-                                            className={`inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group hover:scale-105 ${buttonBg}`}>
+                                            className="inline-flex items-center gap-4 px-12 py-6 rounded-full transition-all duration-700 font-black text-xs uppercase tracking-[0.3em] disabled:opacity-50 disabled:cursor-not-allowed group hover:scale-105 bg-black text-white hover:bg-neutral-800">
                                             {submitting ? (
                                                 <>
                                                     <Icon icon="solar:spinner-linear" className="w-5 h-5 animate-spin" />
@@ -544,7 +520,7 @@ export default function LetsTalk() {
                                                 </>
                                             )}
                                         </button>
-                                        <p className={`text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto ${textMuted}`}>
+                                        <p className="text-xs font-light leading-relaxed tracking-wide mt-8 max-w-2xl mx-auto text-neutral-500">
                                             This is a short, focused conversation to determine fit and next steps.
                                         </p>
                                     </div>
@@ -556,8 +532,8 @@ export default function LetsTalk() {
 
                 {/* Footer note */}
                 <div className={`text-center mt-12 md:mt-16 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-4' : ''}`}>
-                    <div className={`inline-block p-8 border-t-2 border-b-2 ${borderSubtle}`}>
-                        <p className={`text-xs font-light leading-relaxed tracking-wide ${textTertiary}`}>
+                    <div className="inline-block p-8 border-t-2 border-b-2 border-neutral-200">
+                        <p className="text-xs font-light leading-relaxed tracking-wide text-neutral-600">
                             This conversation is intended for leaders seeking clarity on high-impact decisions.
                         </p>
                     </div>
@@ -565,8 +541,8 @@ export default function LetsTalk() {
             </div>
 
             {/* Bottom decorative elements */}
-            <div className={`absolute bottom-8 left-6 md:left-12 w-16 h-16 border-l border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-5' : ''}`} />
-            <div className={`absolute bottom-8 right-6 md:right-12 w-16 h-16 border-r border-b pointer-events-none ${cornerBorder} opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-5' : ''}`} />
+            <div className={`absolute bottom-8 left-6 md:left-12 w-16 h-16 border-l border-b pointer-events-none border-black/8 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-5' : ''}`} />
+            <div className={`absolute bottom-8 right-6 md:right-12 w-16 h-16 border-r border-b pointer-events-none border-black/8 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-5' : ''}`} />
         </section>
     );
 }
