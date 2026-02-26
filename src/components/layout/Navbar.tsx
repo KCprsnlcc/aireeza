@@ -3,17 +3,27 @@
 import { Icon } from "@iconify/react";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from 'next/navigation';
+import Link from "next/link";
 
 export default function Navbar() {
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
+
     const [mounted, setMounted] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
-    const [isSticky, setIsSticky] = useState(false);
+    const [isSticky, setIsSticky] = useState(!isHomePage); // Always sticky on inner pages
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const rafRef = useRef<number | null>(null);
     const heroHeightRef = useRef<number>(0);
 
     useEffect(() => {
         setMounted(true);
+
+        if (!isHomePage) {
+            setIsSticky(true);
+            return;
+        }
 
         const heroSection = document.getElementById('hero');
         if (heroSection) {
@@ -28,14 +38,14 @@ export default function Navbar() {
             rafRef.current = requestAnimationFrame(() => {
                 const heroHeight = heroHeightRef.current;
                 const scrollY = window.scrollY;
-                
+
                 // Calculate progress through hero section (0 to 100)
                 const progress = Math.min((scrollY / heroHeight) * 100, 100);
                 setScrollProgress(progress);
-                
+
                 // Show sticky navbar only after the entire hero section has scrolled past
                 const shouldBeSticky = scrollY >= heroHeight;
-                
+
                 setIsSticky(shouldBeSticky);
             });
         };
@@ -51,7 +61,7 @@ export default function Navbar() {
         handleScroll(); // Initial check
         window.addEventListener('scroll', handleScroll, { passive: true });
         window.addEventListener('resize', handleResize, { passive: true });
-        
+
         return () => {
             if (rafRef.current) {
                 cancelAnimationFrame(rafRef.current);
@@ -59,7 +69,7 @@ export default function Navbar() {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [isHomePage]);
 
     // Close mobile menu on scroll
     useEffect(() => {
@@ -85,17 +95,19 @@ export default function Navbar() {
     if (!mounted) {
         return (
             <nav className="w-full px-4 md:px-6 py-4 md:py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm bg-white/80 border-black/10 text-black">
-                <div className="hidden md:block md:w-1/3">EST. 2024</div>
-                <div className="flex md:w-1/3 md:justify-center">
-                    <Icon icon="solar:infinity-linear" width="20" height="20" className="md:w-6 md:h-6" />
+                <div className="hidden md:flex md:w-1/3 gap-8 text-[0.65rem] text-neutral-500">
+                    <span>About</span><span>Work</span><span>Writing</span><span>Speaking</span>
                 </div>
-                <div className="flex md:w-1/3 md:justify-end items-center gap-4">
-                    <a 
-                        href="#contact" 
-                        className="hidden md:block border border-black/30 rounded-full px-6 py-2"
+                <div className="flex md:w-1/3 justify-start md:justify-center">
+                    <Link href="/" className="font-majesty text-xl normal-case">Aireeza</Link>
+                </div>
+                <div className="flex w-full md:w-1/3 justify-end items-center gap-4">
+                    <Link
+                        href="/services"
+                        className="hidden md:block bg-black text-white px-4 py-2 text-[0.65rem] tracking-[0.1em]"
                     >
-                        Start Conversation
-                    </a>
+                        Work with me →
+                    </Link>
                     <button className="md:hidden p-2">
                         <Icon icon="solar:hamburger-menu-linear" width="24" height="24" />
                     </button>
@@ -106,10 +118,10 @@ export default function Navbar() {
 
     return (
         <>
-            {/* Vertical Progress Bar - Only visible on hero section, hidden on mobile */}
+            {/* Vertical Progress Bar - Only visible on hero section of homepage, hidden on mobile */}
             <AnimatePresence mode="wait">
-                {!isSticky && (
-                    <motion.div 
+                {isHomePage && !isSticky && (
+                    <motion.div
                         key="progress-bar"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -118,9 +130,9 @@ export default function Navbar() {
                         className="hidden md:block fixed left-0 top-0 bottom-0 z-50 w-1"
                     >
                         <div className="relative w-full h-full bg-black/5">
-                            <div 
+                            <div
                                 className="absolute top-0 left-0 right-0 bg-[#ff3333] will-change-transform"
-                                style={{ 
+                                style={{
                                     height: `${scrollProgress}%`,
                                     transition: 'height 0.1s cubic-bezier(0.33, 1, 0.68, 1)'
                                 }}
@@ -130,33 +142,35 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
 
-            {/* Static Navbar on Hero - Always visible */}
-            <nav className="relative w-full z-40">
-                <NavbarContent 
-                    mobileMenuOpen={mobileMenuOpen} 
-                    setMobileMenuOpen={setMobileMenuOpen}
-                    isSticky={false}
-                />
-            </nav>
+            {/* Static Navbar on Hero - Always visible on homepage */}
+            {isHomePage && (
+                <nav className="relative w-full z-40">
+                    <NavbarContent
+                        mobileMenuOpen={mobileMenuOpen}
+                        setMobileMenuOpen={setMobileMenuOpen}
+                        isSticky={false}
+                    />
+                </nav>
+            )}
 
-            {/* Sticky Navbar with Animation - Only after hero section */}
+            {/* Sticky Navbar with Animation - Only after hero section on homepage, always on inner pages */}
             <AnimatePresence mode="wait">
                 {isSticky && (
-                    <motion.nav 
+                    <motion.nav
                         key="sticky-nav"
-                        initial={{ y: -100, opacity: 0 }}
+                        initial={isHomePage ? { y: -100, opacity: 0 } : { y: 0, opacity: 1 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -100, opacity: 0 }}
-                        transition={{ 
+                        transition={{
                             type: "spring",
                             stiffness: 300,
                             damping: 25,
                             mass: 0.8
                         }}
-                        className="fixed top-0 left-0 right-0 w-full z-40 shadow-lg"
+                        className={`${isHomePage ? 'fixed' : 'sticky'} top-0 left-0 right-0 w-full z-40 shadow-sm`}
                     >
-                        <NavbarContent 
-                            mobileMenuOpen={mobileMenuOpen} 
+                        <NavbarContent
+                            mobileMenuOpen={mobileMenuOpen}
                             setMobileMenuOpen={setMobileMenuOpen}
                             isSticky={true}
                         />
@@ -165,9 +179,9 @@ export default function Navbar() {
             </AnimatePresence>
 
             {/* Mobile Menu Overlay */}
-            <MobileMenu 
-                isOpen={mobileMenuOpen} 
-                onClose={() => setMobileMenuOpen(false)} 
+            <MobileMenu
+                isOpen={mobileMenuOpen}
+                onClose={() => setMobileMenuOpen(false)}
             />
         </>
     );
@@ -181,47 +195,43 @@ interface NavbarContentProps {
 
 function NavbarContent({ mobileMenuOpen, setMobileMenuOpen, isSticky }: NavbarContentProps) {
     return (
-        <div className="w-full px-4 md:px-6 py-4 md:py-6 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-sm bg-white/80 border-black/10 text-black">
-            {/* Left - EST. 2024 (hidden on mobile) */}
-            <div className="hidden md:block md:w-1/3">EST. 2024</div>
-            
-            {/* Center - Logo */}
-            <div className="flex md:w-1/3 md:justify-center">
-                <a href="#hero" className="flex items-center">
-                    <Icon icon="solar:infinity-linear" width="20" height="20" className="md:w-6 md:h-6" />
-                </a>
+        <div className="w-full px-6 md:px-10 py-5 flex justify-between items-center text-xs font-normal uppercase tracking-wide border-b backdrop-blur-md bg-white/90 border-neutral-200 text-black">
+            {/* Left - Logo */}
+            <div className="flex w-1/2 md:w-1/4 justify-start">
+                <Link href="/" className="font-majesty text-xl normal-case text-black/90">
+                    Aireeza
+                </Link>
             </div>
-            
-            {/* Right - CTA + Menu */}
-            <div className="flex md:w-1/3 md:justify-end items-center gap-3 md:gap-4">
-                {/* Desktop CTA */}
-                <a 
-                    href="#contact" 
-                    className="hidden md:block border rounded-full px-6 py-2 transition-all duration-300 touch-manipulation border-black/30 hover:bg-black hover:text-white"
-                >
-                    Start Conversation
-                </a>
 
-                {/* Mobile CTA - Compact */}
-                <a 
-                    href="#contact" 
-                    className="md:hidden text-[0.65rem] font-black tracking-wider px-3 py-2 border rounded-full transition-all duration-300 touch-manipulation border-black/30 text-black"
+            {/* Center - Links (hidden on mobile) */}
+            <div className="hidden md:flex md:w-2/4 justify-center gap-8 text-[0.65rem] tracking-[0.1em] text-neutral-500">
+                <Link href="/about" className="hover:text-black transition-colors">About</Link>
+                <Link href="/services" className="hover:text-black transition-colors">Work</Link>
+                <Link href="/writing" className="hover:text-black transition-colors">Writing</Link>
+                <Link href="/speaking" className="hover:text-black transition-colors">Speaking</Link>
+            </div>
+
+            {/* Right - CTA + Menu */}
+            <div className="flex w-1/2 md:w-1/4 justify-end items-center gap-3 md:gap-4">
+                {/* Desktop CTA */}
+                <Link
+                    href="/services"
+                    className="hidden md:block bg-black text-white px-4 py-2 text-[0.65rem] tracking-[0.1em] hover:bg-neutral-800 transition-colors"
                 >
-                    Contact
-                </a>
+                    Work with me →
+                </Link>
 
                 {/* Mobile Menu Toggle */}
-                <button 
+                <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className={`md:hidden p-2 -mr-2 touch-manipulation transition-transform duration-300 ${
-                        mobileMenuOpen ? 'rotate-90' : ''
-                    }`}
+                    className={`md:hidden p-2 -mr-2 touch-manipulation transition-transform duration-300 ${mobileMenuOpen ? 'rotate-90' : ''
+                        }`}
                     aria-label="Toggle menu"
                 >
-                    <Icon 
-                        icon={mobileMenuOpen ? "solar:close-circle-linear" : "solar:hamburger-menu-linear"} 
-                        width="24" 
-                        height="24" 
+                    <Icon
+                        icon={mobileMenuOpen ? "solar:close-circle-linear" : "solar:hamburger-menu-linear"}
+                        width="24"
+                        height="24"
                     />
                 </button>
             </div>
@@ -236,11 +246,11 @@ interface MobileMenuProps {
 
 function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     const menuItems = [
-        { label: 'Home', href: '#hero', icon: 'solar:home-2-linear' },
-        { label: 'The Problem', href: '#the-problem', icon: 'solar:danger-circle-linear' },
-        { label: 'What I Do', href: '#what-i-do', icon: 'solar:case-round-linear' },
-        { label: 'Point of View', href: '#point-of-view', icon: 'solar:eye-linear' },
-        { label: 'Let\'s Talk', href: '#contact', icon: 'solar:chat-round-dots-linear' },
+        { label: 'About', href: '/about' },
+        { label: 'Services', href: '/services' },
+        { label: 'Work', href: '/work' },
+        { label: 'Writing', href: '/writing' },
+        { label: 'Speaking', href: '/speaking' },
     ];
 
     return (
@@ -262,27 +272,27 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         initial={{ x: '100%' }}
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
-                        transition={{ 
+                        transition={{
                             type: "spring",
                             stiffness: 300,
                             damping: 30
                         }}
-                        className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm z-50 md:hidden bg-white border-black/10 border-l shadow-2xl"
+                        className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm z-50 md:hidden bg-white border-neutral-200 border-l shadow-2xl"
                     >
                         <div className="flex flex-col h-full">
                             {/* Menu Header */}
-                            <div className="flex justify-between items-center px-6 py-6 border-b border-black/10">
-                                <span className="text-xs font-black uppercase tracking-wider text-black/70">
-                                    Menu
+                            <div className="flex justify-between items-center px-6 py-6 border-b border-neutral-200">
+                                <span className="font-majesty text-xl normal-case text-black/90">
+                                    Aireeza
                                 </span>
-                                <button 
+                                <button
                                     onClick={onClose}
                                     className="p-2 -mr-2 touch-manipulation"
                                     aria-label="Close menu"
                                 >
-                                    <Icon 
-                                        icon="solar:close-circle-linear" 
-                                        width="24" 
+                                    <Icon
+                                        icon="solar:close-circle-linear"
+                                        width="24"
                                         height="24"
                                         className="text-black"
                                     />
@@ -290,8 +300,8 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             </div>
 
                             {/* Menu Items */}
-                            <nav className="flex-1 px-6 py-8 overflow-y-auto">
-                                <ul className="space-y-2">
+                            <nav className="flex-1 px-6 py-8 overflow-y-auto w-full">
+                                <ul className="flex flex-col gap-4">
                                     {menuItems.map((item, index) => (
                                         <motion.li
                                             key={item.href}
@@ -299,28 +309,31 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: index * 0.05 }}
                                         >
-                                            <a
+                                            <Link
                                                 href={item.href}
                                                 onClick={onClose}
-                                                className="flex items-center gap-4 px-4 py-4 rounded-lg transition-all duration-300 touch-manipulation text-black hover:bg-black/5 active:bg-black/10"
+                                                className="block text-sm uppercase tracking-[0.15em] py-3 text-neutral-500 hover:text-black transition-colors"
                                             >
-                                                <Icon icon={item.icon} width="24" height="24" />
-                                                <span className="text-base font-light tracking-wide">
-                                                    {item.label}
-                                                </span>
-                                            </a>
+                                                {item.label}
+                                            </Link>
                                         </motion.li>
                                     ))}
+                                    <motion.li
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: menuItems.length * 0.05 }}
+                                        className="mt-4 pt-4 border-t border-neutral-200"
+                                    >
+                                        <Link
+                                            href="/services"
+                                            onClick={onClose}
+                                            className="inline-block text-[0.7rem] uppercase tracking-[0.1em] bg-black text-white py-3 px-6 font-light transition-colors"
+                                        >
+                                            Work with me →
+                                        </Link>
+                                    </motion.li>
                                 </ul>
                             </nav>
-
-                            {/* Menu Footer */}
-                            <div className="px-6 py-6 border-t border-black/10">
-                                <div className="text-[0.65rem] font-light tracking-wider text-black/50">
-                                    <p>EST. 2024</p>
-                                    <p className="mt-1">Strategic & Financial Consulting</p>
-                                </div>
-                            </div>
                         </div>
                     </motion.div>
                 </>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Icon } from "@iconify/react";
+import Link from 'next/link';
 
 export default function Footer() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -10,7 +11,7 @@ export default function Footer() {
         const timer = setTimeout(() => setIsLoaded(true), 100);
         return () => clearTimeout(timer);
     }, []);
-    
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -20,20 +21,20 @@ export default function Footer() {
             {/* Decorative corner elements */}
             <div className="absolute top-8 left-6 md:left-12 w-16 h-16 border-l border-t pointer-events-none border-black/8 opacity-0 hero-animate-in hero-stagger-1" />
             <div className="absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none border-black/8 opacity-0 hero-animate-in hero-stagger-1" />
-            
+
             <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-12 md:gap-16 mb-20 md:mb-24 opacity-0 hero-animate-in hero-stagger-2">
-                    <div className="text-left">
-                        <div className="space-y-2">
-                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
-                                Strategic Finance
-                            </p>
-                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
-                                FP&A Advisory
-                            </p>
-                        </div>
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-start gap-12 md:gap-16 mb-20 md:mb-24 opacity-0 hero-animate-in hero-stagger-2">
+
+                    {/* Left Column - Brand Info */}
+                    <div className="text-left max-w-sm">
+                        <div className="font-majesty text-2xl text-black/90 mb-4">Aireeza</div>
+                        <p className="text-[0.8rem] text-neutral-500 leading-[1.6]">
+                            Profit &amp; Performance Advisor.<br />
+                            Helping founder-led businesses get financially healthy, structurally sound, and built to actually last.
+                        </p>
                     </div>
-                    
+
+                    {/* Center Column - Image (Preserved from original) */}
                     <div className="flex justify-center">
                         <div className="w-64 h-80 duotone-red overflow-hidden rounded-2xl transition-all duration-700 hover:scale-105 relative">
                             <img
@@ -41,11 +42,10 @@ export default function Footer() {
                                 className="w-full h-full object-cover"
                                 alt="Office Architecture"
                             />
-                            
+
                             {/* Text Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="h-full w-full relative">
-                                    {/* Top left */}
                                     <div className="absolute top-4 left-4 z-50">
                                         <div className="relative">
                                             <span className="font-majesty font-normal text-white" style={{ fontSize: '1rem', lineHeight: '1' }}>
@@ -53,70 +53,69 @@ export default function Footer() {
                                             </span>
                                         </div>
                                     </div>
-                                    
-                                    {/* Main statement */}
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 text-center">
-                                        <h2 className="text-2xl md:text-3xl font-black tracking-tight leading-[0.8] text-white">
-                                            GLOBAL<br />REACH<br />
-                                            <span className="block text-xl md:text-2xl font-light tracking-wider text-white/90">
-                                                EXCELLENCE
-                                            </span>
+
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 text-center w-full">
+                                        <h2 className="text-xl md:text-2xl font-black tracking-tight leading-[1] text-white">
+                                            Built From<br />Nothing
                                         </h2>
                                     </div>
-                                    
-                                    {/* Right side caption */}
+
                                     <div className="absolute top-1/3 right-4">
-                                        <div className="text-xs font-normal uppercase tracking-widest text-white/70 writing-mode-vertical">
-                                            Strategic • Finance • Global
-                                        </div>
-                                    </div>
-                                    
-                                    {/* Bottom left detail */}
-                                    <div className="absolute bottom-4 left-4">
-                                        <div className="text-xs font-light tracking-wide text-white/50">
-                                            Worldwide Service
-                                        </div>
-                                        <div className="max-w-[140px] text-xs font-light leading-relaxed text-white/40 mt-1">
-                                            Remote-first strategic finance advisory serving clients globally.
+                                        <div className="text-[0.6rem] font-normal uppercase tracking-widest text-white/70 writing-mode-vertical">
+                                            Honest • Operator
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div className="text-right">
-                        <div className="space-y-2">
-                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
-                                Global Reach
-                            </p>
-                            <p className="text-xs font-black uppercase tracking-[0.3em] text-neutral-700">
-                                Remote First
-                            </p>
+
+                    {/* Right Column - Links */}
+                    <div className="grid grid-cols-2 gap-8 text-right md:text-left justify-self-end w-full md:w-auto">
+                        <div>
+                            <div className="text-[0.65rem] uppercase tracking-[0.15em] text-neutral-400 mb-4 font-light text-right md:text-left">Navigation</div>
+                            <ul className="space-y-2 text-right md:text-left">
+                                <li><Link href="/about" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">About</Link></li>
+                                <li><Link href="/services" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">Services</Link></li>
+                                <li><Link href="/work" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">Work</Link></li>
+                                <li><Link href="/writing" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">Writing</Link></li>
+                                <li><Link href="/speaking" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">Speaking</Link></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div className="text-[0.65rem] uppercase tracking-[0.15em] text-neutral-400 mb-4 font-light text-right md:text-left">Connect</div>
+                            <ul className="space-y-2 text-right md:text-left">
+                                <li><a href="#" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">LinkedIn</a></li>
+                                <li><a href="#" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">Newsletter</a></li>
+                                <li><Link href="/speaking" className="text-[0.8rem] text-neutral-500 hover:text-black transition-colors block">Contact</Link></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
                 <div className="border-t pt-12 md:pt-16 flex justify-between items-end relative overflow-hidden opacity-0 hero-animate-in hero-stagger-3 border-neutral-200">
-                    <div className="text-left">
-                        <div className="flex items-center gap-2">
+                    <div className="text-left w-1/3">
+                        <div className="flex flex-col gap-1">
                             <span className="font-majesty font-normal text-black/90" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
                                 Airee<span style={{ color: '#ff3333' }}>za</span>
                             </span>
-                            <span className="text-[10px] font-light tracking-wide text-neutral-700">
-                                &copy;2024
+                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
+                                &copy;2026 Aireeza Tandih
+                            </span>
+                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
+                                Alt Business / BrightCEO
                             </span>
                         </div>
                     </div>
-                    
+
                     {/* Brand name with logo */}
-                    <div className="text-center">
-                        <span className="font-majesty font-normal select-none pointer-events-none transition-all duration-700 hover:opacity-70 opacity-20 text-black/90" style={{ fontSize: '15vw', lineHeight: '1' }}>
-                            Airee<span style={{ color: '#ff3333' }}>za</span>
+                    <div className="text-center w-1/3">
+                        <span className="font-majesty font-normal select-none pointer-events-none transition-all duration-700 hover:opacity-70 opacity-20 text-black/90" style={{ fontSize: '10vw', lineHeight: '1' }}>
+                            A<span style={{ color: '#ff3333' }}>z</span>
                         </span>
                     </div>
-                    
-                    <div className="text-right">
+
+                    <div className="text-right w-1/3 flex justify-end">
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={scrollToTop}
