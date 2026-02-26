@@ -38,7 +38,7 @@ export default function SpeakingPage() {
             <InnerHero
                 label="Speaking"
                 title={<>The talk that makes<br />founders feel <em className="italic text-neutral-500">seen</em><br />and slightly uncomfortable.</>}
-                subtitle="I don't do motivational. I do honest. The founders who come up after a talk and say \" you just described my last two years\" are the reason I keep showing up to stages."
+                subtitle={`I don't do motivational. I do honest. The founders who come up after a talk and say "you just described my last two years" are the reason I keep showing up to stages.`}
             />
 
             {/* Topics */}
