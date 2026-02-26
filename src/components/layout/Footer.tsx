@@ -27,11 +27,19 @@ export default function Footer() {
 
                     {/* Left Column - Brand Info */}
                     <div className="text-left w-full max-w-sm">
-                        <div className="font-majesty text-2xl text-black/90 mb-4">Aireeza</div>
-                        <p className="text-[0.8rem] text-neutral-500 leading-[1.6]">
-                            Profit &amp; Performance Advisor.<br />
-                            Helping founder-led businesses get financially healthy, structurally sound, and built to actually last.
-                        </p>
+                        <div className="flex flex-col gap-1 mb-4">
+                            <span className="font-majesty font-normal text-black/90" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
+                                Airee<span style={{ color: '#ff3333' }}>za</span>
+                            </span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
+                                &copy;2026 Aireeza Tandih
+                            </span>
+                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
+                                Alt Business / BrightCEO
+                            </span>
+                        </div>
                     </div>
 
                     {/* Right Column - Links */}
@@ -59,17 +67,7 @@ export default function Footer() {
 
                 <div className="border-t pt-12 md:pt-16 flex justify-between items-end relative overflow-hidden opacity-0 hero-animate-in hero-stagger-3 border-neutral-200">
                     <div className="text-left w-1/3">
-                        <div className="flex flex-col gap-1">
-                            <span className="font-majesty font-normal text-black/90" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
-                                Airee<span style={{ color: '#ff3333' }}>za</span>
-                            </span>
-                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
-                                &copy;2026 Aireeza Tandih
-                            </span>
-                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
-                                Alt Business / BrightCEO
-                            </span>
-                        </div>
+                        {/* Space preserved for layout balance */}
                     </div>
 
                     {/* Brand name with logo */}
