@@ -30,7 +30,7 @@ export default function AboutPage() {
 
                         {/* Pullquote */}
                         <div className="border-l-[3px] border-[#ff3333] px-6 py-4 my-8 bg-neutral-50">
-                            <p className="font-majesty text-xl italic leading-[1.4] text-black/90">
+                            <p className="font-bold tracking-tight text-xl italic leading-[1.4] text-black/90">
                                 &ldquo;The founders I work with don&rsquo;t need more information. They need someone who&rsquo;s been in the room where the hard decisions get made.&rdquo;
                             </p>
                         </div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
             <section className="bg-black text-white py-16 md:py-20 px-6 md:px-8 lg:px-12">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-16 items-center">
                     <div>
-                        <h2 className="font-majesty text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
+                        <h2 className="font-bold tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
                             Recognise yourself<br />
                             <em className="italic text-white/50">in any of this?</em>
                         </h2>

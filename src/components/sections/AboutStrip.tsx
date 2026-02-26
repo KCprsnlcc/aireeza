@@ -22,7 +22,7 @@ export default function AboutStrip() {
             <div className={`grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-2' : ''}`}>
                 {/* Intro text — 2/3 */}
                 <div className="lg:col-span-2">
-                    <h2 className="font-majesty text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.25] text-black/90 mb-8">
+                    <h2 className="font-bold tracking-tight text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.25] text-black/90 mb-8">
                         I didn&rsquo;t study business.<br />
                         <em className="text-neutral-500 italic">I built one from nothing</em><br />
                         and learned the hard way.
@@ -44,15 +44,15 @@ export default function AboutStrip() {
                 {/* Stats — 1/3 */}
                 <div className="space-y-6">
                     <div className="border-l-2 border-[#ff3333] pl-5">
-                        <div className="font-majesty text-3xl text-black/90">10+</div>
+                        <div className="font-bold tracking-tight text-3xl text-black/90">10+</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.12em] text-neutral-500 mt-1">Years building businesses</div>
                     </div>
                     <div className="border-l-2 border-[#ff3333] pl-5">
-                        <div className="font-majesty text-2xl text-black/90">Alt Business</div>
+                        <div className="font-bold tracking-tight text-2xl text-black/90">Alt Business</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.12em] text-neutral-500 mt-1">Founder</div>
                     </div>
                     <div className="border-l-2 border-[#ff3333] pl-5">
-                        <div className="font-majesty text-2xl text-black/90">BrightCEO</div>
+                        <div className="font-bold tracking-tight text-2xl text-black/90">BrightCEO</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.12em] text-neutral-500 mt-1">Founder</div>
                     </div>
                 </div>

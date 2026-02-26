@@ -47,7 +47,7 @@ export default function ServicesPreview() {
                         className={`p-8 border-b border-neutral-200 ${i < services.length - 1 ? 'md:border-r' : ''}`}
                     >
                         <div className="text-[0.65rem] text-[#ff3333] mb-4 font-light">{service.num}</div>
-                        <h3 className="font-majesty text-xl text-black/90 mb-3">{service.title}</h3>
+                        <h3 className="font-bold tracking-tight text-xl text-black/90 mb-3">{service.title}</h3>
                         <p className="text-[0.82rem] leading-[1.7] text-neutral-500">{service.body}</p>
                         <Link
                             href="/services"

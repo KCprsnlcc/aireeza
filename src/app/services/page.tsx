@@ -44,7 +44,7 @@ export default function ServicesPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div>
-                        <h3 className="font-majesty text-2xl text-black/90 mb-5">You&rsquo;re probably a good fit if...</h3>
+                        <h3 className="font-bold tracking-tight text-2xl text-black/90 mb-5">You&rsquo;re probably a good fit if...</h3>
                         <p className="text-[0.88rem] leading-[1.8] text-neutral-500 mb-4">
                             You&rsquo;ve been running your business for a while. Things are moving. But when you look at the numbers, or try to plan ahead, or think about where the money actually goes, something doesn&rsquo;t add up. You&rsquo;re not looking for someone to hand you a spreadsheet. You&rsquo;re looking for someone to help you think.
                         </p>
@@ -53,7 +53,7 @@ export default function ServicesPage() {
                         </p>
                     </div>
                     <div>
-                        <h3 className="font-majesty text-2xl text-black/90 mb-5">This probably isn&rsquo;t for you if...</h3>
+                        <h3 className="font-bold tracking-tight text-2xl text-black/90 mb-5">This probably isn&rsquo;t for you if...</h3>
                         <p className="text-[0.88rem] leading-[1.8] text-neutral-500 mb-4">
                             You&rsquo;re looking for someone to validate what you already believe. Or you want a consultant who&rsquo;ll tell you everything is fine and hand you a branded deliverable. I&rsquo;m not that. I&rsquo;m the person who sits across from you and says the thing nobody else in the room will say.
                         </p>
@@ -73,9 +73,9 @@ export default function ServicesPage() {
                 <div className="space-y-0">
                     {steps.map((step, i) => (
                         <div key={step.num} className={`flex gap-6 py-6 ${i < steps.length - 1 ? 'border-b border-neutral-200' : ''} items-start`}>
-                            <div className="font-majesty text-4xl text-neutral-200 min-w-[3rem] leading-none">{step.num}</div>
+                            <div className="font-bold tracking-tight text-4xl text-neutral-200 min-w-[3rem] leading-none">{step.num}</div>
                             <div>
-                                <h4 className="font-majesty text-lg text-black/90 mb-2">{step.title}</h4>
+                                <h4 className="font-bold tracking-tight text-lg text-black/90 mb-2">{step.title}</h4>
                                 <p className="text-[0.82rem] text-neutral-500 leading-[1.7]">{step.body}</p>
                             </div>
                         </div>
@@ -95,7 +95,7 @@ export default function ServicesPage() {
                     {/* Advisory */}
                     <div className="p-8 md:p-10 md:border-r border-neutral-200">
                         <div className="text-[0.65rem] text-[#ff3333] mb-4 font-light">Advisory</div>
-                        <h3 className="font-majesty text-xl text-black/90 mb-3">Ongoing Profit &amp; Performance Advisory</h3>
+                        <h3 className="font-bold tracking-tight text-xl text-black/90 mb-3">Ongoing Profit &amp; Performance Advisory</h3>
                         <p className="text-[0.85rem] text-neutral-500 leading-[1.7] mb-3">
                             For founders who want a thinking partner in their corner on an ongoing basis. We meet regularly, look at what&rsquo;s happening in the business, and work through the decisions that matter most.
                         </p>
@@ -118,7 +118,7 @@ export default function ServicesPage() {
                     {/* Intensive */}
                     <div className="p-8 md:p-10">
                         <div className="text-[0.65rem] text-[#ff3333] mb-4 font-light">Intensive</div>
-                        <h3 className="font-majesty text-xl text-black/90 mb-3">Business Health Intensive</h3>
+                        <h3 className="font-bold tracking-tight text-xl text-black/90 mb-3">Business Health Intensive</h3>
                         <p className="text-[0.85rem] text-neutral-500 leading-[1.7] mb-3">
                             A focused, deep-dive engagement for founders who need answers quickly. We spend{' '}
                             <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono text-[0.72rem]">[X days / weeks]</span>{' '}
@@ -146,7 +146,7 @@ export default function ServicesPage() {
             <section className="bg-black text-white py-16 md:py-20 px-6 md:px-8 lg:px-12">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-16 items-center">
                     <div>
-                        <h2 className="font-majesty text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
+                        <h2 className="font-bold tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
                             Not sure which<br />
                             <em className="italic text-white/50">is right for you?</em>
                         </h2>

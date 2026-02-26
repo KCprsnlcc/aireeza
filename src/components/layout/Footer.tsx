@@ -23,51 +23,15 @@ export default function Footer() {
             <div className="absolute top-8 right-6 md:right-12 w-16 h-16 border-r border-t pointer-events-none border-black/8 opacity-0 hero-animate-in hero-stagger-1" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-start gap-12 md:gap-16 mb-20 md:mb-24 opacity-0 hero-animate-in hero-stagger-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-12 md:gap-16 mb-20 md:mb-24 opacity-0 hero-animate-in hero-stagger-2">
 
                     {/* Left Column - Brand Info */}
-                    <div className="text-left max-w-sm">
+                    <div className="text-left w-full max-w-sm">
                         <div className="font-majesty text-2xl text-black/90 mb-4">Aireeza</div>
                         <p className="text-[0.8rem] text-neutral-500 leading-[1.6]">
                             Profit &amp; Performance Advisor.<br />
                             Helping founder-led businesses get financially healthy, structurally sound, and built to actually last.
                         </p>
-                    </div>
-
-                    {/* Center Column - Image (Preserved from original) */}
-                    <div className="flex justify-center">
-                        <div className="w-64 h-80 duotone-red overflow-hidden rounded-2xl transition-all duration-700 hover:scale-105 relative">
-                            <img
-                                src="/red-footer.webp"
-                                className="w-full h-full object-cover"
-                                alt="Office Architecture"
-                            />
-
-                            {/* Text Overlay */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="h-full w-full relative">
-                                    <div className="absolute top-4 left-4 z-50">
-                                        <div className="relative">
-                                            <span className="font-majesty font-normal text-white" style={{ fontSize: '1rem', lineHeight: '1' }}>
-                                                Aireeza
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 text-center w-full">
-                                        <h2 className="text-xl md:text-2xl font-black tracking-tight leading-[1] text-white">
-                                            Built From<br />Nothing
-                                        </h2>
-                                    </div>
-
-                                    <div className="absolute top-1/3 right-4">
-                                        <div className="text-[0.6rem] font-normal uppercase tracking-widest text-white/70 writing-mode-vertical">
-                                            Honest • Operator
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Right Column - Links */}
@@ -111,7 +75,7 @@ export default function Footer() {
                     {/* Brand name with logo */}
                     <div className="text-center w-1/3">
                         <span className="font-majesty font-normal select-none pointer-events-none transition-all duration-700 hover:opacity-70 opacity-20 text-black/90" style={{ fontSize: '10vw', lineHeight: '1' }}>
-                            A<span style={{ color: '#ff3333' }}>z</span>
+                            Airee<span style={{ color: '#ff3333' }}>za</span>
                         </span>
                     </div>
 

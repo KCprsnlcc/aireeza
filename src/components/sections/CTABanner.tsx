@@ -15,7 +15,7 @@ export default function CTABanner() {
         <section className={`bg-black text-white py-16 md:py-20 px-6 md:px-8 lg:px-12 opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-1' : ''}`}>
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-16 items-center">
                 <div>
-                    <h2 className="font-majesty text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
+                    <h2 className="font-bold tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
                         You already know<br />
                         <em className="italic text-white/50">something isn&rsquo;t right.</em>
                     </h2>

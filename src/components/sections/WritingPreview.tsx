@@ -48,7 +48,7 @@ export default function WritingPreview() {
                             } opacity-0 ${isLoaded ? 'hero-animate-in hero-stagger-2' : ''}`}
                     >
                         <div className="text-[0.65rem] text-neutral-400 font-light">{post.date}</div>
-                        <div className="font-majesty text-base md:text-lg text-black/90">{post.title}</div>
+                        <div className="font-bold tracking-tight text-base md:text-lg text-black/90">{post.title}</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.1em] text-neutral-500 md:text-right font-light">
                             {post.tag}
                         </div>

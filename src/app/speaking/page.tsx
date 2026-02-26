@@ -53,7 +53,7 @@ export default function SpeakingPage() {
                             key={i}
                             className={`p-8 ${i % 2 === 0 ? 'md:border-r' : ''} ${i < 2 ? 'border-b' : ''} border-neutral-200`}
                         >
-                            <h3 className="font-majesty text-xl text-black/90 mb-3">
+                            <h3 className="font-bold tracking-tight text-xl text-black/90 mb-3">
                                 {topic.title.startsWith('[') ? (
                                     <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono text-base">{topic.title}</span>
                                 ) : topic.title}
@@ -86,7 +86,7 @@ export default function SpeakingPage() {
                             <div className="text-[0.65rem] uppercase tracking-[0.1em] text-neutral-400">
                                 <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono">{event.venue}</span>
                             </div>
-                            <div className="font-majesty text-base text-black/90">
+                            <div className="font-bold tracking-tight text-base text-black/90">
                                 <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono text-sm">{event.title}</span>
                             </div>
                             <div className="text-[0.65rem] text-[#ff3333] md:text-right uppercase tracking-[0.1em]">
@@ -102,7 +102,7 @@ export default function SpeakingPage() {
                 {/* Speaking enquiry */}
                 <div className="p-8 md:p-12 md:border-r border-neutral-200">
                     <div className="text-[0.65rem] uppercase tracking-[0.15em] text-neutral-400 mb-4 font-light">Speaking enquiries</div>
-                    <h3 className="font-majesty text-2xl text-black/90 mb-4">
+                    <h3 className="font-bold tracking-tight text-2xl text-black/90 mb-4">
                         Bring this<br />to your audience.
                     </h3>
                     <p className="text-[0.88rem] leading-[1.8] text-neutral-500 mb-4">
@@ -122,7 +122,7 @@ export default function SpeakingPage() {
                 {/* Contact form */}
                 <div className="p-8 md:p-12">
                     <div className="text-[0.65rem] uppercase tracking-[0.15em] text-neutral-400 mb-4 font-light">Get in touch</div>
-                    <h3 className="font-majesty text-2xl text-black/90 mb-4">
+                    <h3 className="font-bold tracking-tight text-2xl text-black/90 mb-4">
                         Not sure where<br />
                         <em className="italic text-neutral-500">to start?</em>
                     </h3>

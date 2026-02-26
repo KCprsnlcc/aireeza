@@ -49,7 +49,7 @@ export default function CaseStudyPreview() {
                     <div className="text-[0.65rem] uppercase tracking-[0.12em] text-neutral-400 mb-2 md:mb-0">
                         {study.tag}
                     </div>
-                    <div className="font-majesty text-lg md:text-xl text-black/90 mb-2 md:mb-0">
+                    <div className="font-bold tracking-tight text-lg md:text-xl text-black/90 mb-2 md:mb-0">
                         {study.title}
                     </div>
                     <div className="text-[0.7rem] text-[#ff3333] md:text-right font-light">

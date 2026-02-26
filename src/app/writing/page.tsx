@@ -60,7 +60,7 @@ export default function WritingPage() {
                 </div>
                 <div className="p-8 md:p-10">
                     <div className="text-[0.65rem] uppercase tracking-[0.1em] text-[#ff3333] mb-3 font-light">{featuredPost.tag}</div>
-                    <h2 className="font-majesty text-2xl md:text-3xl leading-[1.2] text-black/90 mb-4">{featuredPost.title}</h2>
+                    <h2 className="font-bold tracking-tight text-2xl md:text-3xl leading-[1.2] text-black/90 mb-4">{featuredPost.title}</h2>
                     <p className="text-[0.88rem] leading-[1.8] text-neutral-500 mb-4">{featuredPost.excerpt}</p>
                     <span className="text-xs uppercase tracking-[0.1em] text-[#ff3333] font-light cursor-pointer hover:underline">Read →</span>
                 </div>
@@ -75,7 +75,7 @@ export default function WritingPage() {
                             }`}
                     >
                         <div className="text-[0.65rem] text-neutral-400 font-light">{post.date}</div>
-                        <div className="font-majesty text-base md:text-lg text-black/90">{post.title}</div>
+                        <div className="font-bold tracking-tight text-base md:text-lg text-black/90">{post.title}</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.1em] text-neutral-500 md:text-right font-light">{post.tag}</div>
                     </div>
                 ))}
@@ -85,7 +85,7 @@ export default function WritingPage() {
             <section className="bg-neutral-50 border-b border-neutral-200 px-6 md:px-8 lg:px-12 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
                     <div>
-                        <h2 className="font-majesty text-2xl md:text-3xl leading-[1.2] text-black/90 mb-3">
+                        <h2 className="font-bold tracking-tight text-2xl md:text-3xl leading-[1.2] text-black/90 mb-3">
                             Get it in your inbox<br />
                             <em className="italic text-neutral-500">before it&rsquo;s on the site.</em>
                         </h2>

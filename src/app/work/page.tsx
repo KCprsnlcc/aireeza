@@ -61,7 +61,7 @@ export default function WorkPage() {
                             </div>
                         </div>
                         <div>
-                            <h3 className="font-majesty text-xl md:text-2xl text-black/90 mb-2">
+                            <h3 className="font-bold tracking-tight text-xl md:text-2xl text-black/90 mb-2">
                                 <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono text-base">{study.title}</span>
                             </h3>
                             <p className="text-[0.82rem] text-neutral-500 leading-[1.65] max-w-lg">
@@ -95,7 +95,7 @@ export default function WorkPage() {
             <section className="bg-black text-white py-16 md:py-20 px-6 md:px-8 lg:px-12">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 md:gap-16 items-center">
                     <div>
-                        <h2 className="font-majesty text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
+                        <h2 className="font-bold tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-white">
                             See your business<br />
                             <em className="italic text-white/50">in any of these?</em>
                         </h2>
