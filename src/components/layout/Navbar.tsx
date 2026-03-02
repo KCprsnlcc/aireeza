@@ -210,12 +210,17 @@ function NavbarContent({ mobileMenuOpen, setMobileMenuOpen, isSticky }: NavbarCo
                 <Link href="/writing" className="hover:text-black transition-colors">Writing</Link>
                 <Link href="/speaking" className="hover:text-black transition-colors">Speaking</Link>
                 <Link href="/newsletter" className="hover:text-black transition-colors">Newsletter</Link>
-                <Link href="/assessment" className="hover:text-black transition-colors">Assessment</Link>
             </div>
 
             {/* Right - CTA + Menu */}
             <div className="flex w-1/2 md:w-1/4 justify-end items-center gap-3 md:gap-4">
-                {/* Desktop CTA */}
+                {/* Desktop CTAs */}
+                <Link
+                    href="/assessment"
+                    className="hidden md:block border border-black text-black px-4 py-2 text-[0.65rem] tracking-[0.1em] hover:bg-black hover:text-white transition-colors"
+                >
+                    Take the assessment
+                </Link>
                 <Link
                     href="/services"
                     className="hidden md:block bg-black text-white px-4 py-2 text-[0.65rem] tracking-[0.1em] hover:bg-neutral-800 transition-colors"
@@ -254,7 +259,6 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         { label: 'Writing', href: '/writing' },
         { label: 'Speaking', href: '/speaking' },
         { label: 'Newsletter', href: '/newsletter' },
-        { label: 'Assessment', href: '/assessment' },
     ];
 
     return (
@@ -328,6 +332,13 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         transition={{ delay: menuItems.length * 0.05 }}
                                         className="mt-4 pt-4 border-t border-neutral-200"
                                     >
+                                        <Link
+                                            href="/assessment"
+                                            onClick={onClose}
+                                            className="inline-block text-[0.7rem] uppercase tracking-[0.1em] border border-black text-black py-3 px-6 font-light transition-colors hover:bg-black hover:text-white mb-3"
+                                        >
+                                            Take the assessment
+                                        </Link>
                                         <Link
                                             href="/services"
                                             onClick={onClose}

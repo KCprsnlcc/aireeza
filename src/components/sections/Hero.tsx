@@ -50,45 +50,78 @@ export default function Hero() {
                     {/* Middle - Split Layout: Left | Aireeza (center) | Right */}
                     <div className="flex-1 flex items-center justify-between px-6 md:px-8 lg:px-12">
 
-                        {/* Left Column - Aireeza Title + Professional Expertise Block (desktop) */}
-                        <div className={`hidden md:flex flex-col gap-8 max-w-[220px] lg:max-w-[280px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
-                            {/* Aireeza Title */}
+                        {/* Left Column - StoryBrand Hero Content (desktop) */}
+                        <div className={`hidden md:flex flex-col gap-6 max-w-[280px] lg:max-w-[320px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                            {/* Eyebrow */}
+                            <div className="hero-stagger-1">
+                                <p className={`text-[0.65rem] font-light uppercase tracking-[0.2em] ${isReveal ? 'text-white/80' : 'text-[#ff3333]'} leading-[1.4]`}>
+                                    For founders who have built real revenue — and can't figure out why it's not enough
+                                </p>
+                            </div>
+                            
+                            {/* Headline */}
                             <div 
                                 ref={!isReveal ? titleRef : undefined}
                                 className="hero-stagger-2"
                             >
                                 <h1 className="relative">
-                                    <span 
-                                        className={`font-majesty font-normal block ${textPrimary}`}
+                                    <div 
+                                        className={`font-bold tracking-tight ${textPrimary}`}
                                         style={{ 
-                                            fontSize: 'clamp(2rem, 6vw, 4.5rem)', 
-                                            lineHeight: '0.85',
+                                            fontSize: 'clamp(1.2rem, 3.5vw, 2rem)', 
+                                            lineHeight: '1.2',
                                             letterSpacing: '-0.02em'
                                         }}
                                     >
-                                        Airee<span className={zaColor}>za</span>
-                                    </span>
+                                        You've figured out<br/>how to make money.<br/>
+                                        <span className={`${isReveal ? 'text-white/60' : 'text-neutral-500'} italic`}>
+                                            Nobody taught you<br/>how to keep it.
+                                        </span>
+                                    </div>
                                 </h1>
                             </div>
                             
-                            {/* Professional Expertise */}
-                            <div>
-                                <p className={`text-sm md:text-base lg:text-lg font-light tracking-wide ${textPrimary} leading-[1.8]`}>
-                                    PROFESSIONAL EXPERTISE<br/>
-                                    <span className={`text-xs md:text-sm lg:text-base font-light tracking-wider ${textSecondary}`}>
-                                        Certified expertise in strategic<br/>
-                                        finance and business<br/>
-                                        performance advisory.
-                                    </span>
+                            {/* Body copy */}
+                            <div className="hero-stagger-3">
+                                <p className={`text-[0.82rem] leading-[1.7] ${textSecondary} max-w-[260px]`}>
+                                    Most founder-led businesses have figured out how to generate revenue but have never built the structure to protect it. I sit inside the business and build what was never built: the financial architecture, client system, and team infrastructure that turns revenue into profit you actually keep.
                                 </p>
                             </div>
-                            <div className="flex items-center gap-4">
+                            
+                            {/* CTA Buttons */}
+                            <div className={`hero-stagger-4 flex flex-col gap-2`}>
+                                <a 
+                                    href="/assessment"
+                                    className={`inline-block text-[0.7rem] uppercase tracking-[0.1em] py-2.5 px-5 text-center transition-colors pointer-events-auto font-light ${
+                                        isReveal 
+                                            ? 'bg-white text-black hover:bg-neutral-200' 
+                                            : 'bg-black text-white hover:bg-neutral-800'
+                                    }`}
+                                >
+                                    Take the free assessment →
+                                </a>
+                                <a 
+                                    href="/services"
+                                    className={`inline-block text-[0.7rem] uppercase tracking-[0.1em] py-2.5 px-5 text-center transition-colors pointer-events-auto border font-light ${
+                                        isReveal 
+                                            ? 'border-white/30 text-white hover:bg-white/10' 
+                                            : 'border-black/30 text-black hover:bg-black/5'
+                                    }`}
+                                >
+                                    Work with me
+                                </a>
+                                <p className={`text-[0.6rem] text-neutral-400 mt-1`}>
+                                    15 minutes · Free · No sign-up to start
+                                </p>
+                            </div>
+                            
+                            <div className="flex items-center gap-3">
                                 <div className="hero-scroll-line-container">
-                                    <div className={`w-px h-12 overflow-hidden ${lineBg}`}>
+                                    <div className={`w-px h-10 overflow-hidden ${lineBg}`}>
                                         <div className={`w-full hero-scroll-line ${scrollLineBg}`} />
                                     </div>
                                 </div>
-                                <span className={`text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
+                                <span className={`text-[0.6rem] font-light uppercase tracking-[0.2em] ${textMuted}`}>
                                     Scroll to explore
                                 </span>
                             </div>
@@ -99,82 +132,91 @@ export default function Hero() {
                             ref={!isReveal ? titleRef : undefined}
                             className="w-full flex flex-col items-center justify-center text-center relative md:hidden px-4"
                         >
-                            {/* Mobile Aireeza Title - Optimized sizing */}
-                            <div className={`hero-stagger-2 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                            {/* Mobile Eyebrow */}
+                            <div className={`hero-stagger-1 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} max-w-[85vw]`}>
+                                <p className={`text-[0.6rem] font-light uppercase tracking-[0.2em] ${isReveal ? 'text-white/80' : 'text-[#ff3333]'} leading-[1.4] text-center`}>
+                                    For founders who have built real revenue — and can't figure out why it's not enough
+                                </p>
+                            </div>
+                            
+                            {/* Mobile Headline */}
+                            <div className={`hero-stagger-2 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-4`}>
                                 <h1 className="relative">
-                                    <span 
-                                        className={`font-majesty font-normal block ${textPrimary}`}
+                                    <div 
+                                        className={`font-bold tracking-tight ${textPrimary}`}
                                         style={{ 
-                                            fontSize: 'clamp(3rem, 16vw, 5rem)', 
-                                            lineHeight: '0.9',
+                                            fontSize: 'clamp(1.4rem, 8vw, 2.2rem)', 
+                                            lineHeight: '1.25',
+                                            letterSpacing: '-0.02em'
+                                        }}
+                                    >
+                                        You've figured out<br/>how to make money.<br/>
+                                        <span className={`${isReveal ? 'text-white/60' : 'text-neutral-500'} italic`}>
+                                            Nobody taught you<br/>how to keep it.
+                                        </span>
+                                    </div>
+                                </h1>
+                            </div>
+
+                            {/* Mobile Body Copy */}
+                            <div className={`hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-4 max-w-[80vw]`}>
+                                <p className={`text-[0.75rem] leading-[1.65] ${textSecondary}`}>
+                                    Most founder-led businesses have figured out how to generate revenue but have never built the structure to protect it. I sit inside the business and build what was never built: the financial architecture, client system, and team infrastructure that turns revenue into profit you actually keep.
+                                </p>
+                            </div>
+                            
+                            {/* Mobile CTA Buttons */}
+                            <div className={`hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-6 w-full max-w-[280px] space-y-2`}>
+                                <a 
+                                    href="/assessment"
+                                    className={`block w-full text-[0.7rem] uppercase tracking-[0.1em] py-2.5 px-5 text-center transition-colors pointer-events-auto font-light ${
+                                        isReveal 
+                                            ? 'bg-white text-black hover:bg-neutral-200' 
+                                            : 'bg-black text-white hover:bg-neutral-800'
+                                    }`}
+                                >
+                                    Take the free assessment →
+                                </a>
+                                <a 
+                                    href="/services"
+                                    className={`block w-full text-[0.7rem] uppercase tracking-[0.1em] py-2.5 px-5 text-center transition-colors pointer-events-auto border font-light ${
+                                        isReveal 
+                                            ? 'border-white/30 text-white hover:bg-white/10' 
+                                            : 'border-black/30 text-black hover:bg-black/5'
+                                    }`}
+                                >
+                                    Work with me
+                                </a>
+                                <p className={`text-[0.6rem] text-neutral-400 text-center mt-1`}>
+                                    15 minutes · Free · No sign-up to start
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Right Column - Aireeza Identity (desktop) */}
+                        <div className={`hidden md:flex flex-col gap-6 hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
+                            {/* Content Blocks with margin */}
+                            <div className="flex flex-col gap-6 mr-6 lg:mr-12">
+                                {/* Aireeza Name */}
+                                <div className="flex flex-col items-center mr-60">
+                                    <h2 
+                                        className={`font-majesty font-normal ${textPrimary}`}
+                                        style={{ 
+                                            fontSize: 'clamp(3rem, 5vw, 4rem)', 
+                                            lineHeight: '0.85',
                                             letterSpacing: '-0.02em'
                                         }}
                                     >
                                         Airee<span className={zaColor}>za</span>
-                                    </span>
-                                </h1>
-                            </div>
-
-                            {/* Mobile tagline - Improved readability */}
-                            <div className={`mt-6 hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} max-w-[90vw]`}>
-                                <div className="flex items-center gap-3 justify-center">
-                                    <span className={`w-8 h-px ${lineBg}`} />
-                                    <p className={`text-[0.7rem] sm:text-xs font-black tracking-[0.15em] uppercase ${textSubtitle} leading-[1.3]`}>
-                                        Turn Financial Complexity<br className="sm:hidden" /> Into Clarity
-                                    </p>
-                                    <span className={`w-8 h-px ${lineBg}`} />
-                                </div>
-                            </div>
-
-                            {/* Mobile expertise cards - Stacked */}
-                            <div className={`mt-10 hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} w-full max-w-[340px] space-y-6`}>
-                                {/* Professional Expertise Card */}
-                                <div className="text-center">
-                                    <p className={`text-[0.65rem] font-black tracking-[0.2em] uppercase ${textPrimary} mb-2`}>
-                                        Professional Expertise
-                                    </p>
-                                    <p className={`text-[0.7rem] font-light tracking-wide ${textSecondary} leading-[1.6]`}>
-                                        Certified expertise in strategic finance<br/>
-                                        and business performance advisory
-                                    </p>
-                                </div>
-
-                                {/* Profit & Performance Card */}
-                                <div className="text-center">
-                                    <p className={`text-[0.65rem] font-black tracking-[0.2em] uppercase ${textPrimary} mb-2`}>
-                                        Profit & Performance
-                                    </p>
-                                    <p className={`text-[0.7rem] font-light tracking-wide ${textSecondary} leading-[1.6]`}>
-                                        Strategic Finance + Business Architecture
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Right Column - Premium Content (desktop) */}
-                        <div className={`hidden md:flex flex-col gap-8 hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
-                            {/* Content Blocks with margin */}
-                            <div className="flex flex-col gap-8 mr-8 lg:mr-16">
-                                {/* Profit & Performance Block */}
-                                <div className="flex flex-col items-end">
-                                    <p className={`text-sm md:text-base lg:text-lg font-light tracking-wide ${textPrimary} leading-[1.8] text-right`}>
-                                        PROFIT & PERFORMANCE<br/>
-                                        <span className={`text-xs md:text-sm lg:text-base font-light tracking-wider ${textSecondary}`}>
-                                            Strategic Finance + Business Architecture
-                                        </span>
+                                    </h2>
+                                    <p className={`text-xs md:text-sm font-light tracking-wider ${textSecondary} mt-2 text-center`}>
+                                        Profit & Performance Advisor
                                     </p>
                                 </div>
                                 
-                                {/* Aireeza Tandih Context */}
-                                <div className="flex flex-col items-end">
-                                    <p className={`text-xs md:text-sm font-light tracking-wider ${textSecondary} leading-[1.6] text-right`}>
-                                        Aireeza Tandih transforms financial  <br /> complexity into strategic clarity,
-                                        guiding  <br />  businesses toward sustainable growth  <br />  and optimal performance.
-                                    </p>
-                                </div>
-                            </div>
+                                                            </div>
                             
-                            {/* Vertical Fashion Caption - Unaffected */}
+                            {/* Vertical Fashion Caption */}
                             <div className={`text-xs font-normal uppercase tracking-widest ${textCaption} writing-mode-vertical`}>
                                 Analysis • Performance • Decisions
                             </div>
@@ -202,7 +244,7 @@ export default function Hero() {
 
                         {/* Desktop - Left label */}
                         <div className={`hidden md:block text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
-                            Strategic & Financial Consulting
+                            Founder of Alt Business & BrightCEO
                         </div>
 
                         {/* Discover CTA - Touch-optimized */}
