@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aireeza.com — Newsletter + Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #5a5a5a;
+    --ink-faint: #b0b0b0;
+    --paper: #f5f2ec;
+    --paper-white: #faf9f7;
+    --accent: #c94b2d;
+    --rule: #d8d3cb;
+    --green: #2d6a4f;
+    --amber: #b45309;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Instrument Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  body { background: #e8e4dc; font-family: var(--font-body); color: var(--ink); padding: 2rem; }
+
+  .doc-header { max-width: 1100px; margin: 0 auto 3rem; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--ink); padding-bottom: 1rem; }
+  .doc-title { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-light); }
+  .doc-name { font-family: var(--font-display); font-size: 2rem; }
+  .doc-meta { font-family: var(--font-mono); font-size: 0.65rem; text-align: right; color: var(--ink-light); line-height: 1.8; }
+
+  .pages { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 4rem; }
+  .page-block { background: var(--paper-white); border: 1.5px solid var(--rule); position: relative; }
+  .page-label { position: absolute; top: -1px; left: -1px; background: var(--ink); color: #fff; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.7rem; }
+  .page-url { position: absolute; top: -1px; right: -1px; background: var(--accent); color: #fff; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; padding: 0.3rem 0.7rem; }
+
+  .browser-bar { background: #edeae4; border-bottom: 1px solid var(--rule); padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.5rem; margin-top: 1.6rem; }
+  .browser-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--rule); }
+  .browser-url { flex: 1; background: #fff; border: 1px solid var(--rule); border-radius: 3px; padding: 0.2rem 0.8rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-light); margin: 0 0.5rem; }
+
+  .wf-nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2.5rem; border-bottom: 1px solid var(--rule); }
+  .wf-logo { font-family: var(--font-display); font-size: 1.3rem; }
+  .wf-nav-links { display: flex; gap: 2rem; font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-light); }
+  .wf-nav-cta { font-family: var(--font-mono); font-size: 0.65rem; background: var(--ink); color: #fff; padding: 0.4rem 1rem; letter-spacing: 0.1em; }
+
+  .wf-inner-hero { padding: 3.5rem 2.5rem; border-bottom: 1px solid var(--rule); background: var(--paper); }
+  .wf-inner-hero-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.8rem; }
+  .wf-inner-hero-title { font-family: var(--font-display); font-size: 3rem; line-height: 1.1; }
+
+  .wf-section { padding: 4rem 2.5rem; border-bottom: 1px solid var(--rule); }
+  .wf-section-sm { padding: 2.5rem 2.5rem; border-bottom: 1px solid var(--rule); }
+  .wf-section-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .wf-section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+  .wf-btn-primary { font-family: var(--font-mono); font-size: 0.7rem; background: var(--ink); color: #fff; padding: 0.7rem 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; cursor: pointer; border: none; }
+  .wf-btn-accent { font-family: var(--font-mono); font-size: 0.7rem; background: var(--accent); color: #fff; padding: 0.7rem 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; cursor: pointer; border: none; }
+  .wf-cta-banner { background: var(--ink); color: #fff; padding: 4rem 2.5rem; display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: center; }
+  .wf-cta-headline { font-family: var(--font-display); font-size: 2.8rem; line-height: 1.1; }
+  .wf-cta-headline em { font-style: italic; opacity: 0.5; }
+  .wf-btn-white { font-family: var(--font-mono); font-size: 0.7rem; background: #fff; color: var(--ink); padding: 0.8rem 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; cursor: pointer; }
+  .wf-footer-base { border-top: 1px solid var(--rule); padding: 1rem 2.5rem; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.6rem; color: var(--ink-faint); }
+
+  .body-text { font-size: 0.88rem; line-height: 1.8; color: var(--ink-light); margin-bottom: 1.4rem; }
+  .fill { color: #9b6a00; background: #fff8e1; border-radius: 2px; padding: 0 3px; font-family: var(--font-mono); font-size: 0.75em; }
+  .text-link { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; }
+  .page-sep { text-align: center; padding: 1.5rem 0; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-faint); }
+
+  /* ---- NEWSLETTER PAGE SPECIFIC ---- */
+  .nl-hero-split { display: grid; grid-template-columns: 1.2fr 1fr; min-height: 400px; border-bottom: 1px solid var(--rule); }
+  .nl-hero-left { padding: 4rem 2.5rem; border-right: 1px solid var(--rule); }
+  .nl-hero-right { background: var(--ink); color: #fff; padding: 4rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .nl-headline { font-family: var(--font-display); font-size: 3.2rem; line-height: 1.1; margin-bottom: 1.5rem; }
+  .nl-headline em { font-style: italic; color: var(--ink-light); }
+  .nl-subhead { font-size: 0.88rem; line-height: 1.75; color: var(--ink-light); }
+  .nl-form { display: flex; flex-direction: column; gap: 0.6rem; }
+  .nl-input { border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.07); padding: 0.85rem 1rem; font-family: var(--font-mono); font-size: 0.65rem; color: #fff; letter-spacing: 0.05em; }
+  .nl-input::placeholder { color: rgba(255,255,255,0.35); }
+  .nl-btn { font-family: var(--font-mono); font-size: 0.7rem; background: var(--accent); color: #fff; padding: 0.85rem 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: none; margin-top: 0.3rem; }
+  .nl-fine { font-family: var(--font-mono); font-size: 0.58rem; color: rgba(255,255,255,0.3); }
+  .nl-right-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
+
+  .nl-what-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); }
+  .nl-what-item { padding: 2rem; border-right: 1px solid var(--rule); }
+  .nl-what-item:last-child { border-right: none; }
+  .nl-what-num { font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent); margin-bottom: 0.8rem; }
+  .nl-what-title { font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .nl-what-body { font-size: 0.78rem; line-height: 1.65; color: var(--ink-light); }
+
+  .nl-archive-row { display: grid; grid-template-columns: 80px 1fr 140px; gap: 2rem; align-items: baseline; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
+  .nl-archive-date { font-family: var(--font-mono); font-size: 0.6rem; color: var(--ink-faint); }
+  .nl-archive-title { font-family: var(--font-display); font-size: 1.05rem; }
+  .nl-archive-tag { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-light); text-align: right; }
+
+  .nl-social-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); }
+  .nl-social-item { padding: 2rem 2.5rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.5rem; }
+  .nl-social-item:last-child { border-right: none; }
+  .nl-social-platform { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-faint); }
+  .nl-social-handle { font-family: var(--font-display); font-size: 1.2rem; }
+  .nl-social-desc { font-size: 0.78rem; color: var(--ink-light); line-height: 1.6; }
+  .nl-social-cta { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-top: 0.5rem; }
+
+  /* ---- ASSESSMENT TOOL SPECIFIC ---- */
+  .assess-hero { background: var(--ink); color: #fff; padding: 4rem 2.5rem; display: grid; grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items: center; }
+  .assess-headline { font-family: var(--font-display); font-size: 3rem; line-height: 1.1; }
+  .assess-headline em { font-style: italic; opacity: 0.5; }
+  .assess-sub { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-top: 1rem; }
+  .assess-meta-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 2rem; }
+  .assess-meta-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.78rem; }
+  .assess-meta-row:last-child { border-bottom: none; }
+  .assess-meta-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); }
+  .assess-meta-val { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.7); }
+
+  .pillar-tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--rule); }
+  .pillar-tab { padding: 1.5rem 2rem; border-right: 1px solid var(--rule); cursor: pointer; }
+  .pillar-tab:last-child { border-right: none; }
+  .pillar-tab.active { background: var(--paper); }
+  .pillar-tab-num { font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-faint); margin-bottom: 0.4rem; }
+  .pillar-tab-title { font-family: var(--font-display); font-size: 1.05rem; }
+  .pillar-tab-desc { font-size: 0.75rem; color: var(--ink-light); margin-top: 0.3rem; line-height: 1.5; }
+  .pillar-tab.active .pillar-tab-num { color: var(--accent); }
+  .pillar-indicator { height: 3px; background: var(--accent); margin-top: 1rem; display: none; }
+  .pillar-tab.active .pillar-indicator { display: block; }
+
+  .q-section { padding: 3rem 2.5rem; border-bottom: 1px solid var(--rule); }
+  .q-pillar-label { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.4rem; }
+  .q-pillar-title { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .q-pillar-intro { font-size: 0.85rem; color: var(--ink-light); line-height: 1.65; margin-bottom: 2.5rem; max-width: 580px; }
+
+  .q-block { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+  .q-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .q-num { font-family: var(--font-mono); font-size: 0.58rem; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  .q-text { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 1.2rem; line-height: 1.3; }
+  .q-options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .q-option { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.85rem 1rem; border: 1px solid var(--rule); cursor: pointer; transition: background 0.12s; }
+  .q-option:hover { background: var(--paper); }
+  .q-option.selected { background: var(--paper); border-color: var(--ink); }
+  .q-option-indicator { width: 16px; height: 16px; border: 1.5px solid var(--rule); border-radius: 50%; flex-shrink: 0; margin-top: 2px; }
+  .q-option.selected .q-option-indicator { background: var(--ink); border-color: var(--ink); }
+  .q-option-text { font-size: 0.82rem; line-height: 1.55; color: var(--ink-light); }
+  .q-option-score { font-family: var(--font-mono); font-size: 0.58rem; color: var(--ink-faint); margin-left: auto; flex-shrink: 0; padding-left: 1rem; }
+
+  .q-nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; border-bottom: 1px solid var(--rule); background: var(--paper); }
+  .q-progress { display: flex; gap: 0.3rem; align-items: center; }
+  .q-progress-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rule); }
+  .q-progress-dot.done { background: var(--accent); }
+  .q-progress-dot.current { background: var(--ink); }
+  .q-progress-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--ink-faint); margin-left: 0.8rem; }
+
+  /* RESULTS PAGE */
+  .results-hero { background: var(--paper); padding: 3.5rem 2.5rem; border-bottom: 1px solid var(--rule); }
+  .results-headline { font-family: var(--font-display); font-size: 2.5rem; line-height: 1.1; margin-bottom: 0.8rem; }
+  .results-sub { font-size: 0.88rem; color: var(--ink-light); line-height: 1.65; max-width: 520px; }
+
+  .score-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--rule); }
+  .score-card { padding: 2.5rem; border-right: 1px solid var(--rule); }
+  .score-card:last-child { border-right: none; }
+  .score-card-pillar { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-faint); margin-bottom: 0.8rem; }
+  .score-card-num { font-family: var(--font-display); font-size: 3.5rem; line-height: 1; margin-bottom: 0.3rem; }
+  .score-card-num.high { color: var(--green); }
+  .score-card-num.mid { color: var(--amber); }
+  .score-card-num.low { color: var(--accent); }
+  .score-card-label { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .score-card-label.high { color: var(--green); }
+  .score-card-label.mid { color: var(--amber); }
+  .score-card-label.low { color: var(--accent); }
+  .score-bar-track { height: 4px; background: var(--rule); margin-top: 1.2rem; border-radius: 2px; }
+  .score-bar-fill { height: 100%; border-radius: 2px; }
+  .score-bar-fill.high { background: var(--green); width: 80%; }
+  .score-bar-fill.mid { background: var(--amber); width: 52%; }
+  .score-bar-fill.low { background: var(--accent); width: 28%; }
+  .score-card-note { font-size: 0.78rem; color: var(--ink-light); line-height: 1.6; margin-top: 1rem; }
+
+  .result-findings { display: grid; grid-template-columns: 1.4fr 1fr; border-bottom: 1px solid var(--rule); }
+  .result-main { padding: 3rem 2.5rem; border-right: 1px solid var(--rule); }
+  .result-side { padding: 2.5rem 2rem; }
+
+  .finding-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+  .finding-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .finding-label { font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+  .finding-label.strength { color: var(--green); }
+  .finding-label.watch { color: var(--amber); }
+  .finding-label.priority { color: var(--accent); }
+  .finding-title { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .finding-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; }
+
+  .next-steps-box { background: var(--paper); border: 1px solid var(--rule); padding: 1.5rem; margin-bottom: 1rem; }
+  .next-steps-title { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-faint); margin-bottom: 1rem; }
+  .next-step-item { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.8rem; font-size: 0.78rem; line-height: 1.55; color: var(--ink-light); }
+  .next-step-num { font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent); flex-shrink: 0; min-width: 1.2rem; }
+
+  .capture-box { border: 1.5px solid var(--ink); padding: 2rem; background: #fff; margin-top: 1.5rem; }
+  .capture-title { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .capture-sub { font-size: 0.78rem; color: var(--ink-light); margin-bottom: 1.2rem; line-height: 1.55; }
+  .capture-input { border: 1px solid var(--rule); padding: 0.7rem 0.8rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-faint); background: #fff; display: block; width: 100%; margin-bottom: 0.5rem; }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="doc-title">New Pages — Newsletter + Assessment</div>
+    <div class="doc-name">aireeza.com</div>
+  </div>
+  <div class="doc-meta">
+    Version 1.0 &nbsp;|&nbsp; February 2026<br>
+    2 new pages &nbsp;|&nbsp; Built on Alt Business Performance Framework<br>
+    <span style="color: #9b6a00;">Orange</span> = fill in your details
+  </div>
+</div>
+
+<div class="pages">
+
+<!-- ============================================================ -->
+<!-- PAGE A: NEWSLETTER -->
+<!-- ============================================================ -->
+<div class="page-block">
+  <div class="page-label">07 &mdash; Newsletter</div>
+  <div class="page-url">aireeza.com/newsletter</div>
+
+  <div class="browser-bar">
+    <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+    <div class="browser-url">www.aireeza.com/newsletter</div>
+  </div>
+
+  <div class="wf-nav">
+    <div class="wf-logo">Aireeza</div>
+    <div class="wf-nav-links"><span>About</span><span>Work</span><span>Writing</span><span>Speaking</span></div>
+    <div class="wf-nav-cta">Work with me &rarr;</div>
+  </div>
+
+  <!-- HERO SPLIT: left = copy, right = form on dark bg -->
+  <div class="nl-hero-split">
+    <div class="nl-hero-left">
+      <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.8rem;">The Newsletter</div>
+      <div class="nl-headline">The stuff<br>nobody says<br><em>out loud.</em></div>
+      <div class="nl-subhead" style="margin-top: 1.5rem;">
+        Most business content tells you what to do. This doesn't. It tells you what it actually looks like, what breaks, what costs more than you expect, and what nobody says in the room where the decisions get made.
+      </div>
+      <div class="nl-subhead" style="margin-top: 1rem;">
+        Written by someone who's been building for <span class="fill">[X]</span> years. Not to grow an audience. Because some things need to be said.
+      </div>
+    </div>
+    <div class="nl-hero-right">
+      <div>
+        <div class="nl-right-label">Subscribe &mdash; It's Free</div>
+        <div style="font-family: var(--font-display); font-size: 2rem; line-height: 1.15; margin-bottom: 1.5rem; color: #fff;">Sent when there's something worth sending.</div>
+        <div class="nl-form">
+          <input class="nl-input" type="text" placeholder="Your first name">
+          <input class="nl-input" type="email" placeholder="Your email address">
+          <button class="nl-btn">Subscribe &rarr;</button>
+          <div class="nl-fine">No cadence. No filler. Unsubscribe any time.</div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 0.8rem;">Also follow on</div>
+        <div style="display: flex; gap: 1.2rem;">
+          <a style="font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em;">LinkedIn &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT TO EXPECT -->
+  <div class="wf-section-sm" style="padding-bottom: 0;">
+    <div class="wf-section-label">What you'll get</div>
+  </div>
+  <div class="nl-what-grid">
+    <div class="nl-what-item">
+      <div class="nl-what-num">01</div>
+      <div class="nl-what-title">The honest ones</div>
+      <div class="nl-what-body">The stories I didn't think I'd publish. The years that were hard. The decisions that cost me. The things that changed how I see everything. Written for founders who are tired of pretending it's all fine.</div>
+    </div>
+    <div class="nl-what-item">
+      <div class="nl-what-num">02</div>
+      <div class="nl-what-title">The useful ones</div>
+      <div class="nl-what-body">Real frameworks and thinking from the work I do with businesses. Not wrapped in jargon. Not dumbed down. The kind of thing you read and immediately think about your own numbers.</div>
+    </div>
+    <div class="nl-what-item">
+      <div class="nl-what-num">03</div>
+      <div class="nl-what-title">The uncomfortable ones</div>
+      <div class="nl-what-body">The things founders think but don't say. The patterns I keep seeing across businesses. The quiet ways a business slowly breaks, and why smart people miss it for so long.</div>
+    </div>
+    <div class="nl-what-item">
+      <div class="nl-what-num">04</div>
+      <div class="nl-what-title">The life ones</div>
+      <div class="nl-what-body">What it looks like to build deliberately. The relationship between how your business is structured and how your life actually feels. Occasional. Only when there's something real to say.</div>
+    </div>
+  </div>
+
+  <!-- PAST ISSUES PREVIEW -->
+  <div class="wf-section-sm" style="padding-bottom: 0; padding-top: 2.5rem;">
+    <div class="wf-section-label">Past issues</div>
+  </div>
+  <div style="padding: 0 2.5rem; border-bottom: 1px solid var(--rule);">
+    <div class="nl-archive-row">
+      <div class="nl-archive-date">Feb 2026</div>
+      <div class="nl-archive-title">The number your business actually runs on (it's not revenue)</div>
+      <div class="nl-archive-tag">Profit Philosophy</div>
+    </div>
+    <div class="nl-archive-row">
+      <div class="nl-archive-date">Jan 2026</div>
+      <div class="nl-archive-title">Why founders are the last to know when something is wrong</div>
+      <div class="nl-archive-tag">Founder Empathy</div>
+    </div>
+    <div class="nl-archive-row">
+      <div class="nl-archive-date">Dec 2025</div>
+      <div class="nl-archive-title">The year I nearly destroyed what I spent five years building</div>
+      <div class="nl-archive-tag">Honest Journey</div>
+    </div>
+    <div class="nl-archive-row">
+      <div class="nl-archive-date">Nov 2025</div>
+      <div class="nl-archive-title">Building a business that doesn't require you to disappear into it</div>
+      <div class="nl-archive-tag">Intentional Life</div>
+    </div>
+    <div class="nl-archive-row" style="border-bottom: none;">
+      <div class="nl-archive-date">Oct 2025</div>
+      <div class="nl-archive-title">Profit is not a reward for hard work. It's a structural outcome.</div>
+      <div class="nl-archive-tag">Profit Philosophy</div>
+    </div>
+  </div>
+
+  <!-- FOLLOW EVERYWHERE -->
+  <div class="wf-section-sm" style="padding-bottom: 0;">
+    <div class="wf-section-label">Follow along</div>
+  </div>
+  <div class="nl-social-strip">
+    <div class="nl-social-item">
+      <div class="nl-social-platform">LinkedIn</div>
+      <div class="nl-social-handle">Aireeza Tandih</div>
+      <div class="nl-social-desc">Where I post regularly. Founder-to-founder, no polish, no performance. The thinking behind the work, the honest journey, and the stuff I see from inside businesses every week.</div>
+      <div class="nl-social-cta">Follow on LinkedIn &rarr;</div>
+    </div>
+    <div class="nl-social-item">
+      <div class="nl-social-platform">Alt Business</div>
+      <div class="nl-social-handle"><span class="fill">[Alt Business handle / URL]</span></div>
+      <div class="nl-social-desc"><span class="fill">[Short description of what Alt Business posts or publishes. What someone gets by following the company account vs. following you personally.]</span></div>
+      <div class="nl-social-cta"><span class="fill">[Follow / Visit &rarr;]</span></div>
+    </div>
+    <div class="nl-social-item">
+      <div class="nl-social-platform">BrightCEO</div>
+      <div class="nl-social-handle"><span class="fill">[BrightCEO handle / URL]</span></div>
+      <div class="nl-social-desc"><span class="fill">[Short description of what BrightCEO publishes. What founders at an earlier stage get by following.]</span></div>
+      <div class="nl-social-cta"><span class="fill">[Follow / Visit &rarr;]</span></div>
+    </div>
+  </div>
+
+  <!-- SECOND SUBSCRIBE -->
+  <div style="background: var(--paper); padding: 3.5rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; border-top: 1px solid var(--rule);">
+    <div>
+      <div style="font-family: var(--font-display); font-size: 2rem; line-height: 1.2; margin-bottom: 0.8rem;">Still on the fence?<br><em>Read one issue first.</em></div>
+      <div style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.65;">Pick any issue from the archive above. If it sounds like something you'd want more of, subscribe. If it doesn't, no hard feelings.</div>
+    </div>
+    <div>
+      <div class="nl-form" style="max-width: 400px;">
+        <input style="border: 1px solid var(--rule); padding: 0.8rem 1rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-faint); background: #fff;" type="email" placeholder="Your email address">
+        <button class="nl-btn" style="background: var(--ink);">Subscribe &rarr;</button>
+        <div style="font-family: var(--font-mono); font-size: 0.58rem; color: var(--ink-faint);">No spam. No cadence for the sake of it. Unsubscribe any time.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-footer-base">
+    <span>&copy; 2026 Aireeza Tandih</span>
+    <span>Alt Business &nbsp;/&nbsp; BrightCEO</span>
+  </div>
+</div>
+
+
+<div class="page-sep">&mdash;&mdash; Assessment Tool Below &mdash;&mdash;</div>
+
+
+<!-- ============================================================ -->
+<!-- PAGE B: ASSESSMENT TOOL -->
+<!-- ============================================================ -->
+<div class="page-block">
+  <div class="page-label">08 &mdash; Business Health Assessment</div>
+  <div class="page-url">aireeza.com/assessment</div>
+
+  <div class="browser-bar">
+    <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+    <div class="browser-url">www.aireeza.com/assessment</div>
+  </div>
+
+  <div class="wf-nav">
+    <div class="wf-logo">Aireeza</div>
+    <div class="wf-nav-links"><span>About</span><span>Work</span><span>Writing</span><span>Speaking</span></div>
+    <div class="wf-nav-cta">Work with me &rarr;</div>
+  </div>
+
+  <!-- ASSESSMENT HERO -->
+  <div class="assess-hero">
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); margin-bottom: 0.8rem;">Alt Business Performance Framework</div>
+      <div class="assess-headline">Find out where<br>your business is<br><em>quietly breaking.</em></div>
+      <div class="assess-sub">15 minutes. 15 questions. A personalised score across the three pillars that determine whether your business is financially healthy, structurally sound, and founder-proof. No sign-up to start.</div>
+    </div>
+    <div class="assess-meta-box">
+      <div class="assess-meta-row">
+        <span class="assess-meta-label">Time</span>
+        <span class="assess-meta-val">~15 minutes</span>
+      </div>
+      <div class="assess-meta-row">
+        <span class="assess-meta-label">Questions</span>
+        <span class="assess-meta-val">15 across 3 pillars</span>
+      </div>
+      <div class="assess-meta-row">
+        <span class="assess-meta-label">Output</span>
+        <span class="assess-meta-val">Scored report + findings</span>
+      </div>
+      <div class="assess-meta-row">
+        <span class="assess-meta-label">Framework</span>
+        <span class="assess-meta-val">Alt Business Model</span>
+      </div>
+      <div class="assess-meta-row">
+        <span class="assess-meta-label">Cost</span>
+        <span class="assess-meta-val">Free</span>
+      </div>
+      <div style="margin-top: 1.5rem;">
+        <button class="wf-btn-accent" style="width: 100%; text-align: center;">Start the assessment &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLAR TABS (shown during assessment, active = Pillar 1) -->
+  <div style="padding: 1.5rem 2.5rem; border-bottom: 1px solid var(--rule); background: var(--paper);">
+    <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-faint); margin-bottom: 1rem;">Assessment structure &mdash; 3 pillars, 5 questions each</div>
+  </div>
+  <div class="pillar-tabs">
+    <div class="pillar-tab active">
+      <div class="pillar-tab-num">Pillar 01</div>
+      <div class="pillar-tab-title">Profit Architecture</div>
+      <div class="pillar-tab-desc">How your business generates and retains money. Margins, pricing, revenue concentration, and whether profit is by design or by accident.</div>
+      <div class="pillar-indicator"></div>
+    </div>
+    <div class="pillar-tab">
+      <div class="pillar-tab-num">Pillar 02</div>
+      <div class="pillar-tab-title">Team &amp; Cost Structure</div>
+      <div class="pillar-tab-desc">Whether your team and cost base are built to support growth or quietly eating it. The relationship between your headcount, roles, and actual output.</div>
+      <div class="pillar-indicator"></div>
+    </div>
+    <div class="pillar-tab">
+      <div class="pillar-tab-num">Pillar 03</div>
+      <div class="pillar-tab-title">Systems &amp; Founder Dependency</div>
+      <div class="pillar-tab-desc">How much of your business lives in your head. Whether processes exist, whether they're followed, and whether you could step away without everything stopping.</div>
+      <div class="pillar-indicator"></div>
+    </div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="q-nav">
+    <div class="q-progress">
+      <div class="q-progress-dot done"></div>
+      <div class="q-progress-dot done"></div>
+      <div class="q-progress-dot current"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <div class="q-progress-dot"></div>
+      <span class="q-progress-label">Question 3 of 15</span>
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--ink-faint);">Pillar 1 of 3 &nbsp;&mdash;&nbsp; Profit Architecture</div>
+  </div>
+
+  <!-- ======= PILLAR 1: PROFIT ARCHITECTURE ======= -->
+  <div class="q-section">
+    <div class="q-pillar-label">Pillar 01</div>
+    <div class="q-pillar-title">Profit Architecture</div>
+    <div class="q-pillar-intro">These questions look at how your business is designed to make money. Not whether you have revenue, but whether the way you generate and keep it is intentional or inherited by accident.</div>
+
+    <!-- Q1 -->
+    <div class="q-block">
+      <div class="q-num">Question 01 / 15</div>
+      <div class="q-text">When you look at your gross margin, do you know exactly what's driving it and what's eating it?</div>
+      <div class="q-options">
+        <div class="q-option selected">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Yes. I know my margins by product, service line, or client segment and I review them regularly.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Roughly. I have a general sense but I don't break it down at that level.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Not really. I look at overall profit and loss but margin by segment isn't something I track.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">I'm not sure what my gross margin actually is right now.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-block">
+      <div class="q-num">Question 02 / 15</div>
+      <div class="q-text">How was your current pricing set, and when did you last review it against your actual costs?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Pricing is reviewed at least annually. It's based on cost structure, market positioning, and the value we deliver.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">We've raised prices once or twice but it wasn't a structured review. More reactive than strategic.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Pricing was set a while ago. I know I should revisit it but it hasn't happened.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Pricing was based on what felt right at the time or what competitors were charging. I've never properly costed it.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-block">
+      <div class="q-num">Question 03 / 15</div>
+      <div class="q-text">How concentrated is your revenue? What would happen if your top two clients or revenue streams disappeared tomorrow?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">We're well-diversified. No single client or stream represents more than 20% of revenue.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">We have some concentration but it's manageable. One or two clients matter a lot but we have others.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">One or two clients represent more than 40% of revenue. Losing them would be serious.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">The majority of our revenue comes from one or two sources. It keeps me up at night.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-block">
+      <div class="q-num">Question 04 / 15</div>
+      <div class="q-text">Is profit in your business a deliberate outcome, or something that's left over after everything else?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Deliberate. We set a profit target, build our cost structure around it, and track it against that target.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Partly deliberate. We have a sense of what we want to make but the structure isn't built around it explicitly.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Mostly leftover. Profit is what remains after we've paid for everything. Some months there's more, some months less.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Profit is a hope, not a plan. I'm not sure our current model is actually profitable in a structural sense.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-block">
+      <div class="q-num">Question 05 / 15</div>
+      <div class="q-text">Does your business have a cash reserve that would let it survive 60+ days without new revenue?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Yes. We have a deliberate cash buffer and I know exactly how long we could run on it.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Probably. We're not tight on cash but I haven't calculated the runway formally.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">We manage month to month. A slow patch would hurt quickly.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">No. Cash is tight. A bad month would be a real problem.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= PILLAR 2: TEAM & COST STRUCTURE ======= -->
+  <div class="q-section" style="background: #fafaf9;">
+    <div class="q-pillar-label">Pillar 02</div>
+    <div class="q-pillar-title">Team &amp; Cost Structure</div>
+    <div class="q-pillar-intro">These questions examine whether the cost of your people and operations is proportional to the output and growth they enable, or whether it's gradually suffocating the business.</div>
+
+    <!-- Q6 -->
+    <div class="q-block">
+      <div class="q-num">Question 06 / 15</div>
+      <div class="q-text">Do you know your total cost per head, and does the output of each role justify that cost?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Yes. I know what each role costs fully loaded (salary, tax, benefits, overhead) and I can connect it to revenue or output.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">I know salaries but I haven't calculated the full cost per head or tried to connect it to output.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Not really. The team has grown and costs have grown with it but I've never broken it down that way.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">I don't have a clear picture of what people actually cost or whether those costs are justified.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="q-block">
+      <div class="q-num">Question 07 / 15</div>
+      <div class="q-text">Are there roles in your business where you're not sure what the person actually does or what would stop if they left?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">No. Every role has a clear purpose and I could describe what changes if that person left tomorrow.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Mostly. There are one or two roles that have become a bit undefined over time.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Yes, a few. The business has evolved and some roles haven't kept up with it.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Honestly, several. The org chart doesn't really reflect how work actually gets done.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="q-block">
+      <div class="q-num">Question 08 / 15</div>
+      <div class="q-text">When you hire, is it planned or reactive? Do you hire ahead of need, behind it, or at the point of crisis?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Planned. We have a hiring roadmap linked to revenue milestones and we hire proactively, not reactively.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Mixed. Sometimes planned, sometimes reactive. We're getting better at it.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Mostly reactive. We hire when something breaks or someone is overwhelmed.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Crisis-driven. We usually hire too late and under pressure. It never goes as planned.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="q-block">
+      <div class="q-num">Question 09 / 15</div>
+      <div class="q-text">What percentage of your revenue goes to total people costs (salaries, contractors, freelancers)? Is that number healthy for your model?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">I know the number and it's within a healthy range for my industry and business model.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">I know the number but I'm not sure if it's healthy. I've never benchmarked it.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">I'd have to calculate it. It's not a number I track specifically.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">I suspect it's too high but I haven't looked at it directly because I'm not sure what I'd do about it.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="q-block">
+      <div class="q-num">Question 10 / 15</div>
+      <div class="q-text">Does your team know what the business is trying to achieve this year, and how their work connects to it?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Yes. We have clear goals, people know their part in them, and we track progress together.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Broadly. They know the general direction but the connection to individual roles isn't always explicit.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Vaguely. The goals are in my head but I haven't communicated them clearly or consistently.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Probably not. We're mostly focused on getting through the week. Long-term goals don't really land.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= PILLAR 3: SYSTEMS & FOUNDER DEPENDENCY ======= -->
+  <div class="q-section">
+    <div class="q-pillar-label">Pillar 03</div>
+    <div class="q-pillar-title">Systems &amp; Founder Dependency</div>
+    <div class="q-pillar-intro">These questions get at the part founders most often avoid: how much of the business runs because of you, and what would actually happen if you weren't there. This is where most businesses quietly break.</div>
+
+    <!-- Q11 -->
+    <div class="q-block">
+      <div class="q-num">Question 11 / 15</div>
+      <div class="q-text">If you disappeared for two weeks with no access to email or phone, what would actually stop?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Almost nothing. The team handles operations well. I'd come back to a business that had continued running.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Some things would slow down but not stop. There'd be issues but nothing catastrophic.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Several important things would stop or go badly. Key decisions and client relationships need me.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">A lot would stop. I'm the bottleneck for most things that actually matter. I'd never actually do this.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="q-block">
+      <div class="q-num">Question 12 / 15</div>
+      <div class="q-text">Are your core business processes documented? Could someone new follow them without asking you?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Yes. We have documented processes for the key parts of the business. They're used and maintained.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Some are. We've documented the obvious things but a lot still lives in people's heads.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Mostly not. Documentation is on the list but it never makes it to the top.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">No. The business runs on tribal knowledge and I'm the main source of it.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="q-block">
+      <div class="q-num">Question 13 / 15</div>
+      <div class="q-text">Are there decisions in your business that only you can make, even though someone else probably should be able to?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Very few. We have clear authority levels. People make decisions within their lanes without coming to me.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Some. There are a few areas where I'm still the default but I'm working on changing that.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Many. Most decisions above a certain size come to me. I'm often the last stop before anything moves.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Almost everything of any importance. I'm the decision-maker for the whole business and it's exhausting.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="q-block">
+      <div class="q-num">Question 14 / 15</div>
+      <div class="q-text">Do you have a regular cadence for reviewing your business performance, or is it only when something goes wrong?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Regular cadence. We review key metrics weekly or monthly in a structured way. It drives decisions.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Monthly or so. It happens but it's not always structured or consistently useful.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Quarterly at best. I review numbers when something prompts it, not as a rhythm.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Mostly reactive. I look at the numbers when something feels wrong, not as a regular practice.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="q-block">
+      <div class="q-num">Question 15 / 15</div>
+      <div class="q-text">When you think about stepping back from day-to-day operations in the next two to three years, does that feel possible or impossible right now?</div>
+      <div class="q-options">
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Possible and planned. We're actively building toward that. There's a clear structure that could run without me.</div>
+          <div class="q-option-score">4 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Possible in theory. I'd like it to be, and we're making progress, but there's still a lot of me in the business.</div>
+          <div class="q-option-score">2 pts</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Unlikely in that timeframe. The business isn't structured to run without me yet and I'm not sure how to get there.</div>
+          <div class="q-option-score">1 pt</div>
+        </div>
+        <div class="q-option">
+          <div class="q-option-indicator"></div>
+          <div class="q-option-text">Impossible right now. The business and I are the same thing. That's the problem I'm trying to solve.</div>
+          <div class="q-option-score">0 pts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT BUTTON -->
+  <div style="padding: 2.5rem; display: flex; justify-content: space-between; align-items: center; background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+    <div style="font-size: 0.82rem; color: var(--ink-light); line-height: 1.6; max-width: 400px;">You've answered all 15 questions. Your report takes about 10 seconds to generate.</div>
+    <button class="wf-btn-accent" style="font-size: 0.75rem; padding: 0.9rem 2rem;">Generate my results &rarr;</button>
+  </div>
+
+
+  <!-- ======= RESULTS PAGE ======= -->
+  <!-- Shown after submission. This is the output. -->
+
+  <div style="background: #fff8e1; border: 1px solid #f0c040; padding: 1rem 2.5rem; font-family: var(--font-mono); font-size: 0.65rem; color: #7a5c00;">
+    Results view &mdash; shown after submission. Scores below are illustrative examples for design purposes.
+  </div>
+
+  <div class="results-hero">
+    <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.8rem;">Your Business Health Report</div>
+    <div class="results-headline">Here's where your<br>business actually stands.</div>
+    <div class="results-sub" style="margin-top: 0.8rem;">Based on your answers, here's a breakdown across the three pillars of the Alt Business Performance Framework. Read the findings carefully. The number matters less than what it's telling you.</div>
+  </div>
+
+  <!-- SCORE CARDS -->
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="score-card-pillar">Pillar 01 &mdash; Profit Architecture</div>
+      <div class="score-card-num high">14 / 20</div>
+      <div class="score-card-label high">Solid Foundation</div>
+      <div class="score-bar-track"><div class="score-bar-fill high"></div></div>
+      <div class="score-card-note">Your profit structure is more deliberate than most. There are gaps in margin visibility at the segment level that are worth addressing, but the foundation is sound.</div>
+    </div>
+    <div class="score-card">
+      <div class="score-card-pillar">Pillar 02 &mdash; Team &amp; Cost Structure</div>
+      <div class="score-card-num mid">10 / 20</div>
+      <div class="score-card-label mid">Needs Attention</div>
+      <div class="score-bar-track"><div class="score-bar-fill mid"></div></div>
+      <div class="score-card-note">Cost structure is growing faster than output clarity. Some role ambiguity and reactive hiring patterns are creating hidden drag on margins. This is addressable.</div>
+    </div>
+    <div class="score-card">
+      <div class="score-card-pillar">Pillar 03 &mdash; Systems &amp; Founder Dependency</div>
+      <div class="score-card-num low">6 / 20</div>
+      <div class="score-card-label low">Priority Area</div>
+      <div class="score-bar-track"><div class="score-bar-fill low"></div></div>
+      <div class="score-card-note">This is where the real constraint is. The business is running on your presence. That's not a people problem. It's a structural one, and it's the most common thing I see.</div>
+    </div>
+  </div>
+
+  <!-- FINDINGS + NEXT STEPS -->
+  <div class="result-findings">
+    <div class="result-main">
+      <div class="wf-section-label" style="margin-bottom: 2rem;">Key findings</div>
+
+      <div class="finding-block">
+        <div class="finding-label strength">Strength</div>
+        <div class="finding-title">Profit intent is there</div>
+        <div class="finding-body">You're thinking about profit more deliberately than most founders at your stage. Pricing has been reviewed, you have some sense of margin by area, and you have a cash buffer. These aren't small things. Many founders I work with don't have any of them.</div>
+      </div>
+
+      <div class="finding-block">
+        <div class="finding-label watch">Worth watching</div>
+        <div class="finding-title">Cost structure is silently growing</div>
+        <div class="finding-body">The team has grown and some roles have become undefined over time. This is very common and rarely deliberate. It usually happens when good people get hired for one purpose and quietly absorb tasks that belong somewhere else. The cost stays. The clarity goes. It's worth stopping to look at what each role actually costs fully loaded and what would stop if that person left.</div>
+      </div>
+
+      <div class="finding-block" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+        <div class="finding-label priority">Priority</div>
+        <div class="finding-title">The business lives in your head and it's costing you</div>
+        <div class="finding-body">Your systems score points to the most common and most expensive pattern I see in founder-led businesses: the founder is the system. Decisions wait for you. Processes aren't written down. Two weeks away would be genuinely hard. This isn't a personality flaw. It's a structural gap. And it doesn't fix itself by working harder. It fixes by building differently.</div>
+      </div>
+    </div>
+
+    <div class="result-side">
+      <div class="next-steps-box">
+        <div class="next-steps-title">Based on your results, here's what to do next</div>
+        <div class="next-step-item">
+          <div class="next-step-num">01</div>
+          <div>Start with the systems pillar, not the numbers. Until decisions can be made without you, the other two pillars will keep underperforming.</div>
+        </div>
+        <div class="next-step-item">
+          <div class="next-step-num">02</div>
+          <div>Map what you do in a week. Not your job title, what you actually do. Then ask which of those things should never be done by you again.</div>
+        </div>
+        <div class="next-step-item">
+          <div class="next-step-num">03</div>
+          <div>Do a full cost per head calculation. Include tax, benefits, tools, and overhead. Compare it to what you know about output.</div>
+        </div>
+      </div>
+
+      <!-- CAPTURE -->
+      <div class="capture-box">
+        <div class="capture-title">Want the full written report?</div>
+        <div class="capture-sub">Enter your email and I'll send you a full breakdown of your results with specific recommendations for each pillar. No pitch. Just the report.</div>
+        <input class="capture-input" type="email" placeholder="Your email address">
+        <button class="nl-btn" style="width: 100%; text-align: center; background: var(--ink);">Send me the report &rarr;</button>
+        <div style="font-family: var(--font-mono); font-size: 0.58rem; color: var(--ink-faint); margin-top: 0.8rem;">I'll also let you know when new issues of the newsletter are out. You can unsubscribe any time.</div>
+      </div>
+
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);">
+        <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); margin-bottom: 0.8rem;">Ready to go deeper?</div>
+        <div style="font-family: var(--font-display); font-size: 1rem; margin-bottom: 0.6rem; line-height: 1.3;">The assessment shows the pattern. The Audit goes inside it.</div>
+        <div style="font-size: 0.78rem; color: var(--ink-light); line-height: 1.55; margin-bottom: 1rem;">If your score points to something you want to actually fix, let's have a real conversation about what that would look like.</div>
+        <button class="wf-btn-primary" style="width: 100%; text-align: center;">Book a conversation &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-footer-base">
+    <span>&copy; 2026 Aireeza Tandih</span>
+    <span>Alt Business &nbsp;/&nbsp; BrightCEO</span>
+  </div>
+</div>
+
+</div><!-- /pages -->
+
+<!-- NAV ADDITIONS NOTE -->
+<div style="max-width: 1100px; margin: 3rem auto 1rem; background: #fff; border: 1.5px solid var(--rule); padding: 2.5rem;">
+  <div style="font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink-faint); margin-bottom: 1.5rem;">Nav + Placement Updates</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500; color: var(--accent); margin-bottom: 0.8rem;">Updated global navigation</div>
+      <div style="font-size: 0.78rem; color: var(--ink-light); line-height: 2.1;">
+        About &nbsp;/&nbsp; Work &nbsp;/&nbsp; Writing &nbsp;/&nbsp; Speaking &nbsp;/&nbsp; <strong style="color: var(--ink);">Newsletter</strong><br>
+        CTA button: <strong style="color: var(--ink);">Take the Assessment</strong> (replaces "Work with me" as primary CTA or sits alongside)<br>
+        Secondary CTA: Work with me &rarr;
+      </div>
+    </div>
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500; color: var(--accent); margin-bottom: 0.8rem;">Assessment entry points across site</div>
+      <div style="font-size: 0.78rem; color: var(--ink-light); line-height: 2.1;">
+        Homepage: Banner strip between services + case studies<br>
+        Services page: After "How it works" section<br>
+        About page: Bottom of sidebar<br>
+        Writing page: After newsletter strip<br>
+        Footer: Persistent link in every footer
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width: 1100px; margin: 0 auto 4rem; font-family: var(--font-mono); font-size: 0.6rem; color: var(--ink-faint); text-align: center; letter-spacing: 0.1em; padding: 1rem 0;">
+  aireeza.com &mdash; Newsletter + Assessment v1.0 &mdash; February 2026
+</div>
+
+</body>
+</html>

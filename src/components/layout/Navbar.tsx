@@ -209,6 +209,8 @@ function NavbarContent({ mobileMenuOpen, setMobileMenuOpen, isSticky }: NavbarCo
                 <Link href="/services" className="hover:text-black transition-colors">Work</Link>
                 <Link href="/writing" className="hover:text-black transition-colors">Writing</Link>
                 <Link href="/speaking" className="hover:text-black transition-colors">Speaking</Link>
+                <Link href="/newsletter" className="hover:text-black transition-colors">Newsletter</Link>
+                <Link href="/assessment" className="hover:text-black transition-colors">Assessment</Link>
             </div>
 
             {/* Right - CTA + Menu */}
@@ -251,6 +253,8 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         { label: 'Work', href: '/work' },
         { label: 'Writing', href: '/writing' },
         { label: 'Speaking', href: '/speaking' },
+        { label: 'Newsletter', href: '/newsletter' },
+        { label: 'Assessment', href: '/assessment' },
     ];
 
     return (

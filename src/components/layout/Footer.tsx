@@ -31,14 +31,14 @@ export default function Footer() {
                             <span className="font-majesty font-normal text-black/90" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
                                 Airee<span style={{ color: '#ff3333' }}>za</span>
                             </span>
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
-                                &copy;2026 Aireeza Tandih
+                        </div>  
+                        <div className="flex flex-col gap-2">
+                            <span className="text-[0.85rem] font-light text-black/90 leading-[1.4]">
+                                Profit & Performance Advisor.
                             </span>
-                            <span className="text-[10px] font-light tracking-wide text-neutral-500">
-                                Alt Business / BrightCEO
-                            </span>
+                            <p className="text-[0.78rem] text-neutral-500 leading-[1.6] max-w-xs">
+                                Helping founder-led businesses get financially healthy, structurally sound, and built to actually last.
+                            </p>
                         </div>
                     </div>
 
@@ -67,14 +67,13 @@ export default function Footer() {
 
                 <div className="border-t pt-12 md:pt-16 flex justify-between items-end relative overflow-hidden opacity-0 hero-animate-in hero-stagger-3 border-neutral-200">
                     <div className="text-left w-1/3">
-                        {/* Space preserved for layout balance */}
+                        <span className="text-[10px] font-light tracking-wide text-neutral-500">
+                            &copy;2026 Aireeza Tandih
+                        </span>
                     </div>
 
-                    {/* Brand name with logo */}
                     <div className="text-center w-1/3">
-                        <span className="font-majesty font-normal select-none pointer-events-none transition-all duration-700 hover:opacity-70 opacity-20 text-black/90" style={{ fontSize: '10vw', lineHeight: '1' }}>
-                            Airee<span style={{ color: '#ff3333' }}>za</span>
-                        </span>
+                        {/* Space preserved for layout balance */}
                     </div>
 
                     <div className="text-right w-1/3 flex justify-end">
