@@ -31,7 +31,7 @@ export default function AdminNav() {
             {/* Vogue-style admin title */}
             <Link href="/admin" className="group flex items-center gap-3">
               <span className="font-majesty font-normal text-black" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
-                Airee<span style={{ color: '#107f87' }}>za</span>
+                Airee<span style={{ color: '#0192af' }}>za</span>
               </span>
               <span className="text-2xl font-black tracking-tighter leading-[0.8] transition-all duration-500 text-black">
                 ADMIN

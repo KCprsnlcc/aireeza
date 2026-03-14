@@ -94,7 +94,7 @@ export default function ServicesPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 border-t border-neutral-200">
                     {/* Advisory */}
                     <div className="p-8 md:p-10 md:border-r border-neutral-200">
-                        <div className="text-[0.65rem] text-[#107f87] mb-4 font-light">Advisory</div>
+                        <div className="text-[0.65rem] text-[#0192af] mb-4 font-light">Advisory</div>
                         <h3 className="font-bold tracking-tight text-xl text-black/90 mb-3">Ongoing Profit &amp; Performance Advisory</h3>
                         <p className="text-[0.85rem] text-neutral-500 leading-[1.7] mb-3">
                             For founders who want a thinking partner in their corner on an ongoing basis. We meet regularly, look at what&rsquo;s happening in the business, and work through the decisions that matter most.
@@ -117,7 +117,7 @@ export default function ServicesPage() {
 
                     {/* Intensive */}
                     <div className="p-8 md:p-10">
-                        <div className="text-[0.65rem] text-[#107f87] mb-4 font-light">Intensive</div>
+                        <div className="text-[0.65rem] text-[#0192af] mb-4 font-light">Intensive</div>
                         <h3 className="font-bold tracking-tight text-xl text-black/90 mb-3">Business Health Intensive</h3>
                         <p className="text-[0.85rem] text-neutral-500 leading-[1.7] mb-3">
                             A focused, deep-dive engagement for founders who need answers quickly. We spend{' '}

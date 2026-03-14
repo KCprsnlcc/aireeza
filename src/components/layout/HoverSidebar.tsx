@@ -70,7 +70,7 @@ export default function HoverSidebar() {
                         <div className="mb-16">
                             <div className="space-y-1">
                                 <span className="font-majesty font-normal text-black" style={{ fontSize: '2rem', lineHeight: '1' }}>
-                            Airee<span style={{ color: '#107f87' }}>za</span>
+                            Airee<span style={{ color: '#0192af' }}>za</span>
                         </span>
                             </div>
                             <div className="mt-8 text-xs font-normal uppercase tracking-widest opacity-60 text-neutral-500">

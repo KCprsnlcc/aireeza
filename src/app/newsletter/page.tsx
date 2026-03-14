@@ -75,7 +75,7 @@ export default function NewsletterPage() {
             <section className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] border-b border-neutral-200">
                 {/* Left - Copy */}
                 <div className="px-6 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20 border-b lg:border-b-0 lg:border-r border-neutral-200">
-                    <div className="text-[0.65rem] uppercase tracking-[0.2em] text-[#107f87] mb-4 font-light">
+                    <div className="text-[0.65rem] uppercase tracking-[0.2em] text-[#0192af] mb-4 font-light">
                         The Newsletter
                     </div>
                     <h1 className="font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-black/90 mb-6">
@@ -117,7 +117,7 @@ export default function NewsletterPage() {
                             />
                             <button
                                 type="submit"
-                                className="text-[0.7rem] uppercase tracking-[0.1em] bg-[#107f87] text-white px-6 py-3 font-light hover:bg-[#0d6a72] transition-colors mt-1"
+                                className="text-[0.7rem] uppercase tracking-[0.1em] bg-[#0192af] text-white px-6 py-3 font-light hover:bg-[#017a94] transition-colors mt-1"
                             >
                                 Subscribe →
                             </button>
@@ -156,7 +156,7 @@ export default function NewsletterPage() {
                             key={item.num}
                             className={`px-6 md:px-8 py-8 ${index < 3 ? 'border-b sm:border-b-0 sm:border-r border-neutral-200' : 'border-b lg:border-b-0 lg:border-r-0 border-neutral-200'} ${index === 1 ? 'sm:border-r-0 lg:border-r' : ''} ${index === 2 ? 'lg:border-r-0' : ''}`}
                         >
-                            <div className="text-[0.6rem] text-[#107f87] mb-3 font-light">{item.num}</div>
+                            <div className="text-[0.6rem] text-[#0192af] mb-3 font-light">{item.num}</div>
                             <h3 className="font-bold tracking-tight text-lg mb-2">{item.title}</h3>
                             <p className="text-[0.78rem] text-neutral-500 leading-[1.65]">{item.body}</p>
                         </div>
@@ -209,7 +209,7 @@ export default function NewsletterPage() {
                             <p className="text-[0.78rem] text-neutral-500 leading-[1.6]">{link.desc}</p>
                             <a
                                 href={link.href}
-                                className="text-[0.62rem] uppercase tracking-[0.1em] text-[#107f87] mt-2 hover:text-[#0d6a72] transition-colors"
+                                className="text-[0.62rem] uppercase tracking-[0.1em] text-[#0192af] mt-2 hover:text-[#017a94] transition-colors"
                             >
                                 {link.cta}
                             </a>

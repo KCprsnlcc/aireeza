@@ -36,7 +36,7 @@ export default function Hero() {
         const scrollLineBg = isReveal ? 'bg-white/60' : 'bg-white/70 md:bg-black/50';
         const borderColor = isReveal ? 'border-white/15' : 'border-white/10 md:border-black/10';
         const cornerBorder = isReveal ? 'border-white/10' : 'border-white/8 md:border-black/8';
-        const zaColor = isReveal ? 'text-white' : 'text-[#107f87]';
+        const zaColor = isReveal ? 'text-white' : 'text-[#0192af]';
         const hoverText = isReveal ? 'text-white/50 hover:text-white/80' : 'text-white/60 hover:text-white/90 md:text-black/40 md:hover:text-black/70';
         const discoverText = isReveal ? 'text-white/50' : 'text-white/60 md:text-black/40';
 
@@ -54,7 +54,7 @@ export default function Hero() {
                         <div className={`hidden md:flex flex-col gap-6 max-w-[280px] lg:max-w-[320px] hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
                             {/* Eyebrow */}
                             <div className="hero-stagger-1">
-                                <p className={`text-[0.65rem] font-light uppercase tracking-[0.2em] ${isReveal ? 'text-white/80' : 'text-[#107f87]'} leading-[1.4]`}>
+                                <p className={`text-[0.65rem] font-light uppercase tracking-[0.2em] ${isReveal ? 'text-white/80' : 'text-[#0192af]'} leading-[1.4]`}>
                                     For founders who have built real revenue — and can't figure out why it's not enough
                                 </p>
                             </div>
@@ -134,7 +134,7 @@ export default function Hero() {
                         >
                             {/* Mobile Eyebrow */}
                             <div className={`hero-stagger-1 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} max-w-[85vw]`}>
-                                <p className={`text-[0.6rem] font-light uppercase tracking-[0.2em] ${isReveal ? 'text-white/80' : 'text-[#107f87]'} leading-[1.4] text-center`}>
+                                <p className={`text-[0.6rem] font-light uppercase tracking-[0.2em] ${isReveal ? 'text-white/80' : 'text-[#0192af]'} leading-[1.4] text-center`}>
                                     For founders who have built real revenue — and can't figure out why it's not enough
                                 </p>
                             </div>
@@ -284,7 +284,7 @@ export default function Hero() {
                         image1="/initial-bg-concept.webp" 
                         image2="/hovered-bg-concept.webp"
                         bgColor1="#ffffff"
-                        bgColor2="#107f87"
+                        bgColor2="#0192af"
                     />
                 </div>
 

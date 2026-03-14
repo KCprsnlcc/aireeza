@@ -46,12 +46,12 @@ export default function ServicesPreview() {
                         key={service.num}
                         className={`p-8 border-b border-neutral-200 ${i < services.length - 1 ? 'md:border-r' : ''}`}
                     >
-                        <div className="text-[0.65rem] text-[#107f87] mb-4 font-light">{service.num}</div>
+                        <div className="text-[0.65rem] text-[#0192af] mb-4 font-light">{service.num}</div>
                         <h3 className="font-bold tracking-tight text-xl text-black/90 mb-3">{service.title}</h3>
                         <p className="text-[0.82rem] leading-[1.7] text-neutral-500">{service.body}</p>
                         <Link
                             href="/services"
-                            className="text-xs uppercase tracking-[0.1em] text-[#107f87] hover:underline mt-5 inline-block font-light"
+                            className="text-xs uppercase tracking-[0.1em] text-[#0192af] hover:underline mt-5 inline-block font-light"
                         >
                             Explore →
                         </Link>

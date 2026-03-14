@@ -35,7 +35,7 @@ export default function AboutStrip() {
                     </p>
                     <Link
                         href="/about"
-                        className="text-xs uppercase tracking-[0.1em] text-[#107f87] hover:underline font-light"
+                        className="text-xs uppercase tracking-[0.1em] text-[#0192af] hover:underline font-light"
                     >
                         Read my full story →
                     </Link>
@@ -43,15 +43,15 @@ export default function AboutStrip() {
 
                 {/* Stats — 1/3 */}
                 <div className="space-y-6">
-                    <div className="border-l-2 border-[#107f87] pl-5">
+                    <div className="border-l-2 border-[#0192af] pl-5">
                         <div className="font-bold tracking-tight text-3xl text-black/90">10+</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.12em] text-neutral-500 mt-1">Years building businesses</div>
                     </div>
-                    <div className="border-l-2 border-[#107f87] pl-5">
+                    <div className="border-l-2 border-[#0192af] pl-5">
                         <div className="font-bold tracking-tight text-2xl text-black/90">Alt Business</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.12em] text-neutral-500 mt-1">Founder</div>
                     </div>
-                    <div className="border-l-2 border-[#107f87] pl-5">
+                    <div className="border-l-2 border-[#0192af] pl-5">
                         <div className="font-bold tracking-tight text-2xl text-black/90">BrightCEO</div>
                         <div className="text-[0.65rem] uppercase tracking-[0.12em] text-neutral-500 mt-1">Founder</div>
                     </div>
