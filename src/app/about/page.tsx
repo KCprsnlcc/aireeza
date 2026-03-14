@@ -29,7 +29,7 @@ export default function AboutPage() {
                         </p>
 
                         {/* Pullquote */}
-                        <div className="border-l-[3px] border-[#0192af] px-6 py-4 my-8 bg-neutral-50">
+                        <div className="border-l-[3px] border-[#0066CC] px-6 py-4 my-8 bg-neutral-50">
                             <p className="font-bold tracking-tight text-xl italic leading-[1.4] text-black/90">
                                 &ldquo;The founders I work with don&rsquo;t need more information. They need someone who&rsquo;s been in the room where the hard decisions get made.&rdquo;
                             </p>
@@ -78,8 +78,8 @@ export default function AboutPage() {
                             Based in <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono text-[0.72rem]">[City, Country]</span><br />
                             Founder, builder, advisor<br />
                             <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono text-[0.72rem]">[Years]</span> years in business<br />
-                            <Link href="#" className="text-xs uppercase tracking-[0.1em] text-[#0192af] font-light">LinkedIn →</Link><br />
-                            <Link href="#" className="text-xs uppercase tracking-[0.1em] text-[#0192af] font-light">Newsletter →</Link>
+                            <Link href="#" className="text-xs uppercase tracking-[0.1em] text-[#0066CC] font-light">LinkedIn →</Link><br />
+                            <Link href="#" className="text-xs uppercase tracking-[0.1em] text-[#0066CC] font-light">Newsletter →</Link>
                         </div>
 
                         <div className="mt-8 pt-6 border-t border-neutral-200">

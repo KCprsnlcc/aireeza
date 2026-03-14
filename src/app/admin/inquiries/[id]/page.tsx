@@ -90,17 +90,17 @@ export default function InquiryDetailPage() {
       <div className="min-h-screen transition-colors relative overflow-hidden bg-neutral-50">
         <AdminNav />
         <main className="max-w-4xl mx-auto px-6 py-12 relative z-10">
-          <div className="border rounded-2xl p-8 relative overflow-hidden bg-teal-50 border-teal-200">
+          <div className="border rounded-2xl p-8 relative overflow-hidden bg-blue-50 border-blue-200">
             <div className="flex items-center gap-4 mb-4">
-              <Icon icon="ph:warning-circle" className="w-5 h-5 text-[#0192af]" />
-              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-[#0192af]">Error Loading Inquiry</h3>
+              <Icon icon="ph:warning-circle" className="w-5 h-5 text-[#0066CC]" />
+              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-[#0066CC]">Error Loading Inquiry</h3>
             </div>
-            <p className="text-sm font-light leading-relaxed tracking-wide text-[#0192af] mb-6">
+            <p className="text-sm font-light leading-relaxed tracking-wide text-[#0066CC] mb-6">
               {error || 'Inquiry not found'}
             </p>
             <Link
               href="/admin/inquiries"
-              className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 group text-[#0192af] hover:text-[#017a94]"
+              className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 group text-[#0066CC] hover:text-[#0052A3]"
             >
               <Icon icon="ph:arrow-left" className="w-4 h-4" />
               <span>Back to Inquiries</span>

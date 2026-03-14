@@ -200,7 +200,7 @@ const pillars: Pillar[] = [
 function getScoreLabel(score: number): { label: string; color: string; className: string } {
     if (score >= 14) return { label: 'Solid Foundation', color: '#2d6a4f', className: 'high' };
     if (score >= 8) return { label: 'Needs Attention', color: '#b45309', className: 'mid' };
-    return { label: 'Priority Area', color: '#0192af', className: 'low' };
+    return { label: 'Priority Area', color: '#0066CC', className: 'low' };
 }
 
 export default function AssessmentPage() {
@@ -244,7 +244,7 @@ export default function AssessmentPage() {
             <>
                 {/* Results Hero */}
                 <section className="bg-neutral-50 border-b border-neutral-200 px-6 md:px-8 lg:px-12 py-12 md:py-16">
-                    <div className="text-[0.6rem] uppercase tracking-[0.2em] text-[#0192af] mb-4 font-light">
+                    <div className="text-[0.6rem] uppercase tracking-[0.2em] text-[#0066CC] mb-4 font-light">
                         Your Business Health Report
                     </div>
                     <h1 className="font-bold tracking-tight text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-black/90 mb-4">
@@ -321,7 +321,7 @@ export default function AssessmentPage() {
                             </div>
 
                             <div>
-                                <div className="text-[0.6rem] uppercase tracking-[0.15em] text-[#0192af] mb-2 font-light">Priority</div>
+                                <div className="text-[0.6rem] uppercase tracking-[0.15em] text-[#0066CC] mb-2 font-light">Priority</div>
                                 <h3 className="font-bold tracking-tight text-lg mb-2">The business lives in your head and it&apos;s costing you</h3>
                                 <p className="text-[0.82rem] text-neutral-500 leading-[1.65]">
                                     Your systems score points to the most common and most expensive pattern I see in founder-led businesses: the founder is the system. Decisions wait for you. Processes aren&apos;t written down. Two weeks away would be genuinely hard. This isn&apos;t a personality flaw. It&apos;s a structural gap. And it doesn&apos;t fix itself by working harder. It fixes by building differently.
@@ -338,15 +338,15 @@ export default function AssessmentPage() {
                             </div>
                             <div className="space-y-4">
                                 <div className="flex gap-3 text-[0.78rem] text-neutral-600 leading-[1.55]">
-                                    <span className="text-[0.6rem] text-[#0192af] font-light shrink-0">01</span>
+                                    <span className="text-[0.6rem] text-[#0066CC] font-light shrink-0">01</span>
                                     <span>Start with the systems pillar, not the numbers. Until decisions can be made without you, the other two pillars will keep underperforming.</span>
                                 </div>
                                 <div className="flex gap-3 text-[0.78rem] text-neutral-600 leading-[1.55]">
-                                    <span className="text-[0.6rem] text-[#0192af] font-light shrink-0">02</span>
+                                    <span className="text-[0.6rem] text-[#0066CC] font-light shrink-0">02</span>
                                     <span>Map what you do in a week. Not your job title, what you actually do. Then ask which of those things should never be done by you again.</span>
                                 </div>
                                 <div className="flex gap-3 text-[0.78rem] text-neutral-600 leading-[1.55]">
-                                    <span className="text-[0.6rem] text-[#0192af] font-light shrink-0">03</span>
+                                    <span className="text-[0.6rem] text-[#0066CC] font-light shrink-0">03</span>
                                     <span>Do a full cost per head calculation. Include tax, benefits, tools, and overhead. Compare it to what you know about output.</span>
                                 </div>
                             </div>
@@ -437,7 +437,7 @@ export default function AssessmentPage() {
                         </div>
                         <button
                             onClick={() => document.getElementById('assessment-start')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="w-full mt-6 text-[0.7rem] uppercase tracking-[0.1em] bg-[#0192af] text-white px-6 py-3 font-light hover:bg-[#017a94] transition-colors text-center"
+                            className="w-full mt-6 text-[0.7rem] uppercase tracking-[0.1em] bg-[#0066CC] text-white px-6 py-3 font-light hover:bg-[#0052A3] transition-colors text-center"
                         >
                             Start the assessment →
                         </button>
@@ -463,12 +463,12 @@ export default function AssessmentPage() {
                                 key={pillar.id}
                                 className={`px-6 md:px-8 py-6 ${index < 2 ? 'border-b md:border-b-0 md:border-r border-neutral-200' : ''} ${isActive ? 'bg-neutral-50' : ''}`}
                             >
-                                <div className={`text-[0.58rem] uppercase tracking-[0.15em] mb-2 font-light ${isActive ? 'text-[#0192af]' : 'text-neutral-400'}`}>
+                                <div className={`text-[0.58rem] uppercase tracking-[0.15em] mb-2 font-light ${isActive ? 'text-[#0066CC]' : 'text-neutral-400'}`}>
                                     Pillar 0{pillar.id}
                                 </div>
                                 <h3 className="font-bold tracking-tight text-base mb-1">{pillar.title}</h3>
                                 <p className="text-[0.75rem] text-neutral-500 leading-[1.5]">{pillar.desc}</p>
-                                {isActive && <div className="h-[3px] bg-[#0192af] mt-4" />}
+                                {isActive && <div className="h-[3px] bg-[#0066CC] mt-4" />}
                             </div>
                         );
                     })}
@@ -487,7 +487,7 @@ export default function AssessmentPage() {
                             <div
                                 key={i}
                                 className={`w-2 h-2 rounded-full ${
-                                    isDone ? 'bg-[#0192af]' : isCurrent ? 'bg-neutral-900' : 'bg-neutral-200'
+                                    isDone ? 'bg-[#0066CC]' : isCurrent ? 'bg-neutral-900' : 'bg-neutral-200'
                                 }`}
                             />
                         );
@@ -504,7 +504,7 @@ export default function AssessmentPage() {
             {/* Questions */}
             {pillars.map((pillar) => (
                 <section key={pillar.id} className="px-6 md:px-8 lg:px-12 py-10 border-b border-neutral-200">
-                    <div className="text-[0.6rem] uppercase tracking-[0.2em] text-[#0192af] mb-2 font-light">
+                    <div className="text-[0.6rem] uppercase tracking-[0.2em] text-[#0066CC] mb-2 font-light">
                         {pillar.subtitle}
                     </div>
                     <h2 className="font-bold tracking-tight text-2xl md:text-3xl mb-2">{pillar.title}</h2>
@@ -567,7 +567,7 @@ export default function AssessmentPage() {
                     disabled={!allAnswered}
                     className={`text-[0.75rem] uppercase tracking-[0.1em] px-8 py-4 font-light transition-colors ${
                         allAnswered
-                            ? 'bg-[#0192af] text-white hover:bg-[#017a94]'
+                            ? 'bg-[#0066CC] text-white hover:bg-[#0052A3]'
                             : 'bg-neutral-300 text-neutral-500 cursor-not-allowed'
                     }`}
                 >

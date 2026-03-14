@@ -76,8 +76,8 @@ export default function AdminLogin() {
           <div className="p-8">
             <form onSubmit={handleLogin} className="space-y-6">
               {error && (
-                <div className="border rounded-xl p-4 bg-teal-50 border-teal-200">
-                  <p className="text-sm font-light leading-relaxed tracking-wide text-[#0192af]">{error}</p>
+                <div className="border rounded-xl p-4 bg-blue-50 border-blue-200">
+                  <p className="text-sm font-light leading-relaxed tracking-wide text-[#0066CC]">{error}</p>
                 </div>
               )}
 

@@ -92,12 +92,12 @@ export default function InquiriesPage() {
         ) : (
           <>
             {error ? (
-              <div className="border rounded-2xl p-8 relative overflow-hidden bg-teal-50 border-teal-200">
+              <div className="border rounded-2xl p-8 relative overflow-hidden bg-blue-50 border-blue-200">
                 <div className="flex items-center gap-4 mb-4">
-                  <Icon icon="ph:warning-circle" className="w-5 h-5 text-[#0192af]" />
-                  <h3 className="text-sm font-black uppercase tracking-[0.3em] text-[#0192af]">Error Loading Data</h3>
+                  <Icon icon="ph:warning-circle" className="w-5 h-5 text-[#0066CC]" />
+                  <h3 className="text-sm font-black uppercase tracking-[0.3em] text-[#0066CC]">Error Loading Data</h3>
                 </div>
-                <p className="text-sm font-light leading-relaxed tracking-wide text-[#0192af]">{error}</p>
+                <p className="text-sm font-light leading-relaxed tracking-wide text-[#0066CC]">{error}</p>
               </div>
             ) : inquiries.length === 0 ? (
               <div className="border rounded-2xl p-16 relative overflow-hidden bg-white border-neutral-200 text-center">
