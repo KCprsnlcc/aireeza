@@ -60,7 +60,7 @@ export default function WritingPreview() {
             <div className="px-6 md:px-8 lg:px-12 py-4 border-t border-neutral-200">
                 <Link
                     href="/writing"
-                    className="text-xs uppercase tracking-[0.1em] text-[#0d6f7c] hover:underline font-light"
+                    className="text-xs uppercase tracking-[0.1em] text-[#107f87] hover:underline font-light"
                 >
                     Read all writing →
                 </Link>

@@ -180,7 +180,7 @@ export default function PageLoader() {
                         </span>
                         <span 
                             className="text-6xl font-majesty font-light tracking-tight ml-1"
-                            style={{ color: '#0d6f7c' }}
+                            style={{ color: '#107f87' }}
                         >
                             za
                         </span>
@@ -189,7 +189,7 @@ export default function PageLoader() {
                     {/* Real loading progress indicator */}
                     <div className="progress-container w-32 h-0.5 bg-gray-400 rounded-full overflow-hidden">
                         <div 
-                            className="progress-bar-fill h-full bg-[#0d6f7c] transition-all duration-300 ease-out"
+                            className="progress-bar-fill h-full bg-[#107f87] transition-all duration-300 ease-out"
                             style={{ width: `${loadingProgress}%` }}
                         />
                     </div>

@@ -89,7 +89,7 @@ export default function SpeakingPage() {
                             <div className="font-bold tracking-tight text-base text-black/90">
                                 <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono text-sm">{event.title}</span>
                             </div>
-                            <div className="text-[0.65rem] text-[#0d6f7c] md:text-right uppercase tracking-[0.1em]">
+                            <div className="text-[0.65rem] text-[#107f87] md:text-right uppercase tracking-[0.1em]">
                                 <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono">{event.year}</span>
                             </div>
                         </div>

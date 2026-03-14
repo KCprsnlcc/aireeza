@@ -59,10 +59,10 @@ export default function WritingPage() {
                     <span className="text-[0.65rem] uppercase tracking-[0.15em] text-neutral-400">FEATURED IMAGE</span>
                 </div>
                 <div className="p-8 md:p-10">
-                    <div className="text-[0.65rem] uppercase tracking-[0.1em] text-[#0d6f7c] mb-3 font-light">{featuredPost.tag}</div>
+                    <div className="text-[0.65rem] uppercase tracking-[0.1em] text-[#107f87] mb-3 font-light">{featuredPost.tag}</div>
                     <h2 className="font-bold tracking-tight text-2xl md:text-3xl leading-[1.2] text-black/90 mb-4">{featuredPost.title}</h2>
                     <p className="text-[0.88rem] leading-[1.8] text-neutral-500 mb-4">{featuredPost.excerpt}</p>
-                    <span className="text-xs uppercase tracking-[0.1em] text-[#0d6f7c] font-light cursor-pointer hover:underline">Read →</span>
+                    <span className="text-xs uppercase tracking-[0.1em] text-[#107f87] font-light cursor-pointer hover:underline">Read →</span>
                 </div>
             </section>
 

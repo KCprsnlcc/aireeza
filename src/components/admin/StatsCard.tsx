@@ -22,7 +22,7 @@ export default function StatsCard({ title, value, icon, trend }: StatsCardProps)
           <p className="text-3xl md:text-4xl font-black tracking-tighter leading-[0.8] mb-4 text-black">{value}</p>
           {trend && (
             <p className={`text-xs font-light uppercase tracking-wide flex items-center gap-2 transition-all duration-500 ${
-              trend.isPositive ? 'text-emerald-600' : 'text-[#0d6f7c]'
+              trend.isPositive ? 'text-emerald-600' : 'text-[#107f87]'
             }`}>
               <Icon 
                 icon={trend.isPositive ? 'solar:arrow-up-linear' : 'solar:arrow-down-linear'} 

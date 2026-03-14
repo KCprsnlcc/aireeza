@@ -29,7 +29,7 @@ export default function Footer() {
                     <div className="text-left w-full max-w-sm">
                         <div className="flex flex-col gap-1 mb-4">
                             <span className="font-majesty font-normal text-black/90" style={{ fontSize: '1.5rem', lineHeight: '1' }}>
-                                Airee<span style={{ color: '#0d6f7c' }}>za</span>
+                                Airee<span style={{ color: '#107f87' }}>za</span>
                             </span>
                         </div>  
                         <div className="flex flex-col gap-2">

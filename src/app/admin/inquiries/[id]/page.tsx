@@ -92,15 +92,15 @@ export default function InquiryDetailPage() {
         <main className="max-w-4xl mx-auto px-6 py-12 relative z-10">
           <div className="border rounded-2xl p-8 relative overflow-hidden bg-teal-50 border-teal-200">
             <div className="flex items-center gap-4 mb-4">
-              <Icon icon="ph:warning-circle" className="w-5 h-5 text-[#0d6f7c]" />
-              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-[#0d6f7c]">Error Loading Inquiry</h3>
+              <Icon icon="ph:warning-circle" className="w-5 h-5 text-[#107f87]" />
+              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-[#107f87]">Error Loading Inquiry</h3>
             </div>
-            <p className="text-sm font-light leading-relaxed tracking-wide text-[#0d6f7c] mb-6">
+            <p className="text-sm font-light leading-relaxed tracking-wide text-[#107f87] mb-6">
               {error || 'Inquiry not found'}
             </p>
             <Link
               href="/admin/inquiries"
-              className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 group text-[#0d6f7c] hover:text-[#0a5a65]"
+              className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all duration-500 group text-[#107f87] hover:text-[#0d6a72]"
             >
               <Icon icon="ph:arrow-left" className="w-4 h-4" />
               <span>Back to Inquiries</span>

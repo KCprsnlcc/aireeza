@@ -69,10 +69,10 @@ export default function WorkPage() {
                             </p>
                         </div>
                         <div className="md:text-right">
-                            <div className="text-[0.7rem] text-[#0d6f7c] font-light">
+                            <div className="text-[0.7rem] text-[#107f87] font-light">
                                 <span className="text-amber-600 bg-amber-50 rounded px-1 font-mono">{study.outcome}</span>
                             </div>
-                            <div className="text-[0.65rem] text-[#0d6f7c] mt-2 font-light">Read case study →</div>
+                            <div className="text-[0.65rem] text-[#107f87] mt-2 font-light">Read case study →</div>
                         </div>
                     </div>
                 ))}
