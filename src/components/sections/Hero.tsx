@@ -73,10 +73,7 @@ export default function Hero() {
                                             letterSpacing: '-0.02em'
                                         }}
                                     >
-                                        You've figured out<br/>how to make money.<br/>
-                                        <span className={`${isReveal ? 'text-white/60' : 'text-neutral-500'} italic`}>
-                                            Nobody taught you<br/>how to keep it.
-                                        </span>
+                                        I design profit systems <span className={`${isReveal ? 'text-white/60' : 'text-neutral-500'} italic`}>that protect what founders build.</span>
                                     </div>
                                 </h1>
                             </div>
@@ -150,10 +147,7 @@ export default function Hero() {
                                             letterSpacing: '-0.02em'
                                         }}
                                     >
-                                        You've figured out<br/>how to make money.<br/>
-                                        <span className={`${isReveal ? 'text-white/60' : 'text-neutral-500'} italic`}>
-                                            Nobody taught you<br/>how to keep it.
-                                        </span>
+                                        I design profit systems <span className={`${isReveal ? 'text-white/60' : 'text-neutral-500'} italic`}>that protect what founders build.</span>
                                     </div>
                                 </h1>
                             </div>
