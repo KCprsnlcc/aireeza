@@ -99,7 +99,7 @@ export default function Navbar() {
                     <span>About</span><span>Work</span><span>Writing</span><span>Speaking</span>
                 </div>
                 <div className="flex md:w-1/3 justify-start md:justify-center">
-                    <Link href="/" className="font-majesty text-xl normal-case">Airee<span className="text-[#ff3333]">za</span></Link>
+                    <Link href="/" className="font-majesty text-xl normal-case">Airee<span className="text-[#0d6f7c]">za</span></Link>
                 </div>
                 <div className="flex w-full md:w-1/3 justify-end items-center gap-4">
                     <Link
@@ -131,7 +131,7 @@ export default function Navbar() {
                     >
                         <div className="relative w-full h-full bg-black/5">
                             <div
-                                className="absolute top-0 left-0 right-0 bg-[#ff3333] will-change-transform"
+                                className="absolute top-0 left-0 right-0 bg-[#0d6f7c] will-change-transform"
                                 style={{
                                     height: `${scrollProgress}%`,
                                     transition: 'height 0.1s cubic-bezier(0.33, 1, 0.68, 1)'
@@ -199,7 +199,7 @@ function NavbarContent({ mobileMenuOpen, setMobileMenuOpen, isSticky }: NavbarCo
             {/* Left - Logo */}
             <div className="flex w-1/2 md:w-1/4 justify-start">
                 <Link href="/" className="font-majesty text-xl normal-case text-black/90">
-                    Airee<span className="text-[#ff3333]">za</span>
+                    Airee<span className="text-[#0d6f7c]">za</span>
                 </Link>
             </div>
 
@@ -291,7 +291,7 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             {/* Menu Header */}
                             <div className="flex justify-between items-center px-6 py-6 border-b border-neutral-200">
                                 <span className="font-majesty text-xl normal-case text-black/90">
-                                    Airee<span className="text-[#ff3333]">za</span>
+                                    Airee<span className="text-[#0d6f7c]">za</span>
                                 </span>
                                 <button
                                     onClick={onClose}

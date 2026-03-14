@@ -24,13 +24,13 @@ const fragmentShader = `
   uniform vec3 uBgColor1;
   uniform vec3 uBgColor2;
   
-  // Studio backdrop: bright white for initial, dramatic red for hover
+  // Studio backdrop: bright white for initial, dramatic dark-teal for hover
   vec3 studioBackdrop(vec2 uv, vec3 baseColor) {
-    // Check if this is the red background (hover state)
-    bool isRed = baseColor.r > 0.5 && baseColor.g < 0.3 && baseColor.b < 0.3;
+    // Check if this is the dark-teal background (hover state)
+    bool isDarkTeal = baseColor.r < 0.3 && baseColor.g > 0.3 && baseColor.b > 0.3;
     
-    if (isRed) {
-      // Original dramatic lighting for red hover
+    if (isDarkTeal) {
+      // Original dramatic lighting for dark-teal hover
       vec2 lightPos = vec2(0.5, 0.62);
       float lightDist = distance(uv, lightPos);
       

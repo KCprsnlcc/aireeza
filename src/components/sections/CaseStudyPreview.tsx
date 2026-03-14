@@ -52,7 +52,7 @@ export default function CaseStudyPreview() {
                     <div className="font-bold tracking-tight text-lg md:text-xl text-black/90 mb-2 md:mb-0">
                         {study.title}
                     </div>
-                    <div className="text-[0.7rem] text-[#ff3333] md:text-right font-light">
+                    <div className="text-[0.7rem] text-[#0d6f7c] md:text-right font-light">
                         {study.result}
                     </div>
                 </div>
@@ -62,7 +62,7 @@ export default function CaseStudyPreview() {
             <div className="px-6 md:px-8 lg:px-12 py-4 border-t border-neutral-200">
                 <Link
                     href="/work"
-                    className="text-xs uppercase tracking-[0.1em] text-[#ff3333] hover:underline font-light"
+                    className="text-xs uppercase tracking-[0.1em] text-[#0d6f7c] hover:underline font-light"
                 >
                     See all case studies →
                 </Link>

@@ -17,7 +17,7 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
-  --accent: #ff3333;
+  --accent: #0d6f7c;
   --border: #e5e5e5;
   --border-light: #d4d4d4;
   --muted: #a3a3a3;
@@ -215,10 +215,10 @@ body {
   border-radius: 3px;
 }
 
-/* Duotone Effect - Red #ff3333 */
+/* Duotone Effect - Dark Teal #0d6f7c */
 .duotone-red {
   position: relative;
-  background-color: #ff3333;
+  background-color: #0d6f7c;
 }
 
 .duotone-red img {
@@ -373,7 +373,7 @@ input:focus {
 
 /* Selection colors */
 ::selection {
-  background-color: #ff3333;
+  background-color: #0d6f7c;
   color: white;
 }
 

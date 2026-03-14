@@ -91,7 +91,7 @@ export default function InquiryActions({ inquiry, onUpdate }: InquiryActionsProp
         <button
           onClick={deleteInquiry}
           disabled={isUpdating}
-          className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-500 bg-red-50 text-red-600 hover:bg-red-100 disabled:opacity-50 disabled:cursor-not-allowed border border-red-200"
+          className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-500 bg-teal-50 text-[#0d6f7c] hover:bg-teal-100 disabled:opacity-50 disabled:cursor-not-allowed border border-teal-200"
         >
           <Icon icon="ph:trash" className="w-4 h-4" />
         </button>

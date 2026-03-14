@@ -189,8 +189,8 @@ export default function AdminDashboard() {
             </div>
 
             {error ? (
-              <div className="border rounded-2xl p-8 relative overflow-hidden bg-red-50 border-red-200">
-                <p className="text-sm font-light leading-relaxed tracking-wide text-red-600">Error loading inquiries: {error}</p>
+              <div className="border rounded-2xl p-8 relative overflow-hidden bg-teal-50 border-teal-200">
+                <p className="text-sm font-light leading-relaxed tracking-wide text-[#0d6f7c]">Error loading inquiries: {error}</p>
               </div>
             ) : (
               <InquiryTable inquiries={inquiries} />

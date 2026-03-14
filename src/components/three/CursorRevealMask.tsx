@@ -96,7 +96,7 @@ export default function CursorRevealMask({
   image1,
   image2,
   bgColor1 = '#ffffff',
-  bgColor2 = '#ff3333',
+  bgColor2 = '#0d6f7c',
   className = '',
 }: CursorRevealMaskProps) {
   const containerRef = useRef<HTMLDivElement>(null);
