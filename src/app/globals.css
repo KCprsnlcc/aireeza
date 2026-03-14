@@ -727,6 +727,22 @@ transition: opacity 0.1s ease-out;
   .hero-stagger-4 { animation-delay: 0.85s; }
   .hero-stagger-5 { animation-delay: 1.05s; }
   .hero-stagger-6 { animation-delay: 1.25s; }
+  
+  /* Tablet text optimizations */
+  #hero {
+    font-size: 0.95rem;
+  }
+  
+  /* Better spacing for tablet layout */
+  #hero .flex-1 {
+    padding: 0 1rem;
+  }
+  
+  /* Tablet text optimizations */
+  .hero-animate-in {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 /* Sticky Navbar Slide Down Animation */

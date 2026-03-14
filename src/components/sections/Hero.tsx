@@ -129,20 +129,20 @@ export default function Hero() {
                             className="w-full flex flex-col items-center justify-center text-center relative md:hidden px-4 sm:px-6"
                         >
                             {/* Mobile Eyebrow */}
-                            <div className={`hero-stagger-1 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} max-w-[90vw] sm:max-w-[85vw]`}>
-                                <p className={`text-[0.58rem] sm:text-[0.62rem] font-light uppercase tracking-[0.22em] ${isReveal ? 'text-white/85' : 'text-white'} leading-[1.5] text-center`}>
+                            <div className={`hero-stagger-1 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} max-w-[95vw] sm:max-w-[90vw]`}>
+                                <p className={`text-[0.6rem] sm:text-[0.65rem] font-light uppercase tracking-[0.2em] ${isReveal ? 'text-white/85' : 'text-white'} leading-[1.5] text-center`}>
                                     For founders who have built real revenue — and can't figure out why it's not enough
                                 </p>
                             </div>
                             
                             {/* Mobile Headline */}
-                            <div className={`hero-stagger-2 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-5 sm:mt-6`}>
+                            <div className={`hero-stagger-2 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-4 sm:mt-5`}>
                                 <h1 className="relative">
                                     <div 
                                         className={`font-bold tracking-tight ${textPrimary}`}
                                         style={{ 
-                                            fontSize: 'clamp(1.5rem, 7.5vw, 2.4rem)', 
-                                            lineHeight: '1.3',
+                                            fontSize: 'clamp(1.4rem, 6.5vw, 2.2rem)', 
+                                            lineHeight: '1.25',
                                             letterSpacing: '-0.02em'
                                         }}
                                     >
@@ -152,17 +152,17 @@ export default function Hero() {
                             </div>
 
                             {/* Mobile Body Copy */}
-                            <div className={`hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-5 sm:mt-6 max-w-[85vw] sm:max-w-[75vw]`}>
-                                <p className={`text-[0.8rem] sm:text-[0.85rem] leading-[1.7] ${textSecondary}`}>
+                            <div className={`hero-stagger-3 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-4 sm:mt-5 max-w-[90vw] sm:max-w-[80vw]`}>
+                                <p className={`text-[0.82rem] sm:text-[0.87rem] leading-[1.65] ${textSecondary}`}>
                                     Most founder-led businesses have figured out how to generate revenue but have never built the structure to protect it. I sit inside the business and build what was never built: the financial architecture, client system, and team infrastructure that turns revenue into profit you actually keep.
                                 </p>
                             </div>
                             
                             {/* Mobile CTA Buttons */}
-                            <div className={`hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-7 sm:mt-8 w-full max-w-[300px] sm:max-w-[320px] space-y-2.5`}>
+                            <div className={`hero-stagger-4 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} mt-6 sm:mt-7 w-full max-w-[320px] sm:max-w-[340px] space-y-2.5`}>
                                 <a 
                                     href="/assessment"
-                                    className={`block w-full text-[0.7rem] sm:text-[0.72rem] uppercase tracking-[0.12em] py-3 sm:py-3.5 px-5 text-center transition-all duration-300 pointer-events-auto font-light active:scale-95 ${
+                                    className={`block w-full text-[0.72rem] sm:text-[0.75rem] uppercase tracking-[0.12em] py-3 sm:py-3.5 px-5 text-center transition-all duration-300 pointer-events-auto font-light active:scale-95 ${
                                         isReveal 
                                             ? 'bg-white text-black hover:bg-neutral-100' 
                                             : 'bg-white text-black hover:bg-neutral-100'
@@ -172,7 +172,7 @@ export default function Hero() {
                                 </a>
                                 <a 
                                     href="/services"
-                                    className={`block w-full text-[0.7rem] sm:text-[0.72rem] uppercase tracking-[0.12em] py-3 sm:py-3.5 px-5 text-center transition-all duration-300 pointer-events-auto border font-light active:scale-95 ${
+                                    className={`block w-full text-[0.72rem] sm:text-[0.75rem] uppercase tracking-[0.12em] py-3 sm:py-3.5 px-5 text-center transition-all duration-300 pointer-events-auto border font-light active:scale-95 ${
                                         isReveal 
                                             ? 'border-white/40 text-white hover:bg-white/15 hover:border-white/60' 
                                             : 'border-white/40 text-white hover:bg-white/15 hover:border-white/60'
@@ -180,7 +180,7 @@ export default function Hero() {
                                 >
                                     Work with me
                                 </a>
-                                <p className={`text-[0.6rem] sm:text-[0.62rem] ${isReveal ? 'text-white/60' : 'text-white/60'} text-center mt-1.5`}>
+                                <p className={`text-[0.62rem] sm:text-[0.64rem] ${isReveal ? 'text-white/60' : 'text-white/60'} text-center mt-1.5`}>
                                     15 minutes · Free · No sign-up to start
                                 </p>
                             </div>
@@ -256,41 +256,6 @@ export default function Hero() {
                 {/* Decorative corner elements - Responsive sizing */}
                 <div className={`absolute top-16 sm:top-20 md:top-24 lg:top-28 left-3 sm:left-4 md:left-8 lg:left-12 w-10 sm:w-12 md:w-14 lg:w-16 h-10 sm:h-12 md:h-14 lg:h-16 border-l border-t pointer-events-none hero-stagger-6 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} ${cornerBorder}`} />
                 <div className={`absolute top-16 sm:top-20 md:top-24 lg:top-28 right-3 sm:right-4 md:right-8 lg:right-12 w-10 sm:w-12 md:w-14 lg:w-16 h-10 sm:h-12 md:h-14 lg:h-16 border-r border-t pointer-events-none hero-stagger-6 ${isLoaded ? 'hero-animate-in' : 'opacity-0'} ${cornerBorder}`} />
-                <div className={`absolute bottom-0 left-0 right-0 pb-6 md:pb-12 px-4 md:px-8 lg:px-12 hero-stagger-5 ${isLoaded ? 'hero-animate-in' : 'opacity-0'}`}>
-                    <div className={`flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 pt-4 md:pt-6 border-t ${borderColor}`}>
-                        {/* Mobile - Scroll indicator with improved spacing */}
-                        <div className="flex md:hidden items-center gap-3">
-                            <div className="hero-scroll-line-container">
-                                <div className={`w-px h-10 overflow-hidden ${lineBg}`}>
-                                    <div className={`w-full hero-scroll-line ${scrollLineBg}`} />
-                                </div>
-                            </div>
-                            <span className={`text-[0.6rem] font-black uppercase tracking-[0.25em] ${textMuted}`}>
-                                Scroll to explore
-                            </span>
-                        </div>
-
-                        {/* Desktop - Left label */}
-                        <div className={`hidden md:block text-xs font-black uppercase tracking-[0.3em] ${textMuted}`}>
-                            Founder of Alt Business & BrightCEO
-                        </div>
-
-                        {/* Discover CTA - Touch-optimized */}
-                        <a 
-                            href="#the-problem"
-                            className={`flex items-center gap-2 group cursor-pointer pointer-events-auto ${hoverText} transition-colors duration-300 py-2 px-1 -mx-1 touch-manipulation`}
-                        >
-                            <span className={`text-[0.65rem] md:text-xs font-black uppercase tracking-[0.25em] md:tracking-[0.3em] ${discoverText}`}>
-                                Discover
-                            </span>
-                            <Icon icon="solar:arrow-down-linear" className="text-base md:text-lg group-hover:translate-y-1 transition-transform duration-300" />
-                        </a>
-                    </div>
-                </div>
-
-                {/* Decorative corner elements - Adjusted for mobile */}
-                <div className={`absolute top-20 md:top-28 left-4 md:left-12 w-12 md:w-16 h-12 md:h-16 border-l border-t pointer-events-none hero-stagger-6 ${cornerBorder}`} />
-                <div className={`absolute top-20 md:top-28 right-4 md:right-12 w-12 md:w-16 h-12 md:h-16 border-r border-t pointer-events-none hero-stagger-6 ${cornerBorder}`} />
             </>
         );
     };
